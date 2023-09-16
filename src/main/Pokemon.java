@@ -50,13 +50,6 @@ public class Pokemon {
 
     }
 
-    public int atacar(int nivelEnemigo,String tipoEnemigo){
-
-        //Aca se tiene que hacer la formula de ataque para calcular el danio.
-        return this.ataque;
-
-    }
-
     public void estado(){
 
         if (vidaActual <= 0){
@@ -106,6 +99,20 @@ public class Pokemon {
     public void modificarVelocidad(int poder){
         this.velocidad += poder;
     }
+
+    public void envenenar(){
+        this.estado = estados.Envenenado;
+    }
+
+    public void dormir(){
+        this.estado = estados.Dormido;
+    }
+
+    public void paralizar(){
+        this.estado = estados.Paralizado;
+    }
+
+
 
    
 
