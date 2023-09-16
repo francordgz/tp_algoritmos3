@@ -69,6 +69,18 @@ public class Pokemon {
         this.nivel += 1;
     }
 
+    public int obtenerNivel(){
+        return nivel;
+    }
+
+    public int obtenerDefensa(){
+        return defensa;
+    }
+
+    public int obtenerAtaque(){
+        return ataque;
+    }
+
    
 
 
