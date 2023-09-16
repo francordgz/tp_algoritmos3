@@ -1,45 +1,39 @@
 package src.main;
-
-
 import java.util.*;
+public class Entrenador {
+    private String nombre;
+    private List<Items> items;
+    private List<Pokemon> pokemones;
 
-
-public class Entrenador{
-    
-    String nombre;
-    List<Pokemon> pokemones = new ArrayList<Pokemon>();
-    List<Item> inventario = new ArrayList<Item>();
-    Pokemon pokemonActual;
-
-
-    public void cambiarPokemon(int proximo){
-
+    // Constructor
+    public Entrenador(String nombre, List<Items> items, List<Pokemon> pokemones) {
+        this.nombre = nombre;
+        this.items = items;
+        this.pokemones = pokemones;
     }
 
-    public void  curarPokemon(int efectividad){
-
+    public String getNombre() {
+        return nombre;
     }
 
-    public void restaurarVidaPokemon(){
-
+    public List<Items> getItems() {
+        return items;
     }
 
-    public Boolean usarItem(String unItem){
-
-
-        return true;
-
+    public void agregarItem(Item item) {
+        this.items.add(item);
     }
 
-    public void revivirPokemon(){
-
+    public Item usarItem(Item item) {
+        this.items.remover(item);
     }
 
+    public List<Pokemon> getPokemones() {
+        return pokemones;
+    }
 
-
-
-
-
-
+    public void addPokemon(List<Pokemon> pokemones) {
+        this.pokemones = pokemones;
+    }
 
 }
