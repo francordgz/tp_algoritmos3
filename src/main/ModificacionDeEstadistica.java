@@ -1,29 +1,31 @@
 package src.main;
-
+enum atributos {
+    VIDA, ATAQUE, VELOCIDAD, DEFENSA
+}
 public class ModificacionDeEstadistica extends Habilidad{
 
     int poder;
-    estados estado;
+    atributos atributo;
 
     
     
-    public ModificacionDeEstadistica(String nombre, int usos, int poder,estados estado){
+    public ModificacionDeEstadistica(String nombre, int usos, int poder, atributos atributo){
         super(nombre,usos);
         this.poder = poder;
-        this.estado = estado;
+        this.atributo = atributo;
 
 
     }
 
     public void modificarEstado(Pokemon pokemon){
 
-        if(estado == estados.VIDA){
+        if(atributo == atributos.VIDA){
             pokemon.modificarVida(poder);
-        }else if(estado == estados.ATAQUE){
+        }else if(atributo == atributos.ATAQUE){
             pokemon.modificarAtaque(poder);
-        } else if(estado == estados.VELOCIDAD){
+        } else if(atributo == atributos.VELOCIDAD){
             pokemon.modificarVelocidad(poder);
-        }else if(estado == estados.DEFENSA)
+        }else if(atributo == atributos.DEFENSA)
             pokemon.modificarDefensa(poder);
 
 

@@ -4,7 +4,7 @@ import java.util.*;
 
 enum estados {
         NORMAL, Envenenado, Dormido, Paralizado, Muerto
-    };
+};
 
 
 public class Pokemon {
