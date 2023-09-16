@@ -90,6 +90,23 @@ public class Pokemon {
         return ataque;
     }
 
+    public void modificarAtaque(int poder){
+        this.ataque += poder;
+
+    }
+
+    public void modificarVida(int poder){
+        this.vidaActual += poder;
+    }
+
+    public void modificarDefensa(int poder){
+        this.defensa += poder;
+    }
+
+    public void modificarVelocidad(int poder){
+        this.velocidad += poder;
+    }
+
    
 
 
