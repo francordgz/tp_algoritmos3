@@ -41,11 +41,11 @@ public class Pokemon {
     }
 
 
-    public void recibirDanio(int danio){
+    public void recibirDanio(double danio){
 
-        ///this.vida -= danio;
+        this.vidaActual -= danio;
 
-        //estado()
+        estado();
 
 
     }
@@ -54,6 +54,15 @@ public class Pokemon {
 
         //Aca se tiene que hacer la formula de ataque para calcular el danio.
         return this.ataque;
+
+    }
+
+    public void estado(){
+
+        if (vidaActual <= 0){
+            estado = estados.Muerto;
+        }
+
 
     }
 

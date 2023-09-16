@@ -28,18 +28,15 @@ public class Ataque extends Habilidad {
 
 
 
-    public void atacar(Pokemon atacante,Pokemon rival){
+    public void atacar(Pokemon atacante,Pokemon rival,int efectividad){
 
         int critico = generarProba();
-
-        int efectividad = buscarEfectividad(atacante,rival);
         
         int numeroRandom = generarNumeroRandom();
 
+        double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*MismoTipo*efectividad*numeroRandom);
 
-        int danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*MismoTipo*efectividad*numeroRandom);
-
-
+        rival.recibirDanio(danio);
 
 
     }
