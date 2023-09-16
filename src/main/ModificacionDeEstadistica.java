@@ -1,10 +1,5 @@
 package src.main;
 
-enum estados {
-    VIDA,DEFENSA,ATAQUE,VELOCIDAD
-}
-
-
 public class ModificacionDeEstadistica extends Habilidad{
 
     int poder;

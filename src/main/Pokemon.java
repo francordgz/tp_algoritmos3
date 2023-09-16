@@ -112,14 +112,7 @@ public class Pokemon {
         this.estado = estados.Paralizado;
     }
 
-
-
-   
-
-
-
-
-
-
-    
+    public int obtenerVidaMaxima() {
+        return vidaMaxima;
+    }
 }

@@ -1,15 +1,7 @@
 package src.main;
-
 import java.util.*;
 
-
-public class Item{
-
-
-
-
-    
-
-
-
+public abstract class Item {
+    String nombre;
+    int cantidad;
 }
