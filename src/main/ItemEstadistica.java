@@ -1,10 +1,11 @@
 package src.main;
 
 enum tipoModificacion {ATAQUE, DEFENSA}
-public class ItemEstadistica {
+public class ItemEstadistica extends Item{
     tipoModificacion tipo;
 
-    public ItemEstadistica(tipoModificacion tipo) {
+    public ItemEstadistica(String nombre, tipoModificacion tipo, int cantidad) {
+        super(nombre, cantidad);
         this.tipo = tipo;
     }
 

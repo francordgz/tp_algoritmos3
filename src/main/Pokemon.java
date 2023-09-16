@@ -4,7 +4,7 @@ import java.util.*;
 
 enum estados {
         NORMAL, Envenenado, Dormido, Paralizado, Muerto
-};
+}
 
 
 public class Pokemon {
@@ -114,5 +114,9 @@ public class Pokemon {
 
     public int obtenerVidaMaxima() {
         return vidaMaxima;
+    }
+
+    public void modificarEstado(estados estado) {
+        this.estado = estado;
     }
 }

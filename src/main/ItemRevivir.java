@@ -1,8 +1,8 @@
 package src.main;
 
 public class ItemRevivir extends Item{
-    public ItemRevivir(String nombre) {
-        this.nombre = nombre;
+    public ItemRevivir(String nombre, int cantidad) {
+        super(nombre, cantidad);
     }
 
     public void revivir(Pokemon pokemon) {
