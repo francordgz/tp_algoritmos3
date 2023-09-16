@@ -1,12 +1,13 @@
 package src.main;
 import java.util.*;
+
 public class Entrenador {
-    private String nombre;
-    private List<Items> items;
-    private List<Pokemon> pokemones;
+    String nombre;
+    List<Item> items;
+    List<Pokemon> pokemones;
 
     // Constructor
-    public Entrenador(String nombre, List<Items> items, List<Pokemon> pokemones) {
+    public Entrenador(String nombre, List<Item> items, List<Pokemon> pokemones) {
         this.nombre = nombre;
         this.items = items;
         this.pokemones = pokemones;
@@ -16,7 +17,7 @@ public class Entrenador {
         return nombre;
     }
 
-    public List<Items> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
@@ -24,9 +25,9 @@ public class Entrenador {
         this.items.add(item);
     }
 
-    public Item usarItem(Item item) {
-        this.items.remover(item);
-    }
+    ///public Item usarItem(Item item) {
+        ///this.items.remover(item);
+    ////}
 
     public List<Pokemon> getPokemones() {
         return pokemones;

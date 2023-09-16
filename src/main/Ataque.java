@@ -10,9 +10,6 @@ public class Ataque extends Habilidad {
     
 
 
-
-
-
     public Ataque(String nombre, int usos, int poder,Boolean Mismotipo){
         super(nombre,usos);
         this.poder = poder;
