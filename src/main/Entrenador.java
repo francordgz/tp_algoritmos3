@@ -4,13 +4,11 @@ import java.util.*;
 public class Entrenador {
     String nombre;
     List<Item> items;
-    List<Pokemon> pokemones = new ArrayList<Pokemon>();
+    List<Pokemon> pokemones;
 
     // Constructor
-    public Entrenador(String nombre, List<Item> items, List<Pokemon> pokemones) {
+    public Entrenador(String nombre) {
         this.nombre = nombre;
-        this.items = items;
-        this.pokemones = pokemones;
     }
 
     public String getNombre() {
@@ -35,6 +33,10 @@ public class Entrenador {
 
     public void addPokemon(List<Pokemon> pokemones) {
         this.pokemones = pokemones;
+    }
+
+    public void addItem(List<Item> items){
+        this.items = items;
     }
 
     public void usarItem(){

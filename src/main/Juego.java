@@ -54,6 +54,18 @@ public class Juego {
 
     public void crearItems(){
 
+        List<Item> items = new ArrayList<Item>();
+
+        items.add(new ItemCuracion(20, "Pocion", 3));
+        items.add(new ItemCuracion(50, "MegaPocion", 2));
+        items.add(new ItemCuracion(100, "Hiperpocion", 1));
+        items.add(new ItemEstadistica("Ataque",tipoModificacion.ATAQUE , 2));
+        items.add(new ItemEstadistica("Defensa", tipoModificacion.DEFENSA, 1));
+        items.add(new ItemEstado("Estado",3));
+        items.add(new ItemRevivir("Revivir",1));
+
+        entrenador1.addItem(items);
+        entrenador2.addItem(items);
 
 
     }
