@@ -45,10 +45,11 @@ public class Juego {
     entrenador2.addPokemon(pokemones2);
 
 
-
     }
 
     public void crearHabilidades(){
+
+
 
     }
 
@@ -61,7 +62,7 @@ public class Juego {
         items.add(new ItemCuracion(100, "Hiperpocion", 1));
         items.add(new ItemEstadistica("Ataque",tipoModificacion.ATAQUE , 2));
         items.add(new ItemEstadistica("Defensa", tipoModificacion.DEFENSA, 1));
-        items.add(new ItemEstado("Estado",3));
+        items.add(new ItemEstado("CuraTodo",3));
         items.add(new ItemRevivir("Revivir",1));
 
         entrenador1.addItem(items);
