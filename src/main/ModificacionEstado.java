@@ -1,34 +1,33 @@
 package src.main;
 
-
+enum estado {
+    ENVENENAR, PARALIZAR, DORMIR
+}
 
 
 public class ModificacionEstado extends Habilidad{
 
-    
+    estado tipo;
 
-    public ModificacionEstado(String nombre, int usos){
+    public ModificacionEstado(String nombre, int usos, estado tipo){
         super(nombre,usos);
     }
 
-    public void envenenar(Pokemon pokemon){
-        pokemon.envenenar();
 
-    }
+    public void modificarEstado(Pokemon pokemon){
 
-    public void paralizar(Pokemon pokemon){
-        pokemon.paralizar();
-
-    }
-
-    public void Dormir(Pokemon pokemon){
-        pokemon.dormir();
-
-
-    }
-
-
-
-
+            if(tipo == estado.ENVENENAR){
+                pokemon.modificarEstado(estados.Envenenado);
+            }else if(tipo == estado.DORMIR){
+                pokemon.modificarEstado(estados.Dormido);
+            } else if(tipo == estado.PARALIZAR){
+                pokemon.modificarEstado(estados.Paralizado);
+            }
     
-}
+    
+        } 
+
+
+    }
+
+

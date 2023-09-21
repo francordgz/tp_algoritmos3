@@ -6,20 +6,24 @@ import java.util.Random;
 public class Ataque extends Habilidad {
 
     int poder;
-    double MismoTipo;
+    
     
 
 
-    public Ataque(String nombre, int usos, int poder,Boolean Mismotipo){
+    public Ataque(String nombre, int usos, int poder){
         super(nombre,usos);
         this.poder = poder;
 
-        if(Mismotipo == true){
-            this.MismoTipo = 1.5;
-        }else{
-            this.MismoTipo = 1;
-        
+
+    }
+
+    public double MismoTipo(Pokemon pokemon1,Pokemon pokemon2){
+
+        if (pokemon1.tipo == pokemon2.tipo){
+            return 1.5;
         }
+
+        return 1;
 
     }
 
@@ -33,7 +37,7 @@ public class Ataque extends Habilidad {
         
         int numeroRandom = generarNumeroRandom();
 
-        double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*MismoTipo*efectividad*numeroRandom);
+        double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo(atacante,rival))*efectividad*numeroRandom);
 
         rival.recibirDanio(danio);
 

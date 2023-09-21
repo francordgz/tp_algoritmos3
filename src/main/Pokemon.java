@@ -61,7 +61,7 @@ public class Pokemon {
 
     public void UsarHabilidad(int Numerohabilidad){
 
-        
+
 
     }
 
@@ -100,17 +100,6 @@ public class Pokemon {
         this.velocidad += poder;
     }
 
-    public void envenenar(){
-        this.estado = estados.Envenenado;
-    }
-
-    public void dormir(){
-        this.estado = estados.Dormido;
-    }
-
-    public void paralizar(){
-        this.estado = estados.Paralizado;
-    }
 
     public int obtenerVidaMaxima() {
         return vidaMaxima;
