@@ -56,15 +56,15 @@ public class Pokemon {
             estado = estados.Muerto;
         }
 
-
     }
 
 
-    public void UsarHabilidad(){
+    public void UsarHabilidad(int habilidad){
 
-
+        
 
     }
+
 
     public void subirNivel(){
 

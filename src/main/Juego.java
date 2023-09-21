@@ -7,13 +7,13 @@ public class Juego {
 
 
 
-    Entrenador entrenador1 = new Entrenador();
-    Entrenador entrenador2 = new Entrenador();
+    Entrenador entrenador1;
+    Entrenador entrenador2;
     Entrenador entrenadorActual = null;
     administradorTurno administrador = new administradorTurno();
     Boolean terminado;
 
-    public juego(){
+    public Juego(){
 
         this.crearPokemons();
         this.crearHabilidades();
@@ -37,16 +37,11 @@ public class Juego {
 
     }
 
-    public void jugarTurno(int opcion){
+    public void rendirse(){
 
-        ///Rendirse
-        ///Ver campo
-        ///Cambiar Pokemon 
-        ///Item -> 4
-        ///Usar Habilidad -> 4
-        
-
+        this.terminado = true;
     }
+
 
     public boolean terminado(){
 
@@ -54,7 +49,6 @@ public class Juego {
         return this.terminado;
 
     }
-
 
 
 

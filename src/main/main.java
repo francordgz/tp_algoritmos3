@@ -10,15 +10,11 @@ public class Main  {
         Juego juego = new Juego();
 
 
-        Controller controlador = new Controller();
+        Controller controlador = new Controller(juego);
 
         while(!juego.terminado()){
 
-            int opcion = Controller.menu();
-
-            juego.jugarTurno(opcion);
-        
-            Controller.mostrarJuego(juego);
+           controlador.Menu();
 
 
         }
