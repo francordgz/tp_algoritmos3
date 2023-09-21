@@ -9,7 +9,6 @@ public class Main  {
 
         Juego juego = new Juego();
 
-
         Controller controlador = new Controller(juego);
 
         while(!juego.terminado()){
@@ -18,9 +17,7 @@ public class Main  {
 
 
         }
-
-
-
+        
     }
 
 

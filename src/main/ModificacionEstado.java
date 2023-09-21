@@ -5,8 +5,7 @@ package src.main;
 
 public class ModificacionEstado extends Habilidad{
 
-
-
+    
 
     public ModificacionEstado(String nombre, int usos){
         super(nombre,usos);

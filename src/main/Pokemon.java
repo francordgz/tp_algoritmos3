@@ -59,7 +59,7 @@ public class Pokemon {
     }
 
 
-    public void UsarHabilidad(int habilidad){
+    public void UsarHabilidad(int Numerohabilidad){
 
         
 

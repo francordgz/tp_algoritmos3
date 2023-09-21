@@ -4,7 +4,7 @@ import java.util.*;
 public class Entrenador {
     String nombre;
     List<Item> items;
-    List<Pokemon> pokemones;
+    List<Pokemon> pokemones = new ArrayList<Pokemon>();
 
     // Constructor
     public Entrenador(String nombre, List<Item> items, List<Pokemon> pokemones) {
@@ -35,6 +35,12 @@ public class Entrenador {
 
     public void addPokemon(List<Pokemon> pokemones) {
         this.pokemones = pokemones;
+    }
+
+    public void usarItem(){
+
+
+
     }
 
 }
