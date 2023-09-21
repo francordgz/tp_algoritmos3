@@ -6,11 +6,12 @@ import java.util.Random;
 public class Ataque extends Habilidad {
 
     int poder;
+    String tipo;
     
     
 
 
-    public Ataque(String nombre, int usos, int poder){
+    public Ataque(String nombre, int usos, int poder, String tipo){
         super(nombre,usos);
         this.poder = poder;
 
@@ -40,6 +41,8 @@ public class Ataque extends Habilidad {
         double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo(atacante,rival))*efectividad*numeroRandom);
 
         rival.recibirDanio(danio);
+        
+        this.usos -= 1;
 
 
     }

@@ -14,7 +14,7 @@ public class ModificacionEstado extends Habilidad{
     }
 
 
-    public void modificarEstado(Pokemon pokemon){
+    public void ModificacionEstado(Pokemon pokemon){
 
             if(tipo == estado.ENVENENAR){
                 pokemon.modificarEstado(estados.Envenenado);
@@ -24,7 +24,8 @@ public class ModificacionEstado extends Habilidad{
                 pokemon.modificarEstado(estados.Paralizado);
             }
     
-    
+            this.usos -= 1;
+
         } 
 
 

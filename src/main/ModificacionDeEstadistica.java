@@ -17,7 +17,7 @@ public class ModificacionDeEstadistica extends Habilidad{
 
     }
 
-    public void modificarEstado(Pokemon pokemon){
+    public void ModificacionDeEstadistica(Pokemon pokemon){
 
         if(atributo == atributos.VIDA){
             pokemon.modificarVida(poder);
@@ -27,6 +27,8 @@ public class ModificacionDeEstadistica extends Habilidad{
             pokemon.modificarVelocidad(poder);
         }else if(atributo == atributos.DEFENSA)
             pokemon.modificarDefensa(poder);
+
+        this.usos -=1;
 
 
     } 

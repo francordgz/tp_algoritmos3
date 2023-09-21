@@ -58,11 +58,22 @@ public class Pokemon {
 
     }
 
+    public void atacar(Pokemon rival){
+        
+        ///Paso el ataque al rival
+
+    }
+
 
     public void UsarHabilidad(int Numerohabilidad){
 
 
 
+    }
+
+    public void cargarHabilidades(List<Habilidad> habilidades){
+
+        this.habilidades = habilidades;
     }
 
 
