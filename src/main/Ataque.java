@@ -25,6 +25,8 @@ public class Ataque extends Habilidad {
 
 
 
+    /// Que calcule el pokenon el ataque ///  
+
     public void atacar(Pokemon atacante,Pokemon rival,int efectividad){
 
         int critico = generarProba();
