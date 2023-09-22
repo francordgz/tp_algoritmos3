@@ -11,10 +11,32 @@ public class Controller{
 
 
     public Controller(Juego juego){
-
+        String nombre1 = pedirNombreEntrenador("", 1);
+        String nombre2 = pedirNombreEntrenador(nombre1, 2);
+        juego.inicializarEntrenadores(nombre1, nombre2);
         this.juego = juego;
     }
 
+    private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
+        Scanner scanner = new Scanner();
+        String ingreso;
+        Boolean longitudValida, nombreRepetido, nombreValido;
+
+        do {
+            System.out.println("Ingrese un nombre para el entrenador " + Integer.toString(numeroEntrenador) + ": ");
+            ingreso = scanner.nextline();
+            longitudValida = ingreso.length() > 0 && ingreso.length() < 50;
+            nombreRepetido = ingreso == nombreOponente;
+            nombreValido = longitudValida && !nombreRepetido;
+
+            if (!longitudValida) {
+                System.out.println("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
+            } else if (nombreRepetido) {
+                System.out.println("Error! El nombre no puede coincidir con el del entrenador rival.");
+            }
+        } while (!nombreValido);
+        return ingreso;
+    }
 
     public void mostrarJuego(){
 

@@ -20,6 +20,12 @@ public class Juego {
         this.terminado = false;
     }
 
+    public void inicializarEntrenadores(String nombre1, String nombre2) {
+        this.entrenador1 = new Entrenador(nombre1);
+        this.entrenador2 = new Entrenador(nombre2);
+        crearItems();
+        crearPokemons();
+    }
 
     public void crearItems(){
 
