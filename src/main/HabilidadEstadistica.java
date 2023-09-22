@@ -13,7 +13,7 @@ public class HabilidadEstadistica extends Habilidad{
         this.poder = poder;
         this.atributo = atributo;
     }
-}
+
 
 
     public void ModificacionDeEstadistica(Pokemon pokemon){
@@ -31,8 +31,6 @@ public class HabilidadEstadistica extends Habilidad{
 
 
     }
-
-
 
 
 

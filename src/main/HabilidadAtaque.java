@@ -12,7 +12,7 @@ public class HabilidadAtaque extends Habilidad{
         this.poder = poder;
         this.mismoTipo = mismoTipo;
     }
-}
+
 
 
     public double MismoTipo(Pokemon pokemon1,Pokemon pokemon2){
@@ -82,10 +82,6 @@ public class HabilidadAtaque extends Habilidad{
 
 
     }
-
-
-
-
 
 
 }
