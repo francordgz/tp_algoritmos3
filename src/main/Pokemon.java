@@ -6,7 +6,6 @@ enum estados {
         NORMAL, Envenenado, Dormido, Paralizado, Muerto
 }
 
-
 public class Pokemon {
 
     String Nombre;
