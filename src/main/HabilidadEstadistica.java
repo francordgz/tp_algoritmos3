@@ -1,19 +1,20 @@
 package src.main;
+
 enum atributos {
     VIDA, ATAQUE, VELOCIDAD, DEFENSA
 }
-public class ModificacionDeEstadistica extends Habilidad{
+public class HabilidadEstadistica extends Habilidad{
 
     int poder;
     atributos atributo;
 
-    
-    
-    public ModificacionDeEstadistica(String nombre, int usos, int poder, atributos atributo){
+    public HabilidadEstadistica(String nombre, atributos atributo, int usos, int poder) {
         super(nombre,usos);
         this.poder = poder;
         this.atributo = atributo;
     }
+}
+
 
     public void ModificacionDeEstadistica(Pokemon pokemon){
 
@@ -29,11 +30,11 @@ public class ModificacionDeEstadistica extends Habilidad{
         this.usos -=1;
 
 
-    } 
+    }
 
 
 
-    
 
-    
+
+
 }

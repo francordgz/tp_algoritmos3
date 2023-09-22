@@ -1,22 +1,19 @@
 package src.main;
-
 import java.util.Random;
+public class HabilidadAtaque extends Habilidad{
 
-
-public class Ataque extends Habilidad {
-
-    int poder;
     String tipo;
-    
-    
+    int poder;
+    boolean mismoTipo;
 
-
-    public Ataque(String nombre, int usos, int poder, String tipo){
+    public HabilidadAtaque(String nombre, String tipo, int usos, int poder, boolean mismoTipo) {
         super(nombre,usos);
+        this.tipo = tipo;
         this.poder = poder;
-
-
+        this.mismoTipo = mismoTipo;
     }
+}
+
 
     public double MismoTipo(Pokemon pokemon1,Pokemon pokemon2){
 
@@ -30,18 +27,18 @@ public class Ataque extends Habilidad {
 
 
 
-    /// Que calcule el pokenon el ataque ///  
+    /// Que calcule el pokenon el ataque ///
 
     public void Atacar(Pokemon atacante,Pokemon rival,int efectividad){
 
         int critico = generarProba();
-        
+
         int numeroRandom = generarNumeroRandom();
 
         double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo(atacante,rival))*efectividad*numeroRandom);
 
         rival.recibirDanio(danio);
-        
+
         this.usos -= 1;
 
 
@@ -53,7 +50,7 @@ public class Ataque extends Habilidad {
 
         Random rand = new Random();
 
-        int numeroAleatorio = (rand.nextInt(38) + 217) / 255;      
+        int numeroAleatorio = (rand.nextInt(38) + 217) / 255;
 
         return numeroAleatorio;
 
@@ -64,7 +61,7 @@ public class Ataque extends Habilidad {
 
     public int generarProba(){
 
-        
+
         int probabilidad = 1;
 
         Random rand = new Random();
@@ -90,6 +87,5 @@ public class Ataque extends Habilidad {
 
 
 
-    
-}
 
+}

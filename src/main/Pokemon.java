@@ -74,6 +74,7 @@ public class Pokemon {
     public void cargarHabilidades(List<Habilidad> habilidades){
 
         this.habilidades = habilidades;
+
     }
 
 

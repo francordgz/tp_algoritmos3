@@ -11,6 +11,7 @@ public class ModificacionEstado extends Habilidad{
 
     public ModificacionEstado(String nombre, int usos, estado tipo){
         super(nombre,usos);
+        this.tipo = tipo;
     }
 
 
