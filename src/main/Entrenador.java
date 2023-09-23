@@ -31,8 +31,8 @@ public class Entrenador {
         return pokemones;
     }
 
-    public void addPokemon(List<Pokemon> pokemones) {
-        this.pokemones = pokemones;
+    public void addPokemon(Pokemon pokemon) {
+        this.pokemones.add(pokemon);
     }
 
     public void addItem(List<Item> items){

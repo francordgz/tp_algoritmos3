@@ -6,7 +6,6 @@ enum estados {
         NORMAL, Envenenado, Dormido, Paralizado, Muerto
 }
 
-
 public class Pokemon {
 
     String Nombre;
@@ -15,16 +14,16 @@ public class Pokemon {
     int vidaMaxima;
     int velocidad;
     int defensa;
-    String tipo;
+    Tipo tipo;
     int ataque;
     estados estado;
     int nivel;
-    List<Habilidad> habilidades = new ArrayList<Habilidad>();
+    List<Habilidad> habilidades;
 
 
 
 
-    public Pokemon(String unNombre,String unTipo,int vidaMaxima,int defensa,int velocidad,int danio){
+    public Pokemon(String unNombre,Tipo unTipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
         this.Nombre = unNombre;
         this.tipo = unTipo;
         this.vidaMaxima = vidaMaxima;
@@ -33,7 +32,8 @@ public class Pokemon {
         this.velocidad = velocidad;
         this.vidaActual = vidaMaxima;
         this.estado = estados.NORMAL;
-
+        this.historia = historia;
+        this.habilidades = habilidades;
     }
 
     public int Vida(){
@@ -70,13 +70,6 @@ public class Pokemon {
 
 
     }
-
-    public void cargarHabilidades(List<Habilidad> habilidades){
-
-        this.habilidades = habilidades;
-
-    }
-
 
     public void subirNivel(){
 
