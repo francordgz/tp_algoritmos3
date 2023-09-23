@@ -28,7 +28,7 @@ public class Entrenador {
         ///this.items.remover(item);
     ////}
 
-    public List<Pokemon> getPokemones() {
+    public List<Pokemon> obtenerPokemones() {
         return pokemones;
     }
 
@@ -40,7 +40,7 @@ public class Entrenador {
         this.items = items;
     }
 
-    public void usarItem(){
+    public void usarItem() {
 
 
 
