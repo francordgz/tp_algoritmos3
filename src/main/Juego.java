@@ -54,6 +54,19 @@ public class Juego {
     }
 
 
+    public void UsarHabilidad(int habilidad){
+        
+        if(!entrenadorActual.pokemonActual().habilidades(habilidad).AfectarRival()){
+           entrenadorActual.pokemonActual().UsarHabilidad(habilidad,entrenadorActual.pokemonActual()); 
+        }else{
+
+            entrenadorActual.pokemonActual().UsarHabilidad(habilidad,entrenadorRival.pokemonActual());
+
+        }
+
+    }
+
+
     public boolean terminado(){
 
 

@@ -19,6 +19,17 @@ public class Habilidad {
 
 
     }
+
+    public void ModificarEstado(Pokemon pokemon){
+
+
+
+    }
+
+    public Boolean AfectarRival(){
+        
+        return true;
+    }
     
     
 }

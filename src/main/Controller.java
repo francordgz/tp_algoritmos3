@@ -84,14 +84,14 @@ public class Controller{
         juego.mostrarHabilidades();
         opcion = scanner.nextInt();
 
-        
         if(opcion == 1){
-            juego.atacar(1);
+            juego.atacar(0);
         }else if(opcion == 2){
-            juego.atacar(2);
+            juego.atacar(1);
         }else if(opcion == 3){
-
+            juego.UsarHabilidad(2);
         }else if(opcion == 4){
+            juego.UsarHabilidad(3);
 
 
         }

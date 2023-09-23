@@ -82,9 +82,9 @@ public class Pokemon {
     }
 
 
-    public void UsarHabilidad(int Numerohabilidad){
+    public void UsarHabilidad(int Numerohabilidad,Pokemon rival){
 
-
+        habilidades.get(Numerohabilidad).ModificarEstado(rival);
 
     }
 
@@ -129,5 +129,12 @@ public class Pokemon {
 
     public void modificarEstado(estados estado) {
         this.estado = estado;
+    }
+
+
+    public Habilidad habilidades(int habilidad){
+
+        return habilidades.get(habilidad);
+
     }
 }

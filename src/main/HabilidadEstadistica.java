@@ -7,16 +7,18 @@ public class HabilidadEstadistica extends Habilidad{
 
     int poder;
     atributos atributo;
+    Boolean AfectarRival;
 
-    public HabilidadEstadistica(String nombre, atributos atributo, int usos, int poder) {
+    public HabilidadEstadistica(String nombre, atributos atributo, int usos, int poder,Boolean AfectarRival) {
         super(nombre,usos);
         this.poder = poder;
         this.atributo = atributo;
+        this.AfectarRival = AfectarRival;
     }
 
 
-
-    public void ModificacionDeEstadistica(Pokemon pokemon){
+    @Override
+    public void ModificarEstado(Pokemon pokemon){
 
         if(atributo == atributos.VIDA){
             pokemon.modificarVida(poder);
@@ -30,6 +32,11 @@ public class HabilidadEstadistica extends Habilidad{
         this.usos -=1;
 
 
+    }
+
+    @Override
+    public Boolean AfectarRival(){
+        return AfectarRival;
     }
 
 

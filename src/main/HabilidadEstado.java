@@ -12,7 +12,9 @@ public class HabilidadEstado extends Habilidad{
         this.tipo = tipo;
     }
 
-    public void ModificacionEstado(Pokemon pokemon){
+
+    @Override
+    public void ModificarEstado(Pokemon pokemon){
 
         if(tipo == estado.ENVENENAR){
             pokemon.modificarEstado(estados.Envenenado);
