@@ -5,6 +5,7 @@ public class Entrenador {
     String nombre;
     List<Item> items;
     List<Pokemon> pokemones;
+    Pokemon pokemonActual;
 
     // Constructor
     public Entrenador(String nombre) {
@@ -44,5 +45,28 @@ public class Entrenador {
 
 
     }
+
+
+    //ToDo: Esto tiene que ir en vistas;
+
+    public void mostrarHabilidades(){
+
+        pokemonActual.habilidades.get(0).nombre();
+        
+        System.out.println("1 - > " + pokemonActual.habilidades.get(0).nombre());
+        System.out.println("2 - > " + pokemonActual.habilidades.get(1).nombre());
+        System.out.println("3 - > " + pokemonActual.habilidades.get(2).nombre());
+        System.out.println("4 - > " + pokemonActual.habilidades.get(3).nombre());
+
+
+    }
+
+
+    public Pokemon pokemonActual(){
+
+        return pokemonActual;
+
+    }
+
 
 }

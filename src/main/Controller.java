@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Controller{
 
     Juego juego;
+    Scanner scanner = new Scanner(System.in);
 
 
     public Controller(Juego juego){
@@ -18,7 +19,6 @@ public class Controller{
     }
 
      private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
-        Scanner scanner = new Scanner(System.in);
         String ingreso;
         Boolean longitudValida, nombreRepetido, nombreValido;
 
@@ -50,13 +50,14 @@ public class Controller{
         int opcion = 0;
 
 
-        System.out.println("Que queres hacer?");
+        System.out.println("Selecciona una opcion");
         System.out.println("1 : Ver Campo" );
         System.out.println("2 : Usar Habilidad");
         System.out.println("3 : Usar Item");
         System.out.println("4 : Cambiar Pokemon");
         System.out.println("5 : Rendirse");
 
+        opcion = scanner.nextInt();
 
         switch(opcion){
 
@@ -72,13 +73,29 @@ public class Controller{
 
 
         }
+
     }
 
 
     public void Habilidad(){
 
         int opcion = 0;
-        System.out.println("Que habilidad queres usar");
+        System.out.println("Selecciona una habilidad");
+        juego.mostrarHabilidades();
+        opcion = scanner.nextInt();
+
+        
+        if(opcion == 1){
+            juego.atacar(1);
+        }else if(opcion == 2){
+            juego.atacar(2);
+        }else if(opcion == 3){
+
+        }else if(opcion == 4){
+
+
+        }
+        
         
 
     }

@@ -18,7 +18,7 @@ public class Pokemon {
     int ataque;
     estados estado;
     int nivel;
-    List<Habilidad> habilidades;
+    List<Habilidad> habilidades = new ArrayList<>();
 
 
 
@@ -58,9 +58,19 @@ public class Pokemon {
 
     }
 
-    public void atacar(Pokemon rival){
+    public void atacar(int habilidad,Pokemon rival){
+
+        int efectividad = calcularEfectividad(rival);
         
-        ///Paso el ataque al rival
+        habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
+
+    }
+
+    public int calcularEfectividad(Pokemon rival){
+
+        
+
+        return 0;
 
     }
 

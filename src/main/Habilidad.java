@@ -9,6 +9,16 @@ public class Habilidad {
         this.nombre = nombre;
         this.usos = usos;
     }
+
+    public String nombre(){
+
+        return nombre;
+    }
+
+    public void atacar(int ataque,int nivel,Pokemon rival,int efectividad){
+
+
+    }
     
     
 }

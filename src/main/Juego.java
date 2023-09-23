@@ -9,12 +9,15 @@ public class Juego {
 
     Entrenador entrenador1;
     Entrenador entrenador2;
-    Entrenador entrenadorActual = null;
+    Entrenador entrenadorActual;
+    Entrenador entrenadorRival;
     administradorTurno administrador = new administradorTurno();
     Boolean terminado;
+    double [][]efectividades = new double[15][15];
 
     public Juego(){
 
+        this.crearEfectividades();
         this.crearPokemons();
         this.crearItems();
         this.terminado = false;
@@ -76,4 +79,38 @@ public class Juego {
         entrenador2.addPokemon(pokedex.crearPokemon("Ekans"));
         entrenador2.addPokemon(pokedex.crearPokemon("Rattata"));
     }
+
+
+
+    public void mostrarHabilidades(){
+
+        entrenadorActual.mostrarHabilidades();
+
+
+    }
+
+    public void atacar(int habilidad){
+
+        entrenadorActual.pokemonActual().atacar(habilidad,entrenadorRival.pokemonActual());
+
+    }
+
+    public  void crearEfectividades(){
+
+        for(int i = 0;i<15;i++){
+            for(int j = 0;j <15;j++){
+                this.efectividades[i][j] = 1;
+
+            }
+        }
+
+
+
+
+    }
+
+
+
 }
+
+

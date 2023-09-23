@@ -15,9 +15,9 @@ public class HabilidadAtaque extends Habilidad{
 
 
 
-    public double MismoTipo(Pokemon pokemon1,Pokemon pokemon2){
+    public double MismoTipo(){
 
-        if (pokemon1.tipo == pokemon2.tipo){
+        if (mismoTipo == true){
             return 1.5;
         }
 
@@ -29,13 +29,14 @@ public class HabilidadAtaque extends Habilidad{
 
     /// Que calcule el pokenon el ataque ///
 
-    public void Atacar(Pokemon atacante,Pokemon rival,int efectividad){
+    @Override
+    public void atacar(int ataque,int nivel,Pokemon rival,int efectividad){
 
         int critico = generarProba();
 
         int numeroRandom = generarNumeroRandom();
 
-        double danio = (((((2*atacante.obtenerNivel()*critico*this.poder*atacante.obtenerAtaque())/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo(atacante,rival))*efectividad*numeroRandom);
+        double danio = (((((2*nivel*critico*this.poder*ataque)/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo()*efectividad*numeroRandom));
 
         rival.recibirDanio(danio);
 
