@@ -153,6 +153,23 @@ public class Juego {
         efectividades[14][11] = 1/2;
 
 
+        // x2
+
+        for(int i = 0;i<15;i++){
+            for(int j = 0;j<15;j++){
+                if(efectividades[i][j] != 0 && efectividades[i][j] != 1 && efectividades[i][j] != 1/2){
+                    efectividades[i][j] = 2;
+                }
+
+            }
+        }
+       
+
+
+
+
+
+
     }
 
 
