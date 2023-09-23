@@ -30,6 +30,12 @@ public class Habilidad {
         
         return true;
     }
-    
-    
+
+    public String obtenerNombre() {
+        return nombre;
+    }
+
+    public int getUsos() {
+        return usos;
+    }
 }

@@ -204,8 +204,13 @@ public class Juego {
 
     }
 
+    public Entrenador obtenerEntrenadorActual() {
+        return entrenadorActual;
+    }
 
-
+    public Entrenador obtenerEntrenadorRival() {
+        return entrenadorRival;
+    }
 }
 
 
