@@ -90,7 +90,7 @@ public class Pokedex {
                         new HabilidadAtaque("Salpicar", "Normal", 1, 0, false),
                         new HabilidadAtaque("Giro rápido", "Agua", 2, 60, true),
                         new HabilidadEstadistica("Aumentar ataque", atributos.ATAQUE, 1, 5),
-                        new HabilidadEstado("Ninguno", 0, estado.NINGUNO)
+                        new HabilidadEstado("Paralizar", 0, estado.PARALIZAR)
                 )
         ));
 
@@ -100,7 +100,7 @@ public class Pokedex {
                         new HabilidadAtaque("Impactrueno", "Rayo", 3, 110, true),
                         new HabilidadAtaque("Ataque rápido", "Normal", 2, 60, false),
                         new HabilidadEstadistica("Aumentar velocidad", atributos.VELOCIDAD, 2, 15),
-                        new HabilidadEstado("Ninguno", 0, estado.NINGUNO)
+                        new HabilidadEstado("Paralizar", 0, estado.PARALIZAR)
                 )
         ));
 
@@ -120,7 +120,7 @@ public class Pokedex {
                         new HabilidadAtaque("Encanto", "Hada", 2, 70, true),
                         new HabilidadAtaque("Beso mágico", "Hada", 3, 80, false),
                         new HabilidadEstadistica("Aumentar defensa", atributos.DEFENSA, 2, 15),
-                        new HabilidadEstado("Ninguno", 0, estado.NINGUNO)
+                        new HabilidadEstado("Envenenar", 0, estado.ENVENENAR)
                 )
         ));
 
@@ -140,7 +140,7 @@ public class Pokedex {
                         new HabilidadAtaque("Mordisco", "Normal", 3, 60, false),
                         new HabilidadAtaque("Hipercolmillo", "Normal", 4, 80, true),
                         new HabilidadEstadistica("Aumentar velocidad", atributos.VELOCIDAD, 2, 10),
-                        new HabilidadEstado("Ninguno", 0, estado.NINGUNO)
+                        new HabilidadEstado("Paralizar", 0, estado.PARALIZAR)
                 )
         ));
 

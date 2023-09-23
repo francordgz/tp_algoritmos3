@@ -17,14 +17,14 @@ public class Controller{
         this.juego = juego;
     }
 
-    private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
-        Scanner scanner = new Scanner();
+     private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
+        Scanner scanner = new Scanner(System.in);
         String ingreso;
         Boolean longitudValida, nombreRepetido, nombreValido;
 
         do {
             System.out.println("Ingrese un nombre para el entrenador " + Integer.toString(numeroEntrenador) + ": ");
-            ingreso = scanner.nextline();
+            ingreso = scanner.nextLine();
             longitudValida = ingreso.length() > 0 && ingreso.length() < 50;
             nombreRepetido = ingreso == nombreOponente;
             nombreValido = longitudValida && !nombreRepetido;
@@ -36,7 +36,7 @@ public class Controller{
             }
         } while (!nombreValido);
         return ingreso;
-    }
+    } 
 
     public void mostrarJuego(){
 
