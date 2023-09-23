@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Juego {
 
-
-
     Entrenador entrenador1;
     Entrenador entrenador2;
     Entrenador entrenadorActual;
@@ -56,11 +54,11 @@ public class Juego {
 
     public void UsarHabilidad(int habilidad){
         
-        if(!entrenadorActual.pokemonActual().habilidades(habilidad).AfectarRival()){
-           entrenadorActual.pokemonActual().UsarHabilidad(habilidad,entrenadorActual.pokemonActual()); 
+        if(!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()){
+           entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorActual.obtenerPokemonActual());
         }else{
 
-            entrenadorActual.pokemonActual().UsarHabilidad(habilidad,entrenadorRival.pokemonActual());
+            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorRival.obtenerPokemonActual());
 
         }
 
@@ -93,6 +91,17 @@ public class Juego {
         entrenador2.addPokemon(pokedex.crearPokemon("Rattata"));
     }
 
+    public void asignarPrimerTurno(){
+        int velocidad1 = this.entrenador1.obtenerPokemonActual().obtenerVelocidad();
+        int velocidad2 = this.entrenador2.obtenerPokemonActual().obtenerVelocidad();
+        if (velocidad1 > velocidad2){
+            //Todo: Trabajar en el administrador de turnos
+            this.entrenadorActual = entrenador1;
+            return;
+        }
+        this.entrenadorActual = entrenador2;
+    }
+
 
 
     public void mostrarHabilidades(){
@@ -104,7 +113,7 @@ public class Juego {
 
     public void atacar(int habilidad){
 
-        entrenadorActual.pokemonActual().atacar(habilidad,entrenadorRival.pokemonActual(),efectividades);
+        entrenadorActual.obtenerPokemonActual().atacar(habilidad,entrenadorRival.obtenerPokemonActual(),efectividades);
 
     }
 

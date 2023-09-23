@@ -8,7 +8,7 @@ enum estados {
 
 public class Pokemon {
 
-    String Nombre;
+    String nombre;
     String historia;
     int vidaActual;
     int vidaMaxima;
@@ -18,13 +18,13 @@ public class Pokemon {
     int ataque;
     estados estado;
     int nivel;
-    List<Habilidad> habilidades = new ArrayList<>();
+    List<Habilidad> habilidades = new ArrayList<Habilidad>();
 
 
 
 
     public Pokemon(String unNombre,Tipo unTipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
-        this.Nombre = unNombre;
+        this.nombre = unNombre;
         this.tipo = unTipo;
         this.vidaMaxima = vidaMaxima;
         this.defensa = defensa;
@@ -34,10 +34,6 @@ public class Pokemon {
         this.estado = estados.NORMAL;
         this.historia = historia;
         this.habilidades = habilidades;
-    }
-
-    public int Vida(){
-        return this.vidaActual;
     }
 
 
@@ -66,14 +62,10 @@ public class Pokemon {
 
     }
 
-    public Tipo tipo(){
-        return this.tipo;
-    }
-
     public double calcularEfectividad(Pokemon rival,double [][] efectividades){
 
         int posicionAtacante = this.tipo.ordinal();
-        int PosicionRival = rival.tipo().ordinal();
+        int PosicionRival = rival.obtenerTipo().ordinal();
 
         double efectividad = efectividades[posicionAtacante][PosicionRival];
 
@@ -88,9 +80,8 @@ public class Pokemon {
 
     }
 
-    public void subirNivel(){
-
-        this.nivel += 1;
+    public String obtenerNombre(){
+        return nombre;
     }
 
     public int obtenerNivel(){
@@ -105,9 +96,27 @@ public class Pokemon {
         return ataque;
     }
 
+    public int obtenerVelocidad(){
+        return velocidad;
+    }
+
+    public int obtenerVidaMaxima() {
+        return vidaMaxima;
+    }
+
+    public int obtenerVidaActual() {
+        return vidaActual;
+    }
+
+    public Tipo obtenerTipo(){
+        return this.tipo;
+    }
+
+
+
+
     public void modificarAtaque(int poder){
         this.ataque += poder;
-
     }
 
     public void modificarVida(int poder){
@@ -122,15 +131,15 @@ public class Pokemon {
         this.velocidad += poder;
     }
 
-
-    public int obtenerVidaMaxima() {
-        return vidaMaxima;
-    }
-
     public void modificarEstado(estados estado) {
         this.estado = estado;
     }
 
+
+    public void subirNivel(){
+
+        this.nivel += 1;
+    }
 
     public Habilidad habilidades(int habilidad){
 

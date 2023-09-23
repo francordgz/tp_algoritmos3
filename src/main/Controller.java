@@ -3,8 +3,6 @@ package src.main;
 import java.util.Scanner;
 
 
-
-
 public class Controller{
 
     Juego juego;
@@ -12,10 +10,13 @@ public class Controller{
 
 
     public Controller(Juego juego){
+        this.juego = juego;
         String nombre1 = pedirNombreEntrenador("", 1);
         String nombre2 = pedirNombreEntrenador(nombre1, 2);
-        juego.inicializarEntrenadores(nombre1, nombre2);
-        this.juego = juego;
+        this.juego.inicializarEntrenadores(nombre1, nombre2);
+        this.SeleccionarPokemon(this.juego.entrenador1);
+        this.SeleccionarPokemon(this.juego.entrenador2);
+        this.juego.asignarPrimerTurno();
     }
 
      private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
@@ -39,8 +40,6 @@ public class Controller{
     } 
 
     public void mostrarJuego(){
-
-
 
     }
 
@@ -74,6 +73,23 @@ public class Controller{
 
         }
 
+    }
+
+    public void SeleccionarPokemon(Entrenador jugador){
+
+        System.out.println("Selecciona un pokemon");
+        for (int i=0; i<jugador.pokemones.size(); i++){
+            System.out.println(jugador.pokemones.get(i).obtenerNombre());
+            System.out.println(jugador.pokemones.get(i).obtenerVelocidad());
+            System.out.println(jugador.pokemones.get(i).obtenerAtaque());
+            System.out.println(jugador.pokemones.get(i).obtenerDefensa());
+            System.out.println(jugador.pokemones.get(i).obtenerVidaActual());
+            System.out.println(("--------------------------"));
+        }
+
+        int opcion = 0;
+        opcion = scanner.nextInt();
+        jugador.cambiarPokemon(opcion-1);
     }
 
 

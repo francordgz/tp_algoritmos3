@@ -51,8 +51,6 @@ public class Entrenador {
 
     public void mostrarHabilidades(){
 
-        pokemonActual.habilidades.get(0).nombre();
-        
         System.out.println("1 - > " + pokemonActual.habilidades.get(0).nombre());
         System.out.println("2 - > " + pokemonActual.habilidades.get(1).nombre());
         System.out.println("3 - > " + pokemonActual.habilidades.get(2).nombre());
@@ -62,7 +60,7 @@ public class Entrenador {
     }
 
 
-    public Pokemon pokemonActual(){
+    public Pokemon obtenerPokemonActual(){
 
         return pokemonActual;
 
@@ -84,6 +82,10 @@ public class Entrenador {
         }
 
 
+    }
+
+    public void cambiarPokemon(int posicion){
+        this.pokemonActual = this.pokemones.get(posicion);
     }
 
 
