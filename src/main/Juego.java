@@ -104,7 +104,53 @@ public class Juego {
             }
         }
 
+        //0s
+        efectividades[3][12] = 0;
+        efectividades[4][8] = 0;
+        efectividades[4][10] = 0;
+        efectividades[7][4] = 0;
+        efectividades[8][4] = 0;
+        efectividades[12][14] = 0;
 
+        //1/2
+        efectividades[0][0] = 1/2;
+        efectividades[0][2] = 1/2;
+        efectividades[0][9] = 1/2;
+        efectividades[1][4] = 1/2;
+        efectividades[1][5] = 1/2;
+        efectividades[1][7] = 1/2;
+        efectividades[1][14] = 1/2;
+        efectividades[3][2] = 1/2;
+        efectividades[3][3] = 1/2;
+        efectividades[3][9] = 1/2;
+        efectividades[5][0] = 1/2;
+        efectividades[5][2] = 1/2;
+        efectividades[5][5] = 1/2;
+        efectividades[5][11] = 1/2;
+        efectividades[6][0] = 1/2;
+        efectividades[6][6] = 1/2;
+        efectividades[7][1] = 1/2;
+        efectividades[7][10] = 1/2;
+        efectividades[7][13] = 1/2;
+        efectividades[7][14] = 1/2;
+        efectividades[8][11] = 1/2;
+        efectividades[9][1] = 1/2;
+        efectividades[9][2] = 1/2;
+        efectividades[9][5] = 1/2;
+        efectividades[9][9] = 1/2;
+        efectividades[9][13] = 1/2;
+        efectividades[9][14] = 1/2;
+        efectividades[10][10] = 1/2;
+        efectividades[11][7] = 1/2;
+        efectividades[11][12] = 1/2;
+        efectividades[12][1] = 1/2;
+        efectividades[12][9] = 1/2;
+        efectividades[13][3] = 1/2;
+        efectividades[13][11] = 1/2;
+        efectividades[13][12] = 1/2;
+        efectividades[13][13] = 1/2;
+        efectividades[14][3] = 1/2;
+        efectividades[14][11] = 1/2;
 
 
     }
