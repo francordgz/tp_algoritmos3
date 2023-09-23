@@ -68,5 +68,23 @@ public class Entrenador {
 
     }
 
+    public void usarItem(int item){
+
+        this.items.get(item).usarItem(pokemonActual);
+
+    }
+
+    public void mostrarItems(){
+
+        for(int i = 0;i<items.size();i++){
+            
+            System.out.println(i + items.get(i).obtenerNombre());
+        
+
+        }
+
+
+    }
+
 
 }

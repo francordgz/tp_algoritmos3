@@ -5,7 +5,8 @@ public class ItemEstado extends Item{
         super(nombre, cantidad);
     }
 
-    public void curarEstado(Pokemon pokemon) {
+    @Override
+    public void usarItem(Pokemon pokemon) {
         pokemon.modificarEstado(estados.NORMAL);
     }
 }

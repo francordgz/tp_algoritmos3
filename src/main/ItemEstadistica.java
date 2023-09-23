@@ -9,7 +9,8 @@ public class ItemEstadistica extends Item{
         this.tipo = tipo;
     }
 
-    public void modificarEstadistica(Pokemon pokemon) {
+    @Override
+    public void usarItem(Pokemon pokemon) {
         switch (tipo) {
             case ATAQUE:
                 pokemon.modificarAtaque((int)(pokemon.obtenerAtaque() * 0.1));

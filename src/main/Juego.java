@@ -176,10 +176,20 @@ public class Juego {
 
             }
         }
-       
 
 
+    }
 
+    public void usarItem(int item){
+
+
+        entrenadorActual.usarItem(item);
+
+    }
+
+    public void mostrarItems(){
+
+        entrenadorActual.mostrarItems();
 
 
 

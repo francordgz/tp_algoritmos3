@@ -21,4 +21,9 @@ public abstract class Item {
     public void sumarCantidad(int cantidad) {
         this.cantidad += cantidad;
     }
+
+    
+    public void usarItem(Pokemon pokemon) {
+        
+    }
 }

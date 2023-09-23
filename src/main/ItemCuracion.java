@@ -7,7 +7,8 @@ public class ItemCuracion extends Item {
         this.poder = poder;
     }
 
-    public void curar(Pokemon pokemon) {
+    @Override
+    public void usarItem(Pokemon pokemon) {
         pokemon.modificarVida(poder);
     }
 }

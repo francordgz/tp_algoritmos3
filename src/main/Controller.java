@@ -102,6 +102,11 @@ public class Controller{
 
     public void Item(){
 
+        System.out.println("Selecciona que item queres usar - > ");
+        juego.mostrarItems();
+        int opcion = scanner.nextInt();
+        juego.usarItem(opcion-1);
+
 
 
     }
