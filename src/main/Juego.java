@@ -91,7 +91,7 @@ public class Juego {
 
     public void atacar(int habilidad){
 
-        entrenadorActual.pokemonActual().atacar(habilidad,entrenadorRival.pokemonActual());
+        entrenadorActual.pokemonActual().atacar(habilidad,entrenadorRival.pokemonActual(),efectividades);
 
     }
 

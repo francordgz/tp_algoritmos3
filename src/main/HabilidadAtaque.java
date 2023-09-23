@@ -30,7 +30,9 @@ public class HabilidadAtaque extends Habilidad{
     /// Que calcule el pokenon el ataque ///
 
     @Override
-    public void atacar(int ataque,int nivel,Pokemon rival,int efectividad){
+    public void atacar(int ataque,int nivel,Pokemon rival,double efectividad){
+
+        if(this.usos> 0){
 
         int critico = generarProba();
 
@@ -41,6 +43,10 @@ public class HabilidadAtaque extends Habilidad{
         rival.recibirDanio(danio);
 
         this.usos -= 1;
+
+        }else{
+            System.out.println("No quedan usos");
+        }
 
 
     }

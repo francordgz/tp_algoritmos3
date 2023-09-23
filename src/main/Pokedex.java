@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Arrays;
 
 enum Tipo {
-    RAYO, PLANTA, VENENO, FUEGO, DRAGON, AGUA, PSIQUICO, FANTASMA, BICHO
+    AGUA, BICHO, DRAGON, RAYO, FANTASMA, FUEGO, HIELO, LUCHA, NORMAL, PLANTA, PSIQUICO, ROCA, TIERRA, VENENO, VOLADOR
 }
 public class Pokedex {
     protected static class PokemonData {

@@ -15,7 +15,7 @@ public class Habilidad {
         return nombre;
     }
 
-    public void atacar(int ataque,int nivel,Pokemon rival,int efectividad){
+    public void atacar(int ataque,int nivel,Pokemon rival,double efectividad){
 
 
     }

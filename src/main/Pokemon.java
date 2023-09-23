@@ -58,19 +58,26 @@ public class Pokemon {
 
     }
 
-    public void atacar(int habilidad,Pokemon rival){
+    public void atacar(int habilidad,Pokemon rival,double[][] efectividades){
 
-        int efectividad = calcularEfectividad(rival);
+        double efectividad = calcularEfectividad(rival,efectividades);
         
         habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
 
     }
 
-    public int calcularEfectividad(Pokemon rival){
+    public Tipo tipo(){
+        return this.tipo;
+    }
 
-        
+    public double calcularEfectividad(Pokemon rival,double [][] efectividades){
 
-        return 0;
+        int posicionAtacante = this.tipo.ordinal();
+        int PosicionRival = rival.tipo().ordinal();
+
+        double efectividad = efectividades[posicionAtacante][PosicionRival];
+
+        return efectividad;
 
     }
 
