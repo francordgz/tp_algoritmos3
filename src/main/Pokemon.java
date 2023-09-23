@@ -3,7 +3,7 @@ package src.main;
 import java.util.*;
 
 enum estados {
-        NORMAL, Envenenado, Dormido, Paralizado, Muerto
+        NORMAL, ENVENENADO, DORMIDO, PARALIZADO, MUERTO
 }
 
 public class Pokemon {
@@ -49,7 +49,7 @@ public class Pokemon {
     public void estado(){
 
         if (vidaActual <= 0){
-            estado = estados.Muerto;
+            estado = estados.MUERTO;
         }
 
     }
@@ -112,8 +112,9 @@ public class Pokemon {
         return this.tipo;
     }
 
-
-
+    public estados obtenerEstado() {
+        return estado;
+    }
 
     public void modificarAtaque(int poder){
         this.ataque += poder;
@@ -146,4 +147,10 @@ public class Pokemon {
         return habilidades.get(habilidad);
 
     }
+
+    public List<Habilidad> obtenerHabilidades() {
+        return habilidades;
+    }
+
+
 }
