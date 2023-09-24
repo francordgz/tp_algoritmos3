@@ -121,66 +121,66 @@ public class Juego {
 
         for(int i = 0;i<15;i++){
             for(int j = 0;j <15;j++){
-                this.efectividades[i][j] = 1;
+                this.efectividades[i][j] = Constant.SIMPLE;
 
             }
         }
 
         //0s
-        efectividades[3][12] = 0;
-        efectividades[4][8] = 0;
-        efectividades[4][10] = 0;
-        efectividades[7][4] = 0;
-        efectividades[8][4] = 0;
-        efectividades[12][14] = 0;
+        efectividades[3][12] = Constant.NULA;
+        efectividades[4][8] = Constant.NULA;
+        efectividades[4][10] = Constant.NULA;
+        efectividades[7][4] = Constant.NULA;
+        efectividades[8][4] = Constant.NULA;
+        efectividades[12][14] = Constant.NULA;
 
         //1/2
-        efectividades[0][0] = 1/2;
-        efectividades[0][2] = 1/2;
-        efectividades[0][9] = 1/2;
-        efectividades[1][4] = 1/2;
-        efectividades[1][5] = 1/2;
-        efectividades[1][7] = 1/2;
-        efectividades[1][14] = 1/2;
-        efectividades[3][2] = 1/2;
-        efectividades[3][3] = 1/2;
-        efectividades[3][9] = 1/2;
-        efectividades[5][0] = 1/2;
-        efectividades[5][2] = 1/2;
-        efectividades[5][5] = 1/2;
-        efectividades[5][11] = 1/2;
-        efectividades[6][0] = 1/2;
-        efectividades[6][6] = 1/2;
-        efectividades[7][1] = 1/2;
-        efectividades[7][10] = 1/2;
-        efectividades[7][13] = 1/2;
-        efectividades[7][14] = 1/2;
-        efectividades[8][11] = 1/2;
-        efectividades[9][1] = 1/2;
-        efectividades[9][2] = 1/2;
-        efectividades[9][5] = 1/2;
-        efectividades[9][9] = 1/2;
-        efectividades[9][13] = 1/2;
-        efectividades[9][14] = 1/2;
-        efectividades[10][10] = 1/2;
-        efectividades[11][7] = 1/2;
-        efectividades[11][12] = 1/2;
-        efectividades[12][1] = 1/2;
-        efectividades[12][9] = 1/2;
-        efectividades[13][3] = 1/2;
-        efectividades[13][11] = 1/2;
-        efectividades[13][12] = 1/2;
-        efectividades[13][13] = 1/2;
-        efectividades[14][3] = 1/2;
-        efectividades[14][11] = 1/2;
+        efectividades[0][0] = Constant.MEDIA;
+        efectividades[0][2] = Constant.MEDIA;
+        efectividades[0][9] = Constant.MEDIA;
+        efectividades[1][4] = Constant.MEDIA;
+        efectividades[1][5] = Constant.MEDIA;
+        efectividades[1][7] = Constant.MEDIA;
+        efectividades[1][14] = Constant.MEDIA;
+        efectividades[3][2] = Constant.MEDIA;
+        efectividades[3][3] = Constant.MEDIA;
+        efectividades[3][9] = Constant.MEDIA;
+        efectividades[5][0] = Constant.MEDIA;
+        efectividades[5][2] = Constant.MEDIA;
+        efectividades[5][5] = Constant.MEDIA;
+        efectividades[5][11] = Constant.MEDIA;
+        efectividades[6][0] = Constant.MEDIA;
+        efectividades[6][6] = Constant.MEDIA;
+        efectividades[7][1] = Constant.MEDIA;
+        efectividades[7][10] = Constant.MEDIA;
+        efectividades[7][13] = Constant.MEDIA;
+        efectividades[7][14] = Constant.MEDIA;
+        efectividades[8][11] = Constant.MEDIA;
+        efectividades[9][1] = Constant.MEDIA;
+        efectividades[9][2] = Constant.MEDIA;
+        efectividades[9][5] = Constant.MEDIA;
+        efectividades[9][9] = Constant.MEDIA;
+        efectividades[9][13] = Constant.MEDIA;
+        efectividades[9][14] = Constant.MEDIA;
+        efectividades[10][10] = Constant.MEDIA;
+        efectividades[11][7] = Constant.MEDIA;
+        efectividades[11][12] = Constant.MEDIA;
+        efectividades[12][1] = Constant.MEDIA;
+        efectividades[12][9] = Constant.MEDIA;
+        efectividades[13][3] = Constant.MEDIA;
+        efectividades[13][11] = Constant.MEDIA;
+        efectividades[13][12] = Constant.MEDIA;
+        efectividades[13][13] = Constant.MEDIA;
+        efectividades[14][3] = Constant.MEDIA;
+        efectividades[14][11] = Constant.MEDIA;
 
 
         // x2
 
         for(int i = 0;i<15;i++){
             for(int j = 0;j<15;j++){
-                if(efectividades[i][j] != 0 && efectividades[i][j] != 1 && efectividades[i][j] != 1/2){
-                    efectividades[i][j] = 2;
+                if(efectividades[i][j] != Constant.NULA && efectividades[i][j] != 1 && efectividades[i][j] != Constant.MEDIA){
+                    efectividades[i][j] = Constant.DOBLE;
                 }
 
             }
