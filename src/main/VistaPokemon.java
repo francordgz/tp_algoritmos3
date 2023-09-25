@@ -3,8 +3,8 @@ package src.main;
 import java.util.LinkedList;
 import java.util.List;
 
-public class VistaPokemon extends VistaJuego{
-    public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
+public class VistaPokemon extends VistaJuego {
+    static public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
         System.out.println("Rival: " + entrenadorRival.getNombre());
         infoPokemon(entrenadorRival.obtenerPokemonActual(), false);
 
@@ -13,7 +13,7 @@ public class VistaPokemon extends VistaJuego{
     }
 
     // Devuelve la cantidad de Pokemones
-    public int mostarPokemones(Entrenador entrenador) {
+    static public int mostrarPokemones(Entrenador entrenador) {
         List<Pokemon> muertos =  new LinkedList<Pokemon>();
         int i = 0;
 
@@ -30,7 +30,7 @@ public class VistaPokemon extends VistaJuego{
         return i;
     }
 
-    public void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
+    private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
         System.out.println(pokemon.obtenerNombre() + ":");
         System.out.println("Vida: " + pokemon.vidaActual +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
@@ -44,7 +44,7 @@ public class VistaPokemon extends VistaJuego{
         }
     }
 
-    public String estadoString(estados estadoActual) {
+    private static String estadoString(estados estadoActual) {
         switch (estadoActual) {
             case NORMAL:
                 return "Normal";
@@ -60,7 +60,7 @@ public class VistaPokemon extends VistaJuego{
                 return "Desconocido";
         }
     }
-    public String tipoString(Tipo tipo) {
+    private static String tipoString(Tipo tipo) {
         switch (tipo) {
             case AGUA:
                 return "Agua";
