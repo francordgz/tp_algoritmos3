@@ -16,4 +16,9 @@ public class VistaJuego {
     static public void mensaje(String mensaje) {
         System.out.println(mensaje);
     }
+
+    static public void mostrarJuego(Juego juego){
+        VistaPokemon.mostrarPokemones(juego.obtenerEntrenadorActual());
+        VistaPokemon.mostrarPokemones(juego.obtenerEntrenadorRival());
+    }
 }

@@ -14,7 +14,7 @@ public class Main  {
 
         while(!juego.terminado()){
 
-           controlador.Menu();
+           controlador.menu();
 
         }
 

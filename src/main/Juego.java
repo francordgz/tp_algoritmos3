@@ -9,7 +9,7 @@ public class Juego {
     Entrenador entrenador2;
     Entrenador entrenadorActual;
     Entrenador entrenadorRival;
-    administradorTurno administrador = new administradorTurno();
+    AdministradorTurno administrador = new AdministradorTurno();
     Boolean terminado;
     double [][]efectividades = new double[15][15];
 

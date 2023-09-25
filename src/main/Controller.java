@@ -25,7 +25,7 @@ public class Controller{
         do {
             System.out.println("Ingrese un nombre para el entrenador " + numeroEntrenador + ": ");
             ingreso = scanner.nextLine();
-            longitudValida = ingreso.length() > 0 && ingreso.length() < 50;
+            longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = (ingreso == nombreOponente);
             nombreValido = longitudValida && !nombreRepetido;
 
@@ -36,14 +36,9 @@ public class Controller{
             }
         } while (!nombreValido);
         return ingreso;
-    } 
-
-    public void mostrarJuego() {
-
     }
 
-
-    public void Menu(){
+    public void menu(){
         VistaJuego.mostrarMenu();
         boolean opcionCorrecta;
         int opcion = scanner.nextInt();
@@ -51,7 +46,7 @@ public class Controller{
             opcionCorrecta = true;
             switch (opcion) {
                 case 1:
-                    this.mostrarJuego();
+                    VistaJuego.mostrarJuego(this.juego);
                     break;
                 case 2:
                     this.Habilidad();
@@ -63,7 +58,7 @@ public class Controller{
                     this.CambioPokemon();
                     break;
                 case 5:
-                    juego.rendirse();
+                    this.juego.rendirse();
                     break;
                 default:
                     VistaJuego.mensaje("Seleccione una opción correcta!");
