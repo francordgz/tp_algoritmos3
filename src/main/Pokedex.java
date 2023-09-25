@@ -8,7 +8,7 @@ enum Tipo {
     AGUA, BICHO, DRAGON, RAYO, FANTASMA, FUEGO, HIELO, LUCHA, NORMAL, PLANTA, PSIQUICO, ROCA, TIERRA, VENENO, VOLADOR
 }
 public class Pokedex {
-    protected static class PokemonData {
+    private static class PokemonData {
         protected Tipo tipo;
         protected int vidaMaxima;
         protected int defensa;

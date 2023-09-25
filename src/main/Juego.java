@@ -42,8 +42,6 @@ public class Juego {
 
         entrenador1.addItem(items);
         entrenador2.addItem(items);
-
-
     }
 
     public void rendirse(){
