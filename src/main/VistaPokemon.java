@@ -3,37 +3,8 @@ package src.main;
 import java.util.LinkedList;
 import java.util.List;
 
-public class VistaPokemon extends VistaJuego{
-
-    // Devuelve la cantidad de Pokemones vivos
-    public int mostarPokemones(Entrenador entrenador) {
-        List<Pokemon> muertos =  new LinkedList<Pokemon>();
-        int i = 0;
-
-        System.out.println("Selecciona una opcion:");
-
-        for (Pokemon pokemon : entrenador.obtenerPokemones()) {
-            if (pokemon.obtenerEstado() == estados.MUERTO) {
-                muertos.add(pokemon);
-            } else {
-                i++;
-                System.out.println(i + ":");
-                infoPokemon(pokemon, true);
-            }
-        }
-
-        System.out.println((i + 1)+ ": Volver atrás");
-
-        System.out.println("---------------");
-        System.out.println("MUERTOS (no seleccionables): ");
-        for (Pokemon pokemon : muertos) {
-            infoPokemon(pokemon, true);
-        }
-
-        return i;
-    }
-
-    public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
+public class VistaPokemon extends VistaJuego {
+    static public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
         System.out.println("Rival: " + entrenadorRival.getNombre());
         infoPokemon(entrenadorRival.obtenerPokemonActual(), false);
 
@@ -41,7 +12,25 @@ public class VistaPokemon extends VistaJuego{
         infoPokemon(entrenadorActual.obtenerPokemonActual(), true);
     }
 
-    public void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
+    // Devuelve la cantidad de Pokemones
+    static public int mostrarPokemones(Entrenador entrenador) {
+        List<Pokemon> muertos =  new LinkedList<Pokemon>();
+        int i = 0;
+
+        System.out.println("Seleccione una opcion:");
+
+        for (Pokemon pokemon : entrenador.obtenerPokemones()) {
+                i++;
+                System.out.println(i + ":");
+                infoPokemon(pokemon, true);
+        }
+
+        System.out.println((i + 1)+ ": Volver atrás");
+
+        return i;
+    }
+
+    private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
         System.out.println(pokemon.obtenerNombre() + ":");
         System.out.println("Vida: " + pokemon.vidaActual +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
@@ -55,7 +44,7 @@ public class VistaPokemon extends VistaJuego{
         }
     }
 
-    public String estadoString(estados estadoActual) {
+    private static String estadoString(estados estadoActual) {
         switch (estadoActual) {
             case NORMAL:
                 return "Normal";
@@ -71,7 +60,7 @@ public class VistaPokemon extends VistaJuego{
                 return "Desconocido";
         }
     }
-    public String tipoString(Tipo tipo) {
+    private static String tipoString(Tipo tipo) {
         switch (tipo) {
             case AGUA:
                 return "Agua";
