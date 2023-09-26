@@ -1,36 +1,36 @@
 package src.main;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class VistaPokemon extends VistaJuego {
     static public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
-        System.out.println("Rival: " + entrenadorRival.getNombre());
+        System.out.println("Rival: " + entrenadorRival.obtenerNombre());
         infoPokemon(entrenadorRival.obtenerPokemonActual(), false);
 
-        System.out.println("Tu: " + entrenadorActual.getNombre());
+        System.out.println("Tu: " + entrenadorActual.obtenerNombre());
         infoPokemon(entrenadorActual.obtenerPokemonActual(), true);
     }
 
+    static public void mostrarPokemon(Entrenador entrenador) {
+        infoPokemon(entrenador.obtenerPokemonActual(), false);
+    }
+
     // Devuelve la cantidad de Pokemones
-    static public int mostrarPokemones(Entrenador entrenador) {
-        List<Pokemon> muertos =  new LinkedList<Pokemon>();
-        int i = 0;
+    static public int mostrarTodosLosPokemones(Entrenador entrenador) {
+
+        int i = 1;
 
         System.out.println("Seleccione una opcion:");
-
         for (Pokemon pokemon : entrenador.obtenerPokemones()) {
-                i++;
                 System.out.println(i + ":");
                 infoPokemon(pokemon, true);
+                i++;
         }
-
-        System.out.println((i + 1)+ ": Volver atrás");
+        System.out.println((0)+ ": Volver atrás");
 
         return i;
     }
 
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
+
         System.out.println(pokemon.obtenerNombre() + ":");
         System.out.println("Vida: " + pokemon.vidaActual +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
