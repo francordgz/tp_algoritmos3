@@ -3,7 +3,7 @@ package src.main;
 public class VistaHabilidad extends VistaJuego{
 
     // Devuelve la cantidad de habilidades con usos restantes
-    public int mostrarHabilidades(Pokemon pokemon) {
+    static public int mostrarHabilidades(Pokemon pokemon) {
         int i = 0;
         System.out.println("Selecciona una opcion: ");
         for (Habilidad habilidad : pokemon.obtenerHabilidades()) {

@@ -1,7 +1,6 @@
 package src.main;
 
 public class Constant {
-    // Tipos de efectividad de ataque.
     static final int NULA = 0;
     static final double MEDIA = 0.5;
     static final int SIMPLE = 1;

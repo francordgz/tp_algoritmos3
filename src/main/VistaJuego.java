@@ -1,8 +1,5 @@
 package src.main;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class VistaJuego {
     static public void mostrarMenu() {
         System.out.println("Selecciona una opcion");
@@ -18,7 +15,7 @@ public class VistaJuego {
     }
 
     static public void mostrarJuego(Juego juego){
-        VistaPokemon.mostrarPokemones(juego.obtenerEntrenadorActual());
-        VistaPokemon.mostrarPokemones(juego.obtenerEntrenadorRival());
+        VistaPokemon.mostrarPokemon(juego.obtenerEntrenadorActual());
+        VistaPokemon.mostrarPokemon(juego.obtenerEntrenadorRival());
     }
 }
