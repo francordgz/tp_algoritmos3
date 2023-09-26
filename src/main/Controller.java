@@ -1,7 +1,6 @@
 package src.main;
 import java.util.Scanner;
 
-
 public class Controller{
 
     Juego juego;
@@ -13,8 +12,8 @@ public class Controller{
         String nombre1 = pedirNombreEntrenador("", 1);
         String nombre2 = pedirNombreEntrenador(nombre1, 2);
         this.juego.inicializarEntrenadores(nombre1, nombre2);
-        this.seleccionarPokemon(this.juego.entrenador1);
-        this.seleccionarPokemon(this.juego.entrenador2);
+        this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
+        this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.asignarPrimerTurno();
     }
 
@@ -36,6 +35,27 @@ public class Controller{
             }
         } while (!nombreValido);
         return ingreso;
+    }
+
+    public void seleccionarPokemon(Entrenador entrenador){
+
+        boolean opcionCorrecta;
+        int opcion = scanner.nextInt();
+        VistaPokemon.mostrarTodosLosPokemones(entrenador);
+
+        do {
+            opcionCorrecta = true;
+            if(opcion > entrenador.obtenerPokemonActual().obtenerHabilidades().size()){
+                VistaJuego.mensaje("Seleccione una opción correcta!");
+                opcionCorrecta = false;
+                opcion = scanner.nextInt();
+            }else if(opcion == 0){
+                return;
+            }
+        } while (!opcionCorrecta);
+
+        //Todo: Uso y cambio de turno
+        entrenador.cambiarPokemon(opcion-1);
     }
 
     public void menu(){
@@ -70,30 +90,21 @@ public class Controller{
         } while (!opcionCorrecta);
     }
 
-    public void seleccionarPokemon(Entrenador jugador){
-
-        int cantPokemones = VistaPokemon.mostrarTodosLosPokemones(jugador);
-
-        int opcion = 0;
-        opcion = scanner.nextInt();
-    }
-
-
     public void habilidad(){
 
         int opcion = scanner.nextInt();
         VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
-
+        //Optimizable
         if(opcion == 1){
-            juego.atacar(0);
+            this.juego.atacar(0);
         }else if(opcion == 2){
-            juego.atacar(1);
+            this.juego.atacar(1);
         }else if(opcion == 3){
-            juego.usarHabilidad(2);
+            this.juego.usarHabilidad(2);
         }else if(opcion == 4){
-            juego.usarHabilidad(3);
+            this.juego.usarHabilidad(3);
         }
-        //Todo: Cambio de turno
+        //Todo: Uso y cambio de turno
     }
 
     public void item(){
@@ -113,32 +124,11 @@ public class Controller{
             }
         } while (!opcionCorrecta);
 
-        //Todo: Cambio de turno
+        //Todo: Uso y cambio de turno
         this.juego.usarItem(opcion-1);
     }
 
     public void cambioPokemon(){
-
-        boolean opcionCorrecta;
-        int opcion = scanner.nextInt();
-        VistaPokemon.mostrarTodosLosPokemones(this.juego.obtenerEntrenadorActual());
-
-        do {
-            opcionCorrecta = true;
-            if(opcion > this.juego.obtenerEntrenadorActual().obtenerPokemonActual().obtenerHabilidades().size()){
-                VistaJuego.mensaje("Seleccione una opción correcta!");
-                opcionCorrecta = false;
-                opcion = scanner.nextInt();
-            }else if(opcion == 0){
-                return;
-            }
-        } while (!opcionCorrecta);
-
-        //Todo: Cambio de turno
-        this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion-1);
+        seleccionarPokemon(this.juego.obtenerEntrenadorActual());
     }
-
-
-
-
 }
