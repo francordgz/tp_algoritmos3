@@ -45,7 +45,6 @@ public class Juego {
     }
 
     public void rendirse(){
-
         this.terminado = true;
     }
 
@@ -53,21 +52,15 @@ public class Juego {
     public void usarHabilidad(int habilidad){
         
         if(!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()){
-           entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorActual.obtenerPokemonActual());
+            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorActual.obtenerPokemonActual());
         }else{
-
             entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorRival.obtenerPokemonActual());
-
         }
-
     }
 
 
     public boolean terminado(){
-
-
         return this.terminado;
-
     }
 
     public void crearPokemons() {
@@ -101,9 +94,7 @@ public class Juego {
     }
 
     public void atacar(int habilidad){
-
         entrenadorActual.obtenerPokemonActual().atacar(habilidad,entrenadorRival.obtenerPokemonActual(),efectividades);
-
     }
 
     public  void crearEfectividades(){
@@ -185,6 +176,14 @@ public class Juego {
 
     public Entrenador obtenerEntrenadorRival() {
         return entrenadorRival;
+    }
+
+    public Entrenador obtenerPrimerEntrenador() {
+        return entrenador1;
+    }
+
+    public Entrenador obtenerSegundoEntrenador() {
+        return entrenador2;
     }
 }
 
