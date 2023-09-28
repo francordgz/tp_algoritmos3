@@ -168,9 +168,7 @@ public class Juego {
         this.administrador.obtenerEntrenadorActual().usarItem(item);
     }
 
-    public Entrenador obtenerEntrenadorActual() {
-        return entrenadorActual;
-    }
+    public Entrenador obtenerEntrenadorActual() { return this.administrador.obtenerEntrenadorActual(); }
 
     public Entrenador obtenerEntrenadorRival() {
         return entrenadorRival;
