@@ -20,9 +20,6 @@ public class Pokemon {
     int nivel;
     List<Habilidad> habilidades = new ArrayList<Habilidad>();
 
-
-
-
     public Pokemon(String unNombre,Tipo unTipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
         this.nombre = unNombre;
         this.tipo = unTipo;
