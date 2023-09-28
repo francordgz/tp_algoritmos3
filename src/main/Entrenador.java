@@ -24,10 +24,6 @@ public class Entrenador {
         this.items.add(item);
     }
 
-    ///public Item usarItem(Item item) {
-        ///this.items.remover(item);
-    ////}
-
     public List<Pokemon> obtenerPokemones() {
         return pokemones;
     }
