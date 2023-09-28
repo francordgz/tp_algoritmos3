@@ -7,9 +7,7 @@ public class Juego {
 
     Entrenador entrenador1;
     Entrenador entrenador2;
-    Entrenador entrenadorActual;
-    Entrenador entrenadorRival;
-    AdministradorTurno administrador = new AdministradorTurno();
+    AdministradorDeTurnos administrador;
     Boolean terminado;
     double [][]efectividades = new double[15][15];
 
@@ -26,6 +24,15 @@ public class Juego {
         this.entrenador2 = new Entrenador(nombre2);
         crearItems();
         crearPokemons();
+    }
+
+    public void inicializarAdministradorDeTurnos() {
+        ArrayList<Entrenador> entrenadores = new ArrayList<Entrenador>();
+        entrenadores.set(0, entrenador1);
+        entrenadores.set(1, entrenador2);
+
+        this.administrador = new AdministradorDeTurnos();
+        this.administrador.asignarPrimerTurno(entrenadores);
     }
 
     public void crearItems(){
@@ -50,7 +57,8 @@ public class Juego {
 
 
     public void usarHabilidad(int habilidad){
-        
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
         if(!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()){
             entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorActual.obtenerPokemonActual());
         }else{
@@ -82,22 +90,13 @@ public class Juego {
         entrenador2.agregarPokemon(pokedex.crearPokemon("Rattata"));
     }
 
-    public void asignarPrimerTurno(){
-        int velocidad1 = this.entrenador1.obtenerPokemonActual().obtenerVelocidad();
-        int velocidad2 = this.entrenador2.obtenerPokemonActual().obtenerVelocidad();
-        if (velocidad1 > velocidad2){
-            //Todo: Trabajar en el administrador de turnos
-            this.entrenadorActual = entrenador1;
-            return;
-        }
-        this.entrenadorActual = entrenador2;
-    }
-
     public void atacar(int habilidad){
-        entrenadorActual.obtenerPokemonActual().atacar(habilidad,entrenadorRival.obtenerPokemonActual(),efectividades);
+        Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        Entrenador entrenadorRival = administrador.obtenerEntrenadorRivalActual();
+        pokemonActual.atacar(habilidad, entrenadorRival.obtenerPokemonActual(), efectividades);
     }
 
-    public  void crearEfectividades(){
+    public void crearEfectividades(){
 
         for(int i = 0;i<15;i++){
             for(int j = 0;j <15;j++){
@@ -167,15 +166,13 @@ public class Juego {
     }
 
     public void usarItem(int item){
-        entrenadorActual.usarItem(item);
+        this.administrador.obtenerEntrenadorActual().usarItem(item);
     }
 
-    public Entrenador obtenerEntrenadorActual() {
-        return entrenadorActual;
-    }
+    public Entrenador obtenerEntrenadorActual() { return this.administrador.obtenerEntrenadorActual(); }
 
     public Entrenador obtenerEntrenadorRival() {
-        return entrenadorRival;
+        return this.administrador.obtenerEntrenadorRivalActual();
     }
 
     public Entrenador obtenerPrimerEntrenador() {

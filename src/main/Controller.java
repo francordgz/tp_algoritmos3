@@ -14,7 +14,7 @@ public class Controller{
         this.juego.inicializarEntrenadores(nombre1, nombre2);
         this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
-        this.juego.asignarPrimerTurno();
+        this.juego.inicializarAdministradorDeTurnos();
     }
 
      private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
