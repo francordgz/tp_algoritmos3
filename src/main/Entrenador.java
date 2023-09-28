@@ -20,12 +20,12 @@ public class Entrenador {
         return items;
     }
 
-    public List<Pokemon> obtenerPokemones() {
-        return pokemones;
+    public void agregarItem(Item item) {
+        this.items.add(item);
     }
 
-    public Pokemon obtenerPokemonActual(){
-        return pokemonActual;
+    public List<Pokemon> obtenerPokemones() {
+        return pokemones;
     }
 
     public void agregarPokemon(Pokemon pokemon) {
@@ -36,12 +36,22 @@ public class Entrenador {
         this.items = items;
     }
 
-    public void cambiarPokemon(int posicion){
-        this.pokemonActual = this.pokemones.get(posicion);
+    public void usarItem() {
+
+
+
+    }
+
+    public Pokemon obtenerPokemonActual(){
+        return pokemonActual;
     }
 
     public void usarItem(int item){
         this.items.get(item).usarItem(pokemonActual);
+    }
+
+    public void cambiarPokemon(int posicion){
+        this.pokemonActual = this.pokemones.get(posicion);
     }
 
 }

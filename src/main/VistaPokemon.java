@@ -17,13 +17,14 @@ public class VistaPokemon extends VistaJuego {
     static public int mostrarTodosLosPokemones(Entrenador entrenador) {
 
         int i = 1;
-
         System.out.println("Seleccione una opcion:");
+
         for (Pokemon pokemon : entrenador.obtenerPokemones()) {
                 System.out.println(i + ":");
                 infoPokemon(pokemon, true);
                 i++;
         }
+
         System.out.println((0)+ ": Volver atrás");
 
         return i;
