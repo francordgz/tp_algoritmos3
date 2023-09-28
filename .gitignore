@@ -32,3 +32,10 @@ replay_pid*
 /.idea/vcs.xml
 /tp1_algoritmos3.iml
 /.idea/uiDesigner.xml
+/target/classes/.gitignore
+/target/classes/pom.xml
+/target/classes/README.md
+/.idea/target/classes/.gitignore
+/.idea/target/classes/pom.xml
+/.idea/target/classes/README.md
+/.idea/target/tp1_algoritmos3.iml

@@ -14,7 +14,7 @@ public class Controller{
         this.juego.inicializarEntrenadores(nombre1, nombre2);
         this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
-        this.juego.inicializarAdministradorDeTurnos();
+        this.juego.inicializarTurnos();
     }
 
      private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
@@ -22,7 +22,7 @@ public class Controller{
         boolean longitudValida, nombreRepetido, nombreValido;
 
         do {
-            System.out.println("Ingrese un nombre para el entrenador " + numeroEntrenador + ": ");
+            VistaJuego.mensaje("Ingrese un nombre para el entrenador");
             ingreso = scanner.nextLine();
             longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = (ingreso == nombreOponente);
@@ -54,7 +54,6 @@ public class Controller{
             }
         } while (!opcionCorrecta);
 
-        //Todo: Uso y cambio de turno
         entrenador.cambiarPokemon(opcion-1);
     }
 
@@ -104,7 +103,7 @@ public class Controller{
         }else if(opcion == 4){
             this.juego.usarHabilidad(3);
         }
-        //Todo: Uso y cambio de turno
+        this.juego.usarTurno();
     }
 
     public void item(){
@@ -124,11 +123,12 @@ public class Controller{
             }
         } while (!opcionCorrecta);
 
-        //Todo: Uso y cambio de turno
         this.juego.usarItem(opcion-1);
+        this.juego.usarTurno();
     }
 
     public void cambioPokemon(){
         seleccionarPokemon(this.juego.obtenerEntrenadorActual());
+        this.juego.usarTurno();
     }
 }
