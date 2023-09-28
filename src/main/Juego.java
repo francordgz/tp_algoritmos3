@@ -7,7 +7,6 @@ public class Juego {
 
     Entrenador entrenador1;
     Entrenador entrenador2;
-    Entrenador entrenadorRival;
     AdministradorDeTurnos administrador;
     Boolean terminado;
     double [][]efectividades = new double[15][15];
@@ -59,6 +58,7 @@ public class Juego {
 
     public void usarHabilidad(int habilidad){
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
         if(!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()){
             entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad,entrenadorActual.obtenerPokemonActual());
         }else{
@@ -92,10 +92,11 @@ public class Juego {
 
     public void atacar(int habilidad){
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        Entrenador entrenadorRival = administrador.obtenerEntrenadorRivalActual();
         pokemonActual.atacar(habilidad, entrenadorRival.obtenerPokemonActual(), efectividades);
     }
 
-    public  void crearEfectividades(){
+    public void crearEfectividades(){
 
         for(int i = 0;i<15;i++){
             for(int j = 0;j <15;j++){
@@ -171,7 +172,7 @@ public class Juego {
     public Entrenador obtenerEntrenadorActual() { return this.administrador.obtenerEntrenadorActual(); }
 
     public Entrenador obtenerEntrenadorRival() {
-        return entrenadorRival;
+        return this.administrador.obtenerEntrenadorRivalActual();
     }
 
     public Entrenador obtenerPrimerEntrenador() {

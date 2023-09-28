@@ -1,6 +1,7 @@
 package src.main;
 import java.util.ArrayList;
 import java.util.List;
+
 public class AdministradorDeTurnos {
     private final List<Entrenador> entrenadores;
     private Entrenador entrenadorActual;
@@ -12,6 +13,11 @@ public class AdministradorDeTurnos {
     }
 
     public Entrenador obtenerEntrenadorActual() { return this.entrenadorActual; }
+
+    public Entrenador obtenerEntrenadorRivalActual() {
+        int indice = this.turnosJugados + 1;
+        return this.entrenadores.get(indice);
+    }
 
     public void cambiarTurno() {
         this.turnosJugados += 1;
