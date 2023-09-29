@@ -45,4 +45,16 @@ public class Entrenador {
         this.pokemonActual = this.pokemones.get(posicion);
     }
 
+    public boolean tienePokemonesConVida() {
+        boolean hayPokemonesVivos = false;
+        Pokemon pokemonActual;
+        int maximo = this.pokemones.size(), i = 0;
+
+        while(i < maximo && !hayPokemonesVivos){
+            pokemonActual = this.pokemones.get(i);
+            hayPokemonesVivos = pokemonActual.estaVivo();
+            i += 1;
+        }
+        return hayPokemonesVivos;
+    }
 }

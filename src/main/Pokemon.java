@@ -133,6 +133,7 @@ public class Pokemon {
         this.estado = estado;
     }
 
+    public boolean estaVivo() { return this.estado != estados.MUERTO; }
 
     public void subirNivel(){
 
