@@ -180,6 +180,7 @@ public class Juego {
     }
 
     public boolean terminado() {
-        return this.terminado;
+        boolean entrenadorSinPokemones = !administrador.obtenerEntrenadorActual().tienePokemonesConVida();
+        return this.terminado || entrenadorSinPokemones;
     }
 }
