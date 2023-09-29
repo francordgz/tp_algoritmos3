@@ -14,6 +14,7 @@ public class Juego {
 
     public Juego() {
         this.crearEfectividades();
+        this.administrador = new AdministradorDeTurnos();
         this.terminado = false;
     }
 
@@ -137,13 +138,7 @@ public class Juego {
     }
 
     public void inicializarTurnos() {
-        //Todo: Esto no va aca {
-        ArrayList<Entrenador> entrenadores = new ArrayList<Entrenador>();
-        entrenadores.set(0, entrenador1);
-        entrenadores.set(1, entrenador2);
-        //Todo: }
-        this.administrador = new AdministradorDeTurnos();
-        this.administrador.asignarPrimerTurno(entrenadores);
+        this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
     }
 
     public void inicializarGanador(Entrenador ganador) {

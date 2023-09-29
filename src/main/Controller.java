@@ -20,6 +20,7 @@ public class Controller{
 
         this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
+
         this.juego.inicializarTurnos();
     }
 
@@ -67,8 +68,8 @@ public class Controller{
     public void menu(){
 
         boolean opcionCorrecta;
-        int opcion = scanner.nextInt();
         VistaJuego.mostrarMenu();
+        int opcion = scanner.nextInt();
 
         do {
             opcionCorrecta = true;
@@ -97,9 +98,8 @@ public class Controller{
     }
 
     public void habilidad(){
-
-        int opcion = scanner.nextInt();
         VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+        int opcion = scanner.nextInt();
         //Optimizable
         if(opcion == 1){
             this.juego.atacar(0);
@@ -116,9 +116,8 @@ public class Controller{
     public void item(){
 
         boolean opcionCorrecta;
-        int opcion = scanner.nextInt();
         VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
-
+        int opcion = scanner.nextInt();
         do {
             opcionCorrecta = true;
             if(opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()){

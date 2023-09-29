@@ -1,44 +1,32 @@
 package src.main;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AdministradorDeTurnos {
-    private final List<Entrenador> entrenadores;
     private Entrenador entrenadorActual;
-    private int turnosJugados;
+    private Entrenador entrenadorRival;
 
     public AdministradorDeTurnos() {
-        this.turnosJugados = 0;
-        this.entrenadores = new ArrayList<Entrenador>();
     }
 
     public Entrenador obtenerEntrenadorActual() { return this.entrenadorActual; }
 
     public Entrenador obtenerEntrenadorRivalActual() {
-        int indice = this.turnosJugados + 1;
-        return this.entrenadores.get(indice);
+        return this.entrenadorRival;
     }
 
     public void cambiarTurno() {
-        this.turnosJugados += 1;
-        int indice = turnosJugados % 2;
-        this.entrenadorActual = entrenadores.get(indice);
+        Entrenador aux = this.entrenadorActual;
+        this.entrenadorActual = this.entrenadorRival;
+        this.entrenadorRival = aux;
     }
 
-    public void asignarPrimerTurno(List<Entrenador> entrenadores) {
-        Entrenador primerEntrenador = entrenadores.get(0);
-        Entrenador entrenadorComparado = entrenadores.get(1);
-        int velocidad = primerEntrenador.obtenerPokemonActual().obtenerVelocidad();
-        int velocidadComparada = entrenadorComparado.obtenerPokemonActual().obtenerVelocidad();
-
-        if (velocidad > velocidadComparada){
-            this.entrenadorActual = primerEntrenador;
-            this.entrenadores.set(1, entrenadorComparado);
+    public void asignarPrimerTurno(Entrenador entrenador1, Entrenador entrenador2) {
+        if (entrenador1.pokemonActual.obtenerVelocidad() >= entrenador2.pokemonActual.obtenerVelocidad()) {
+            this.entrenadorActual = entrenador1;
+            this.entrenadorRival = entrenador2;
         } else {
-            this.entrenadorActual = entrenadorComparado;
-            this.entrenadores.set(1, primerEntrenador);
+            this.entrenadorActual = entrenador2;
+            this.entrenadorRival = entrenador1;
         }
-        this.entrenadores.set(0, this.entrenadorActual);
     }
     
 }
