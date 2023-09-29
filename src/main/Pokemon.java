@@ -35,20 +35,14 @@ public class Pokemon {
 
 
     public void recibirDanio(double danio){
+        this.vidaActual -= (int) danio;
 
-        this.vidaActual -= danio;
-
-        estado();
-
-
-    }
-
-    public void estado(){
-
-        if (vidaActual <= 0){
-            estado = estados.MUERTO;
+        if (this.vidaActual < 0) {
+            this.vidaActual = 0;
         }
-
+        if (this.vidaActual == 0){
+            this.estado = estados.MUERTO;
+        }
     }
 
     public void atacar(int habilidad,Pokemon rival,double[][] efectividades){
