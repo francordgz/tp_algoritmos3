@@ -9,7 +9,9 @@ public class Main  {
         Controller controlador = new Controller(juego);
 
         while(!juego.terminado()) {
-           controlador.menu();
+           controlador.menuPrincipal();
         }
+
+        controlador.cerrarScanner();
     }
 }

@@ -141,10 +141,6 @@ public class Juego {
         this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
     }
 
-    public void inicializarGanador(Entrenador ganador) {
-        this.ganador = ganador;
-    }
-
     public void usarHabilidad(int habilidad) {
 
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
@@ -175,7 +171,7 @@ public class Juego {
     }
 
     public void rendirse() {
-        this.inicializarGanador(this.administrador.obtenerEntrenadorRivalActual());
+        this.ganador = this.administrador.obtenerEntrenadorRivalActual();
         this.terminado = true;
     }
 

@@ -3,13 +3,13 @@ import java.util.Scanner;
 
 import static src.main.Constant.NOT_INT;
 
-public class Controller{
+public class Controller {
 
     Juego juego;
     Scanner scanner = new Scanner(System.in);
 
 
-    public Controller(Juego juego){
+    public Controller(Juego juego) {
         this.juego = juego;
         String nombre1 = pedirNombreEntrenador("");
         this.juego.entrenador1 = new Entrenador(nombre1);
@@ -20,125 +20,127 @@ public class Controller{
         this.juego.crearPokemones();
         this.juego.crearItems();
 
-        this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
-        this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
+        this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador(), true);
+        this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador(), true);
 
         this.juego.inicializarTurnos();
     }
 
-     private String pedirNombreEntrenador(String nombreOponente) {
+    private String pedirNombreEntrenador(String nombreOponente) {
         String ingreso;
-        boolean longitudValida, nombreRepetido, nombreValido;
+        boolean longitudValida;
+        boolean nombreRepetido;
 
         do {
-            VistaJuego.mensaje("Ingrese un nombre para el entrenador");
+            VistaJuego.imprimir("Ingrese un nombre para el entrenador:");
             ingreso = leerString();
             longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = ingreso.equals(nombreOponente);
-            nombreValido = longitudValida && !nombreRepetido;
 
             if (!longitudValida) {
-                VistaJuego.mensaje("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
+                VistaJuego.imprimir("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
             } else if (nombreRepetido) {
-                VistaJuego.mensaje("Error! El nombre no puede coincidir con el del entrenador rival.");
+                VistaJuego.imprimir("Error! El nombre no puede coincidir con el del entrenador rival.");
             }
-        } while (!nombreValido);
+        } while (!longitudValida || nombreRepetido);
+
         return ingreso;
     }
 
-    public void seleccionarPokemon(Entrenador entrenador){
 
-        boolean opcionCorrecta;
-        VistaPokemon.mostrarTodosLosPokemones(entrenador);
+    public void menuPrincipal() {
+        int opcion;
+        boolean turnoTerminado = false;
+        boolean mostrar = true;
 
-        int opcion = leerInt();
+        while (!turnoTerminado) {
+            if (mostrar) VistaJuego.mostrarMenu(this.juego.obtenerEntrenadorActual().obtenerNombre());
+            else mostrar = true;
 
-        do {
-            opcionCorrecta = true;
-            if(opcion > entrenador.obtenerPokemones().size() || opcion == NOT_INT){
-                VistaJuego.mensaje("Seleccione una opción correcta!");
-                opcionCorrecta = false;
-                opcion = leerInt();
-            }else if(opcion == 0){
-                return;
-            }
-        } while (!opcionCorrecta);
-
-        entrenador.cambiarPokemon(opcion-1);
-    }
-
-    public void menu(){
-
-        boolean opcionCorrecta;
-        VistaJuego.mostrarMenu();
-        int opcion = leerInt();
-
-        do {
-            opcionCorrecta = true;
+            opcion = leerInt();
             switch (opcion) {
                 case 1:
-                    VistaJuego.mostrarJuego(this.juego);
+                    VistaPokemon.mostrarCampo(this.juego.obtenerEntrenadorActual(), this.juego.obtenerEntrenadorRival());
                     break;
                 case 2:
-                    this.habilidad();
+                    turnoTerminado = this.seleccionarHabilidad();
                     break;
                 case 3:
-                    this.item();
+                    turnoTerminado = this.seleccionarItem();
                     break;
                 case 4:
-                    this.cambioPokemon();
+                    turnoTerminado = this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), false);
                     break;
                 case 5:
                     this.juego.rendirse();
-                    break;
+                    return;
                 default:
-                    VistaJuego.mensaje("Seleccione una opción correcta!");
-                    opcionCorrecta = false;
-                    opcion = leerInt();
+                    VistaJuego.imprimir("Seleccione una opción correcta!");
+                    mostrar = false;
             }
-        } while (!opcionCorrecta);
-    }
-
-    public void habilidad(){
-        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
-        int opcion = leerInt();
-        //Optimizable
-        if(opcion == 1){
-            this.juego.atacar(0);
-        }else if(opcion == 2){
-            this.juego.atacar(1);
-        }else if(opcion == 3){
-            this.juego.usarHabilidad(2);
-        }else if(opcion == 4){
-            this.juego.usarHabilidad(3);
         }
-        this.juego.usarTurno();
+
+        juego.usarTurno();
     }
 
-    public void item(){
+    public boolean seleccionarPokemon(Entrenador entrenador, boolean primeraSeleccion){
+        int opcion;
+        VistaPokemon.mostrarPokemones(entrenador, primeraSeleccion);
 
-        boolean opcionCorrecta;
-        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
-        int opcion = leerInt();
-        do {
-            opcionCorrecta = true;
-            if(opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()){
-                VistaJuego.mensaje("Seleccione una opción correcta!");
-                opcionCorrecta = false;
-                opcion = leerInt();
-            }else if(opcion == 0){
-                return;
+        while (true) {
+            opcion = leerInt();
+            if (!primeraSeleccion && opcion == 0) return false;
+            if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            } else break; // Opcion correcta seleccionada
+        }
+
+        entrenador.cambiarPokemon(opcion-1);
+        return true;
+    }
+
+    public boolean seleccionarHabilidad(){
+        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+        int opcion;
+        while (true) {
+            opcion = leerInt();
+            switch (opcion) {
+                case 0: return false;
+                case 1:
+                    this.juego.atacar(0);
+                    return true;
+                case 2:
+                    this.juego.atacar(1);
+                    return true;
+                case 3:
+                    this.juego.usarHabilidad(2);
+                    return true;
+                case 4:
+                    this.juego.usarHabilidad(3);
+                    return true;
+                default:
+                    VistaJuego.imprimir("Seleccione una opción correcta!");
             }
-        } while (!opcionCorrecta);
-
-        this.juego.usarItem(opcion-1);
-        this.juego.usarTurno();
+        }
     }
 
-    public void cambioPokemon(){
-        seleccionarPokemon(this.juego.obtenerEntrenadorActual());
-        this.juego.usarTurno();
+    public boolean seleccionarItem() {
+        int opcion;
+        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
+
+        while (true) {
+            opcion = leerInt();
+            if (opcion == 0) return false;
+            if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            } else break; // Opcion correcta seleccionada
+        }
+
+        this.juego.usarItem(opcion - 1);
+        return true;
     }
+
+    public void cerrarScanner() { this.scanner.close(); }
 
     //Auxiliares:
 
@@ -148,9 +150,11 @@ public class Controller{
 
     private int leerInt() {
         if (this.scanner.hasNextInt()) {
-            return this.scanner.nextInt();
+            int entero = this.scanner.nextInt();
+            scanner.nextLine(); // Consume el /n
+            return entero;
         } else {
-            this.scanner.nextLine(); // "Consume" el input invalido"
+            scanner.nextLine(); // Consume la entrada inválida
             return NOT_INT;
         }
     }

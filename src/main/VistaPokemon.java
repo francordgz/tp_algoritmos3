@@ -1,47 +1,42 @@
 package src.main;
 
 public class VistaPokemon extends VistaJuego {
-    static public void mostarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
-        System.out.println("Rival: " + entrenadorRival.obtenerNombre());
+    static public void mostrarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
+        imprimir("\nRival: " + entrenadorRival.obtenerNombre());
         infoPokemon(entrenadorRival.obtenerPokemonActual(), false);
+        imprimir("");
 
-        System.out.println("Tu: " + entrenadorActual.obtenerNombre());
+        imprimir("Tu: " + entrenadorActual.obtenerNombre());
         infoPokemon(entrenadorActual.obtenerPokemonActual(), true);
     }
 
-    static public void mostrarPokemon(Entrenador entrenador) {
-        infoPokemon(entrenador.obtenerPokemonActual(), false);
-    }
-
-    // Devuelve la cantidad de Pokemones
-    static public int mostrarTodosLosPokemones(Entrenador entrenador) {
+    static public void mostrarPokemones(Entrenador entrenador, boolean primeraSeleccion) {
 
         int i = 1;
-        System.out.println("Seleccione una opcion:");
+        if (primeraSeleccion) imprimir("\n" + entrenador.obtenerNombre() + ", seleccione un Pokemon:\n");
+        else imprimir("\nSeleccione un Pokemon:\n");
 
         for (Pokemon pokemon : entrenador.obtenerPokemones()) {
-                System.out.println(i + ":");
+                imprimir(i + ":");
                 infoPokemon(pokemon, true);
                 i++;
         }
 
-        System.out.println((0)+ ": Volver atrás");
-
-        return i;
+        if (!primeraSeleccion) imprimir("0: Volver atrás");
     }
 
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
 
-        System.out.println(pokemon.obtenerNombre() + ":");
-        System.out.println("Vida: " + pokemon.vidaActual +
+        imprimir(pokemon.obtenerNombre() + ":");
+        imprimir("Vida: " + pokemon.vidaActual +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
                 ", Nivel: " + pokemon.obtenerNivel());
         estados estadoActual = pokemon.obtenerEstado();
         if(estadoActual != estados.NORMAL && estadoActual != estados.MUERTO) {
-            System.out.println("Estado: " + estadoString(estadoActual));
+            imprimir("Estado: " + estadoString(estadoActual));
         }
         if (mostrarAtaqueDefensa) {
-            System.out.println("Ataque: " + pokemon.obtenerAtaque() + ", Defensa: " + pokemon.obtenerDefensa());
+            imprimir("Ataque: " + pokemon.obtenerAtaque() + ", Defensa: " + pokemon.obtenerDefensa());
         }
     }
 
