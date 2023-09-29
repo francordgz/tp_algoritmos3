@@ -1,6 +1,8 @@
 package src.main;
 import java.util.Scanner;
 
+import static src.main.Constant.NOT_INT;
+
 public class Controller{
 
     Juego juego;
@@ -30,7 +32,7 @@ public class Controller{
 
         do {
             VistaJuego.mensaje("Ingrese un nombre para el entrenador");
-            ingreso = scanner.nextLine();
+            ingreso = leerString();
             longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = ingreso.equals(nombreOponente);
             nombreValido = longitudValida && !nombreRepetido;
@@ -49,14 +51,14 @@ public class Controller{
         boolean opcionCorrecta;
         VistaPokemon.mostrarTodosLosPokemones(entrenador);
 
-        int opcion = scanner.nextInt();
+        int opcion = leerInt();
 
         do {
             opcionCorrecta = true;
-            if(opcion > entrenador.obtenerPokemones().size()){
+            if(opcion > entrenador.obtenerPokemones().size() || opcion == NOT_INT){
                 VistaJuego.mensaje("Seleccione una opción correcta!");
                 opcionCorrecta = false;
-                opcion = scanner.nextInt();
+                opcion = leerInt();
             }else if(opcion == 0){
                 return;
             }
@@ -69,7 +71,7 @@ public class Controller{
 
         boolean opcionCorrecta;
         VistaJuego.mostrarMenu();
-        int opcion = scanner.nextInt();
+        int opcion = leerInt();
 
         do {
             opcionCorrecta = true;
@@ -92,14 +94,14 @@ public class Controller{
                 default:
                     VistaJuego.mensaje("Seleccione una opción correcta!");
                     opcionCorrecta = false;
-                    opcion = scanner.nextInt();
+                    opcion = leerInt();
             }
         } while (!opcionCorrecta);
     }
 
     public void habilidad(){
         VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
-        int opcion = scanner.nextInt();
+        int opcion = leerInt();
         //Optimizable
         if(opcion == 1){
             this.juego.atacar(0);
@@ -117,13 +119,13 @@ public class Controller{
 
         boolean opcionCorrecta;
         VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
-        int opcion = scanner.nextInt();
+        int opcion = leerInt();
         do {
             opcionCorrecta = true;
             if(opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()){
                 VistaJuego.mensaje("Seleccione una opción correcta!");
                 opcionCorrecta = false;
-                opcion = scanner.nextInt();
+                opcion = leerInt();
             }else if(opcion == 0){
                 return;
             }
@@ -136,5 +138,20 @@ public class Controller{
     public void cambioPokemon(){
         seleccionarPokemon(this.juego.obtenerEntrenadorActual());
         this.juego.usarTurno();
+    }
+
+    //Auxiliares:
+
+    private String leerString() {
+        return this.scanner.nextLine();
+    }
+
+    private int leerInt() {
+        if (this.scanner.hasNextInt()) {
+            return this.scanner.nextInt();
+        } else {
+            this.scanner.nextLine(); // "Consume" el input invalido"
+            return NOT_INT;
+        }
     }
 }

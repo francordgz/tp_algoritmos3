@@ -6,4 +6,5 @@ public class Constant {
     static final int SIMPLE = 1;
     static final int DOBLE = 2;
     static final int MAX_NOMBRE = 50;
+    static final int NOT_INT = -1;
 }
