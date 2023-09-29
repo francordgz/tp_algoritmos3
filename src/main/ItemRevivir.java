@@ -7,6 +7,6 @@ public class ItemRevivir extends Item{
 
     @Override
     public void usarItem(Pokemon pokemon) {
-        pokemon.modificarVida(pokemon.obtenerVidaMaxima());
+        pokemon.revivir();
     }
 }

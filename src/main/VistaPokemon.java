@@ -11,7 +11,6 @@ public class VistaPokemon extends VistaJuego {
     }
 
     static public void mostrarPokemones(Entrenador entrenador, boolean primeraSeleccion) {
-
         int i = 1;
         if (primeraSeleccion) imprimir("\n" + entrenador.obtenerNombre() + ", seleccione un Pokemon:\n");
         else imprimir("\nSeleccione un Pokemon:\n");
@@ -31,8 +30,8 @@ public class VistaPokemon extends VistaJuego {
         imprimir("Vida: " + pokemon.vidaActual +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
                 ", Nivel: " + pokemon.obtenerNivel());
-        estados estadoActual = pokemon.obtenerEstado();
-        if(estadoActual != estados.NORMAL && estadoActual != estados.MUERTO) {
+        Estados estadoActual = pokemon.obtenerEstado();
+        if(estadoActual != Estados.NORMAL && estadoActual != Estados.MUERTO) {
             imprimir("Estado: " + estadoString(estadoActual));
         }
         if (mostrarAtaqueDefensa) {
@@ -40,7 +39,7 @@ public class VistaPokemon extends VistaJuego {
         }
     }
 
-    private static String estadoString(estados estadoActual) {
+    private static String estadoString(Estados estadoActual) {
         switch (estadoActual) {
             case NORMAL:
                 return "Normal";
@@ -56,6 +55,7 @@ public class VistaPokemon extends VistaJuego {
                 return "Desconocido";
         }
     }
+
     private static String tipoString(Tipo tipo) {
         switch (tipo) {
             case AGUA:

@@ -1,15 +1,15 @@
 package src.main;
 
-enum atributos {
+enum Atributos {
     VIDA, ATAQUE, VELOCIDAD, DEFENSA
 }
 public class HabilidadEstadistica extends Habilidad{
 
     int poder;
-    atributos atributo;
+    Atributos atributo;
     Boolean AfectarRival;
 
-    public HabilidadEstadistica(String nombre, atributos atributo, int usos, int poder,Boolean AfectarRival) {
+    public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int poder, Boolean AfectarRival) {
         super(nombre,usos);
         this.poder = poder;
         this.atributo = atributo;
@@ -20,13 +20,13 @@ public class HabilidadEstadistica extends Habilidad{
     @Override
     public void ModificarEstado(Pokemon pokemon){
 
-        if(atributo == atributos.VIDA){
-            pokemon.modificarVida(poder);
-        }else if(atributo == atributos.ATAQUE){
+        if(atributo == Atributos.VIDA){
+            pokemon.curar(poder);
+        }else if(atributo == Atributos.ATAQUE){
             pokemon.modificarAtaque(poder);
-        } else if(atributo == atributos.VELOCIDAD){
+        } else if(atributo == Atributos.VELOCIDAD){
             pokemon.modificarVelocidad(poder);
-        }else if(atributo == atributos.DEFENSA)
+        }else if(atributo == Atributos.DEFENSA)
             pokemon.modificarDefensa(poder);
 
         this.usos -=1;

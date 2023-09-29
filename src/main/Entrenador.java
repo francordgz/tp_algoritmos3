@@ -47,7 +47,7 @@ public class Entrenador {
 
     public boolean tienePokemonesConVida() {
         for (Pokemon pokemon: this.obtenerPokemones()) {
-            if (pokemon.obtenerEstado() != estados.MUERTO)
+            if (pokemon.obtenerEstado() != Estados.MUERTO)
                 return true;
         }
         return false;

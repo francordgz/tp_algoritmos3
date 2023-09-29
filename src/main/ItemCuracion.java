@@ -9,6 +9,6 @@ public class ItemCuracion extends Item {
 
     @Override
     public void usarItem(Pokemon pokemon) {
-        pokemon.modificarVida(poder);
+        pokemon.curar(poder);
     }
 }

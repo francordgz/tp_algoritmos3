@@ -110,8 +110,8 @@ public class Juego {
         items.add(new ItemCuracion(20, "Pocion", 3));
         items.add(new ItemCuracion(50, "MegaPocion", 2));
         items.add(new ItemCuracion(100, "Hiperpocion", 1));
-        items.add(new ItemEstadistica("Ataque", tipoModificacion.ATAQUE, 2));
-        items.add(new ItemEstadistica("Defensa", tipoModificacion.DEFENSA, 1));
+        items.add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
+        items.add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
         items.add(new ItemEstado("CuraTodo", 3));
         items.add(new ItemRevivir("Revivir", 1));
 
@@ -142,7 +142,6 @@ public class Juego {
     }
 
     public void usarHabilidad(int habilidad) {
-
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
         Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
 
@@ -155,7 +154,6 @@ public class Juego {
 
 
     public void atacar(int habilidad) {
-
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
         pokemonActual.atacar(habilidad, pokemonRival, efectividades);
@@ -176,7 +174,11 @@ public class Juego {
     }
 
     public boolean terminado() {
-        boolean entrenadorSinPokemones = !administrador.obtenerEntrenadorActual().tienePokemonesConVida();
-        return this.terminado || entrenadorSinPokemones;
+        if (!administrador.obtenerEntrenadorActual().tienePokemonesConVida()) {
+            this.ganador = obtenerEntrenadorRival();
+            return true;
+        }
+
+        return this.terminado;
     }
 }

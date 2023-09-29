@@ -142,6 +142,10 @@ public class Controller {
 
     public void cerrarScanner() { this.scanner.close(); }
 
+    public void declararGanador() {
+        VistaJuego.imprimir("El ganador es: " + juego.ganador.obtenerNombre());
+    }
+
     //Auxiliares:
 
     private String leerString() {

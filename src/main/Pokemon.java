@@ -2,7 +2,7 @@ package src.main;
 
 import java.util.*;
 
-enum estados {
+enum Estados {
         NORMAL, ENVENENADO, DORMIDO, PARALIZADO, MUERTO
 }
 
@@ -16,9 +16,9 @@ public class Pokemon {
     int defensa;
     Tipo tipo;
     int ataque;
-    estados estado;
+    Estados estado;
     int nivel;
-    List<Habilidad> habilidades = new ArrayList<Habilidad>();
+    List<Habilidad> habilidades;
 
     public Pokemon(String unNombre,Tipo unTipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
         this.nombre = unNombre;
@@ -28,7 +28,7 @@ public class Pokemon {
         this.ataque = danio;
         this.velocidad = velocidad;
         this.vidaActual = vidaMaxima;
-        this.estado = estados.NORMAL;
+        this.estado = Estados.NORMAL;
         this.historia = historia;
         this.habilidades = habilidades;
     }
@@ -41,7 +41,7 @@ public class Pokemon {
             this.vidaActual = 0;
         }
         if (this.vidaActual == 0){
-            this.estado = estados.MUERTO;
+            this.estado = Estados.MUERTO;
         }
     }
 
@@ -58,10 +58,7 @@ public class Pokemon {
         int posicionAtacante = this.tipo.ordinal();
         int PosicionRival = rival.obtenerTipo().ordinal();
 
-        double efectividad = efectividades[posicionAtacante][PosicionRival];
-
-        return efectividad;
-
+        return efectividades[posicionAtacante][PosicionRival];
     }
 
 
@@ -91,19 +88,11 @@ public class Pokemon {
         return velocidad;
     }
 
-    public int obtenerVidaMaxima() {
-        return vidaMaxima;
-    }
-
-    public int obtenerVidaActual() {
-        return vidaActual;
-    }
-
     public Tipo obtenerTipo(){
         return this.tipo;
     }
 
-    public estados obtenerEstado() {
+    public Estados obtenerEstado() {
         return estado;
     }
 
@@ -111,8 +100,13 @@ public class Pokemon {
         this.ataque += poder;
     }
 
-    public void modificarVida(int poder){
+    public void curar(int poder){
         this.vidaActual += poder;
+    }
+
+    public void revivir() {
+        this.estado = Estados.NORMAL;
+        this.vidaActual = this.vidaMaxima;
     }
 
     public void modificarDefensa(int poder){
@@ -123,15 +117,8 @@ public class Pokemon {
         this.velocidad += poder;
     }
 
-    public void modificarEstado(estados estado) {
+    public void modificarEstado(Estados estado) {
         this.estado = estado;
-    }
-
-    public boolean estaVivo() { return this.estado != estados.MUERTO; }
-
-    public void subirNivel(){
-
-        this.nivel += 1;
     }
 
     public Habilidad habilidades(int habilidad){

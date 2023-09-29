@@ -1,5 +1,4 @@
 package src.main;
-import java.util.*;
 
 public abstract class Item {
     String nombre;
@@ -18,11 +17,6 @@ public abstract class Item {
         return cantidad;
     }
 
-    public void sumarCantidad(int cantidad) {
-        this.cantidad += cantidad;
-    }
-
-    
     public void usarItem(Pokemon pokemon) {
         
     }

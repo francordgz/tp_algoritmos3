@@ -1,10 +1,10 @@
 package src.main;
 
-enum tipoModificacion {ATAQUE, DEFENSA}
+enum TipoModificacion {ATAQUE, DEFENSA}
 public class ItemEstadistica extends Item{
-    tipoModificacion tipo;
+    TipoModificacion tipo;
 
-    public ItemEstadistica(String nombre, tipoModificacion tipo, int cantidad) {
+    public ItemEstadistica(String nombre, TipoModificacion tipo, int cantidad) {
         super(nombre, cantidad);
         this.tipo = tipo;
     }
@@ -19,7 +19,7 @@ public class ItemEstadistica extends Item{
                 pokemon.modificarDefensa((int)(pokemon.obtenerDefensa() * 0.1));
                 break;
             default:
-                // Default secuencia de sentencias.
+                throw new RuntimeException("Error en el item!");
         }
     }
 }

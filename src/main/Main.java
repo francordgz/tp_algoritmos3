@@ -13,5 +13,6 @@ public class Main  {
         }
 
         controlador.cerrarScanner();
+        controlador.declararGanador();
     }
 }
