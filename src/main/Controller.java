@@ -9,15 +9,21 @@ public class Controller{
 
     public Controller(Juego juego){
         this.juego = juego;
-        String nombre1 = pedirNombreEntrenador("", 1);
-        String nombre2 = pedirNombreEntrenador(nombre1, 2);
-        this.juego.inicializarEntrenadores(nombre1, nombre2);
+        String nombre1 = pedirNombreEntrenador("");
+        this.juego.entrenador1 = new Entrenador(nombre1);
+
+        String nombre2 = pedirNombreEntrenador(nombre1);
+        this.juego.entrenador2 = new Entrenador(nombre2);
+
+        this.juego.crearPokemones();
+        this.juego.crearItems();
+
         this.seleccionarPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.inicializarTurnos();
     }
 
-     private String pedirNombreEntrenador(String nombreOponente, int numeroEntrenador) {
+     private String pedirNombreEntrenador(String nombreOponente) {
         String ingreso;
         boolean longitudValida, nombreRepetido, nombreValido;
 
@@ -25,7 +31,7 @@ public class Controller{
             VistaJuego.mensaje("Ingrese un nombre para el entrenador");
             ingreso = scanner.nextLine();
             longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
-            nombreRepetido = (ingreso == nombreOponente);
+            nombreRepetido = ingreso.equals(nombreOponente);
             nombreValido = longitudValida && !nombreRepetido;
 
             if (!longitudValida) {
@@ -40,12 +46,13 @@ public class Controller{
     public void seleccionarPokemon(Entrenador entrenador){
 
         boolean opcionCorrecta;
-        int opcion = scanner.nextInt();
         VistaPokemon.mostrarTodosLosPokemones(entrenador);
+
+        int opcion = scanner.nextInt();
 
         do {
             opcionCorrecta = true;
-            if(opcion > entrenador.obtenerPokemonActual().obtenerHabilidades().size()){
+            if(opcion > entrenador.obtenerPokemones().size()){
                 VistaJuego.mensaje("Seleccione una opción correcta!");
                 opcionCorrecta = false;
                 opcion = scanner.nextInt();

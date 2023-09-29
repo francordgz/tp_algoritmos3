@@ -3,13 +3,14 @@ import java.util.*;
 
 public class Entrenador {
     String nombre;
-    List<Item> items;
-    List<Pokemon> pokemones;
+    ArrayList<Item> items;
+    ArrayList<Pokemon> pokemones;
     Pokemon pokemonActual;
 
-    // Constructor
     public Entrenador(String nombre) {
         this.nombre = nombre;
+        this.pokemones = new ArrayList<Pokemon>();
+        this.items = new ArrayList<Item>();
     }
 
     public String obtenerNombre() {
@@ -20,10 +21,6 @@ public class Entrenador {
         return items;
     }
 
-    public void agregarItem(Item item) {
-        this.items.add(item);
-    }
-
     public List<Pokemon> obtenerPokemones() {
         return pokemones;
     }
@@ -32,14 +29,8 @@ public class Entrenador {
         this.pokemones.add(pokemon);
     }
 
-    public void agregarItem(List<Item> items){
-        this.items = items;
-    }
-
-    public void usarItem() {
-
-
-
+    public void agregarItem(Item items){
+        this.items.add(items);
     }
 
     public Pokemon obtenerPokemonActual(){

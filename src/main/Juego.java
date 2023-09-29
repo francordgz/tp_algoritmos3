@@ -13,10 +13,7 @@ public class Juego {
     double[][] efectividades = new double[15][15];
 
     public Juego() {
-
         this.crearEfectividades();
-        this.crearPokemones();
-        this.crearItems();
         this.terminado = false;
     }
 
@@ -117,8 +114,10 @@ public class Juego {
         items.add(new ItemEstado("CuraTodo", 3));
         items.add(new ItemRevivir("Revivir", 1));
 
-        entrenador1.agregarItem(items);
-        entrenador2.agregarItem(items);
+        for (Item item: items) {
+            entrenador1.agregarItem(item);
+            entrenador2.agregarItem(item);
+        }
     }
 
     public Entrenador obtenerPrimerEntrenador() {
@@ -135,12 +134,6 @@ public class Juego {
 
     public Entrenador obtenerEntrenadorRival() {
         return this.administrador.obtenerEntrenadorRivalActual();
-    }
-
-    public void inicializarEntrenadores(String nombre1, String nombre2) {
-
-        this.entrenador1 = new Entrenador(nombre1);
-        this.entrenador2 = new Entrenador(nombre2);
     }
 
     public void inicializarTurnos() {

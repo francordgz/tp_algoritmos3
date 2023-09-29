@@ -35,6 +35,7 @@ replay_pid*
 /target/classes/.gitignore
 /target/classes/pom.xml
 /target/classes/README.md
+/target
 /.idea/target/classes/.gitignore
 /.idea/target/classes/pom.xml
 /.idea/target/classes/README.md

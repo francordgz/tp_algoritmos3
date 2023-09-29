@@ -54,6 +54,16 @@ public class Pokedex {
                 )
         ));
 
+        pokemonMap.put("Venusar", new PokemonData(Tipo.VENENO, 70, 100, 20, 12,
+                "Venusar es la evolución final de Bulbasur y tiene una flor gigante en su espalda.",
+                Arrays.asList(
+                        new HabilidadAtaque("Golpe", "Normal", 5, 25, false),
+                        new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
+                        new HabilidadEstadistica("Aumentar ataque", atributos.ATAQUE, 5, 15, false),
+                        new HabilidadEstado("Envenenar", 5, estados.ENVENENADO)
+                )
+        ));
+
         pokemonMap.put("Charmander", new PokemonData(Tipo.FUEGO, 100, 50, 35, 25,
                 "Charmander es un pequeño dragón de fuego que evoluciona en Charizard.",
                 Arrays.asList(
