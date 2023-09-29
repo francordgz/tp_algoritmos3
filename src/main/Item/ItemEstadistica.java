@@ -1,7 +1,8 @@
-package src.main;
+package src.main.Item;
+import src.main.Enums.TipoModificacion;
+import src.main.Pokemon;
 
-enum TipoModificacion {ATAQUE, DEFENSA}
-public class ItemEstadistica extends Item{
+public class ItemEstadistica extends Item {
     TipoModificacion tipo;
 
     public ItemEstadistica(String nombre, TipoModificacion tipo, int cantidad) {

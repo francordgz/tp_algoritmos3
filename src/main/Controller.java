@@ -1,4 +1,9 @@
 package src.main;
+import src.main.Vista.VistaHabilidad;
+import src.main.Vista.VistaItem;
+import src.main.Vista.VistaJuego;
+import src.main.Vista.VistaPokemon;
+
 import java.util.Scanner;
 
 import static src.main.Constant.NOT_INT;

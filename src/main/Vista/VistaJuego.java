@@ -1,4 +1,4 @@
-package src.main;
+package src.main.Vista;
 
 public class VistaJuego {
     // Nueva línea

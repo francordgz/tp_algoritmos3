@@ -1,8 +1,7 @@
 package src.main;
 
-enum Atributos {
-    VIDA, ATAQUE, VELOCIDAD, DEFENSA
-}
+import src.main.Enums.Atributos;
+
 public class HabilidadEstadistica extends Habilidad{
 
     int poder;

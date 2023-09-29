@@ -1,4 +1,5 @@
-package src.main;
+package src.main.Item;
+import src.main.Pokemon;
 
 public class ItemCuracion extends Item {
     int poder;

@@ -1,6 +1,9 @@
-package src.main;
+package src.main.Vista;
 
-public class VistaItem extends VistaJuego{
+import src.main.Entrenador;
+import src.main.Item.Item;
+
+public class VistaItem extends VistaJuego {
     static public void mostrarItems(Entrenador entrenador) {
         imprimir("\nSelecciona un item:");
         int i = 1;

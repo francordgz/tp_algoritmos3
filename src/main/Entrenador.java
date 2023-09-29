@@ -1,4 +1,6 @@
 package src.main;
+import src.main.Item.Item;
+
 import java.util.*;
 
 public class Entrenador {
@@ -46,8 +48,8 @@ public class Entrenador {
     }
 
     public boolean tienePokemonesConVida() {
-        for (Pokemon pokemon: this.obtenerPokemones()) {
-            if (pokemon.obtenerEstado() != Estados.MUERTO)
+        for (Pokemon pokemon: this.pokemones) {
+            if (!pokemon.estaMuerto())
                 return true;
         }
         return false;

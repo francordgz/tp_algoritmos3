@@ -1,10 +1,8 @@
 package src.main;
+import src.main.Enums.Estados;
+import src.main.Enums.Tipo;
 
-import java.util.*;
-
-enum Estados {
-        NORMAL, ENVENENADO, DORMIDO, PARALIZADO, MUERTO
-}
+import java.util.List;
 
 public class Pokemon {
 
@@ -20,9 +18,9 @@ public class Pokemon {
     int nivel;
     List<Habilidad> habilidades;
 
-    public Pokemon(String unNombre,Tipo unTipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
-        this.nombre = unNombre;
-        this.tipo = unTipo;
+    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
+        this.nombre = nombre;
+        this.tipo = tipo;
         this.vidaMaxima = vidaMaxima;
         this.defensa = defensa;
         this.ataque = danio;
@@ -40,17 +38,17 @@ public class Pokemon {
         if (this.vidaActual < 0) {
             this.vidaActual = 0;
         }
+
         if (this.vidaActual == 0){
             this.estado = Estados.MUERTO;
         }
     }
 
-    public void atacar(int habilidad,Pokemon rival,double[][] efectividades){
+    public void atacar(int habilidad, Pokemon rival, double[][] efectividades){
 
         double efectividad = calcularEfectividad(rival,efectividades);
         
         habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
-
     }
 
     public double calcularEfectividad(Pokemon rival,double [][] efectividades){
@@ -109,6 +107,10 @@ public class Pokemon {
         this.vidaActual = this.vidaMaxima;
     }
 
+    public int obtenerVidaActual() {
+        return vidaActual;
+    }
+
     public void modificarDefensa(int poder){
         this.defensa += poder;
     }
@@ -119,6 +121,10 @@ public class Pokemon {
 
     public void modificarEstado(Estados estado) {
         this.estado = estado;
+    }
+
+    public boolean estaMuerto() {
+        return this.estado == Estados.MUERTO;
     }
 
     public Habilidad habilidades(int habilidad){

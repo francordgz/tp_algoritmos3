@@ -1,5 +1,7 @@
 package src.main;
 
+import src.main.Enums.Estados;
+
 public class HabilidadEstado extends Habilidad{
 
     Estados tipo;

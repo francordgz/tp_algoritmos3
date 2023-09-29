@@ -1,7 +1,7 @@
 package src.main;
 import java.util.Random;
-public class HabilidadAtaque extends Habilidad{
 
+public class HabilidadAtaque extends Habilidad{
     String tipo;
     int poder;
     boolean mismoTipo;
@@ -13,82 +13,33 @@ public class HabilidadAtaque extends Habilidad{
         this.mismoTipo = mismoTipo;
     }
 
-
-
-    public double MismoTipo(){
-
-        if (mismoTipo == true){
-            return 1.5;
-        }
-
+    public double MismoTipo() {
+        if (mismoTipo) return 1.5;
         return 1;
-
     }
-
-
-
-    /// Que calcule el pokenon el ataque ///
 
     @Override
-    public void atacar(int ataque,int nivel,Pokemon rival,double efectividad){
-
-        if(this.usos> 0){
-
+    public void atacar(int ataque, int nivel, Pokemon rival, double efectividad){
         int critico = generarProba();
-
         int numeroRandom = generarNumeroRandom();
 
-        double danio = (((((2*nivel*critico*this.poder*ataque)/rival.obtenerDefensa()*5)+2)/50)*(MismoTipo()*efectividad*numeroRandom));
+        double danio = 2 * nivel * critico * this.poder * ataque;
+        danio = danio / (rival.obtenerDefensa() * 5 + 2) / 50;
+        danio = danio * (MismoTipo() * efectividad * numeroRandom);
 
         rival.recibirDanio(danio);
-
         this.usos -= 1;
-
-        }else{
-            System.out.println("No quedan usos");
-        }
-
-
     }
-
-
 
     public int generarNumeroRandom(){
-
         Random rand = new Random();
-
-        int numeroAleatorio = (rand.nextInt(38) + 217) / 255;
-
-        return numeroAleatorio;
-
-
-
+        return  (rand.nextInt(39) + 217) / 255;
     }
 
-
-    public int generarProba(){
-
-
-        int probabilidad = 1;
-
+    public int generarProba() {
         Random rand = new Random();
-
         int numeroAleatorio = rand.nextInt(100);
-
-
-
-        if(numeroAleatorio <= 90){
-
-            probabilidad = 2;
-
-
-        };
-
-
-        return probabilidad;
-
-
+        if(numeroAleatorio <= 90) return  2;
+        return 1;
     }
-
-
 }

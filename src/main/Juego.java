@@ -1,7 +1,11 @@
 package src.main;
 
+import src.main.Item.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import src.main.Enums.TipoModificacion;
 
 public class Juego {
 

@@ -1,6 +1,7 @@
-package src.main;
+package src.main.Item;
+import src.main.Pokemon;
 
-public class ItemRevivir extends Item{
+public class ItemRevivir extends Item {
     public ItemRevivir(String nombre, int cantidad) {
         super(nombre, cantidad);
     }

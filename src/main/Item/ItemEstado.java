@@ -1,6 +1,8 @@
-package src.main;
+package src.main.Item;
+import src.main.Enums.Estados;
+import src.main.Pokemon;
 
-public class ItemEstado extends Item{
+public class ItemEstado extends Item {
     public ItemEstado(String nombre, int cantidad) {
         super(nombre, cantidad);
     }

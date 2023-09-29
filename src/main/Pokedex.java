@@ -1,12 +1,13 @@
 package src.main;
+import src.main.Enums.Atributos;
+import src.main.Enums.Estados;
+import src.main.Enums.Tipo;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Arrays;
 
-enum Tipo {
-    AGUA, BICHO, DRAGON, RAYO, FANTASMA, FUEGO, HIELO, LUCHA, NORMAL, PLANTA, PSIQUICO, ROCA, TIERRA, VENENO, VOLADOR
-}
 public class Pokedex {
     private static class PokemonData {
         protected Tipo tipo;

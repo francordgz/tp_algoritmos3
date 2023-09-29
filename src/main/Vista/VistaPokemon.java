@@ -1,4 +1,9 @@
-package src.main;
+package src.main.Vista;
+
+import src.main.Entrenador;
+import src.main.Enums.Estados;
+import src.main.Enums.Tipo;
+import src.main.Pokemon;
 
 public class VistaPokemon extends VistaJuego {
     static public void mostrarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
@@ -27,7 +32,7 @@ public class VistaPokemon extends VistaJuego {
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
 
         imprimir(pokemon.obtenerNombre() + ":");
-        imprimir("Vida: " + pokemon.vidaActual +
+        imprimir("Vida: " + pokemon.obtenerVidaActual() +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
                 ", Nivel: " + pokemon.obtenerNivel());
         Estados estadoActual = pokemon.obtenerEstado();

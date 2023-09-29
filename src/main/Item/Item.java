@@ -1,4 +1,5 @@
-package src.main;
+package src.main.Item;
+import src.main.Pokemon;
 
 public abstract class Item {
     String nombre;
