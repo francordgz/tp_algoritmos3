@@ -32,7 +32,7 @@ public class Controller {
         boolean nombreRepetido;
 
         do {
-            VistaJuego.imprimir("Ingrese un nombre para el entrenador:");
+            VistaJuego.imprimirMismaLinea("Ingrese un nombre para el entrenador: ");
             ingreso = leerString();
             longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = ingreso.equals(nombreOponente);
@@ -153,6 +153,7 @@ public class Controller {
     }
 
     private int leerInt() {
+        VistaJuego.imprimirMismaLinea("\nIngrese un numero: ");
         if (this.scanner.hasNextInt()) {
             int entero = this.scanner.nextInt();
             scanner.nextLine(); // Consume el /n
