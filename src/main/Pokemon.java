@@ -34,7 +34,6 @@ public class Pokemon {
 
 
     public void recibirDanio(double danio){
-        System.out.println(danio);
         this.vidaActual -= danio;
 
         if (this.vidaActual < 0) {
