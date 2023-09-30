@@ -12,7 +12,7 @@ public class VistaPokemon extends VistaJuego {
         imprimir("");
 
         imprimir("Tu: " + entrenadorActual.obtenerNombre());
-        infoPokemon(entrenadorActual.obtenerPokemonActual(), true);
+        infoPokemon(entrenadorActual.obtenerPokemonActual(), false);
     }
 
     static public void mostrarPokemones(Entrenador entrenador, boolean primeraSeleccion) {
