@@ -24,8 +24,12 @@ public class HabilidadAtaque extends Habilidad{
         float numeroRandom = generarNumeroRandom();
 
         double danio = 2 * nivel * critico * this.poder * ataque;
+        System.out.println("1 " + danio);
         danio = danio / (rival.obtenerDefensa() * 5 + 2) / 50;
+        System.out.println("2 " + danio);
         danio = danio * (MismoTipo() * efectividad * numeroRandom);
+
+        System.out.println("3" + danio);
 
         rival.recibirDanio(danio);
         this.usos -= 1;
@@ -33,7 +37,7 @@ public class HabilidadAtaque extends Habilidad{
 
     public float generarNumeroRandom(){
         Random rand = new Random();
-        return  (rand.nextInt(39) + 217) / 255;
+        return  ((float)rand.nextInt(39) + 217) / 255;
     }
 
     public float generarProba() {

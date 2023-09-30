@@ -17,8 +17,9 @@ public class Pokedex {
         protected int velocidad;
         protected String historia;
         protected List<Habilidad> habilidades;
+        protected int nivel;
 
-        protected PokemonData(Tipo tipo, int vidaMaxima, int defensa, int ataque, int velocidad, String historia, List<Habilidad> habilidades) {
+        protected PokemonData(Tipo tipo, int vidaMaxima, int defensa, int ataque, int velocidad, String historia, List<Habilidad> habilidades,int nivel) {
             this.tipo = tipo;
             this.vidaMaxima = vidaMaxima;
             this.defensa = defensa;
@@ -26,6 +27,7 @@ public class Pokedex {
             this.velocidad = velocidad;
             this.historia = historia;
             this.habilidades = habilidades;
+            this.nivel = nivel;
         }
     }
 
@@ -42,7 +44,7 @@ public class Pokedex {
                         new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO)
-                )
+                ),1
         ));
 
         pokemonMap.put("Bulbasur", new PokemonData(Tipo.PLANTA, 120, 40, 10, 10,
@@ -52,7 +54,7 @@ public class Pokedex {
                         new HabilidadAtaque("Latigo cepa", "Planta", 2, 90, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("Envenenar", 2, Estados.ENVENENADO)
-                )
+                ),2
         ));
 
         pokemonMap.put("Venusar", new PokemonData(Tipo.VENENO, 70, 100, 20, 12,
@@ -62,7 +64,7 @@ public class Pokedex {
                         new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 5, 15, false),
                         new HabilidadEstado("Envenenar", 5, Estados.ENVENENADO)
-                )
+                ),4
         ));
 
         pokemonMap.put("Charmander", new PokemonData(Tipo.FUEGO, 100, 50, 35, 25,
@@ -72,7 +74,7 @@ public class Pokedex {
                         new HabilidadAtaque("Lanzallamas", "Fuego", 2, 100, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO)
-                )
+                ),6
         ));
 
         pokemonMap.put("Charizard", new PokemonData(Tipo.DRAGON, 120, 25, 15, 50,
@@ -82,7 +84,7 @@ public class Pokedex {
                         new HabilidadAtaque("Lanzallamas", "Fuego", 4, 125, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("Paralizar", 4, Estados.PARALIZADO)
-                )
+                ),8
         ));
 
         pokemonMap.put("Squirtle", new PokemonData(Tipo.AGUA, 150, 40, 18, 17,
@@ -92,7 +94,7 @@ public class Pokedex {
                         new HabilidadAtaque("Pistola agua", "Agua", 2, 90, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO)
-                )
+                ),9
         ));
 
         pokemonMap.put("Magikarp", new PokemonData(Tipo.AGUA, 10, 10, 10, 15,
@@ -102,7 +104,7 @@ public class Pokedex {
                         new HabilidadAtaque("Giro rápido", "Agua", 2, 60, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 1, 5,true),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO)
-                )
+                ),1
         ));
 
         pokemonMap.put("Raichu", new PokemonData(Tipo.RAYO, 150, 30, 25, 15,
@@ -112,7 +114,7 @@ public class Pokedex {
                         new HabilidadAtaque("Ataque rápido", "Normal", 2, 60, false),
                         new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 15,true),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO)
-                )
+                ),3
         ));
 
         pokemonMap.put("Kadabra", new PokemonData(Tipo.PSIQUICO, 140, 35, 30, 20,
@@ -122,7 +124,7 @@ public class Pokedex {
                         new HabilidadAtaque("Psicoonda", "Psiquico", 4, 120, true),
                         new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 20,false),
                         new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO)
-                )
+                ),5
         ));
 
         pokemonMap.put("Clefable", new PokemonData(Tipo.FANTASMA, 30, 30, 20, 15,
@@ -132,7 +134,7 @@ public class Pokedex {
                         new HabilidadAtaque("Beso mágico", "Hada", 3, 80, false),
                         new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 15,true),
                         new HabilidadEstado("Envenenar", 0, Estados.ENVENENADO)
-                )
+                ),9
         ));
 
         pokemonMap.put("Ekans", new PokemonData(Tipo.VENENO, 120, 35, 30, 20,
@@ -142,7 +144,7 @@ public class Pokedex {
                         new HabilidadAtaque("Acido", "Veneno", 2, 70, true),
                         new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10,true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO)
-                )
+                ),2
         ));
 
         pokemonMap.put("Rattata", new PokemonData(Tipo.BICHO, 100, 40, 35, 45,
@@ -152,7 +154,7 @@ public class Pokedex {
                         new HabilidadAtaque("Hipercolmillo", "Normal", 4, 80, true),
                         new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10,false),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO)
-                )
+                ),2
         ));
 
     }
@@ -168,7 +170,9 @@ public class Pokedex {
                         data.ataque,
                         data.velocidad,
                         data.historia,
-                        data.habilidades
+                        data.habilidades,
+                        data.nivel
+
                 );
         } else {
             throw new IllegalArgumentException("Pokemon no encontrado: " + nombre);

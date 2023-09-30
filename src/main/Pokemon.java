@@ -18,7 +18,7 @@ public class Pokemon {
     int nivel;
     List<Habilidad> habilidades;
 
-    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades){
+    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades,int nivel){
         this.nombre = nombre;
         this.tipo = tipo;
         this.vidaMaxima = vidaMaxima;
@@ -29,6 +29,7 @@ public class Pokemon {
         this.estado = Estados.NORMAL;
         this.historia = historia;
         this.habilidades = habilidades;
+        this.nivel = nivel;
     }
 
 
