@@ -8,7 +8,7 @@ public class Pokemon {
 
     String nombre;
     String historia;
-    int vidaActual;
+    double vidaActual;
     int vidaMaxima;
     int velocidad;
     int defensa;
@@ -34,7 +34,8 @@ public class Pokemon {
 
 
     public void recibirDanio(double danio){
-        this.vidaActual -= (int) danio;
+        System.out.println(danio);
+        this.vidaActual -= danio;
 
         if (this.vidaActual < 0) {
             this.vidaActual = 0;
@@ -109,7 +110,7 @@ public class Pokemon {
     }
 
     public int obtenerVidaActual() {
-        return vidaActual;
+        return (int)vidaActual;
     }
 
     public void modificarDefensa(int poder){

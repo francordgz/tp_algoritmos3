@@ -37,67 +37,67 @@ public class Pokedex {
         this.pokemonMap = new HashMap<String, PokemonData>();
 
         //PIKACHU
-        pokemonMap.put("Pikachu", new PokemonData(Tipo.RAYO, 100, 30, 25, 15,
+        pokemonMap.put("Pikachu", new PokemonData(Tipo.RAYO, 100, 5, 25, 15,
                 "Este Pokémon es conocido por su cola en forma de rayo y su capacidad para generar electricidad.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 3, 10, false),
+                        new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO)
-                ),1
+                ),5
         ));
 
-        pokemonMap.put("Bulbasur", new PokemonData(Tipo.PLANTA, 120, 40, 10, 10,
+        pokemonMap.put("Bulbasur", new PokemonData(Tipo.PLANTA, 120, 10, 10, 10,
                 "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 3, 10, false),
+                        new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Latigo cepa", "Planta", 2, 90, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("Envenenar", 2, Estados.ENVENENADO)
-                ),2
+                ),20
         ));
 
-        pokemonMap.put("Venusar", new PokemonData(Tipo.VENENO, 70, 100, 20, 12,
+        pokemonMap.put("Venusar", new PokemonData(Tipo.VENENO, 70, 10, 20, 12,
                 "Venusar es la evolución final de Bulbasur y tiene una flor gigante en su espalda.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 5, 25, false),
+                        new HabilidadAtaque("Golpe", "Normal", 5, 100, false),
                         new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 5, 15, false),
                         new HabilidadEstado("Envenenar", 5, Estados.ENVENENADO)
-                ),4
+                ),9
         ));
 
-        pokemonMap.put("Charmander", new PokemonData(Tipo.FUEGO, 100, 50, 35, 25,
+        pokemonMap.put("Charmander", new PokemonData(Tipo.FUEGO, 100, 5, 35, 25,
                 "Charmander es un pequeño dragón de fuego que evoluciona en Charizard.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 3, 10, false),
+                        new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Lanzallamas", "Fuego", 2, 100, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO)
                 ),6
         ));
 
-        pokemonMap.put("Charizard", new PokemonData(Tipo.DRAGON, 120, 25, 15, 50,
+        pokemonMap.put("Charizard", new PokemonData(Tipo.DRAGON, 120, 2, 15, 50,
                 "Charizard es un poderoso dragón volador con aliento de fuego.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 3, 10, false),
+                        new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Lanzallamas", "Fuego", 4, 125, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("Paralizar", 4, Estados.PARALIZADO)
                 ),8
         ));
 
-        pokemonMap.put("Squirtle", new PokemonData(Tipo.AGUA, 150, 40, 18, 17,
+        pokemonMap.put("Squirtle", new PokemonData(Tipo.AGUA, 150, 4, 18, 17,
                 "Squirtle es un Pokémon tortuga acuático con la habilidad de lanzar agua desde su boca.",
                 Arrays.asList(
-                        new HabilidadAtaque("Golpe", "Normal", 3, 10, false),
+                        new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Pistola agua", "Agua", 2, 90, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
                         new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO)
                 ),9
         ));
 
-        pokemonMap.put("Magikarp", new PokemonData(Tipo.AGUA, 10, 10, 10, 15,
+        pokemonMap.put("Magikarp", new PokemonData(Tipo.AGUA, 10, 1, 10, 15,
                 "Magikarp es un Pokémon débil que se transforma en Gyarados cuando evoluciona.",
                 Arrays.asList(
                         new HabilidadAtaque("Salpicar", "Normal", 1, 0, false),
@@ -107,7 +107,7 @@ public class Pokedex {
                 ),1
         ));
 
-        pokemonMap.put("Raichu", new PokemonData(Tipo.RAYO, 150, 30, 25, 15,
+        pokemonMap.put("Raichu", new PokemonData(Tipo.RAYO, 150, 3, 25, 15,
                 "Raichu es la evolución de Pikachu y es conocido por su velocidad y poder eléctrico.",
                 Arrays.asList(
                         new HabilidadAtaque("Impactrueno", "Rayo", 3, 110, true),
@@ -117,7 +117,7 @@ public class Pokedex {
                 ),3
         ));
 
-        pokemonMap.put("Kadabra", new PokemonData(Tipo.PSIQUICO, 140, 35, 30, 20,
+        pokemonMap.put("Kadabra", new PokemonData(Tipo.PSIQUICO, 140, 3, 30, 20,
                 "Kadabra es un Pokémon psíquico con habilidades mentales poderosas.",
                 Arrays.asList(
                         new HabilidadAtaque("Confusión", "Psiquico", 3, 90, true),
@@ -127,7 +127,7 @@ public class Pokedex {
                 ),5
         ));
 
-        pokemonMap.put("Clefable", new PokemonData(Tipo.FANTASMA, 30, 30, 20, 15,
+        pokemonMap.put("Clefable", new PokemonData(Tipo.FANTASMA, 30, 3, 20, 15,
                 "Clefable es un Pokémon de tipo hada conocido por su gracia y encanto.",
                 Arrays.asList(
                         new HabilidadAtaque("Encanto", "Hada", 2, 70, true),
@@ -137,7 +137,7 @@ public class Pokedex {
                 ),9
         ));
 
-        pokemonMap.put("Ekans", new PokemonData(Tipo.VENENO, 120, 35, 30, 20,
+        pokemonMap.put("Ekans", new PokemonData(Tipo.VENENO, 120, 5, 30, 20,
                 "Ekans es una serpiente venenosa que puede paralizar a sus presas.",
                 Arrays.asList(
                         new HabilidadAtaque("Mordisco", "Veneno", 3, 50, false),
@@ -147,7 +147,7 @@ public class Pokedex {
                 ),2
         ));
 
-        pokemonMap.put("Rattata", new PokemonData(Tipo.BICHO, 100, 40, 35, 45,
+        pokemonMap.put("Rattata", new PokemonData(Tipo.BICHO, 100, 4, 35, 45,
                 "Rattata es un roedor ágil y astuto con dientes afilados.",
                 Arrays.asList(
                         new HabilidadAtaque("Mordisco", "Normal", 3, 60, false),
