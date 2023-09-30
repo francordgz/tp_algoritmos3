@@ -18,6 +18,8 @@ public class Pokemon {
     int nivel;
     List<Habilidad> habilidades;
 
+    int turnosDormido;
+
     public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades,int nivel){
         this.nombre = nombre;
         this.tipo = tipo;
@@ -30,6 +32,7 @@ public class Pokemon {
         this.historia = historia;
         this.habilidades = habilidades;
         this.nivel = nivel;
+        this.turnosDormido = 0;
     }
 
 
@@ -45,11 +48,14 @@ public class Pokemon {
         }
     }
 
-    public void atacar(int habilidad, Pokemon rival, double[][] efectividades){
+    // Devuelve la efectividad para mostrar si es efectivo o no
+    public double atacar(int habilidad, Pokemon rival, double[][] efectividades){
 
         double efectividad = calcularEfectividad(rival,efectividades);
         
         habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
+
+        return efectividad;
     }
 
     public double calcularEfectividad(Pokemon rival,double [][] efectividades){
@@ -65,6 +71,20 @@ public class Pokemon {
 
         habilidades.get(Numerohabilidad).modificarEstado(rival);
 
+    }
+
+    /* TODO:
+        El Pokemon puede despertarse en cada turno con probabilidad 0.25 + N * 0.25
+        siendo N la cantidad de turnos que ya perdio estando dormido. Al
+        cuarto se despertaria seguro.*/
+    public void actualizarEstado() {
+        if (this.estado == Estados.DORMIDO) {
+                if (turnosDormido >= 4) {
+                    this.estado = Estados.NORMAL;
+                }
+        } else if (this.estado == Estados.ENVENENADO) {
+            this.recibirDanio(this.vidaMaxima * 0.5);
+        }
     }
 
     public String obtenerNombre(){

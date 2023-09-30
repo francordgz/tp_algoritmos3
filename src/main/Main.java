@@ -12,7 +12,7 @@ public class Main  {
            controlador.menuPrincipal();
         }
 
-        controlador.cerrarScanner();
         controlador.declararGanador();
+        controlador.terminar();
     }
 }

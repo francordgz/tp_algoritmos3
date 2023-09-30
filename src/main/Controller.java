@@ -2,7 +2,6 @@ package src.main;
 import src.main.Vista.*;
 
 import java.util.Scanner;
-
 import static src.main.Constant.NOT_INT;
 
 public class Controller {
@@ -55,20 +54,23 @@ public class Controller {
         int opcion;
         boolean turnoTerminado = false;
         boolean mostrar = true;
+        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+        Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
 
         // TODO: Esto donde va??
-        if (this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estaMuerto()) {
+        if (pokemonActual.estaMuerto()) {
+            VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
         }
 
         while (!turnoTerminado) {
-            if (mostrar) VistaJuego.mostrarMenu(this.juego.obtenerEntrenadorActual().obtenerNombre());
+            if (mostrar) VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
             else mostrar = true;
 
             opcion = leerInt();
             switch (opcion) {
                 case 1:
-                    VistaPokemon.mostrarCampo(this.juego.obtenerEntrenadorActual(), this.juego.obtenerEntrenadorRival());
+                    VistaPokemon.mostrarCampo(entrenadorActual, this.juego.obtenerEntrenadorRival());
                     break;
                 case 2:
                     turnoTerminado = this.seleccionarHabilidad();
@@ -77,7 +79,7 @@ public class Controller {
                     turnoTerminado = this.seleccionarItem();
                     break;
                 case 4:
-                    turnoTerminado = this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), false);
+                    turnoTerminado = this.seleccionarPokemon(entrenadorActual, false);
                     break;
                 case 5:
                     this.juego.rendirse();
@@ -91,9 +93,10 @@ public class Controller {
         juego.usarTurno();
     }
 
-    public boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
+    private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
+        Pokemon pokemonSeleccionado;
 
         while (true) {
             opcion = leerInt();
@@ -102,12 +105,13 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
                 continue;
             }
-            Pokemon pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
+            pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
             if (pokemonSeleccionado.estaMuerto()) VistaJuego.imprimir("Ese Pokemon esta muerto!");
             else break; // Opcion correcta seleccionada
         }
 
         entrenador.cambiarPokemon(opcion-1);
+        VistaJuego.imprimir(entrenador.obtenerNombre() + "ha cambiado su Pokemon a " + pokemonSeleccionado);
         return true;
     }
 
@@ -117,17 +121,22 @@ public class Controller {
         int opcion;
         while (true) {
             opcion = leerInt();
-            if (opcion > 0 && pokemonActual.obtenerHabilidades().get(opcion - 1).getUsos() <= 0) {
+            if (opcion > 0 && pokemonActual.obtenerHabilidades().get(opcion - 1).getUsos() <= 0) { // TODO: Horripilante
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
                 continue;
             }
+            // TODO: Paralizado: El Pokemon no realizara la habilidad seleccionada con probabilidad 0.5.
+            /* TODO: Una vez seleccionada, se debe mostrar un mensaje
+                mostrando la accion realizada y el resultado. El resultado depende de
+                la accion, por ejemplo si cambio la vida, mostrar la vida restante, si
+                el estado cambio mostrar un mensaje acorde.*/
             switch (opcion) {
                 case 0: return false;
                 case 1:
-                    this.juego.atacar(0);
+                    VistaJuego.mostrarEfectividad(this.juego.atacar(0));
                     return true;
                 case 2:
-                    this.juego.atacar(1);
+                    VistaJuego.mostrarEfectividad(this.juego.atacar(1));
                     return true;
                 case 3:
                     this.juego.usarHabilidad(2);
@@ -141,14 +150,14 @@ public class Controller {
         }
     }
 
-    public boolean seleccionarItem() {
+    private boolean seleccionarItem() {
         int opcion;
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         VistaItem.mostrarItems(entrenadorActual);
 
         while (true) {
             opcion = leerInt();
-            if (opcion > 0 && entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() <= 0) {
+            if (opcion > 0 && entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() <= 0) { // TODO: Horripilante
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
                 continue;
             }
@@ -157,12 +166,16 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             } else break; // Opcion correcta seleccionada
         }
-
+        // TODO: Luego de aplicar el item, se debe mostrar un mensaje que muestre la accion realizada para el otro jugador
         this.juego.usarItem(opcion - 1);
         return true;
     }
 
-    public void cerrarScanner() { this.scanner.close(); }
+    public void terminar() {
+        VistaJuego.imprimir("Presione cualquier tecla para terminar");
+        // TODO: Como es que presione cualquier tecla?
+        this.scanner.close();
+    }
 
     public void declararGanador() {
         VistaJuego.imprimir("El ganador es: " + juego.ganador.obtenerNombre());

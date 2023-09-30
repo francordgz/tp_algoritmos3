@@ -39,7 +39,7 @@ public class Entrenador {
         return pokemonActual;
     }
 
-    public void usarItem(int item){
+    public void usarItem(int item) {
         this.items.get(item).usarItem(pokemonActual);
     }
 

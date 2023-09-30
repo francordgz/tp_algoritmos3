@@ -90,10 +90,10 @@ public class Juego {
     }
 
 
-    public void atacar(int habilidad) {
+    public double atacar(int habilidad) {
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
-        pokemonActual.atacar(habilidad, pokemonRival, efectividades);
+        return pokemonActual.atacar(habilidad, pokemonRival, efectividades);
     }
 
     public void usarItem(int item) {

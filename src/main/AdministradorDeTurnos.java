@@ -4,9 +4,6 @@ public class AdministradorDeTurnos {
     private Entrenador entrenadorActual;
     private Entrenador entrenadorRival;
 
-    public AdministradorDeTurnos() {
-    }
-
     public Entrenador obtenerEntrenadorActual() { return this.entrenadorActual; }
 
     public Entrenador obtenerEntrenadorRivalActual() {
