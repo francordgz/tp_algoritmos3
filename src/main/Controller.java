@@ -1,8 +1,5 @@
 package src.main;
-import src.main.Vista.VistaHabilidad;
-import src.main.Vista.VistaItem;
-import src.main.Vista.VistaJuego;
-import src.main.Vista.VistaPokemon;
+import src.main.Vista.*;
 
 import java.util.Scanner;
 
@@ -22,6 +19,7 @@ public class Controller {
         String nombre2 = pedirNombreEntrenador(nombre1);
         this.juego.entrenador2 = new Entrenador(nombre2);
 
+        // TODO: Esto esta acá para que funcione pero no debería.
         this.juego.crearPokemones();
         this.juego.crearItems();
 
@@ -58,6 +56,11 @@ public class Controller {
         boolean turnoTerminado = false;
         boolean mostrar = true;
 
+        // TODO: Esto donde va??
+        if (this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estaMuerto()) {
+            this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
+        }
+
         while (!turnoTerminado) {
             if (mostrar) VistaJuego.mostrarMenu(this.juego.obtenerEntrenadorActual().obtenerNombre());
             else mostrar = true;
@@ -88,16 +91,20 @@ public class Controller {
         juego.usarTurno();
     }
 
-    public boolean seleccionarPokemon(Entrenador entrenador, boolean primeraSeleccion){
+    public boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion;
-        VistaPokemon.mostrarPokemones(entrenador, primeraSeleccion);
+        VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
 
         while (true) {
             opcion = leerInt();
-            if (!primeraSeleccion && opcion == 0) return false;
+            if (!seleccionObligatoria && opcion == 0) return false;
             if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-            } else break; // Opcion correcta seleccionada
+                continue;
+            }
+            Pokemon pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
+            if (pokemonSeleccionado.estaMuerto()) VistaJuego.imprimir("Ese Pokemon esta muerto!");
+            else break; // Opcion correcta seleccionada
         }
 
         entrenador.cambiarPokemon(opcion-1);
@@ -105,10 +112,15 @@ public class Controller {
     }
 
     public boolean seleccionarHabilidad(){
-        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        VistaHabilidad.mostrarHabilidades(pokemonActual);
         int opcion;
         while (true) {
             opcion = leerInt();
+            if (opcion > 0 && pokemonActual.obtenerHabilidades().get(opcion - 1).getUsos() <= 0) {
+                VistaJuego.imprimir("Esta habilidad no tiene más usos");
+                continue;
+            }
             switch (opcion) {
                 case 0: return false;
                 case 1:
@@ -131,10 +143,15 @@ public class Controller {
 
     public boolean seleccionarItem() {
         int opcion;
-        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
+        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+        VistaItem.mostrarItems(entrenadorActual);
 
         while (true) {
             opcion = leerInt();
+            if (opcion > 0 && entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() <= 0) {
+                VistaJuego.imprimir("Esta habilidad no tiene más usos");
+                continue;
+            }
             if (opcion == 0) return false;
             if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
                 VistaJuego.imprimir("Seleccione una opción correcta!");

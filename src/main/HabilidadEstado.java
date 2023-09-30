@@ -6,15 +6,14 @@ public class HabilidadEstado extends Habilidad{
 
     Estados tipo;
 
-    public HabilidadEstado(String nombre, int usos, Estados tipo){
+    public HabilidadEstado(String nombre, int usos, Estados tipo) {
         super(nombre,usos);
         this.tipo = tipo;
     }
 
 
     @Override
-    public void ModificarEstado(Pokemon pokemon){
-
+    public void modificarEstado(Pokemon pokemon){
         if(tipo == Estados.ENVENENADO){
             pokemon.modificarEstado(Estados.ENVENENADO);
         }else if(tipo == Estados.DORMIDO){
@@ -24,7 +23,6 @@ public class HabilidadEstado extends Habilidad{
         }
 
         this.usos -= 1;
-
     }
 
 }

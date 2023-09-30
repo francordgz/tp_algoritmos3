@@ -17,7 +17,7 @@ public class HabilidadEstadistica extends Habilidad{
 
 
     @Override
-    public void ModificarEstado(Pokemon pokemon){
+    public void modificarEstado(Pokemon pokemon){
 
         if(atributo == Atributos.VIDA){
             pokemon.curar(poder);

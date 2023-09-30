@@ -63,7 +63,7 @@ public class Pokemon {
 
     public void UsarHabilidad(int Numerohabilidad,Pokemon rival){
 
-        habilidades.get(Numerohabilidad).ModificarEstado(rival);
+        habilidades.get(Numerohabilidad).modificarEstado(rival);
 
     }
 

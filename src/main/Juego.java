@@ -23,7 +23,6 @@ public class Juego {
     }
 
     public void crearPokemones() {
-
         Pokedex pokedex = new Pokedex();
 
         entrenador1.agregarPokemon(pokedex.crearPokemon("Pikachu"));
