@@ -121,13 +121,13 @@ public class Controller {
         Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
 
         if(pokemonActual.estado == Estados.DORMIDO){
-            VistaJuego.imprimir("El pokemon esta dormido");
+            VistaJuego.imprimir("El pokemon esta dormido!");
             return false;
 
         }else if(pokemonActual.estado == Estados.PARALIZADO){
             Boolean probabilidad = calcularProbabilidad();
             if(probabilidad == false){
-                VistaJuego.imprimir("El pokemon esta paralizado");
+                VistaJuego.imprimir("El pokemon esta paralizado!");
                 return false;
             }
         }
