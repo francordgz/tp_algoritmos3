@@ -40,7 +40,15 @@ public class Entrenador {
     }
 
     public void usarItem(int item) {
-        this.items.get(item).usarItem(pokemonActual);
+
+        Scanner scan = new Scanner(System.in);
+
+        for(int i = 0;i<this.pokemones.size();i++){
+            System.out.println((i+1) + ": " + this.pokemones.get(i).nombre);
+        }
+        System.out.println("Seleccione en que Pokemon quiere aplicar el item: ");
+        int posicion = scan.nextInt();
+        this.items.get(item).usarItem(this.pokemones.get(posicion-1));
     }
 
     public void cambiarPokemon(int posicion){
