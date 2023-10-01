@@ -1,6 +1,8 @@
 package src.main;
+import src.main.Enums.Estados;
 import src.main.Vista.*;
 
+import java.util.Random;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -101,9 +103,9 @@ public class Controller {
         while (true) {
             opcion = leerInt();
             if (!seleccionObligatoria && opcion == 0) return false;
-            if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
-                VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
+                if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
+                    VistaJuego.imprimir("Seleccione una opción correcta!");
+                    continue;
             }
             pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
             if (pokemonSeleccionado.estaMuerto()) VistaJuego.imprimir("Ese Pokemon esta muerto!");
@@ -117,6 +119,19 @@ public class Controller {
 
     public boolean seleccionarHabilidad(){
         Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+
+        if(pokemonActual.estado == Estados.DORMIDO){
+            VistaJuego.imprimir("El pokemon esta dormido");
+            return false;
+
+        }else if(pokemonActual.estado == Estados.PARALIZADO){
+            Boolean probabilidad = calcularProbabilidad();
+            if(probabilidad == false){
+                VistaJuego.imprimir("El pokemon esta paralizado");
+                return false;
+            }
+        }
+            
         VistaHabilidad.mostrarHabilidades(pokemonActual);
         int opcion;
         while (true) {
@@ -134,7 +149,7 @@ public class Controller {
                 case 0: return false;
                 case 1:
                     VistaJuego.mostrarEfectividad(this.juego.atacar(0));
-                    return true;
+                return true;
                 case 2:
                     VistaJuego.mostrarEfectividad(this.juego.atacar(1));
                     return true;
@@ -146,8 +161,23 @@ public class Controller {
                     return true;
                 default:
                     VistaJuego.imprimir("Seleccione una opción correcta!");
+                }
             }
         }
+    
+
+
+    public Boolean calcularProbabilidad(){
+        Random rand = new Random();
+        int probabilidad = rand.nextInt(2);
+        
+        if(probabilidad == 1){
+            return true;
+        }else{
+            return false;
+        }
+
+
     }
 
     private boolean seleccionarItem() {
