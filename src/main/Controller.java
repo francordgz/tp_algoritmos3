@@ -63,6 +63,7 @@ public class Controller {
         if (pokemonActual.estaMuerto()) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
+            turnoTerminado = true;
         }
 
         while (!turnoTerminado) {
