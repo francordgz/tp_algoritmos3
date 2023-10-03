@@ -10,4 +10,8 @@ public class ItemRevivir extends Item {
     public void usarItem(Pokemon pokemon) {
         pokemon.revivir();
     }
+
+    public boolean esAplicable(Pokemon pokemon) {
+        return pokemon.estaMuerto();
+    }
 }

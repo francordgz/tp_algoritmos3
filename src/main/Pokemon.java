@@ -150,6 +150,9 @@ public class Pokemon {
 
     public void curar(int poder){
         this.vidaActual += poder;
+        if (vidaActual > vidaMaxima) {
+            this.vidaActual = this.vidaMaxima;
+        }
     }
 
     public void revivir() {
@@ -191,5 +194,7 @@ public class Pokemon {
         return this.estado != Estados.DORMIDO;
     }
 
-
+    public boolean necesitaCurarse() {
+        return this.estado != Estados.NORMAL && this.estado != Estados.MUERTO;
+    }
 }

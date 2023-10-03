@@ -11,4 +11,8 @@ public class ItemEstado extends Item {
     public void usarItem(Pokemon pokemon) {
         pokemon.modificarEstado(Estados.NORMAL);
     }
+
+    public boolean esAplicable(Pokemon pokemon) {
+        return pokemon.necesitaCurarse();
+    }
 }

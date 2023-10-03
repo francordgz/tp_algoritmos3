@@ -18,6 +18,10 @@ public abstract class Item {
         return cantidad;
     }
 
+    public boolean esAplicable(Pokemon pokemon) {
+        return cantidad > 0;
+    }
+
     public void usarItem(Pokemon pokemon) {
         
     }

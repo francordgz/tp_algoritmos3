@@ -97,6 +97,36 @@ public class Controller {
         juego.usarTurno();
     }
 
+    private int consultarPokemon(Entrenador entrenador, boolean seleccionObligatoria) {
+        boolean seleccionValida = false;
+        boolean seleccionDeSalidaValida = false;
+        int opcion = 0;
+        VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
+
+        while (!seleccionValida && !seleccionDeSalidaValida) {
+            opcion = leerInt();
+            seleccionValida = !(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == Constant.SALIR);
+            seleccionDeSalidaValida = !seleccionObligatoria && opcion == Constant.SALIR;
+
+            if(!seleccionValida && !seleccionDeSalidaValida) {
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            }
+        }
+        return opcion;
+    }
+
+    // private Pokemon pedirPokemonParaItem() {
+    //     boolean itemEsAplicable = false;
+    //     int opcion = NOT_INT;
+    //     Pokemon seleccionado = null;
+    //     VistaJuego.imprimir("Selección de Pokemon que utilizara un item \n");
+
+    //     while(opcion != Constant.SALIR) {
+    //         opcion = consultarPokemon(this.juego.obtenerEntrenadorActual(), false);
+    //     }
+    //     return null;
+    // }
+
     private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
@@ -105,12 +135,12 @@ public class Controller {
         Pokemon pokemonActual = entrenador.obtenerPokemonActual();
 
         while (true) {
-            opcion = leerInt();
-            if (!seleccionObligatoria && opcion == 0) { return false; }
-            if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
-                VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
-            }
+            opcion = consultarPokemon(entrenador, seleccionObligatoria);
+            if (!seleccionObligatoria && opcion == Constant.SALIR) { return false; }
+            //if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == Constant.SALIR) {
+            //    VistaJuego.imprimir("Seleccione una opción correcta!");
+            //    continue;
+            //}
             if (pokemonActual != null) { nombrePokemonActual = entrenador.obtenerPokemonActual().obtenerNombre(); }
 
             pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
@@ -157,7 +187,7 @@ public class Controller {
                 la accion, por ejemplo si cambio la vida, mostrar la vida restante, si
                 el estado cambio mostrar un mensaje acorde.*/
             switch (opcion) {
-                case 0: return false;
+                case Constant.SALIR: return false;
                 case 1:
                     VistaJuego.mostrarEfectividad(this.juego.atacar(0));
                 return true;
@@ -190,25 +220,39 @@ public class Controller {
 
 
     }
-
+    
     private boolean seleccionarItem() {
-        int opcion;
+        int opcion, numeroItem;
+        boolean pokemonSeleccionadoValido, itemSeleccionadoValido = false, itemEsAplicable = false;
+        Pokemon seleccionado;
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         VistaItem.mostrarItems(entrenadorActual);
 
-        while (true) {
+        while (!itemSeleccionadoValido && !itemEsAplicable) {
             opcion = leerInt();
+            seleccionado = pedirPokemonParaItem();
             if (opcion > 0 && entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() <= 0) { // TODO: Horripilante
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
                 continue;
             }
-            if (opcion == 0) return false;
-                if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
+            if (opcion == Constant.SALIR || seleccionado == null) {
+                VistaJuego.imprimir("Se ha decidido no utilizar un item.");
+                return false;
+            }
+            if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-            } else break; // Opcion correcta seleccionada
+            } else { 
+                numeroItem = opcion - 1;
+                itemSeleccionadoValido = true;
+                itemEsAplicable = entrenadorActual.puedeAplicarItem(seleccionado, numeroItem);
+            } // Opcion correcta seleccionada
+            if (itemSeleccionadoValido && !itemEsAplicable) {
+                VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
+                itemSeleccionadoValido = itemEsAplicable;
+            } 
         }
         // TODO: Luego de aplicar el item, se debe mostrar un mensaje que muestre la accion realizada para el otro jugador
-        this.juego.usarItem(opcion - 1);
+        this.juego.usarItem(numeroItem);
         return true;
     }
 

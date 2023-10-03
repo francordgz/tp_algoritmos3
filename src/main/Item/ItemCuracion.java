@@ -12,4 +12,8 @@ public class ItemCuracion extends Item {
     public void usarItem(Pokemon pokemon) {
         pokemon.curar(poder);
     }
+
+    public boolean esAplicable(Pokemon pokemon) {
+        return !pokemon.estaMuerto();
+    }
 }

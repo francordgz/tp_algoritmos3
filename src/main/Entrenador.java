@@ -62,4 +62,9 @@ public class Entrenador {
         }
         return false;
     }
+
+    public boolean puedeAplicarItem(Pokemon pokemon, int item) {
+        Item itemSeleccionado = items.get(item);
+        return itemSeleccionado.esAplicable(pokemon);
+    }
 }
