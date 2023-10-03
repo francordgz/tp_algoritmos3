@@ -3,6 +3,7 @@ import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
 
 import java.util.List;
+import java.util.Random;
 
 public class Pokemon {
 
@@ -79,6 +80,7 @@ public class Pokemon {
         cuarto se despertaria seguro.*/
     public void actualizarEstado() {
         if (this.estado == Estados.DORMIDO) {
+                this.actualizarEstadoDormido();
                 if (turnosDormido >= 4) {
                     this.estado = Estados.NORMAL;
                 }
@@ -86,6 +88,33 @@ public class Pokemon {
             this.recibirDanio(this.vidaMaxima * 0.5);
         }
     }
+
+    private void actualizarEstadoDormido() {
+        Boolean probabilidad = calcularProbabilidadDespertarse();
+
+        if (probabilidad) {
+            this.estado = Estados.NORMAL;
+            this.turnosDormido = 0;
+            return;
+        }
+
+        this.turnosDormido += 1;
+    }
+
+    public Boolean calcularProbabilidadDespertarse(){
+
+        int rand = new Random().nextInt(100);
+        int probabilidad = 25 + 25*this.turnosDormido - 1;
+
+        
+        if(probabilidad > rand){
+            return true;
+        }
+
+        return false;
+
+    }
+
 
     public String obtenerNombre(){
         return nombre;

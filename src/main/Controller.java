@@ -92,6 +92,7 @@ public class Controller {
             }
         }
 
+        juego.actualizarEstado();
         juego.usarTurno();
     }
 

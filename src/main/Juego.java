@@ -101,6 +101,12 @@ public class Juego {
     }
 
 
+    public void actualizarEstado(){
+        this.administrador.obtenerEntrenadorActual().obtenerPokemonActual().actualizarEstado();
+
+
+    }
+
     public void usarTurno() {
         this.administrador.cambiarTurno();
     }
