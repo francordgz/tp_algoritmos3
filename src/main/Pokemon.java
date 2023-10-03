@@ -187,5 +187,9 @@ public class Pokemon {
         return habilidades;
     }
 
+    public boolean puedeAtacar() {
+        return this.estado != Estados.DORMIDO;
+    }
+
 
 }

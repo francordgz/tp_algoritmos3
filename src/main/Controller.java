@@ -130,17 +130,14 @@ public class Controller {
     public boolean seleccionarHabilidad(){
         Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
 
-        if(pokemonActual.estado == Estados.DORMIDO){
-            VistaJuego.imprimir("El pokemon esta dormido!");
-            return false;
-
-        }else if(pokemonActual.estado == Estados.PARALIZADO){
-            Boolean probabilidad = calcularProbabilidad();
-            if(probabilidad == false){
-                VistaJuego.imprimir("El pokemon esta paralizado!");
-                return false;
-            }
-        }
+        // Creo que esto se va, despues vemos
+        // if(pokemonActual.estado == Estados.PARALIZADO){
+        //     Boolean probabilidad = calcularProbabilidad();
+        //     if(probabilidad == false){
+        //         VistaJuego.imprimir("El pokemon esta paralizado!");
+        //         return false;
+        //     }
+        // }
             
         VistaHabilidad.mostrarHabilidades(pokemonActual);
         int opcion;
@@ -148,6 +145,10 @@ public class Controller {
             opcion = leerInt();
             if (opcion > 0 && pokemonActual.obtenerHabilidades().get(opcion - 1).getUsos() <= 0) { // TODO: Horripilante
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
+                continue;
+            }
+            if (!pokemonActual.puedeAtacar() && (opcion == 1 || opcion == 2)) {
+                VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
                 continue;
             }
             // TODO: Paralizado: El Pokemon no realizara la habilidad seleccionada con probabilidad 0.5.
