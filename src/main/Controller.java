@@ -109,6 +109,7 @@ public class Controller {
                     continue;
             }
             pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
+            
             if (pokemonSeleccionado.estaMuerto()) VistaJuego.imprimir("Ese Pokemon esta muerto!");
             else break; // Opcion correcta seleccionada
         }
@@ -193,7 +194,7 @@ public class Controller {
                 continue;
             }
             if (opcion == 0) return false;
-            if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
+                if(opcion == NOT_INT || opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size()) {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             } else break; // Opcion correcta seleccionada
         }

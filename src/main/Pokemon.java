@@ -104,7 +104,7 @@ public class Pokemon {
     public Boolean calcularProbabilidadDespertarse(){
 
         int rand = new Random().nextInt(100);
-        int probabilidad = 25 + 25*this.turnosDormido - 1;
+        int probabilidad = 25 + (25*this.turnosDormido) - 1;
 
         
         if(probabilidad > rand){
