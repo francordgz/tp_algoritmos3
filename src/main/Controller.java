@@ -100,19 +100,26 @@ public class Controller {
     private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
+        String nombrePokemonActual = "";
         Pokemon pokemonSeleccionado;
+        Pokemon pokemonActual = entrenador.obtenerPokemonActual();
 
         while (true) {
             opcion = leerInt();
-            if (!seleccionObligatoria && opcion == 0) return false;
-                if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
-                    VistaJuego.imprimir("Seleccione una opción correcta!");
-                    continue;
+            if (!seleccionObligatoria && opcion == 0) { return false; }
+            if(opcion == NOT_INT || opcion > entrenador.obtenerPokemones().size() || opcion == 0) {
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+                continue;
             }
+            if (pokemonActual != null) { nombrePokemonActual = entrenador.obtenerPokemonActual().obtenerNombre(); }
+
             pokemonSeleccionado = entrenador.obtenerPokemones().get(opcion-1); // TODO: Esto esta medio mal
-            
-            if (pokemonSeleccionado.estaMuerto()) VistaJuego.imprimir("Ese Pokemon esta muerto!");
-            else break; // Opcion correcta seleccionada
+
+            if (pokemonSeleccionado.estaMuerto()) {
+                VistaJuego.imprimir("Ese Pokemon esta muerto!");
+            } else if (nombrePokemonActual.equals(pokemonSeleccionado.obtenerNombre())) {
+                VistaJuego.imprimir("Se debe elegir un Pokemon distinto al actual mientras él siga con vida!");
+            } else break; // Opcion correcta seleccionada
         }
 
         entrenador.cambiarPokemon(opcion-1);
