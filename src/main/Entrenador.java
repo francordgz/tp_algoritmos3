@@ -39,16 +39,8 @@ public class Entrenador {
         return pokemonActual;
     }
 
-    public void usarItem(int item) {
-
-        Scanner scan = new Scanner(System.in);
-
-        for(int i = 0;i<this.pokemones.size();i++){
-            System.out.println((i+1) + ": " + this.pokemones.get(i).nombre);
-        }
-        System.out.println("Seleccione en que Pokemon quiere aplicar el item: ");
-        int posicion = scan.nextInt();
-        this.items.get(item).usarItem(this.pokemones.get(posicion-1));
+    public void usarItem(int item, int indicePokemon) {
+        this.items.get(item).usarItem(pokemones.get(indicePokemon));
     }
 
     public void cambiarPokemon(int posicion){
@@ -63,8 +55,8 @@ public class Entrenador {
         return false;
     }
 
-    public boolean puedeAplicarItem(Pokemon pokemon, int item) {
+    public boolean puedeAplicarItem(int indecePokemon, int item) {
         Item itemSeleccionado = items.get(item);
-        return itemSeleccionado.esAplicable(pokemon);
+        return itemSeleccionado.esAplicable(pokemones.get(indecePokemon));
     }
 }
