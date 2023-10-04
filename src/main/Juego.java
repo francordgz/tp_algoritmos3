@@ -96,8 +96,8 @@ public class Juego {
         return pokemonActual.atacar(habilidad, pokemonRival, efectividades);
     }
 
-    public void usarItem(int item) {
-        this.administrador.obtenerEntrenadorActual().usarItem(item);
+    public void usarItem(int item, int pokemon) {
+        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
     }
 
 

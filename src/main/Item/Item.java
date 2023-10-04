@@ -19,10 +19,10 @@ public abstract class Item {
     }
 
     public boolean esAplicable(Pokemon pokemon) {
-        return cantidad > 0;
+        return true;
     }
 
     public void usarItem(Pokemon pokemon) {
-        
+        this.cantidad -= 1;
     }
 }

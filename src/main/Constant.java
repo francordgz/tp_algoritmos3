@@ -7,7 +7,7 @@ public class Constant {
     public static final int DOBLE = 2;
     static final int MAX_NOMBRE = 50;
     static final int NOT_INT = -1;
-    static final int SALIR = -1;
+    static final int SALIR = 0;
 
     static public double[][] crearEfectividades() {
         double[][] efectividades = new double[15][15];
