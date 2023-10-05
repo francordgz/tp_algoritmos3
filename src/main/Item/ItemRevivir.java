@@ -9,6 +9,7 @@ public class ItemRevivir extends Item {
     @Override
     public void usarItem(Pokemon pokemon) {
         pokemon.revivir();
+        decrementarCantidad();
     }
 
     public boolean esAplicable(Pokemon pokemon) {

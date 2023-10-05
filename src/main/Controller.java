@@ -92,7 +92,6 @@ public class Controller {
                     mostrar = false;
             }
         }
-
         juego.actualizarEstado();
         juego.usarTurno();
     }
@@ -136,7 +135,7 @@ public class Controller {
             }
         }
         entrenador.cambiarPokemon(indicePokemon);
-        return false;
+        return true;
     }
 
     private int consultarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
@@ -158,9 +157,36 @@ public class Controller {
         return opcion - 1;
     }
 
-    public boolean seleccionarHabilidad(){
-        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+    private int consultarHabilidad() {
+        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual()
+                                    .obtenerPokemonActual();
+        Habilidad habilidadSeleccionada;
+        boolean esHabilidadDeAtaque, opcionValida, habilidadValida = false;
+        int opcion = Constant.SALIR;
+        
+        VistaHabilidad.mostrarHabilidades(pokemonActual);
+        while (!habilidadValida) {
+            opcion = leerInt();
+            opcionValida = opcion <= 4 && opcion >= 0;
 
+            if (!opcionValida) {
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+                continue;
+            }
+            else if (opcion == Constant.SALIR) { return opcion; }
+            else { esHabilidadDeAtaque = opcion == 1 || opcion == 2; }
+            habilidadSeleccionada = pokemonActual.obtenerHabilidades().get(opcion - 1);
+
+            if (!habilidadSeleccionada.quedanUsosDisponibles()) {
+                VistaJuego.imprimir("Esta habilidad no tiene más usos");
+            } else if (esHabilidadDeAtaque && !pokemonActual.puedeAtacar()) {
+                VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
+            } else { habilidadValida = true; }
+        }
+        return opcion;
+    }
+
+    public boolean seleccionarHabilidad(){
         // Creo que esto se va, despues vemos
         // if(pokemonActual.estado == Estados.PARALIZADO){
         //     Boolean probabilidad = calcularProbabilidad();
@@ -169,42 +195,26 @@ public class Controller {
         //         return false;
         //     }
         // }
-        VistaHabilidad.mostrarHabilidades(pokemonActual);
-        int opcion;
-        while (true) {
-            opcion = leerInt();
-            if (opcion > 0 && pokemonActual.obtenerHabilidades().get(opcion - 1).getUsos() == 0) { // TODO: Horripilante
-                VistaJuego.imprimir("Esta habilidad no tiene más usos");
-                continue;
-            }
-            if (!pokemonActual.puedeAtacar() && (opcion == 1 || opcion == 2)) {
-                VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
-                continue;
-            }
+        int opcion = consultarHabilidad();
+        int habilidadSeleccionada = opcion - 1;
             // TODO: Paralizado: El Pokemon no realizara la habilidad seleccionada con probabilidad 0.5.
             /* TODO: Una vez seleccionada, se debe mostrar un mensaje
                 mostrando la accion realizada y el resultado. El resultado depende de
                 la accion, por ejemplo si cambio la vida, mostrar la vida restante, si
                 el estado cambio mostrar un mensaje acorde.*/
-            switch (opcion) {
-                case Constant.SALIR: return false;
-                case 1:
-                    VistaJuego.mostrarEfectividad(this.juego.atacar(0));
-                return true;
-                case 2:
-                    VistaJuego.mostrarEfectividad(this.juego.atacar(1));
-                    return true;
-                case 3:
-                    this.juego.usarHabilidad(2);
-                    return true;
-                case 4:
-                    this.juego.usarHabilidad(3);
-                    return true;
-                default:
-                    VistaJuego.imprimir("Seleccione una opción correcta!");
-                }
-            }
+        switch (opcion) {
+            case Constant.SALIR: return false;
+            case 1:
+                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada)); break;
+            case 2:
+                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada)); break;
+            case 3:
+                this.juego.usarHabilidad(habilidadSeleccionada); break;
+            case 4:
+                this.juego.usarHabilidad(habilidadSeleccionada); break;
         }
+        return true;
+    } 
     
 
 

@@ -22,5 +22,6 @@ public class ItemEstadistica extends Item {
             default:
                 throw new RuntimeException("Error en el item!");
         }
+        decrementarCantidad();
     }
 }

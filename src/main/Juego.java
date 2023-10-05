@@ -42,20 +42,23 @@ public class Juego {
 
     public void crearItems() {
 
-        List<Item> items = new ArrayList<Item>();
-
-        items.add(new ItemCuracion(20, "Pocion", 3));
-        items.add(new ItemCuracion(50, "MegaPocion", 2));
-        items.add(new ItemCuracion(100, "Hiperpocion", 1));
-        items.add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
-        items.add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
-        items.add(new ItemEstado("CuraTodo", 3));
-        items.add(new ItemRevivir("Revivir", 1));
-
-        for (Item item: items) {
-            entrenador1.agregarItem(item);
-            entrenador2.agregarItem(item);
+        List<List<Item>> setsDeIems = new ArrayList<List<Item>>();
+        
+        for (int i = 0; i < 2; i ++) {
+            setsDeIems.add(new ArrayList<Item>());
+            setsDeIems.get(i).add(new ItemCuracion(20, "Pocion", 3));
+            setsDeIems.get(i).add(new ItemCuracion(50, "MegaPocion", 2));
+            setsDeIems.get(i).add(new ItemCuracion(100, "Hiperpocion", 1));
+            setsDeIems.get(i).add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
+            setsDeIems.get(i).add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
+            setsDeIems.get(i).add(new ItemEstado("CuraTodo", 3));
+            setsDeIems.get(i).add(new ItemRevivir("Revivir", 1));
         }
+        List<Item> primerSetItems = setsDeIems.get(0);
+        for (Item item: primerSetItems) { entrenador1.agregarItem(item); }
+
+        List<Item> segundoSetItems = setsDeIems.get(1);
+        for (Item item: segundoSetItems) { entrenador2.agregarItem(item); }
     }
 
     public Entrenador obtenerPrimerEntrenador() {

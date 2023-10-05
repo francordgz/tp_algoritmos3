@@ -11,6 +11,7 @@ public class ItemCuracion extends Item {
     @Override
     public void usarItem(Pokemon pokemon) {
         pokemon.curar(poder);
+        decrementarCantidad();
     }
 
     public boolean esAplicable(Pokemon pokemon) {

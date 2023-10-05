@@ -15,6 +15,8 @@ public class Habilidad {
         return nombre;
     }
 
+    public boolean quedanUsosDisponibles() { return this.usos > 0; }
+
     public void atacar(int ataque,int nivel,Pokemon rival,double efectividad){
 
 

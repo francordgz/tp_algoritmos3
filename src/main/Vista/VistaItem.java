@@ -9,10 +9,8 @@ public class VistaItem extends VistaJuego {
         int i = 1;
 
         for (Item item : entrenador.obtenerItems()) {
-            if (item.obtenerCantidad() > 0) {
-                imprimir(i + ": " + item.obtenerNombre() + " (Cantidad: " + item.obtenerCantidad() + ")");
-                i++;
-            }
+            imprimir(i + ": " + item.obtenerNombre() + " (Cantidad: " + item.obtenerCantidad() + ")");
+            i++;
         }
 
         imprimir("0: Volver atrás\n");

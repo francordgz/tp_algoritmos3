@@ -18,11 +18,13 @@ public abstract class Item {
         return cantidad;
     }
 
+    protected boolean quedanUsosDisponibles() { return this.cantidad > 0; }
+
     public boolean esAplicable(Pokemon pokemon) {
         return true;
     }
 
-    public void usarItem(Pokemon pokemon) {
-        this.cantidad -= 1;
-    }
+    public abstract void usarItem(Pokemon pokemon);
+
+    protected void decrementarCantidad() { this.cantidad -= 1; }
 }

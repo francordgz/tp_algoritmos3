@@ -10,6 +10,7 @@ public class ItemEstado extends Item {
     @Override
     public void usarItem(Pokemon pokemon) {
         pokemon.modificarEstado(Estados.NORMAL);
+        decrementarCantidad();
     }
 
     public boolean esAplicable(Pokemon pokemon) {
