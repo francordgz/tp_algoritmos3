@@ -17,7 +17,7 @@ Primer TP Algoritmos y Programación 3 **Cátedra Cano, Brasburg, Raik.**
 - [Kit de Desarrollo de Java (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) instalado en tu sistema
 - También disponible [OpenJDK](https://jdk.java.net/).
 - La versión nuestra utilizada es OpenJDK 1.8.0_292
-- No se requiere ninguna paquete o librería externa
+- No se requiere ningun paquete o librería externa
 
 ## Inicio Rápido
 
@@ -36,6 +36,7 @@ javac src/main/Main.java
 1. Después de compilar, puedes ejecutar el programa Java utilizando el comando `java`:
 java src/main/Main
 2. Listo! A jugar a que eres Ash Ketchup 🍅 o como se llame
+
    
 ![Oedi  on X: "CAMPEONES DEL MUNDO 😭🏆 https://t.co/5O6RL1P0cS" / X](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw85sPJ_7IlXtxt4k2HMVhy7mQ3yul77u2-85P9v7ZlyTd2uFV9to-5hgJzqg_35GxrRM&usqp=CAU)
 
