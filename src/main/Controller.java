@@ -15,18 +15,13 @@ public class Controller {
     public Controller(Juego juego) {
         this.juego = juego;
         String nombre1 = pedirNombreEntrenador("");
-        this.juego.entrenador1 = new Entrenador(nombre1);
-
         String nombre2 = pedirNombreEntrenador(nombre1);
-        this.juego.entrenador2 = new Entrenador(nombre2);
 
-        // TODO: Esto esta acá para que funcione pero no debería.
+        this.juego.asignarEntrenadores(new Entrenador(nombre1), new Entrenador(nombre2));
         this.juego.crearPokemones();
         this.juego.crearItems();
-
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
-
         this.juego.inicializarTurnos();
     }
 
@@ -59,7 +54,6 @@ public class Controller {
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
 
-        // TODO: Esto donde va??
         if (pokemonActual.estaMuerto()) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
@@ -93,7 +87,7 @@ public class Controller {
             }
         }
         juego.actualizarEstado();
-        juego.usarTurno();
+        juego.cambiarTurno();
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
@@ -152,7 +146,7 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opcion correcta porfavor");
                 continue;
             }
-            seleccionValida = true; // Opcion correcta seleccionada
+            seleccionValida = true;
         }
         return opcion - 1;
     }
@@ -222,9 +216,9 @@ public class Controller {
         Random rand = new Random();
         int probabilidad = rand.nextInt(2);
         
-        if(probabilidad == 1){
+        if(probabilidad == 1) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -255,7 +249,7 @@ public class Controller {
             itemDisponible = entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() > 0;
             if (!itemDisponible) {
                 VistaJuego.imprimir("Este item no tiene más usos");
-                continue; // return false?
+                continue;
             } else { 
                 itemSeleccionadoValido = true;
                 itemEsAplicable = entrenadorActual.puedeAplicarItem(pokemonSeleccionado, numeroItem);
@@ -272,15 +266,12 @@ public class Controller {
 
     public void terminar() {
         VistaJuego.imprimir("Presione cualquier tecla para terminar");
-        // TODO: Como es que presione cualquier tecla?
         this.scanner.close();
     }
 
     public void declararGanador() {
-        VistaJuego.imprimir("El ganador es: " + juego.ganador.obtenerNombre());
+        VistaJuego.imprimir("El ganador es: " + juego.obtenerGanador().obtenerNombre());
     }
-
-    //Auxiliares:
 
     private String leerString() {
         return this.scanner.nextLine();

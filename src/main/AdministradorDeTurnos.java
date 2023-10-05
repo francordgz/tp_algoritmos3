@@ -17,7 +17,9 @@ public class AdministradorDeTurnos {
     }
 
     public void asignarPrimerTurno(Entrenador entrenador1, Entrenador entrenador2) {
-        if (entrenador1.pokemonActual.obtenerVelocidad() >= entrenador2.pokemonActual.obtenerVelocidad()) {
+        Pokemon primero = entrenador1.obtenerPokemonActual();
+        Pokemon segundo = entrenador2.obtenerPokemonActual();
+        if (primero.obtenerVelocidad() >= segundo.obtenerVelocidad()) {
             this.entrenadorActual = entrenador1;
             this.entrenadorRival = entrenador2;
         } else {

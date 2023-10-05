@@ -3,7 +3,8 @@ import src.main.Enums.TipoModificacion;
 import src.main.Pokemon;
 
 public class ItemEstadistica extends Item {
-    TipoModificacion tipo;
+    
+    private TipoModificacion tipo;
 
     public ItemEstadistica(String nombre, TipoModificacion tipo, int cantidad) {
         super(nombre, cantidad);

@@ -2,8 +2,8 @@ package src.main.Item;
 import src.main.Pokemon;
 
 public abstract class Item {
-    String nombre;
-    int cantidad;
+    protected String nombre;
+    protected int cantidad;
 
     public Item(String nombre, int cantidad) {
         this.nombre = nombre;

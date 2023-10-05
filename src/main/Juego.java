@@ -9,17 +9,51 @@ import src.main.Enums.TipoModificacion;
 
 public class Juego {
 
-    Entrenador entrenador1;
-    Entrenador entrenador2;
-    Entrenador ganador;
-    AdministradorDeTurnos administrador;
-    Boolean terminado;
-    double[][] efectividades;
+    private Entrenador entrenador1;
+    private Entrenador entrenador2;
+    private Entrenador ganador;
+    private AdministradorDeTurnos administrador;
+    private Boolean terminado;
+    private double[][] efectividades;
 
     public Juego() {
         this.efectividades = Constant.crearEfectividades();
         this.administrador = new AdministradorDeTurnos();
         this.terminado = false;
+    }
+
+    public void inicializarTurnos() {
+        this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
+    }
+
+    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
+        this.entrenador1 = primerEntrenador;
+        this.entrenador2 = segundoEntrenador;
+    }
+
+    public Entrenador obtenerGanador() { return this.ganador; }
+
+    public Entrenador obtenerPrimerEntrenador() { return entrenador1; }
+
+    public Entrenador obtenerSegundoEntrenador() { return entrenador2; }
+
+    public Entrenador obtenerEntrenadorActual() { return this.administrador.obtenerEntrenadorActual(); }
+
+    public Entrenador obtenerEntrenadorRival() { return this.administrador.obtenerEntrenadorRivalActual(); }
+
+    public void usarItem(int item, int pokemon) {
+        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
+    }
+
+    public void usarHabilidad(int habilidad) {
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
+
+        if (!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()) {
+            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorActual.obtenerPokemonActual());
+        } else {
+            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorRival.obtenerPokemonActual());
+        }
     }
 
     public void crearPokemones() {
@@ -61,56 +95,17 @@ public class Juego {
         for (Item item: segundoSetItems) { entrenador2.agregarItem(item); }
     }
 
-    public Entrenador obtenerPrimerEntrenador() {
-        return entrenador1;
-    }
-
-    public Entrenador obtenerSegundoEntrenador() {
-        return entrenador2;
-    }
-
-    public Entrenador obtenerEntrenadorActual() {
-        return this.administrador.obtenerEntrenadorActual();
-    }
-
-    public Entrenador obtenerEntrenadorRival() {
-        return this.administrador.obtenerEntrenadorRivalActual();
-    }
-
-    public void inicializarTurnos() {
-        this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
-    }
-
-    public void usarHabilidad(int habilidad) {
-        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
-        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
-
-        if (!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()) {
-            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorActual.obtenerPokemonActual());
-        } else {
-            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorRival.obtenerPokemonActual());
-        }
-    }
-
-
     public double atacar(int habilidad) {
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
         return pokemonActual.atacar(habilidad, pokemonRival, efectividades);
     }
 
-    public void usarItem(int item, int pokemon) {
-        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
-    }
-
-
     public void actualizarEstado(){
         this.administrador.obtenerEntrenadorActual().obtenerPokemonActual().actualizarEstado();
-
-
     }
 
-    public void usarTurno() {
+    public void cambiarTurno() {
         this.administrador.cambiarTurno();
     }
 
@@ -124,7 +119,6 @@ public class Juego {
             this.ganador = obtenerEntrenadorRival();
             return true;
         }
-
         return this.terminado;
     }
 }

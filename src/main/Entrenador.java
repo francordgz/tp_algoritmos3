@@ -4,10 +4,10 @@ import src.main.Item.Item;
 import java.util.*;
 
 public class Entrenador {
-    String nombre;
-    ArrayList<Item> items;
-    ArrayList<Pokemon> pokemones;
-    Pokemon pokemonActual;
+    private String nombre;
+    private ArrayList<Item> items;
+    private ArrayList<Pokemon> pokemones;
+    private Pokemon pokemonActual;
 
     public Entrenador(String nombre) {
         this.nombre = nombre;

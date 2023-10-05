@@ -7,17 +7,17 @@ import java.util.Random;
 
 public class Pokemon {
 
-    String nombre;
-    String historia;
-    double vidaActual;
-    int vidaMaxima;
-    int velocidad;
-    int defensa;
-    Tipo tipo;
-    int ataque;
-    Estados estado;
-    int nivel;
-    List<Habilidad> habilidades;
+    private String nombre;
+    private String historia;
+    private double vidaActual;
+    private int vidaMaxima;
+    private int velocidad;
+    private int defensa;
+    private Tipo tipo;
+    private int ataque;
+    private Estados estado;
+    private int nivel;
+    private List<Habilidad> habilidades;
 
     int turnosDormido;
 
@@ -43,7 +43,6 @@ public class Pokemon {
         if (this.vidaActual < 0) {
             this.vidaActual = 0;
         }
-
         if (this.vidaActual == 0){
             this.estado = Estados.MUERTO;
         }
@@ -60,7 +59,6 @@ public class Pokemon {
     }
 
     public double calcularEfectividad(Pokemon rival,double [][] efectividades){
-
         int posicionAtacante = this.tipo.ordinal();
         int PosicionRival = rival.obtenerTipo().ordinal();
 
@@ -69,9 +67,7 @@ public class Pokemon {
 
 
     public void UsarHabilidad(int Numerohabilidad,Pokemon rival){
-
         habilidades.get(Numerohabilidad).modificarEstado(rival);
-
     }
 
     /* TODO:
@@ -97,22 +93,15 @@ public class Pokemon {
             this.turnosDormido = 0;
             return;
         }
-
         this.turnosDormido += 1;
     }
 
     public Boolean calcularProbabilidadDespertarse(){
-
         int rand = new Random().nextInt(100);
         int probabilidad = 25 + (25*this.turnosDormido) - 1;
 
-        
-        if(probabilidad > rand){
-            return true;
-        }
-
+        if(probabilidad > rand) { return true; }
         return false;
-
     }
 
 
@@ -180,10 +169,8 @@ public class Pokemon {
         return this.estado == Estados.MUERTO;
     }
 
-    public Habilidad habilidades(int habilidad){
-
+    public Habilidad habilidades(int habilidad) {
         return habilidades.get(habilidad);
-
     }
 
     public List<Habilidad> obtenerHabilidades() {

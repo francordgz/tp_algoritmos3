@@ -9,7 +9,7 @@ public class VistaHabilidad extends VistaJuego {
 
         for (Habilidad habilidad : pokemon.obtenerHabilidades()) {
                 imprimir(i + " : " + habilidad.obtenerNombre() +
-                        " (Usos Restantes: " + habilidad.getUsos() + ")");
+                        " (Usos Restantes: " + habilidad.obtenerUsos() + ")");
                 i++;
         }
 

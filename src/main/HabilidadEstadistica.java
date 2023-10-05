@@ -4,9 +4,9 @@ import src.main.Enums.Atributos;
 
 public class HabilidadEstadistica extends Habilidad{
 
-    int poder;
-    Atributos atributo;
-    Boolean AfectarRival;
+    private int poder;
+    private Atributos atributo;
+    private Boolean AfectarRival;
 
     public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int poder, Boolean AfectarRival) {
         super(nombre,usos);
@@ -17,20 +17,18 @@ public class HabilidadEstadistica extends Habilidad{
 
 
     @Override
-    public void modificarEstado(Pokemon pokemon){
+    public void modificarEstado(Pokemon pokemon) {
 
-        if(atributo == Atributos.VIDA){
+        if(atributo == Atributos.VIDA) {
             pokemon.curar(poder);
-        }else if(atributo == Atributos.ATAQUE){
+        } else if(atributo == Atributos.ATAQUE) {
             pokemon.modificarAtaque(poder);
-        } else if(atributo == Atributos.VELOCIDAD){
+        } else if(atributo == Atributos.VELOCIDAD) {
             pokemon.modificarVelocidad(poder);
-        }else if(atributo == Atributos.DEFENSA)
+        } else if(atributo == Atributos.DEFENSA) {
             pokemon.modificarDefensa(poder);
-
+        }
         this.usos -=1;
-
-
     }
 
     @Override
