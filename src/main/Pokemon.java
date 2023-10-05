@@ -15,7 +15,7 @@ public class Pokemon {
     private int defensa;
     private Tipo tipo;
     private int ataque;
-    private Estados estado;
+    public Estados estado;
     private int nivel;
     private List<Habilidad> habilidades;
 

@@ -181,21 +181,17 @@ public class Controller {
     }
 
     public boolean seleccionarHabilidad(){
-        // Creo que esto se va, despues vemos
-        // if(pokemonActual.estado == Estados.PARALIZADO){
-        //     Boolean probabilidad = calcularProbabilidad();
-        //     if(probabilidad == false){
-        //         VistaJuego.imprimir("El pokemon esta paralizado!");
-        //         return false;
-        //     }
-        // }
+       
+        /*  if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
+            Boolean probabilidad = calcularProbabilidad();
+            if(probabilidad == false){
+                VistaJuego.imprimir("El pokemon esta paralizado!");
+                return false;
+            }
+        }*/
         int opcion = consultarHabilidad();
         int habilidadSeleccionada = opcion - 1;
-            // TODO: Paralizado: El Pokemon no realizara la habilidad seleccionada con probabilidad 0.5.
-            /* TODO: Una vez seleccionada, se debe mostrar un mensaje
-                mostrando la accion realizada y el resultado. El resultado depende de
-                la accion, por ejemplo si cambio la vida, mostrar la vida restante, si
-                el estado cambio mostrar un mensaje acorde.*/
+
         switch (opcion) {
             case Constant.SALIR: return false;
             case 1:

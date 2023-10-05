@@ -15,6 +15,7 @@ public class ItemCuracion extends Item {
         decrementarCantidad();
     }
 
+    @Override
     public boolean esAplicable(Pokemon pokemon) {
         return !pokemon.estaMuerto();
     }

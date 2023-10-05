@@ -13,6 +13,7 @@ public class ItemEstado extends Item {
         decrementarCantidad();
     }
 
+    @Override
     public boolean esAplicable(Pokemon pokemon) {
         return pokemon.necesitaCurarse();
     }
