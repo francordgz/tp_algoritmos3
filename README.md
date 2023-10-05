@@ -36,6 +36,7 @@ javac src/main/Main.java
 1. Después de compilar, puedes ejecutar el programa Java utilizando el comando `java`:
 java src/main/Main
 2. Listo! A jugar a que eres Ash Ketchup 🍅 o como se llame
+   
 ![Oedi  on X: "CAMPEONES DEL MUNDO 😭🏆 https://t.co/5O6RL1P0cS" / X](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw85sPJ_7IlXtxt4k2HMVhy7mQ3yul77u2-85P9v7ZlyTd2uFV9to-5hgJzqg_35GxrRM&usqp=CAU)
 
 ### ✅ Tecnologías utilizadas
