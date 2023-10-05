@@ -259,8 +259,8 @@ public class Controller {
                 itemSeleccionadoValido = itemEsAplicable;
             } 
         }
-        // TODO: Luego de aplicar el item, se debe mostrar un mensaje que muestre la accion realizada para el otro jugador
         this.juego.usarItem(numeroItem, pokemonSeleccionado);
+        VistaItem.notificarUsoDeItem(entrenadorActual, numeroItem);
         return true;
     }
 

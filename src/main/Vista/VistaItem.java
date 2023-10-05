@@ -12,7 +12,11 @@ public class VistaItem extends VistaJuego {
             imprimir(i + ": " + item.obtenerNombre() + " (Cantidad: " + item.obtenerCantidad() + ")");
             i++;
         }
-
         imprimir("0: Volver atrás\n");
+    }
+
+    static public void notificarUsoDeItem(Entrenador entrenador, int itemUsado) {
+        Item item = entrenador.obtenerItems().get(itemUsado);
+        imprimir(entrenador.obtenerNombre() + " ha utilizado el item " + item.obtenerNombre());
     }
 }

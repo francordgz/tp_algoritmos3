@@ -39,7 +39,7 @@ public class Pokemon {
 
     public void recibirDanio(double danio){
         this.vidaActual -= danio;
-
+        
         if (this.vidaActual < 0) {
             this.vidaActual = 0;
         }
@@ -48,13 +48,9 @@ public class Pokemon {
         }
     }
 
-    // Devuelve la efectividad para mostrar si es efectivo o no
     public double atacar(int habilidad, Pokemon rival, double[][] efectividades){
-
         double efectividad = calcularEfectividad(rival,efectividades);
-        
         habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
-
         return efectividad;
     }
 
