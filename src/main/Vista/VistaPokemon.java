@@ -5,7 +5,7 @@ import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
 import src.main.Pokemon;
 
-public class VistaPokemon extends VistaJuego {
+public class VistaPokemon extends Vista {
     static public void mostrarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
         imprimir("\nRival: " + entrenadorRival.obtenerNombre());
         infoPokemon(entrenadorRival.obtenerPokemonActual(), false);

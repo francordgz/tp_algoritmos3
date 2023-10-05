@@ -3,7 +3,7 @@ package src.main.Vista;
 import src.main.Entrenador;
 import src.main.Item.Item;
 
-public class VistaItem extends VistaJuego {
+public class VistaItem extends Vista {
     static public void mostrarItems(Entrenador entrenador) {
         imprimir("\nSelecciona un item:");
         int i = 1;

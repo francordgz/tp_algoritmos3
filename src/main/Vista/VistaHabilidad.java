@@ -2,7 +2,7 @@ package src.main.Vista;
 
 import src.main.Habilidad;
 import src.main.Pokemon;
-public class VistaHabilidad extends VistaJuego {
+public class VistaHabilidad extends Vista {
     static public void mostrarHabilidades(Pokemon pokemon) {
         int i = 1;
         imprimir("\nSelecciona una habilidad:");
