@@ -10,21 +10,23 @@ public abstract class Habilidad {
         this.usos = usos;
     }
 
-    public String nombre() { return nombre; }
-
-    public boolean quedanUsosDisponibles() { return this.usos > 0; }
-
-    public void atacar(int ataque, int nivel, Pokemon rival, double efectividad) {}
-
-    public void modificarEstado(Pokemon pokemon) {}
-
-    public Boolean AfectarRival() { return true; }
-
     public String obtenerNombre() {
         return nombre;
     }
 
     public int obtenerUsos() {
         return usos;
+    }
+
+    public boolean quedanUsosDisponibles() {
+        return this.usos > 0;
+    }
+
+    public void atacar(int ataque, int nivel, Pokemon rival, double efectividad) {}
+
+    public void modificarEstado(Pokemon pokemon) {}
+
+    public Boolean AfectarRival() {
+        return true;
     }
 }

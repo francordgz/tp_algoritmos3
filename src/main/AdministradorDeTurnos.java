@@ -1,8 +1,13 @@
 package src.main;
 
+import src.main.Enums.Climas;
+
+import javax.swing.event.CaretListener;
+
 public class AdministradorDeTurnos {
     private Entrenador entrenadorActual;
     private Entrenador entrenadorRival;
+    private Climas climaActual;
 
     public Entrenador obtenerEntrenadorActual() { return this.entrenadorActual; }
 

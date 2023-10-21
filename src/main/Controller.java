@@ -86,8 +86,8 @@ public class Controller {
                     mostrar = false;
             }
         }
-        juego.actualizarEstado();
-        juego.cambiarTurno();
+        this.juego.actualizarEstado();
+        this.juego.cambiarTurno();
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
@@ -181,8 +181,9 @@ public class Controller {
     }
 
     public boolean seleccionarHabilidad(){
-       
-          if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
+
+        //TODO: Esto va en juego, y la comparacion va en pokemon
+        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
             Boolean probabilidad = calcularProbabilidad();
             if(probabilidad == false){
                 VistaJuego.imprimir("El pokemon esta paralizado!");

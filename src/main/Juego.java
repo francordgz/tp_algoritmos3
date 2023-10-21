@@ -1,5 +1,6 @@
 package src.main;
 
+import src.main.Enums.Climas;
 import src.main.Item.*;
 
 import java.util.ArrayList;
@@ -9,12 +10,13 @@ import src.main.Enums.TipoModificacion;
 
 public class Juego {
 
+    private AdministradorDeTurnos administrador;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private Entrenador ganador;
-    private AdministradorDeTurnos administrador;
-    private Boolean terminado;
+    private Climas climas;
     private double[][] efectividades;
+    private Boolean terminado;
 
     public Juego() {
         this.efectividades = Constant.crearEfectividades();
