@@ -10,6 +10,7 @@ public class ItemCurarPorcentaje extends Item{
         this.porcentaje = porcentaje;
     }
 
+    @Override
     public void usarItem(Pokemon pokemon) {
         int cantidadDeVida = pokemon.obtenerVidaMaxima()*porcentaje;
         cantidadDeVida = cantidadDeVida/100;
