@@ -1,4 +1,6 @@
-package src.main;
+package src.main.Habilidad;
+
+import src.main.Pokemon;
 
 public abstract class Habilidad {
 

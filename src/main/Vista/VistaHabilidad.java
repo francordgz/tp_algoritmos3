@@ -1,6 +1,6 @@
 package src.main.Vista;
 
-import src.main.Habilidad;
+import src.main.Habilidad.Habilidad;
 import src.main.Pokemon;
 public class VistaHabilidad extends Vista {
     static public void mostrarHabilidades(Pokemon pokemon) {

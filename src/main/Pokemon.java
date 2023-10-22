@@ -1,6 +1,7 @@
 package src.main;
 import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
+import src.main.Habilidad.Habilidad;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,7 @@
-package src.main;
+package src.main.Habilidad;
 
 import src.main.Enums.Atributos;
+import src.main.Pokemon;
 
 public class HabilidadEstadistica extends Habilidad{
 

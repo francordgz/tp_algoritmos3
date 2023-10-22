@@ -2,6 +2,10 @@ package src.main;
 import src.main.Enums.Atributos;
 import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
+import src.main.Habilidad.Habilidad;
+import src.main.Habilidad.HabilidadAtaque;
+import src.main.Habilidad.HabilidadEstadistica;
+import src.main.Habilidad.HabilidadEstado;
 
 import java.util.HashMap;
 import java.util.List;

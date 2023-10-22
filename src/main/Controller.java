@@ -1,5 +1,6 @@
 package src.main;
 import src.main.Enums.Estados;
+import src.main.Habilidad.Habilidad;
 import src.main.Vista.*;
 
 import java.util.Random;

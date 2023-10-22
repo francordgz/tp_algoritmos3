@@ -1,4 +1,4 @@
-package src.main;
+package src.main.Habilidad;
 import java.util.Random;
 
 public class HabilidadAtaque extends Habilidad{

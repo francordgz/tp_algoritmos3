@@ -1,5 +1,6 @@
 package src.main;
 
+import src.main.Clima.*;
 import src.main.Item.*;
 
 import java.util.ArrayList;

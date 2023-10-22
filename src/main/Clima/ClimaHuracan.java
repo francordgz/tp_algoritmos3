@@ -1,11 +1,12 @@
-package src.main;
+package src.main.Clima;
 
 import src.main.Enums.Tipo;
+import src.main.Pokemon;
 
-public class ClimaTormentaDeArena implements Clima {
+public class ClimaHuracan implements Clima {
     @Override
     public double afectarAtaque(Pokemon pokemon, double ataque) {
-        if (pokemon.obtenerTipo() == Tipo.TIERRA || pokemon.obtenerTipo() == Tipo.ROCA)
+        if (pokemon.obtenerTipo() == Tipo.VOLADOR)
             return ataque*1.1;
 
         return ataque;
@@ -13,7 +14,7 @@ public class ClimaTormentaDeArena implements Clima {
 
     @Override
     public void efectoClimatico(Pokemon pokemon) {
-        if (pokemon.obtenerTipo() == Tipo.TIERRA || pokemon.obtenerTipo() == Tipo.ROCA)
+        if (pokemon.obtenerTipo() == Tipo.VOLADOR)
             return;
 
         pokemon.recibirDanio((pokemon.obtenerVidaMaxima()*0.03));

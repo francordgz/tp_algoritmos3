@@ -1,6 +1,7 @@
-package src.main;
+package src.main.Clima;
 
 import src.main.Enums.Tipo;
+import src.main.Pokemon;
 
 public class ClimaNiebla implements Clima {
     @Override
