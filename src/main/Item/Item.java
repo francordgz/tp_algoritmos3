@@ -2,6 +2,7 @@ package src.main.Item;
 import src.main.Pokemon;
 
 public abstract class Item {
+
     protected String nombre;
     protected int cantidad;
 
@@ -18,13 +19,14 @@ public abstract class Item {
         return cantidad;
     }
 
-    protected boolean quedanUsosDisponibles() { return this.cantidad > 0; }
-
     public boolean esAplicable(Pokemon pokemon) {
         return true;
     }
 
-    public abstract void usarItem(Pokemon pokemon);
+    public void usarItem(Pokemon pokemon) {
+    }
 
-    protected void decrementarCantidad() { this.cantidad -= 1; }
+    protected void decrementarCantidad() {
+        this.cantidad -= 1;
+    }
 }
