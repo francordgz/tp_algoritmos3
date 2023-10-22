@@ -9,37 +9,94 @@ public class Pokemon {
 
     private String nombre;
     private String historia;
+    private Tipo tipo;
+    private int nivel;
     private double vidaActual;
     private int vidaMaxima;
-    private int velocidad;
-    private int defensa;
-    private Tipo tipo;
     private int ataque;
+    private int defensa;
+    private int velocidad;
+    //TODO: Estado tiene que ser private
     public Estados estado;
-    private int nivel;
+    private int turnosDormido;
     private List<Habilidad> habilidades;
-
-    int turnosDormido;
 
     public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades,int nivel){
         this.nombre = nombre;
-        this.tipo = tipo;
-        this.vidaMaxima = vidaMaxima;
-        this.defensa = defensa;
-        this.ataque = danio;
-        this.velocidad = velocidad;
-        this.vidaActual = vidaMaxima;
-        this.estado = Estados.NORMAL;
         this.historia = historia;
-        this.habilidades = habilidades;
+        this.tipo = tipo;
         this.nivel = nivel;
+        this.vidaActual = vidaMaxima;
+        this.vidaMaxima = vidaMaxima;
+        this.ataque = danio;
+        this.defensa = defensa;
+        this.velocidad = velocidad;
+        this.estado = Estados.NORMAL;
         this.turnosDormido = 0;
+        this.habilidades = habilidades;
     }
 
+    //GETTERS
+    public String obtenerNombre(){
+        return nombre;
+    }
+
+    public Tipo obtenerTipo(){
+        return this.tipo;
+    }
+
+    public int obtenerNivel(){
+        return nivel;
+    }
+
+    public int obtenerVidaActual() {
+        return (int)vidaActual;
+    }
+
+    public int obtenerVidaMaxima() {
+        return this.vidaMaxima;
+    }
+
+    public int obtenerAtaque(){
+        return ataque;
+    }
+
+    public int obtenerDefensa(){
+        return defensa;
+    }
+
+    public int obtenerVelocidad(){
+        return velocidad;
+    }
+
+    public Estados obtenerEstado() {
+        return estado;
+    }
+
+    public List<Habilidad> obtenerHabilidades() {
+        return habilidades;
+    }
+    //SETTERS
+
+    public void modificarAtaque(int poder){
+        this.ataque += poder;
+    }
+
+    public void modificarDefensa(int poder){
+        this.defensa += poder;
+    }
+
+    public void modificarVelocidad(int poder){
+        this.velocidad += poder;
+    }
+
+    public void modificarEstado(Estados estado) {
+        this.estado = estado;
+    }
 
     public void recibirDanio(double danio){
         this.vidaActual -= danio;
-        
+
         if (this.vidaActual < 0) {
             this.vidaActual = 0;
         }
@@ -50,26 +107,20 @@ public class Pokemon {
 
     public double atacar(int habilidad, Pokemon rival, double[][] efectividades){
         double efectividad = calcularEfectividad(rival,efectividades);
-        habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
-        return efectividad;
+        return this.habilidades.get(habilidad).atacar(ataque, nivel, rival.defensa, efectividad);
     }
 
-    public double calcularEfectividad(Pokemon rival,double [][] efectividades){
+    private double calcularEfectividad(Pokemon rival,double [][] efectividades){
         int posicionAtacante = this.tipo.ordinal();
         int PosicionRival = rival.obtenerTipo().ordinal();
 
         return efectividades[posicionAtacante][PosicionRival];
     }
 
-
-    public void UsarHabilidad(int Numerohabilidad,Pokemon rival){
+    public void UsarHabilidad(int Numerohabilidad, Pokemon rival){
         habilidades.get(Numerohabilidad).modificarEstado(rival);
     }
 
-    /* TODO:
-        El Pokemon puede despertarse en cada turno con probabilidad 0.25 + N * 0.25
-        siendo N la cantidad de turnos que ya perdio estando dormido. Al
-        cuarto se despertaria seguro.*/
     public void actualizarEstado() {
         if (this.estado == Estados.DORMIDO) {
                 this.actualizarEstadoDormido();
@@ -92,7 +143,7 @@ public class Pokemon {
         this.turnosDormido += 1;
     }
 
-    public Boolean calcularProbabilidadDespertarse(){
+    private Boolean calcularProbabilidadDespertarse(){
         int rand = new Random().nextInt(100);
         int probabilidad = 25 + (25*this.turnosDormido) - 1;
 
@@ -100,65 +151,15 @@ public class Pokemon {
         return false;
     }
 
-
-    public String obtenerNombre(){
-        return nombre;
-    }
-
-    public int obtenerNivel(){
-        return nivel;
-    }
-
-    public int obtenerDefensa(){
-        return defensa;
-    }
-
-    public int obtenerAtaque(){
-        return ataque;
-    }
-
-    public int obtenerVelocidad(){
-        return velocidad;
-    }
-
-    public Tipo obtenerTipo(){
-        return this.tipo;
-    }
-
-    public Estados obtenerEstado() {
-        return estado;
-    }
-
-    public void modificarAtaque(int poder){
-        this.ataque += poder;
-    }
-
     public void curar(int poder){
         this.vidaActual += poder;
-        if (vidaActual > vidaMaxima) {
+        if (vidaActual > vidaMaxima)
             this.vidaActual = this.vidaMaxima;
-        }
     }
 
     public void revivir() {
         this.estado = Estados.NORMAL;
         this.vidaActual = this.vidaMaxima;
-    }
-
-    public int obtenerVidaActual() {
-        return (int)vidaActual;
-    }
-
-    public void modificarDefensa(int poder){
-        this.defensa += poder;
-    }
-
-    public void modificarVelocidad(int poder){
-        this.velocidad += poder;
-    }
-
-    public void modificarEstado(Estados estado) {
-        this.estado = estado;
     }
 
     public boolean estaMuerto() {
@@ -167,10 +168,6 @@ public class Pokemon {
 
     public Habilidad habilidades(int habilidad) {
         return habilidades.get(habilidad);
-    }
-
-    public List<Habilidad> obtenerHabilidades() {
-        return habilidades;
     }
 
     public boolean puedeAtacar() {

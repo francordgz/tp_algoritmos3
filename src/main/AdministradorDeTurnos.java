@@ -3,6 +3,7 @@ package src.main;
 public class AdministradorDeTurnos {
     private Entrenador entrenadorActual;
     private Entrenador entrenadorRival;
+    private Integer diasDelClimaActual;
 
     public Entrenador obtenerEntrenadorActual() { return this.entrenadorActual; }
 
@@ -27,5 +28,12 @@ public class AdministradorDeTurnos {
             this.entrenadorRival = entrenador1;
         }
     }
-    
+
+    public void modificarDiasDelClimaActual(Integer dias) {
+        this.diasDelClimaActual = dias;
+    }
+
+    public Integer obtenerDiasDelClimaActual() {
+        return this.diasDelClimaActual;
+    }
 }

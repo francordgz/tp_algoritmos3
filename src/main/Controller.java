@@ -23,6 +23,7 @@ public class Controller {
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.inicializarTurnos();
+        this.juego.inicializarClima();
     }
 
     private String pedirNombreEntrenador(String nombreOponente) {
@@ -53,6 +54,9 @@ public class Controller {
         boolean mostrar = true;
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+        //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
+        //TODO: No esta claro en el PDF
+        this.juego.efectoClimatico();
 
         if (pokemonActual.estaMuerto()) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
@@ -86,8 +90,9 @@ public class Controller {
                     mostrar = false;
             }
         }
-        juego.actualizarEstado();
-        juego.cambiarTurno();
+        this.juego.actualizarEstado();
+        this.juego.cambiarTurno();
+        this.juego.actualizarClima();
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
@@ -181,8 +186,9 @@ public class Controller {
     }
 
     public boolean seleccionarHabilidad(){
-       
-          if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
+
+        //TODO: Esto va en juego, y la comparacion va en pokemon
+        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
             Boolean probabilidad = calcularProbabilidad();
             if(probabilidad == false){
                 VistaJuego.imprimir("El pokemon esta paralizado!");
@@ -204,11 +210,9 @@ public class Controller {
                 this.juego.usarHabilidad(habilidadSeleccionada); break;
         }
         return true;
-    } 
-    
+    }
 
-
-    public Boolean calcularProbabilidad(){
+    private Boolean calcularProbabilidad(){
         Random rand = new Random();
         int probabilidad = rand.nextInt(2);
         
