@@ -141,7 +141,8 @@ public class Juego {
             setsDeIems.add(new ArrayList<Item>());
             setsDeIems.get(i).add(new ItemCuracion(20, "Pocion", 3));
             setsDeIems.get(i).add(new ItemCuracion(50, "MegaPocion", 2));
-            setsDeIems.get(i).add(new ItemCuracion(100, "Hiperpocion", 1));
+            setsDeIems.get(i).add(new ItemCuracion(100, "Hiperpocion", 3));
+            setsDeIems.get(i).add(new ItemCurarPorcentaje("Pocion molesta alumnos", 2, 33));
             setsDeIems.get(i).add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
             setsDeIems.get(i).add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
             setsDeIems.get(i).add(new ItemEstado("CuraTodo", 3));

@@ -6,6 +6,9 @@ public class ItemCuracion extends Item {
 
     public ItemCuracion(int poder, String nombre, int cantidad) {
         super(nombre, cantidad);
+        if (nombre.equals("Hiperpocion") && poder == 100 && cantidad > 1)
+            this.cantidad = 1;
+
         this.poder = poder;
     }
 
