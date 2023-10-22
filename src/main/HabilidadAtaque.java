@@ -19,20 +19,15 @@ public class HabilidadAtaque extends Habilidad{
     }
 
     @Override
-    public void atacar(int ataque, int nivel, Pokemon rival, double efectividad){
+    public double atacar(int ataque, int nivel, int defensa, double efectividad){
         float critico = generarProba();
         float numeroRandom = generarNumeroRandom();
+        this.usos -= 1;
 
         double danio = 2 * nivel * critico * this.poder;
-        
-        danio = danio * ataque/rival.obtenerDefensa();
-        
+        danio = danio * ataque/defensa;
         danio = ((danio/5) +2)/50;
-        
-        danio = danio * (MismoTipo() * efectividad * numeroRandom);
-
-        rival.recibirDanio(danio);
-        this.usos -= 1;
+        return danio * (MismoTipo() * efectividad * numeroRandom);
     }
 
     public float generarNumeroRandom(){

@@ -53,6 +53,10 @@ public class Pokemon {
         return (int)vidaActual;
     }
 
+    public int obtenerVidaMaxima() {
+        return this.vidaMaxima;
+    }
+
     public int obtenerAtaque(){
         return ataque;
     }
@@ -72,8 +76,8 @@ public class Pokemon {
     public List<Habilidad> obtenerHabilidades() {
         return habilidades;
     }
-
     //SETTERS
+
     public void modificarAtaque(int poder){
         this.ataque += poder;
     }
@@ -103,8 +107,7 @@ public class Pokemon {
 
     public double atacar(int habilidad, Pokemon rival, double[][] efectividades){
         double efectividad = calcularEfectividad(rival,efectividades);
-        this.habilidades.get(habilidad).atacar(ataque, nivel, rival, efectividad);
-        return efectividad;
+        return this.habilidades.get(habilidad).atacar(ataque, nivel, rival.defensa, efectividad);
     }
 
     private double calcularEfectividad(Pokemon rival,double [][] efectividades){

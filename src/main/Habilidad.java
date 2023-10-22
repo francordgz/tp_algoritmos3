@@ -22,7 +22,9 @@ public abstract class Habilidad {
         return this.usos > 0;
     }
 
-    public void atacar(int ataque, int nivel, Pokemon rival, double efectividad) {}
+    public double atacar(int ataque, int nivel, int defensa, double efectividad) {
+        return 0;
+    }
 
     public void modificarEstado(Pokemon pokemon) {}
 
