@@ -188,7 +188,7 @@ public class Controller {
     public boolean seleccionarHabilidad(){
 
         //TODO: Esto va en juego, y la comparacion va en pokemon
-        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estado == Estados.PARALIZADO){
+        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().tieneEstado(Estados.PARALIZADO)){
             Boolean probabilidad = calcularProbabilidad();
             if(probabilidad == false){
                 VistaJuego.imprimir("El pokemon esta paralizado!");

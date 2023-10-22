@@ -15,11 +15,11 @@ public class HabilidadEstado extends Habilidad{
     @Override
     public void modificarEstado(Pokemon pokemon) {
         if(tipo == Estados.ENVENENADO) {
-            pokemon.modificarEstado(Estados.ENVENENADO);
+            pokemon.agregarEstado(Estados.ENVENENADO);
         } else if(tipo == Estados.DORMIDO) {
-            pokemon.modificarEstado(Estados.DORMIDO);
+            pokemon.agregarEstado(Estados.DORMIDO);
         } else if(tipo == Estados.PARALIZADO) {
-            pokemon.modificarEstado(Estados.PARALIZADO);
+            pokemon.agregarEstado(Estados.PARALIZADO);
         }
         this.usos -= 1;
     }

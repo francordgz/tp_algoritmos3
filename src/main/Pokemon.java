@@ -93,7 +93,10 @@ public class Pokemon {
     }
 
     public void agregarEstado(Estados estado) {
-        if (estado == Estados.MUERTO || estado == Estados.NORMAL) {
+        if (estado == Estados.MUERTO || 
+            estado == Estados.NORMAL ||
+            tieneEstado(Estados.NORMAL)) {
+            
             this.estados.clear();
         }
         this.estados.add(estado);
@@ -131,9 +134,9 @@ public class Pokemon {
         if (tieneEstado(Estados.DORMIDO)) {
                 this.actualizarEstadoDormido();
                 if (turnosDormido >= 4) {
-                    this.estado = Estados.NORMAL;
+                    agregarEstado(Estados.NORMAL);
                 }
-        } else if (this.estado == Estados.ENVENENADO) {
+        } else if (tieneEstado(Estados.ENVENENADO)) {
             this.recibirDanio(this.vidaMaxima * 0.5);
         }
     }
@@ -142,7 +145,7 @@ public class Pokemon {
         Boolean probabilidad = calcularProbabilidadDespertarse();
 
         if (probabilidad) {
-            this.estado = Estados.NORMAL;
+            agregarEstado(Estados.NORMAL);
             this.turnosDormido = 0;
             return;
         }
@@ -185,12 +188,7 @@ public class Pokemon {
         return !tieneEstado(Estados.NORMAL) && !tieneEstado(Estados.MUERTO);
     }
 
-    private boolean tieneEstado(Estados estadoBuscado) {
-        if (estadoBuscado == Estados.MUERTO || estadoBuscado == Estados.NORMAL) {
-            if (estados.size() > 1) { return false; }
-            return estados.get(0) == estadoBuscado;
-        }
-
+    public boolean tieneEstado(Estados estadoBuscado) {
         for (int i = 0; i < estados.size(); i++) {
             if (this.estados.get(i) == estadoBuscado) {
                 return true;
