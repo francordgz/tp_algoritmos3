@@ -15,5 +15,6 @@ public class ItemCurarPorcentaje extends Item{
         int cantidadDeVida = pokemon.obtenerVidaMaxima()*porcentaje;
         cantidadDeVida = cantidadDeVida/100;
         pokemon.curar(cantidadDeVida);
+        decrementarCantidad();
     }
 }
