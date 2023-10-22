@@ -5,6 +5,8 @@ import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
 import src.main.Pokemon;
 
+import java.util.List;
+
 public class VistaPokemon extends Vista {
     static public void mostrarCampo(Entrenador entrenadorActual, Entrenador entrenadorRival) {
         imprimir("\nRival: " + entrenadorRival.obtenerNombre());
@@ -35,9 +37,11 @@ public class VistaPokemon extends Vista {
         imprimir("Vida: " + pokemon.obtenerVidaActual() +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
                 ", Nivel: " + pokemon.obtenerNivel());
-        Estados estadoActual = pokemon.obtenerEstado();
-        if(estadoActual != Estados.NORMAL && estadoActual != Estados.MUERTO) {
-            imprimir("Estado: " + estadoString(estadoActual));
+        List<Estados> estados = pokemon.obtenerEstados();
+        if(!pokemon.tieneEstado(Estados.NORMAL) && !pokemon.tieneEstado(Estados.MUERTO)) {
+            for(int i = 0; i < estados.size(); i++) {
+                imprimir("Estado: " + estadoString(estados.get(i)));
+            }
         }
         if (mostrarAtaqueDefensa) {
             imprimir("Ataque: " + pokemon.obtenerAtaque() + ", Defensa: " + pokemon.obtenerDefensa());
@@ -56,6 +60,8 @@ public class VistaPokemon extends Vista {
                 return "Paralizado";
             case MUERTO:
                 return "Muerto";
+            case CONFUSO:
+                return "Confuso";
             default:
                 return "Desconocido";
         }
