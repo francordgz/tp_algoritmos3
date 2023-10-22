@@ -2,6 +2,7 @@ package src.main;
 import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -16,8 +17,7 @@ public class Pokemon {
     private int ataque;
     private int defensa;
     private int velocidad;
-    //TODO: Estado tiene que ser private
-    public Estados estado;
+    public List<Estados> estados;
     private int turnosDormido;
     private List<Habilidad> habilidades;
 
@@ -31,9 +31,11 @@ public class Pokemon {
         this.ataque = danio;
         this.defensa = defensa;
         this.velocidad = velocidad;
-        this.estado = Estados.NORMAL;
         this.turnosDormido = 0;
         this.habilidades = habilidades;
+
+        this.estados = new ArrayList<Estados>();
+        estados.add(Estados.NORMAL);
     }
 
     //GETTERS
@@ -69,8 +71,8 @@ public class Pokemon {
         return velocidad;
     }
 
-    public Estados obtenerEstado() {
-        return estado;
+    public List<Estados> obtenerEstados() {
+        return this.estados;
     }
 
     public List<Habilidad> obtenerHabilidades() {
@@ -90,8 +92,11 @@ public class Pokemon {
         this.velocidad += poder;
     }
 
-    public void modificarEstado(Estados estado) {
-        this.estado = estado;
+    public void agregarEstado(Estados estado) {
+        if (estado == Estados.MUERTO || estado == Estados.NORMAL) {
+            this.estados.clear();
+        }
+        this.estados.add(estado);
     }
 
     public void recibirDanio(double danio){
@@ -101,7 +106,8 @@ public class Pokemon {
             this.vidaActual = 0;
         }
         if (this.vidaActual == 0){
-            this.estado = Estados.MUERTO;
+            this.estados.clear();
+            this.estados.add(Estados.MUERTO);
         }
     }
 
@@ -122,7 +128,7 @@ public class Pokemon {
     }
 
     public void actualizarEstado() {
-        if (this.estado == Estados.DORMIDO) {
+        if (tieneEstado(Estados.DORMIDO)) {
                 this.actualizarEstadoDormido();
                 if (turnosDormido >= 4) {
                     this.estado = Estados.NORMAL;
@@ -158,12 +164,13 @@ public class Pokemon {
     }
 
     public void revivir() {
-        this.estado = Estados.NORMAL;
+        this.estados.clear();
+        this.estados.add(Estados.NORMAL);
         this.vidaActual = this.vidaMaxima;
     }
 
     public boolean estaMuerto() {
-        return this.estado == Estados.MUERTO;
+        return tieneEstado(Estados.MUERTO);
     }
 
     public Habilidad habilidades(int habilidad) {
@@ -171,10 +178,24 @@ public class Pokemon {
     }
 
     public boolean puedeAtacar() {
-        return this.estado != Estados.DORMIDO;
+        return !tieneEstado(Estados.DORMIDO);
     }
 
     public boolean necesitaCurarse() {
-        return this.estado != Estados.NORMAL && this.estado != Estados.MUERTO;
+        return !tieneEstado(Estados.NORMAL) && !tieneEstado(Estados.MUERTO);
+    }
+
+    private boolean tieneEstado(Estados estadoBuscado) {
+        if (estadoBuscado == Estados.MUERTO || estadoBuscado == Estados.NORMAL) {
+            if (estados.size() > 1) { return false; }
+            return estados.get(0) == estadoBuscado;
+        }
+
+        for (int i = 0; i < estados.size(); i++) {
+            if (this.estados.get(i) == estadoBuscado) {
+                return true;
+            }
+        }
+        return false;
     }
 }
