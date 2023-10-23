@@ -21,6 +21,8 @@ public class HabilidadEstado extends Habilidad{
             pokemon.agregarEstado(Estados.DORMIDO);
         } else if(tipo == Estados.PARALIZADO) {
             pokemon.agregarEstado(Estados.PARALIZADO);
+        } else if (tipo == Estados.CONFUSO) {
+            pokemon.agregarEstado(Estados.CONFUSO);
         }
         this.usos -= 1;
     }

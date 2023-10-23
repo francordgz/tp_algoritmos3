@@ -167,7 +167,7 @@ public class Controller {
         VistaHabilidad.mostrarHabilidades(pokemonActual);
         while (!habilidadValida) {
             opcion = leerInt();
-            opcionValida = opcion <= 4 && opcion >= 0;
+            opcionValida = opcion <= 5 && opcion >= 0;
 
             if (!opcionValida) {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
@@ -208,6 +208,8 @@ public class Controller {
             case 3:
                 this.juego.usarHabilidad(habilidadSeleccionada); break;
             case 4:
+                this.juego.usarHabilidad(habilidadSeleccionada); break;
+            case 5:
                 this.juego.usarHabilidad(habilidadSeleccionada); break;
         }
         return true;

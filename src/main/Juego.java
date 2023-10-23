@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import src.main.Enums.Estados;
 import src.main.Enums.TipoModificacion;
 
 public class Juego {
@@ -108,11 +109,16 @@ public class Juego {
     public void usarHabilidad(int habilidad) {
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
         Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
+        Pokemon actual = entrenadorActual.obtenerPokemonActual();
+        Pokemon rival = entrenadorRival.obtenerPokemonActual();
 
-        if (!entrenadorActual.obtenerPokemonActual().habilidades(habilidad).AfectarRival()) {
-            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorActual.obtenerPokemonActual());
+        if (!actual.habilidades(habilidad).AfectarRival()) {
+            actual.UsarHabilidad(habilidad, actual);
         } else {
-            entrenadorActual.obtenerPokemonActual().UsarHabilidad(habilidad, entrenadorRival.obtenerPokemonActual());
+            actual.UsarHabilidad(habilidad, rival);
+        }
+        if (actual.tieneEstado(Estados.CONFUSO)) {
+            actual.actualizarEstadoConfuso();
         }
     }
 
@@ -163,11 +169,16 @@ public class Juego {
         double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
         ataque = this.clima.afectarAtaque(pokemonActual, ataque);
         pokemonRival.recibirDanio(ataque);
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO)) {
+            pokemonActual.actualizarEstadoConfuso();
+        }
         return ataque;
     }
 
     public void actualizarEstado(){
-        this.administrador.obtenerEntrenadorActual().obtenerPokemonActual().actualizarEstado();
+        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        actual.actualizarEstado();
     }
 
     public void rendirse() {

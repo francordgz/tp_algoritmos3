@@ -32,7 +32,7 @@ public class VistaPokemon extends Vista {
     }
 
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
-
+        String estadosPokemon = "";
         imprimir(pokemon.obtenerNombre() + ":");
         imprimir("Vida: " + pokemon.obtenerVidaActual() +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
@@ -40,8 +40,10 @@ public class VistaPokemon extends Vista {
         List<Estados> estados = pokemon.obtenerEstados();
         if(!pokemon.tieneEstado(Estados.NORMAL) && !pokemon.tieneEstado(Estados.MUERTO)) {
             for(int i = 0; i < estados.size(); i++) {
-                imprimir("Estado: " + estadoString(estados.get(i)));
+                estadosPokemon += estadoString(estados.get(i)) + ", ";
             }
+            estadosPokemon = estadosPokemon.substring(0, estadosPokemon.length() - 2);
+            imprimir("Estados: " + estadosPokemon);
         }
         if (mostrarAtaqueDefensa) {
             imprimir("Ataque: " + pokemon.obtenerAtaque() + ", Defensa: " + pokemon.obtenerDefensa());

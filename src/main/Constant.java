@@ -5,6 +5,7 @@ public class Constant {
     public static final double MEDIA = 0.5;
     public static final int SIMPLE = 1;
     public static final int DOBLE = 2;
+    public static final int TERCIO = 33;
     static final int MAX_NOMBRE = 50;
     static final int NOT_INT = -1;
     static final int SALIR = 0;
