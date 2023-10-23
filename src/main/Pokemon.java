@@ -130,15 +130,6 @@ public class Pokemon {
     }
 
     public void UsarHabilidad(int Numerohabilidad, Pokemon rival) {
-        boolean pierdeVida = false;
-        
-        if (tieneEstado(Estados.CONFUSO)) {
-            Random rand = new Random();
-            int probabilidad = rand.nextInt(100);
-            pierdeVida = probabilidad <= Constant.TERCIO;
-        }
-        if (pierdeVida) { recibirDanio(this.vidaMaxima * 0.15); }
-
         habilidades.get(Numerohabilidad).modificarEstado(rival);
     }
 
@@ -146,9 +137,15 @@ public class Pokemon {
         if (this.turnosConfundido == 3) {
             removerEstado(Estados.CONFUSO);
             this.turnosConfundido = 0;
-        } else {
-            this.turnosConfundido += 1;
+            return;
         }
+
+        Random rand = new Random();
+        int probabilidad = rand.nextInt(100);
+        boolean pierdeVida = probabilidad <= 100;
+
+        if (pierdeVida) { recibirDanio(this.vidaMaxima * 0.15); }
+        this.turnosConfundido += 1;
     }
 
     public void actualizarEstado() {
@@ -157,7 +154,8 @@ public class Pokemon {
                 if (turnosDormido >= 4) {
                     removerEstado(Estados.DORMIDO);
                 }
-        } else if (tieneEstado(Estados.ENVENENADO)) {
+        }
+        if (tieneEstado(Estados.ENVENENADO)) {
             this.recibirDanio(this.vidaMaxima * 0.5);
         }
     }
