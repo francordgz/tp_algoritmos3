@@ -142,7 +142,7 @@ public class Pokemon {
 
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
-        boolean pierdeVida = probabilidad <= 100;
+        boolean pierdeVida = probabilidad <= Constant.TERCIO;
 
         if (pierdeVida) { recibirDanio(this.vidaMaxima * 0.15); }
         this.turnosConfundido += 1;
