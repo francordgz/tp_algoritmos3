@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import src.main.Enums.Estados;
 import src.main.Enums.TipoModificacion;
 
 public class Juego {
@@ -167,7 +168,12 @@ public class Juego {
     }
 
     public void actualizarEstado(){
-        this.administrador.obtenerEntrenadorActual().obtenerPokemonActual().actualizarEstado();
+        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        
+        if (actual.tieneEstado(Estados.CONFUSO)) {
+            actual.actualizarEstadoConfuso();
+        }
+        actual.actualizarEstado();
     }
 
     public void rendirse() {

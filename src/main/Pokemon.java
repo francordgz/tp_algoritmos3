@@ -19,8 +19,10 @@ public class Pokemon {
     private int defensa;
     private int velocidad;
     public List<Estados> estados;
-    private int turnosDormido;
     private List<Habilidad> habilidades;
+
+    private int turnosDormido;
+    private int turnosConfundido;
 
     public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades,int nivel){
         this.nombre = nombre;
@@ -127,15 +129,33 @@ public class Pokemon {
         return efectividades[posicionAtacante][PosicionRival];
     }
 
-    public void UsarHabilidad(int Numerohabilidad, Pokemon rival){
+    public void UsarHabilidad(int Numerohabilidad, Pokemon rival) {
+        boolean pierdeVida = false;
+        
+        if (tieneEstado(Estados.CONFUSO)) {
+            Random rand = new Random();
+            int probabilidad = rand.nextInt(100);
+            pierdeVida = probabilidad <= Constant.TERCIO;
+        }
+        if (pierdeVida) { recibirDanio(this.vidaMaxima * 0.15); }
+
         habilidades.get(Numerohabilidad).modificarEstado(rival);
+    }
+
+    public void actualizarEstadoConfuso() {
+        if (this.turnosConfundido == 3) {
+            removerEstado(Estados.CONFUSO);
+            this.turnosConfundido = 0;
+        } else {
+            this.turnosConfundido += 1;
+        }
     }
 
     public void actualizarEstado() {
         if (tieneEstado(Estados.DORMIDO)) {
                 this.actualizarEstadoDormido();
                 if (turnosDormido >= 4) {
-                    agregarEstado(Estados.NORMAL);
+                    removerEstado(Estados.DORMIDO);
                 }
         } else if (tieneEstado(Estados.ENVENENADO)) {
             this.recibirDanio(this.vidaMaxima * 0.5);
@@ -146,7 +166,7 @@ public class Pokemon {
         Boolean probabilidad = calcularProbabilidadDespertarse();
 
         if (probabilidad) {
-            agregarEstado(Estados.NORMAL);
+            removerEstado(Estados.DORMIDO);
             this.turnosDormido = 0;
             return;
         }
@@ -196,5 +216,23 @@ public class Pokemon {
             }
         }
         return false;
+    }
+
+    private void removerEstado(Estados eliminado) {
+        boolean tieneUnicoEstado = this.estados.size() == 1;
+
+        if (tieneUnicoEstado) {
+            this.estados.clear();
+            this.estados.add(Estados.NORMAL);
+        } else {
+            List<Estados> estadosActualizados = new ArrayList<Estados>();
+            
+            for (int i = 0; i < estados.size(); i++) {
+                if (estados.get(i) != eliminado) {
+                    estadosActualizados.add(estados.get(i));
+                }
+            }
+            this.estados = estadosActualizados;
+        }
     }
 }
