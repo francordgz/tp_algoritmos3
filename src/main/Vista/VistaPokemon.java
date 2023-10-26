@@ -32,17 +32,17 @@ public class VistaPokemon extends Vista {
     }
 
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
-        String estadosPokemon = "";
+        StringBuilder estadosPokemon = new StringBuilder();
         imprimir(pokemon.obtenerNombre() + ":");
         imprimir("Vida: " + pokemon.obtenerVidaActual() +
                 ", Tipo: " + tipoString(pokemon.obtenerTipo()) +
                 ", Nivel: " + pokemon.obtenerNivel());
         List<Estados> estados = pokemon.obtenerEstados();
         if(!pokemon.tieneEstado(Estados.NORMAL) && !pokemon.tieneEstado(Estados.MUERTO)) {
-            for(int i = 0; i < estados.size(); i++) {
-                estadosPokemon += estadoString(estados.get(i)) + ", ";
+            for (Estados estado : estados) {
+                estadosPokemon.append(estadoString(estado)).append(", ");
             }
-            estadosPokemon = estadosPokemon.substring(0, estadosPokemon.length() - 2);
+            estadosPokemon = new StringBuilder(estadosPokemon.substring(0, estadosPokemon.length() - 2));
             imprimir("Estados: " + estadosPokemon);
         }
         if (mostrarAtaqueDefensa) {
@@ -51,58 +51,35 @@ public class VistaPokemon extends Vista {
     }
 
     private static String estadoString(Estados estadoActual) {
-        switch (estadoActual) {
-            case NORMAL:
-                return "Normal";
-            case ENVENENADO:
-                return "Envenenado";
-            case DORMIDO:
-                return "Dormido";
-            case PARALIZADO:
-                return "Paralizado";
-            case MUERTO:
-                return "Muerto";
-            case CONFUSO:
-                return "Confuso";
-            default:
-                return "Desconocido";
-        }
+        return switch (estadoActual) {
+            case NORMAL -> "Normal";
+            case ENVENENADO -> "Envenenado";
+            case DORMIDO -> "Dormido";
+            case PARALIZADO -> "Paralizado";
+            case MUERTO -> "Muerto";
+            case CONFUSO -> "Confuso";
+            default -> "Desconocido";
+        };
     }
 
     private static String tipoString(Tipo tipo) {
-        switch (tipo) {
-            case AGUA:
-                return "Agua";
-            case BICHO:
-                return "Bicho";
-            case DRAGON:
-                return "Dragón";
-            case RAYO:
-                return "Electrico";
-            case FANTASMA:
-                return "Fantasma";
-            case FUEGO:
-                return "Fuego";
-            case HIELO:
-                return "Hielo";
-            case LUCHA:
-                return "Lucha";
-            case NORMAL:
-                return "Normal";
-            case PLANTA:
-                return "Planta";
-            case PSIQUICO:
-                return "Psíquico";
-            case ROCA:
-                return "Roca";
-            case TIERRA:
-                return "Tierra";
-            case VENENO:
-                return "Veneno";
-            case VOLADOR:
-                return "Volador";
-            default:
-                return "Desconocido";
-        }
+        return switch (tipo) {
+            case AGUA -> "Agua";
+            case BICHO -> "Bicho";
+            case DRAGON -> "Dragón";
+            case RAYO -> "Electrico";
+            case FANTASMA -> "Fantasma";
+            case FUEGO -> "Fuego";
+            case HIELO -> "Hielo";
+            case LUCHA -> "Lucha";
+            case NORMAL -> "Normal";
+            case PLANTA -> "Planta";
+            case PSIQUICO -> "Psíquico";
+            case ROCA -> "Roca";
+            case TIERRA -> "Tierra";
+            case VENENO -> "Veneno";
+            case VOLADOR -> "Volador";
+            default -> "Desconocido";
+        };
     }
 }

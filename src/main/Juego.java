@@ -11,13 +11,12 @@ import src.main.Enums.Estados;
 import src.main.Enums.TipoModificacion;
 
 public class Juego {
-
-    private AdministradorDeTurnos administrador;
+    private final AdministradorDeTurnos administrador;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private Entrenador ganador;
     private Clima clima;
-    private double[][] efectividades;
+    private final double[][] efectividades;
     private Boolean terminado;
 
     public Juego() {
@@ -73,6 +72,7 @@ public class Juego {
     public void efectoClimatico() {
         Pokemon pokemonActual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = this.administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
+
         this.clima.efectoClimatico(pokemonActual);
         this.clima.efectoClimatico(pokemonRival);
     }
@@ -112,14 +112,13 @@ public class Juego {
         Pokemon actual = entrenadorActual.obtenerPokemonActual();
         Pokemon rival = entrenadorRival.obtenerPokemonActual();
 
-        if (!actual.habilidades(habilidad).AfectarRival()) {
+        if (!actual.habilidades(habilidad).AfectarRival())
             actual.UsarHabilidad(habilidad, actual);
-        } else {
+        else
             actual.UsarHabilidad(habilidad, rival);
-        }
-        if (actual.tieneEstado(Estados.CONFUSO)) {
+
+        if (actual.tieneEstado(Estados.CONFUSO))
             actual.actualizarEstadoConfuso();
-        }
     }
 
     public void crearPokemones() {
@@ -156,10 +155,12 @@ public class Juego {
             setsDeIems.get(i).add(new ItemRevivir("Revivir", 1));
         }
         List<Item> primerSetItems = setsDeIems.get(0);
-        for (Item item: primerSetItems) { entrenador1.agregarItem(item); }
+        for (Item item: primerSetItems)
+            entrenador1.agregarItem(item);
 
         List<Item> segundoSetItems = setsDeIems.get(1);
-        for (Item item: segundoSetItems) { entrenador2.agregarItem(item); }
+        for (Item item: segundoSetItems)
+            entrenador2.agregarItem(item);
     }
 
     public double atacar(int habilidad) {
@@ -170,9 +171,9 @@ public class Juego {
         ataque = this.clima.afectarAtaque(pokemonActual, ataque);
         pokemonRival.recibirDanio(ataque);
 
-        if (pokemonActual.tieneEstado(Estados.CONFUSO)) {
+        if (pokemonActual.tieneEstado(Estados.CONFUSO))
             pokemonActual.actualizarEstadoConfuso();
-        }
+
         return ataque;
     }
 

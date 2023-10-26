@@ -8,10 +8,8 @@ import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
 public class Controller {
-
     Juego juego;
     Scanner scanner = new Scanner(System.in);
-
 
     public Controller(Juego juego) {
         this.juego = juego;
@@ -35,19 +33,18 @@ public class Controller {
         do {
             VistaJuego.imprimirMismaLinea("Ingrese un nombre para el entrenador: ");
             ingreso = leerString();
-            longitudValida = ingreso.length() > 0 && ingreso.length() < Constant.MAX_NOMBRE;
+            longitudValida = !ingreso.isEmpty() && ingreso.length() < Constant.MAX_NOMBRE;
             nombreRepetido = ingreso.equals(nombreOponente);
 
-            if (!longitudValida) {
+            if (!longitudValida)
                 VistaJuego.imprimir("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
-            } else if (nombreRepetido) {
+            else if (nombreRepetido)
                 VistaJuego.imprimir("Error! El nombre no puede coincidir con el del entrenador rival.");
-            }
+
         } while (!longitudValida || nombreRepetido);
 
         return ingreso;
     }
-
 
     public void menuPrincipal() {
         int opcion;
@@ -106,8 +103,8 @@ public class Controller {
             opcion = leerInt();
             opcionValida = !(opcion > entrenador.obtenerPokemones().size() || opcion < 1);
             
-            if(!opcionValida) { VistaJuego.imprimir("Seleccione una opción correcta!"); }
-            
+            if(!opcionValida)
+                VistaJuego.imprimir("Seleccione una opción correcta!");
         }
         entrenador.cambiarPokemon(opcion - 1);
         nombrePokemon = entrenador.obtenerPokemonActual().obtenerNombre();
@@ -126,13 +123,12 @@ public class Controller {
             if (indicePokemon == NOT_INT && !seleccionObligatoria) { return false; }
 
             pokemonSeleccionado = entrenador.obtenerPokemones().get(indicePokemon);
-            if (pokemonSeleccionado.estaMuerto()) {
+            if (pokemonSeleccionado.estaMuerto())
                 VistaJuego.imprimir("Ese Pokemon esta muerto!");
-            } else if (nombrePokemonActual.equals(pokemonSeleccionado.obtenerNombre())) {
+            else if (nombrePokemonActual.equals(pokemonSeleccionado.obtenerNombre()))
                 VistaJuego.imprimir("Se debe elegir un Pokemon distinto al actual mientras él siga con vida!");
-            } else {
+            else
                 seleccionValida = true;
-            }
         }
         entrenador.cambiarPokemon(indicePokemon);
         return true;
@@ -145,9 +141,10 @@ public class Controller {
 
         while (!seleccionValida) {
             opcion = leerInt();
-            if (!seleccionObligatoria && opcion == Constant.SALIR) { return NOT_INT; }
+            if (!seleccionObligatoria && opcion == Constant.SALIR)
+                return NOT_INT;
+
             opcionValida = opcion < this.juego.obtenerEntrenadorActual().obtenerItems().size() && opcion > Constant.SALIR;
-            
             if (!opcionValida) {
                 VistaJuego.imprimir("Seleccione una opcion correcta porfavor");
                 continue;
@@ -173,15 +170,20 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
                 continue;
             }
-            else if (opcion == Constant.SALIR) { return opcion; }
-            else { esHabilidadDeAtaque = opcion == 1 || opcion == 2; }
+            else if (opcion == Constant.SALIR) {
+                return opcion;
+            }
+            else {
+                esHabilidadDeAtaque = opcion == 1 || opcion == 2;
+            }
             habilidadSeleccionada = pokemonActual.obtenerHabilidades().get(opcion - 1);
 
-            if (!habilidadSeleccionada.quedanUsosDisponibles()) {
+            if (!habilidadSeleccionada.quedanUsosDisponibles())
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
-            } else if (esHabilidadDeAtaque && !pokemonActual.puedeAtacar()) {
+            else if (esHabilidadDeAtaque && !pokemonActual.puedeAtacar())
                 VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
-            } else { habilidadValida = true; }
+            else
+                habilidadValida = true;
         }
         return opcion;
     }
@@ -189,9 +191,9 @@ public class Controller {
     public boolean seleccionarHabilidad(){
 
         //TODO: Esto va en juego, y la comparacion va en pokemon
-        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().tieneEstado(Estados.PARALIZADO)){
+        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().tieneEstado(Estados.PARALIZADO)) {
             Boolean probabilidad = calcularProbabilidad();
-            if(probabilidad == false){
+            if(!probabilidad) {
                 VistaJuego.imprimir("El pokemon esta paralizado!");
                 return false;
             }
@@ -202,15 +204,20 @@ public class Controller {
         switch (opcion) {
             case Constant.SALIR: return false;
             case 1:
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada)); break;
+                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
+                break;
             case 2:
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada)); break;
+                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
+                break;
             case 3:
-                this.juego.usarHabilidad(habilidadSeleccionada); break;
+                this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
             case 4:
-                this.juego.usarHabilidad(habilidadSeleccionada); break;
+                this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
             case 5:
-                this.juego.usarHabilidad(habilidadSeleccionada); break;
+                this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
         }
         return true;
     }
@@ -218,12 +225,8 @@ public class Controller {
     private Boolean calcularProbabilidad(){
         Random rand = new Random();
         int probabilidad = rand.nextInt(2);
-        
-        if(probabilidad == 1) {
-            return true;
-        } else {
-            return false;
-        }
+
+        return probabilidad == 1;
     }
     
     private boolean seleccionarItem() {
@@ -233,14 +236,15 @@ public class Controller {
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
 
         int pokemonSeleccionado = consultarPokemon(entrenadorActual, false);
-        if (pokemonSeleccionado == NOT_INT) { return false; }
+        if (pokemonSeleccionado == NOT_INT)
+            return false;
 
-        while (!itemSeleccionadoValido && !itemEsAplicable) {
-
+        while (!itemSeleccionadoValido) {
             VistaItem.mostrarItems(entrenadorActual);
             opcion = leerInt();
 
-            if (opcion == Constant.SALIR) { return false; }
+            if (opcion == Constant.SALIR)
+                return false;
 
             opcionInvalida = opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size() || opcion <= Constant.SALIR;
             if(opcionInvalida) {
@@ -257,7 +261,7 @@ public class Controller {
                 itemSeleccionadoValido = true;
                 itemEsAplicable = entrenadorActual.puedeAplicarItem(pokemonSeleccionado, numeroItem);
             }
-            if (itemSeleccionadoValido && !itemEsAplicable) {
+            if (!itemEsAplicable) {
                 VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
                 itemSeleccionadoValido = itemEsAplicable;
             } 

@@ -4,27 +4,31 @@ import src.main.Item.Item;
 import java.util.*;
 
 public class Entrenador {
-    private String nombre;
-    private ArrayList<Item> items;
-    private ArrayList<Pokemon> pokemones;
+    private final String nombre;
+    private final ArrayList<Pokemon> pokemones;
     private Pokemon pokemonActual;
+    private final ArrayList<Item> items;
 
     public Entrenador(String nombre) {
         this.nombre = nombre;
-        this.pokemones = new ArrayList<Pokemon>();
-        this.items = new ArrayList<Item>();
+        this.pokemones = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
 
     public String obtenerNombre() {
         return nombre;
     }
 
-    public List<Item> obtenerItems() {
-        return items;
-    }
-
     public List<Pokemon> obtenerPokemones() {
         return pokemones;
+    }
+
+    public Pokemon obtenerPokemonActual(){
+        return pokemonActual;
+    }
+
+    public List<Item> obtenerItems() {
+        return items;
     }
 
     public void agregarPokemon(Pokemon pokemon) {
@@ -35,16 +39,12 @@ public class Entrenador {
         this.items.add(items);
     }
 
-    public Pokemon obtenerPokemonActual(){
-        return pokemonActual;
+    public void cambiarPokemon(int posicion){
+        this.pokemonActual = this.pokemones.get(posicion);
     }
 
     public void usarItem(int item, int indicePokemon) {
         this.items.get(item).usarItem(pokemones.get(indicePokemon));
-    }
-
-    public void cambiarPokemon(int posicion){
-        this.pokemonActual = this.pokemones.get(posicion);
     }
 
     public boolean tienePokemonesConVida() {

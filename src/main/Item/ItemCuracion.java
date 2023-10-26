@@ -2,7 +2,7 @@ package src.main.Item;
 import src.main.Pokemon;
 
 public class ItemCuracion extends Item {
-    private int poder;
+    private final int poder;
 
     public ItemCuracion(int poder, String nombre, int cantidad) {
         super(nombre, cantidad);

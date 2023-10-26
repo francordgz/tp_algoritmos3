@@ -4,7 +4,7 @@ import src.main.Pokemon;
 
 public class ItemEstadistica extends Item {
     
-    private TipoModificacion tipo;
+    private final TipoModificacion tipo;
 
     public ItemEstadistica(String nombre, TipoModificacion tipo, int cantidad) {
         super(nombre, cantidad);
