@@ -46,7 +46,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),5
@@ -57,7 +57,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Latigo cepa", "Planta", 2, 90, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10),
                         new HabilidadEstado("Envenenar", 2, Estados.ENVENENADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),20
@@ -68,7 +68,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 5, 100, false),
                         new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 5, 15, false),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 5, 15),
                         new HabilidadEstado("Envenenar", 5, Estados.ENVENENADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),9
@@ -79,7 +79,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Lanzallamas", "Fuego", 2, 100, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),6
@@ -90,7 +90,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Lanzallamas", "Fuego", 4, 125, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10),
                         new HabilidadEstado("Paralizar", 4, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),8
@@ -101,7 +101,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
                         new HabilidadAtaque("Pistola agua", "Agua", 2, 90, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,false),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10),
                         new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),9
@@ -112,7 +112,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Salpicar", "Normal", 1, 0, false),
                         new HabilidadAtaque("Giro rápido", "Agua", 2, 60, true),
-                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 1, 5,true),
+                        new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 1, 5),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),1
@@ -123,7 +123,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Impactrueno", "Rayo", 3, 110, true),
                         new HabilidadAtaque("Ataque rápido", "Normal", 2, 60, false),
-                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 15,true),
+                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 15),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),3
@@ -134,7 +134,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Confusión", "Psiquico", 3, 90, true),
                         new HabilidadAtaque("Psicoonda", "Psiquico", 4, 120, true),
-                        new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 20,false),
+                        new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 20),
                         new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),5
@@ -145,7 +145,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Encanto", "Hada", 2, 70, true),
                         new HabilidadAtaque("Beso mágico", "Hada", 3, 80, false),
-                        new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 15,true),
+                        new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 15),
                         new HabilidadEstado("Envenenar", 0, Estados.ENVENENADO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),9
@@ -156,7 +156,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Mordisco", "Veneno", 3, 50, false),
                         new HabilidadAtaque("Acido", "Veneno", 2, 70, true),
-                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10,true),
+                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),2
@@ -167,7 +167,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Mordisco", "Normal", 3, 60, false),
                         new HabilidadAtaque("Hipercolmillo", "Normal", 4, 80, true),
-                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10,false),
+                        new HabilidadEstadistica("Aumentar velocidad", Atributos.VELOCIDAD, 2, 10),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
                 ),2
