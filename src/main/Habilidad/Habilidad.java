@@ -34,5 +34,4 @@ public abstract class Habilidad {
     public Boolean AfectarRival() {
         return true;
     }
-
 }

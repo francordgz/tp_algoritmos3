@@ -6,11 +6,13 @@ import src.main.Pokemon;
 public class HabilidadEstadistica extends Habilidad{
     private final int poder;
     private final Atributos atributo;
+    private final Boolean afectarRival;
 
-    public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int poder) {
+    public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int poder, Boolean afectarRival) {
         super(nombre,usos);
         this.poder = poder;
         this.atributo = atributo;
+        this.afectarRival = afectarRival;
     }
 
     @Override
@@ -25,5 +27,10 @@ public class HabilidadEstadistica extends Habilidad{
             pokemon.modificarDefensa(poder);
         }
         this.usos -=1;
+    }
+
+    @Override
+    public Boolean AfectarRival() {
+        return afectarRival;
     }
 }

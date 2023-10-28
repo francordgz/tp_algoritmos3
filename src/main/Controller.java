@@ -3,6 +3,7 @@ import src.main.Enums.Estados;
 import src.main.Habilidad.Habilidad;
 import src.main.Vista.*;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.Random;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
@@ -196,6 +197,7 @@ public class Controller {
 
     public boolean seleccionarHabilidad(){
         double ataque;
+        Boolean ataqueEfectivo = true;
         int opcion = consultarHabilidad();
         int habilidadSeleccionada = opcion - 1;
 
@@ -204,32 +206,35 @@ public class Controller {
                 return false;
             case 1:
                 ataque = this.juego.atacar(habilidadSeleccionada);
-                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
-                    VistaJuego.imprimir("El pokemon esta paralizado!");
-                    return true;
-                }
 
+                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                    ataqueEfectivo = false;
+                    break;
+                }
                 VistaJuego.mostrarEfectividad(ataque);
                 break;
             case 2:
                 ataque = this.juego.atacar(habilidadSeleccionada);
-                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
-                    VistaJuego.imprimir("El pokemon esta paralizado!");
-                    return true;
-                }
 
+                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                    ataqueEfectivo = false;
+                    break;
+                }
                 VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
                 break;
             case 3:
-                this.juego.usarHabilidad(habilidadSeleccionada);
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
             case 4:
-                this.juego.usarHabilidad(habilidadSeleccionada);
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
             case 5:
-                this.juego.usarHabilidad(habilidadSeleccionada);
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
         }
+        if (!ataqueEfectivo)
+            VistaJuego.imprimir("El pokemon esta paralizado!");
+
         return true;
     }
 
