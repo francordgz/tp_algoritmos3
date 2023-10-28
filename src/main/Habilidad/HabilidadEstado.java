@@ -4,14 +4,12 @@ import src.main.Enums.Estados;
 import src.main.Pokemon;
 
 public class HabilidadEstado extends Habilidad{
-
     private final Estados tipo;
 
     public HabilidadEstado(String nombre, int usos, Estados tipo) {
         super(nombre,usos);
         this.tipo = tipo;
     }
-
 
     @Override
     public void modificarEstado(Pokemon pokemon) {

@@ -50,21 +50,26 @@ public class Controller {
         int opcion;
         boolean turnoTerminado = false;
         boolean mostrar = true;
+
+        this.juego.efectoClimatico();
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+
         //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
         //TODO: No esta claro en el PDF
-        this.juego.efectoClimatico();
-
-        if (pokemonActual.estaMuerto()) {
+        if (this.juego.pokemonActualEstaMuerto()) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
-            this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
+            this.seleccionarPokemon(entrenadorActual, true);
             turnoTerminado = true;
         }
 
+        this.juego.actualizarEstado();
+
         while (!turnoTerminado) {
-            if (mostrar) VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
-            else mostrar = true;
+            if (mostrar)
+                VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
+            else
+                mostrar = true;
 
             opcion = leerInt();
             switch (opcion) {
@@ -88,7 +93,7 @@ public class Controller {
                     mostrar = false;
             }
         }
-        this.juego.actualizarEstado();
+
         this.juego.cambiarTurno();
         this.juego.actualizarClima();
     }
@@ -106,6 +111,7 @@ public class Controller {
             if(!opcionValida)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
         }
+        //TODO: Controller necesita conocer el entrenado
         entrenador.cambiarPokemon(opcion - 1);
         nombrePokemon = entrenador.obtenerPokemonActual().obtenerNombre();
         VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
@@ -189,24 +195,29 @@ public class Controller {
     }
 
     public boolean seleccionarHabilidad(){
-
-        //TODO: Esto va en juego, y la comparacion va en pokemon
-        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().tieneEstado(Estados.PARALIZADO)) {
-            Boolean probabilidad = calcularProbabilidad();
-            if(!probabilidad) {
-                VistaJuego.imprimir("El pokemon esta paralizado!");
-                return false;
-            }
-        }
+        double ataque;
         int opcion = consultarHabilidad();
         int habilidadSeleccionada = opcion - 1;
 
         switch (opcion) {
-            case Constant.SALIR: return false;
+            case Constant.SALIR:
+                return false;
             case 1:
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
+                ataque = this.juego.atacar(habilidadSeleccionada);
+                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                    VistaJuego.imprimir("El pokemon esta paralizado!");
+                    return true;
+                }
+
+                VistaJuego.mostrarEfectividad(ataque);
                 break;
             case 2:
+                ataque = this.juego.atacar(habilidadSeleccionada);
+                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                    VistaJuego.imprimir("El pokemon esta paralizado!");
+                    return true;
+                }
+
                 VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
                 break;
             case 3:
@@ -222,12 +233,7 @@ public class Controller {
         return true;
     }
 
-    private Boolean calcularProbabilidad(){
-        Random rand = new Random();
-        int probabilidad = rand.nextInt(2);
 
-        return probabilidad == 1;
-    }
     
     private boolean seleccionarItem() {
         int opcion, numeroItem = NOT_INT;

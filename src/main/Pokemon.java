@@ -131,29 +131,12 @@ public class Pokemon {
         this.habilidades.get(Numerohabilidad).modificarEstado(rival);
     }
 
-    public void actualizarEstadoConfuso() {
-        if (this.turnosConfundido == 3) {
-            removerEstado(Estados.CONFUSO);
-            this.turnosConfundido = 0;
-            return;
-        }
-
-        Random rand = new Random();
-        int probabilidad = rand.nextInt(100);
-        boolean pierdeVida = probabilidad <= Constant.TERCIO;
-
-        if (pierdeVida) { recibirDanio(this.vidaMaxima * 0.15); }
-        this.turnosConfundido += 1;
-    }
-
     public void actualizarEstado() {
-        if (tieneEstado(Estados.DORMIDO)) {
-                this.actualizarEstadoDormido();
-                if (turnosDormido >= 4)
-                    removerEstado(Estados.DORMIDO);
-        }
         if (tieneEstado(Estados.ENVENENADO))
-            this.recibirDanio(this.vidaMaxima * 0.5);
+            this.recibirDanio(this.vidaMaxima * 0.05);
+
+        if (tieneEstado(Estados.DORMIDO))
+            this.actualizarEstadoDormido();
     }
 
     private void actualizarEstadoDormido() {
@@ -172,6 +155,21 @@ public class Pokemon {
         int probabilidad = 25 + (25*this.turnosDormido) - 1;
 
         return probabilidad > rand;
+    }
+
+    public void actualizarEstadoConfuso() {
+        Random rand = new Random();
+        int probabilidad = rand.nextInt(100);
+        boolean pierdeVida = probabilidad <= Constant.TERCIO;
+
+        if (pierdeVida)
+            recibirDanio(this.vidaMaxima * 0.15);
+
+        this.turnosConfundido += 1;
+        if (this.turnosConfundido == 3) {
+            removerEstado(Estados.CONFUSO);
+            this.turnosConfundido = 0;
+        }
     }
 
     public void curar(int poder){

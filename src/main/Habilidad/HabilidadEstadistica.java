@@ -13,7 +13,6 @@ public class HabilidadEstadistica extends Habilidad{
         this.atributo = atributo;
     }
 
-
     @Override
     public void modificarEstado(Pokemon pokemon) {
         if(atributo == Atributos.VIDA) {

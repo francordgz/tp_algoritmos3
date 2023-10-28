@@ -169,12 +169,26 @@ public class Juego {
 
         double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
         ataque = this.clima.afectarAtaque(pokemonActual, ataque);
-        pokemonRival.recibirDanio(ataque);
 
-        if (pokemonActual.tieneEstado(Estados.CONFUSO))
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO)) {
+            Boolean probabilidad = calcularProbabilidad();
+            if (!probabilidad)
+                ataque = 0;
+        }
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO)) {
             pokemonActual.actualizarEstadoConfuso();
+        }
 
+        pokemonRival.recibirDanio(ataque);
         return ataque;
+    }
+
+    private Boolean calcularProbabilidad(){
+        Random rand = new Random();
+        int probabilidad = rand.nextInt(2);
+
+        return probabilidad == 1;
     }
 
     public void actualizarEstado(){
@@ -193,5 +207,16 @@ public class Juego {
             return true;
         }
         return this.terminado;
+    }
+
+    public Boolean pokemonActualEstaMuerto() {
+        Pokemon pokemon = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        return pokemon.estaMuerto();
+    }
+
+    public Boolean pokemonActualEstaParalizado() {
+        Pokemon pokemon = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        return pokemon.tieneEstado(Estados.PARALIZADO);
+
     }
 }
