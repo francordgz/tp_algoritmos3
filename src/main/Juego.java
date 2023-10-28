@@ -102,23 +102,22 @@ public class Juego {
     }
 
     public double atacar(int habilidad) {
-        double ataque = 0;
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
 
         if (pokemonActual.tieneEstado(Estados.CONFUSO))
             pokemonActual.actualizarEstadoConfuso();
 
+        double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
+        ataque = this.clima.afectarAtaque(pokemonActual, ataque);
+
         if (pokemonActual.tieneEstado(Estados.PARALIZADO)) {
             Boolean probabilidad = calcularProbabilidad();
-
-            if (probabilidad) {
-                ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
-                ataque = this.clima.afectarAtaque(pokemonActual, ataque);
-                pokemonRival.recibirDanio(ataque);
-            }
+            if (!probabilidad)
+                ataque = 0;
         }
 
+        pokemonRival.recibirDanio(ataque);
         return ataque;
     }
 
@@ -130,6 +129,7 @@ public class Juego {
     }
 
     public Boolean usarHabilidad(int habilidad) {
+        Boolean probabilidad = calcularProbabilidad();
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
         Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
 
@@ -139,18 +139,13 @@ public class Juego {
         if (pokemonActual.tieneEstado(Estados.CONFUSO))
             pokemonActual.actualizarEstadoConfuso();
 
-        if (pokemonActual.tieneEstado(Estados.PARALIZADO)) {
-            Boolean probabilidad = calcularProbabilidad();
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO) && !probabilidad)
+            return false;
 
-            if (probabilidad) {
-                if (!pokemonActual.habilidades(habilidad).AfectarRival())
-                    pokemonActual.UsarHabilidad(habilidad, pokemonActual);
-                else
-                    pokemonActual.UsarHabilidad(habilidad, pokemonRival);
-            }
-            else
-                return false;
-        }
+        if (!pokemonActual.habilidades(habilidad).AfectarRival())
+            pokemonActual.UsarHabilidad(habilidad, pokemonActual);
+        else
+            pokemonActual.UsarHabilidad(habilidad, pokemonRival);
 
         return true;
     }
