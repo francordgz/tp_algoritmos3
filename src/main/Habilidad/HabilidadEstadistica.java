@@ -5,9 +5,9 @@ import src.main.Pokemon;
 
 public class HabilidadEstadistica extends Habilidad{
 
-    private int poder;
-    private Atributos atributo;
-    private Boolean AfectarRival;
+    private final int poder;
+    private final Atributos atributo;
+    private final Boolean AfectarRival;
 
     public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int poder, Boolean AfectarRival) {
         super(nombre,usos);
