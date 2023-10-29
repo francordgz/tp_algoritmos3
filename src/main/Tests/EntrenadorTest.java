@@ -1,10 +1,15 @@
-import org.junit.Before;
-import org.junit.Test;
+package src.main.Tests;
+
 import org.mockito.Mockito;
+import org.junit.jupiter.api.*;
+import src.main.Entrenador;
+import src.main.Item.Item;
+import src.main.Pokemon;
 
 import java.util.List;
-import static org.junit.Assert.Equals;
-import static org.mockito.Mockito.mock;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class EntrenadorTest {
     private Entrenador entrenador;
@@ -22,8 +27,8 @@ public class EntrenadorTest {
 
     @Test
     public void obtenerPokemonesTest() {
-        pokemon1 = Mockito.mock(Pokemon.class);
-        pokemon2 = Mockito.mock(Pokemon.class);
+        Pokemon pokemon1 = Mockito.mock(Pokemon.class);
+        Pokemon pokemon2 = Mockito.mock(Pokemon.class);
 
         entrenador.agregarPokemon(pokemon1);
         entrenador.agregarPokemon(pokemon2);
@@ -39,7 +44,7 @@ public class EntrenadorTest {
     public void obtenerPokemonActualTest() {
         assertNull(entrenador.obtenerPokemonActual());
 
-        pokemon = Mockito.mock(Pokemon.class);
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
         entrenador.agregarPokemon(pokemon);
         entrenador.cambiarPokemon(0);
 
@@ -48,8 +53,8 @@ public class EntrenadorTest {
 
     @Test
     public void obtenerItemsTest() {
-        item1 = Mockito.mock(Item.class);
-        item2 = Mockito.mock(Item.class);
+        Item item1 = Mockito.mock(Item.class);
+        Item item2 = Mockito.mock(Item.class);
         entrenador.agregarItem(item1);
         entrenador.agregarItem(item2);
 
@@ -62,7 +67,7 @@ public class EntrenadorTest {
 
     @Test
     public void agregarPokemonTest() {
-        pokemon = Mockito.mock(Pokemon.class)
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
         entrenador.agregarPokemon(pokemon);
 
         List<Pokemon> pokemones = entrenador.obtenerPokemones();
@@ -73,7 +78,7 @@ public class EntrenadorTest {
 
     @Test
     public void agregarItemTest() {
-        item = Mockito.mock(Item.class)
+        Item item = Mockito.mock(Item.class);
 
         entrenador.agregarItem(item);
 
@@ -85,12 +90,12 @@ public class EntrenadorTest {
 
     @Test
     public void cambiarPokemonTest() {
-        pokemon1 = Mockito.mock(Pokemon.class);
-        pokemon2 = Mockito.mock(Pokemon.class);
+        Pokemon pokemon1 = Mockito.mock(Pokemon.class);
+        Pokemon pokemon2 = Mockito.mock(Pokemon.class);
         entrenador.agregarPokemon(pokemon1);
         entrenador.agregarPokemon(pokemon2);
 
-        entrenador.cambiarPokemon(0)
+        entrenador.cambiarPokemon(0);
         assertEquals(pokemon1, entrenador.obtenerPokemonActual());
 
         entrenador.cambiarPokemon(1);
@@ -99,7 +104,7 @@ public class EntrenadorTest {
 
     @Test
     public void tienePokemonesConVidaTest() {
-        pokemon = Mockito.mock(Pokemon.class);
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
         when(pokemon.estaMuerto()).thenReturn(false);
         entrenador.agregarPokemon(pokemon);
 

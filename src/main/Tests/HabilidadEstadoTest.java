@@ -1,6 +1,11 @@
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+package src.main.Tests;
+
+import org.junit.jupiter.api.*;
+import src.main.Enums.Estados;
+import src.main.Habilidad.HabilidadEstado;
+import src.main.Pokemon;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class HabilidadEstadoTest {
@@ -9,7 +14,7 @@ public class HabilidadEstadoTest {
 
     @BeforeEach
     public void setUp() {
-        pokemon = Mockito.mock(Pokemon.class);
+        pokemon = mock(Pokemon.class);
     }
 
     @Test
