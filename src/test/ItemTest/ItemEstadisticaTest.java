@@ -1,4 +1,4 @@
-package src.main.Tests.ItemTest;
+package src.test.ItemTest;
 
 import org.junit.jupiter.api.BeforeAll;
 import src.main.Enums.Tipo;

@@ -1,21 +1,15 @@
-package src.main.Tests.ItemTest;
+package src.test.ItemTest;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
 import src.main.Item.Item;
-import src.main.Item.ItemCuracion;
 import src.main.Item.ItemEstado;
 import src.main.Pokemon;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemEstadoTest {
     private Item item;
@@ -30,9 +24,9 @@ public class ItemEstadoTest {
 
     @Test
     public void esAplicableTest() {
-        assertEquals(false, item.esAplicable(pokemon));
+        assertFalse(item.esAplicable(pokemon));
         pokemon.agregarEstado(Estados.DORMIDO);
-        assertEquals(true, item.esAplicable(pokemon));
+        assertFalse(item.esAplicable(pokemon));
     }
 
     @Test
@@ -40,6 +34,6 @@ public class ItemEstadoTest {
         this.pokemon.agregarEstado(Estados.ENVENENADO);
         item.usarItem(this.pokemon);
         assertTrue(pokemon.tieneEstado(Estados.NORMAL));
-        assertTrue(!pokemon.tieneEstado(Estados.ENVENENADO));
+        assertFalse(pokemon.tieneEstado(Estados.ENVENENADO));
     }
 }

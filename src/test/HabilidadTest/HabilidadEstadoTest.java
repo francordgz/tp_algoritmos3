@@ -1,4 +1,4 @@
-package HabilidadTest;
+package src.test.HabilidadTest;
 
 import org.junit.jupiter.api.*;
 import src.main.Enums.Estados;

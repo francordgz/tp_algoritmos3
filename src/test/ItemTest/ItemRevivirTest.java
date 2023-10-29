@@ -1,11 +1,9 @@
-package src.main.Tests.ItemTest;
+package src.test.ItemTest;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
-import src.main.Item.Item;
 import src.main.Item.ItemRevivir;
 import src.main.Pokemon;
 

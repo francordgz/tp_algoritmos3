@@ -1,4 +1,4 @@
-package src.main.Tests.ItemTest;
+package src.test.ItemTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package src.main.Tests.ItemTest;
+package src.test.ItemTest;
 
 import org.junit.jupiter.api.*;
 import src.main.Enums.Tipo;
@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItemCuracionTest {
     private List<Item> items;

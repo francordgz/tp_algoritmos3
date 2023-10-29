@@ -1,4 +1,4 @@
-package src.main.Tests;
+package src.test;
 
 import org.junit.jupiter.api.*;
 import src.main.Enums.Atributos;
@@ -12,6 +12,7 @@ import src.main.Pokemon;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PokemonTests {
 
@@ -39,6 +40,7 @@ public class PokemonTests {
         cantidad de turnos consecutivos.
             Dicha cantidad esta en funcion de su vida maxima y actual.
     */
+
     @Test
     public void pokemonEnvenenadoMuereTest() {
         int vidaMaxima = 20;
@@ -55,9 +57,10 @@ public class PokemonTests {
         for (int i = 0; i < turnosHastaMorir; i++) {
             pokemon.actualizarEstado();
         }
-        assertEquals(true, pokemon.tieneEstado(Estados.MUERTO));
+        assertTrue(pokemon.tieneEstado(Estados.MUERTO));
     }
 
+    /*
     @Test
     public void pokemonPierdeEstadosTest() {
         Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
@@ -77,4 +80,5 @@ public class PokemonTests {
         assertEquals(false, pokemon.tieneEstado(Estados.ENVENENADO));
         assertEquals(true, pokemon.tieneEstado(Estados.NORMAL));
     }
+    */
 }

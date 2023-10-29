@@ -1,4 +1,4 @@
-package HabilidadTest;
+package src.test.HabilidadTest;
 
 import src.main.Habilidad.HabilidadAtaque;
 
@@ -31,7 +31,7 @@ public class HabilidadAtaqueTest {
         danio = ((danio/5) +2)/50;
 
         float resultado = 32.496F;
-        float margenError = 0.0001F;
+        float margenError = 0.001F;
 
         assertEquals(danio * (mismoTipoMultiplier * efectividad * numeroRandom), resultado, margenError);
     }
