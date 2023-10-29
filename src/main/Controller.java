@@ -12,37 +12,10 @@ public class Controller {
 
     public Controller(Juego juego) {
         this.juego = juego;
-        String nombre1 = pedirNombreEntrenador("");
-        String nombre2 = pedirNombreEntrenador(nombre1);
-
-        this.juego.asignarEntrenadores(new Entrenador(nombre1), new Entrenador(nombre2));
-        this.juego.crearPokemones();
-        this.juego.crearItems();
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.inicializarTurnos();
         this.juego.inicializarClima();
-    }
-
-    private String pedirNombreEntrenador(String nombreOponente) {
-        String ingreso;
-        boolean longitudValida;
-        boolean nombreRepetido;
-
-        do {
-            VistaJuego.imprimirMismaLinea("Ingrese un nombre para el entrenador: ");
-            ingreso = leerString();
-            longitudValida = !ingreso.isEmpty() && ingreso.length() < Constant.MAX_NOMBRE;
-            nombreRepetido = ingreso.equals(nombreOponente);
-
-            if (!longitudValida)
-                VistaJuego.imprimir("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
-            else if (nombreRepetido)
-                VistaJuego.imprimir("Error! El nombre no puede coincidir con el del entrenador rival.");
-
-        } while (!longitudValida || nombreRepetido);
-
-        return ingreso;
     }
 
     public void menuPrincipal() {

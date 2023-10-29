@@ -1,0 +1,122 @@
+[
+  {
+    "nombre": "Pikachu",
+    "id": 0,
+    "nivel": 10,
+    "tipo": "electrico",
+    "historia": "Pikachu es un Pokémon conocido por su cola en forma de rayo y su capacidad para generar electricidad.",
+    "vidaMaxima": 100,
+    "velocidad": 25,
+    "defensa": 5,
+    "ataque": 25,
+    "habilidades": [0]
+  },
+  {
+    "nombre": "Bulbasaur",
+    "id": 1,
+    "nivel": 12,
+    "tipo": "planta",
+    "historia": "Bulbasaur lleva una planta en su espalda, que crece a medida que evoluciona.",
+    "vidaMaxima": 80,
+    "velocidad": 20,
+    "defensa": 10,
+    "ataque": 20,
+    "habilidades": [0]
+  },
+  {
+    "nombre": "Charmander",
+    "id": 2,
+    "nivel": 9,
+    "tipo": "fuego",
+    "historia": "Charmander es un pequeño dragón de fuego que evoluciona en Charizard.",
+    "vidaMaxima": 85,
+    "velocidad": 20,
+    "defensa": 10,
+    "ataque": 22,
+    "habilidades": []
+  },
+  {
+    "nombre": "Squirtle",
+    "id": 3,
+    "nivel": 11,
+    "tipo": "agua",
+    "historia": "Squirtle es un Pokémon tortuga acuático con la habilidad de lanzar agua desde su boca.",
+    "vidaMaxima": 95,
+    "velocidad": 18,
+    "defensa": 15,
+    "ataque": 18,
+    "habilidades": []
+  },
+  {
+    "nombre": "Jigglypuff",
+    "id": 4,
+    "nivel": 8,
+    "tipo": "normal",
+    "historia": "Jigglypuff es conocido por su habilidad de cantar canciones que hacen dormir a quienes lo escuchan.",
+    "vidaMaxima": 110,
+    "velocidad": 15,
+    "defensa": 12,
+    "ataque": 17,
+    "habilidades": []
+  },
+  {
+    "nombre": "Meowth",
+    "id": 5,
+    "nivel": 10,
+    "tipo": "normal",
+    "historia": "Meowth es un gato travieso que adora el dinero y tiene una moneda en la frente.",
+    "vidaMaxima": 90,
+    "velocidad": 25,
+    "defensa": 10,
+    "ataque": 21,
+    "habilidades": []
+  },
+  {
+    "nombre": "Machop",
+    "id": 6,
+    "nivel": 13,
+    "tipo": "lucha",
+    "historia": "Machop es un Pokémon musculoso que se entrena para aumentar su fuerza.",
+    "vidaMaxima": 75,
+    "velocidad": 22,
+    "defensa": 15,
+    "ataque": 24,
+    "habilidades": []
+  },
+  {
+    "nombre": "Geodude",
+    "id": 7,
+    "nivel": 12,
+    "tipo": "roca",
+    "historia": "Geodude es un Pokémon de roca que se encuentra comúnmente en las montañas.",
+    "vidaMaxima": 70,
+    "velocidad": 15,
+    "defensa": 20,
+    "ataque": 18,
+    "habilidades": []
+  },
+  {
+    "nombre": "Eevee",
+    "id": 8,
+    "nivel": 10,
+    "tipo": "normal",
+    "historia": "Eevee tiene la capacidad de evolucionar en diferentes tipos de Pokémon según las circunstancias.",
+    "vidaMaxima": 95,
+    "velocidad": 20,
+    "defensa": 10,
+    "ataque": 20,
+    "habilidades": []
+  },
+  {
+    "nombre": "Magikarp",
+    "id": 9,
+    "nivel": 5,
+    "tipo": "agua",
+    "historia": "Magikarp es un Pokémon débil que se transforma en Gyarados cuando evoluciona.",
+    "vidaMaxima": 50,
+    "velocidad": 10,
+    "defensa": 5,
+    "ataque": 10,
+    "habilidades": []
+  }
+]

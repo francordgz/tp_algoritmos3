@@ -22,13 +22,13 @@ public class PokemonTests {
 
 
         Pokemon p = new Pokemon("Picachu",Tipo.RAYO, 100, 5, 25, 15,
-                "Este Pokémon es conocido por su cola en forma de rayo y su capacidad para generar electricidad.", Arrays.asList(
-                new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
-                new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
+                "Este Pokémon es conocido por su cola en forma de rayo y su capacidad para generar electricidad.", 5,Arrays.asList(
+                new HabilidadAtaque("Golpe", 3, 100, false),
+                new HabilidadAtaque("Impactrueno", 1, 120, true),
                 new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
                 new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
                 new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
-        ),5);
+        ));
 
         assertEquals(p, p);
 

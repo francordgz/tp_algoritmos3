@@ -3,81 +3,47 @@ package src.main;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import src.main.Enums.Atributos;
-import src.main.Enums.Estados;
 import src.main.Enums.Tipo;
-import src.main.Habilidad.Habilidad;
-import src.main.Habilidad.HabilidadAtaque;
-import src.main.Habilidad.HabilidadEstadistica;
-import src.main.Habilidad.HabilidadEstado;
+import src.main.Habilidad.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Pokedex {
 
     final File JSONPokemones;
-    final File JSONHabilidades;
+    final DeserealizadorHabilidad deserealizadorHabilidad;
 
     public Pokedex(String rutaJSONPokemones, String rutaJSONHabilidades) {
         this.JSONPokemones = new File(rutaJSONPokemones);
-        this.JSONHabilidades = new File(rutaJSONHabilidades);
+        this.deserealizadorHabilidad = new DeserealizadorHabilidad(rutaJSONHabilidades);
     }
 
-    public Pokemon crearPokemon(String nombre) throws IOException {
+    public Pokemon crearPokemon(int id) throws IOException {
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(this.JSONPokemones);
+            JsonNode pokemonJSON = objectMapper.readTree(this.JSONPokemones);
+            JsonNode pokemon = encontrarPokemon(id, pokemonJSON);
 
-            if (jsonNode.has(nombre)) {
-                JsonNode data = jsonNode.get(nombre);
-                List<Integer> habilidadesId = objectMapper.convertValue(data.get("habilidades"), new TypeReference<>() {});
-                return new Pokemon(
-                        nombre,
-                        stringTipo(data.get("tipo").asText()),
-                        data.get("vidaMaxima").asInt(),
-                        data.get("defensa").asInt(),
-                        data.get("ataque").asInt(),
-                        data.get("velocidad").asInt(),
-                        data.get("historia").asText(),
-                        data.get("nivel").asInt(),
-                        parseHabilidades(habilidadesId)
-                );
-            } else {
-                throw new IllegalArgumentException("Pokemon no encontrado: " + nombre);
-            }
+            List<Integer> habilidadesId = objectMapper.convertValue(pokemon.get("habilidades"), new TypeReference<>() {});
+            return new Pokemon(
+                    pokemon.get("nombre").asText(),
+                    stringTipo(pokemon.get("tipo").asText()),
+                    pokemon.get("vidaMaxima").asInt(),
+                    pokemon.get("defensa").asInt(),
+                    pokemon.get("ataque").asInt(),
+                    pokemon.get("velocidad").asInt(),
+                    pokemon.get("historia").asText(),
+                    pokemon.get("nivel").asInt(),
+                    this.deserealizadorHabilidad.crearHabilidades(habilidadesId)
+            );
     }
 
-    private List<Habilidad> parseHabilidades(List<Integer> habilidadesId) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(this.JSONHabilidades);
-        List<Habilidad> habilidades = new ArrayList<>();
-
-        for (int id : habilidadesId) {
-            if(jsonNode.has(id)) {
-                JsonNode data = jsonNode.get(id);
-                String nombre = data.get("nombre").asText();
-                int usos = data.get("usos").asInt();
-
-                if (data.has("estado")) {
-                    habilidades.add(new HabilidadEstado(nombre, usos, stringEstado(data.get("estado").asText())));
-                } else {
-                    int poder = data.get("poder").asInt();
-                    if (data.has("atributo")) {
-                        habilidades.add(new HabilidadEstadistica(
-                                nombre,
-                                stringAtributos(data.get("atributo").asText()),
-                                usos,
-                                poder,
-                                data.get("afectarRival").asBoolean()));
-                    } else habilidades.add(new HabilidadAtaque(nombre, usos, poder, data.get("mismoTipo").asBoolean()));
-                }
-            }
-            else throw new IllegalArgumentException("Habilidad no encontrada: " + id);
+    private JsonNode encontrarPokemon(int id, JsonNode pokemonJSON) {
+        for (JsonNode pokemon : pokemonJSON) {
+            if (pokemon.get("id").asInt() == id) return pokemon;
         }
-
-        return habilidades;
+        throw new IllegalArgumentException("Pokemon no encontrado: " + id);
     }
 
         private static Tipo stringTipo(String tipoStr) {
@@ -85,7 +51,7 @@ public class Pokedex {
             case "agua" -> Tipo.AGUA;
             case "bicho" -> Tipo.BICHO;
             case "dragon" -> Tipo.DRAGON;
-            case "rayo" -> Tipo.RAYO;
+            case "electrico" -> Tipo.RAYO;
             case "fantasma" -> Tipo.FANTASMA;
             case "fuego" -> Tipo.FUEGO;
             case "hielo" -> Tipo.HIELO;
@@ -98,28 +64,6 @@ public class Pokedex {
             case "veneno" -> Tipo.VENENO;
             case "volador" -> Tipo.VOLADOR;
             default -> throw new IllegalStateException("Unexpected value: " + tipoStr);
-        };
-    }
-
-    public static Estados stringEstado(String estadoStr) {
-        return switch (estadoStr) {
-            case "normal" -> Estados.NORMAL;
-            case "envenenado" -> Estados.ENVENENADO;
-            case "dormido" -> Estados.DORMIDO;
-            case "paralizado" -> Estados.PARALIZADO;
-            case "muerto" -> Estados.MUERTO;
-            case "confuso" -> Estados.CONFUSO;
-            default -> null;
-        };
-    }
-
-    public static Atributos stringAtributos(String atributoStr) {
-        return switch (atributoStr) {
-            case "vida" -> Atributos.VIDA;
-            case "ataque" -> Atributos.ATAQUE;
-            case "velocidad" -> Atributos.VELOCIDAD;
-            case "defensa" -> Atributos.DEFENSA;
-            default -> null;
         };
     }
 }

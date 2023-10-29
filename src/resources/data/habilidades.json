@@ -1,0 +1,9 @@
+[
+  {
+    "nombre": "Golpe",
+    "id" : 0,
+    "usos" : 3,
+    "poder": 100,
+    "mismoTipo": false
+  }
+]

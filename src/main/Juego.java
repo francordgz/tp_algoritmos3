@@ -1,15 +1,12 @@
 package src.main;
 
 import src.main.Clima.*;
-import src.main.Item.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import src.main.Enums.Estados;
-import src.main.Enums.TipoModificacion;
 
 public class Juego {
     private final AdministradorDeTurnos administrador;
@@ -26,6 +23,18 @@ public class Juego {
         this.clima = new ClimaNormal();
         this.efectividades = Constant.crearEfectividades();
         this.terminado = false;
+        deserealizarPartida();
+    }
+
+    private void deserealizarPartida() {
+        DeserealizadorPartida deserealizadorPartida = new DeserealizadorPartida();
+        try {
+            List<Entrenador> entrenadores = deserealizadorPartida.deserealizarPartida();
+            this.entrenador1 = entrenadores.get(0);
+            this.entrenador2 = entrenadores.get(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Entrenador obtenerPrimerEntrenador() {
@@ -38,11 +47,6 @@ public class Juego {
 
     public Entrenador obtenerGanador() {
         return this.ganador;
-    }
-
-    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
-        this.entrenador1 = primerEntrenador;
-        this.entrenador2 = segundoEntrenador;
     }
 
     public void modificarClima(Clima clima) {
@@ -198,51 +202,5 @@ public class Juego {
             return true;
         }
         return this.terminado;
-    }
-
-    public void crearPokemones() {
-        Pokedex pokedex = new Pokedex("pokemons.json", "habilidades.json");
-
-        try {
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Pikachu"));
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Bulbasur"));
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Venusar"));
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Charmander"));
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Charizard"));
-            entrenador1.agregarPokemon(pokedex.crearPokemon("Squirtle"));
-
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Magikarp"));
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Raichu"));
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Kadabra"));
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Clefable"));
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Ekans"));
-            entrenador2.agregarPokemon(pokedex.crearPokemon("Rattata"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void crearItems() {
-
-        List<List<Item>> setsDeIems = new ArrayList<List<Item>>();
-
-        for (int i = 0; i < 2; i ++) {
-            setsDeIems.add(new ArrayList<Item>());
-            setsDeIems.get(i).add(new ItemCuracion(20, "Pocion", 3));
-            setsDeIems.get(i).add(new ItemCuracion(50, "MegaPocion", 2));
-            setsDeIems.get(i).add(new ItemCuracion(100, "Hiperpocion", 3));
-            setsDeIems.get(i).add(new ItemCurarPorcentaje("Pocion molesta alumnos", 2, 33));
-            setsDeIems.get(i).add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
-            setsDeIems.get(i).add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
-            setsDeIems.get(i).add(new ItemEstado("CuraTodo", 3));
-            setsDeIems.get(i).add(new ItemRevivir("Revivir", 1));
-        }
-        List<Item> primerSetItems = setsDeIems.get(0);
-        for (Item item: primerSetItems)
-            entrenador1.agregarItem(item);
-
-        List<Item> segundoSetItems = setsDeIems.get(1);
-        for (Item item: segundoSetItems)
-            entrenador2.agregarItem(item);
     }
 }
