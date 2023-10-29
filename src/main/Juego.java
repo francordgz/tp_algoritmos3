@@ -107,7 +107,6 @@ public class Juego {
     }
 
     public double atacar(int habilidad) {
-        System.out.println("Atacar");
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
 
@@ -239,5 +238,23 @@ public class Juego {
         List<Item> segundoSetItems = setsDeIems.get(1);
         for (Item item: segundoSetItems)
             entrenador2.agregarItem(item);
+    }
+
+    public Integer obtenerCantidadDePokemones(Entrenador entrenador) {
+        return entrenador.obtenerCantidadDePokemones();
+    }
+
+    public String cambiarPokemon(Entrenador entrenador, Integer opcion) {
+        return entrenador.cambiarPokemon(opcion);
+    }
+
+    public Boolean pokemonEstaMuerto(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonEstaMuerto(opcion);
+    }
+
+    public Boolean validarPokemon(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
     }
 }
