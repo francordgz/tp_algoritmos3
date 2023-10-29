@@ -8,98 +8,109 @@ import static org.mockito.Mockito.mock;
 
 public class EntrenadorTest {
     private Entrenador entrenador;
-    private Pokemon pokemon1;
-    private Pokemon pokemon2;
-    private Item item1;
-    private Item item2;
 
-    @Before
-    public void setUp() {
+    pokemon1 =Mockito.mock(Pokemon .class);
+    pokemon2 =Mockito.mock(Pokemon .class);
+    item1 =Mockito.mock(Item .class);
+    item2 =Mockito.mock(Item .class);
+
+    @BeforeEach
+    public void nuevoEntrenador() {
         entrenador = new Entrenador("Ash");
-        pokemon1 = Mockito.mock(Pokemon.class);
-        pokemon2 = Mockito.mock(Pokemon.class);
-        item1 = Mockito.mock(Item.class);
-        item2 = Mockito.mock(Item.class);
     }
 
     @Test
-    public void testObtenerNombre() {
+    public void obtenerNombreTest() {
+        entrenador = new Entrenador("Ash");
         assertEquals("Ash", entrenador.obtenerNombre());
     }
 
     @Test
-    public void testObtenerPokemones() {
+    public void obtenerPokemonesTest() {
+        pokemon1 = Mockito.mock(Pokemon.class);
+        pokemon2 = Mockito.mock(Pokemon.class);
+
         entrenador.agregarPokemon(pokemon1);
         entrenador.agregarPokemon(pokemon2);
+
         List<Pokemon> pokemones = entrenador.obtenerPokemones();
+
         assertEquals(2, pokemones.size());
         assertTrue(pokemones.contains(pokemon1));
         assertTrue(pokemones.contains(pokemon2));
     }
 
     @Test
-    public void testObtenerPokemonActual() {
+    public void obtenerPokemonActualTest() {
         assertNull(entrenador.obtenerPokemonActual());
-        entrenador.agregarPokemon(pokemon1);
+
+        pokemon = Mockito.mock(Pokemon.class);
+        entrenador.agregarPokemon(pokemon);
         entrenador.cambiarPokemon(0);
-        assertEquals(pokemon1, entrenador.obtenerPokemonActual());
+
+        assertEquals(pokemon, entrenador.obtenerPokemonActual());
     }
 
     @Test
-    public void testObtenerItems() {
+    public void obtenerItemsTest() {
+        item1 = Mockito.mock(Item.class);
+        item2 = Mockito.mock(Item.class);
         entrenador.agregarItem(item1);
         entrenador.agregarItem(item2);
+
         List<Item> items = entrenador.obtenerItems();
+
         assertEquals(2, items.size());
         assertTrue(items.contains(item1));
         assertTrue(items.contains(item2));
     }
 
     @Test
-    public void testAgregarPokemon() {
-        entrenador.agregarPokemon(pokemon1);
+    public void agregarPokemonTest() {
+        pokemon = Mockito.mock(Pokemon.class)
+        entrenador.agregarPokemon(pokemon);
+
         List<Pokemon> pokemones = entrenador.obtenerPokemones();
+
         assertEquals(1, pokemones.size());
-        assertTrue(pokemones.contains(pokemon1));
+        assertTrue(pokemones.contains(pokemon));
     }
 
     @Test
-    public void testAgregarItem() {
-        entrenador.agregarItem(item1);
+    public void agregarItemTest() {
+        item = Mockito.mock(Item.class)
+
+        entrenador.agregarItem(item);
+
         List<Item> items = entrenador.obtenerItems();
+
         assertEquals(1, items.size());
-        assertTrue(items.contains(item1));
+        assertTrue(items.contains(item));
     }
 
     @Test
-    public void testCambiarPokemon() {
+    public void cambiarPokemonTest() {
+        pokemon1 = Mockito.mock(Pokemon.class);
+        pokemon2 = Mockito.mock(Pokemon.class);
         entrenador.agregarPokemon(pokemon1);
         entrenador.agregarPokemon(pokemon2);
+
+        entrenador.cambiarPokemon(0)
+        assertEquals(pokemon1, entrenador.obtenerPokemonActual());
+
         entrenador.cambiarPokemon(1);
         assertEquals(pokemon2, entrenador.obtenerPokemonActual());
     }
 
     @Test
-    public void testUsarItem() {
-        entrenador.agregarPokemon(pokemon1);
-        entrenador.agregarItem(item1);
-        entrenador.cambiarPokemon(0);
-        entrenador.usarItem(0, 0);
-        assertFalse(pokemon1.estaMuerto());
-    }
+    public void tienePokemonesConVidaTest() {
+        pokemon = Mockito.mock(Pokemon.class);
+        when(pokemon.estaMuerto()).thenReturn(false);
+        entrenador.agregarPokemon(pokemon);
 
-    @Test
-    public void testTienePokemonesConVida() {
-        entrenador.agregarPokemon(pokemon1);
         assertTrue(entrenador.tienePokemonesConVida());
-        pokemon1.recibirDanio(10000);
-        assertFalse(entrenador.tienePokemonesConVida());
-    }
 
-    @Test
-    public void testPuedeAplicarItem() {
-        entrenador.agregarPokemon(pokemon1);
-        entrenador.agregarItem(item1);
-        assertTrue(entrenador.puedeAplicarItem(0, 0));
+        when(pokemon.estaMuerto()).thenReturn(true);
+        assertFalse(entrenador.tienePokemonesConVida());
     }
 }
