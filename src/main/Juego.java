@@ -170,6 +170,22 @@ public class Juego {
         this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
     }
 
+    public Integer obtenerCantidadDeItems() {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.obtenerCantidadDeItems();
+    }
+
+    public Boolean validarItem(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarItem(opcion);
+    }
+
+    public Boolean itemAplicable(Integer opcion, Integer pokemon) {
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+
+        return entrenadorActual.puedeAplicarItem(opcion, pokemon);
+    }
+
     public void rendirse() {
         this.ganador = this.administrador.obtenerEntrenadorRivalActual();
         this.terminado = true;

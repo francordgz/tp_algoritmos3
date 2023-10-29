@@ -64,8 +64,18 @@ public class Entrenador {
         this.items.get(item).usarItem(pokemones.get(indicePokemon));
     }
 
-    public boolean puedeAplicarItem(int indecePokemon, int item) {
-        Item itemSeleccionado = items.get(item);
-        return itemSeleccionado.esAplicable(pokemones.get(indecePokemon));
+    public Integer obtenerCantidadDeItems() {
+        return this.obtenerItems().size();
+    }
+
+    public Boolean validarItem(Integer opcion) {
+        Item item = this.items.get(opcion);
+        return item.obtenerCantidad() > 0;
+    }
+
+    public Boolean puedeAplicarItem(int opcion, Integer indicePokemon) {
+        Item item = this.items.get(opcion);
+        Pokemon pokemon = this.pokemones.get(indicePokemon);
+        return item.esAplicable(pokemon);
     }
 }

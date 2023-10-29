@@ -110,7 +110,7 @@ public class Controller {
             if(!opcionValida)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
         }
-        //TODO: Controller necesita conocer el entrenado
+        //TODO: Controller necesita conocer el entrenador?
         entrenador.cambiarPokemon(opcion - 1);
         nombrePokemon = entrenador.obtenerPokemonActual().obtenerNombre();
         VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
@@ -123,7 +123,7 @@ public class Controller {
         int indicePokemon = Constant.NULA;
         
         while (!seleccionValida) {
-            indicePokemon = consultarPokemon(entrenador, seleccionObligatoria);
+            indicePokemon = pedirPokemon(entrenador, seleccionObligatoria);
 
             if (indicePokemon == NOT_INT && !seleccionObligatoria) { return false; }
 
@@ -139,7 +139,7 @@ public class Controller {
         return true;
     }
 
-    private int consultarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
+    private int pedirPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion = Constant.SALIR;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
         boolean opcionValida, seleccionValida = false;
@@ -157,30 +157,6 @@ public class Controller {
             seleccionValida = true;
         }
         return opcion - 1;
-    }
-
-    private int pedirHabilidad() {
-        int opcion = Constant.SALIR;
-        boolean habilidadValida = false;
-
-        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
-
-        while (!habilidadValida) {
-            opcion = leerInt();
-
-            if (opcion < 0 || opcion > 5)
-                VistaJuego.imprimir("Seleccione una opción correcta!");
-            else
-                habilidadValida = true;
-        }
-
-        if (opcion == Constant.SALIR)
-            return opcion;
-
-        if (!this.juego.validarHabilidad(opcion - 1))
-            VistaJuego.imprimir("Esta habilidad no tiene más usos");
-
-        return opcion;
     }
 
     public Boolean seleccionarHabilidad(){
@@ -217,48 +193,66 @@ public class Controller {
         return true;
     }
 
+    private int pedirHabilidad() {
+        int opcion = Constant.SALIR;
+        boolean habilidadValida = false;
 
+        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+
+        while (!habilidadValida) {
+            opcion = leerInt();
+
+            if (opcion < Constant.SALIR || opcion > 5)
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR)
+                return opcion;
+
+            if (!this.juego.validarHabilidad(opcion - 1))
+                VistaJuego.imprimir("Esta habilidad no tiene más usos");
+            else
+                habilidadValida = true;
+        }
+
+        return opcion;
+    }
     
-    private boolean seleccionarItem() {
-        int opcion, numeroItem = NOT_INT;
-        boolean itemSeleccionadoValido = false, itemEsAplicable = false;
-        boolean opcionInvalida, itemDisponible;
-        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+    private Boolean seleccionarItem() {
+        int pokemonSeleccionado = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
 
-        int pokemonSeleccionado = consultarPokemon(entrenadorActual, false);
         if (pokemonSeleccionado == NOT_INT)
             return false;
 
-        while (!itemSeleccionadoValido) {
-            VistaItem.mostrarItems(entrenadorActual);
+        int opcion = pedirItem(pokemonSeleccionado);
+
+        if (opcion == Constant.SALIR)
+            return false;
+
+        this.juego.usarItem(opcion - 1, pokemonSeleccionado);
+        VistaItem.notificarUsoDeItem(this.juego.obtenerEntrenadorActual(), opcion - 1);
+        return true;
+    }
+
+    private Integer pedirItem(Integer pokemon) {
+        int opcion = Constant.SALIR;
+        boolean itemValido = false;
+        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
+
+        while (!itemValido) {
             opcion = leerInt();
 
-            if (opcion == Constant.SALIR)
-                return false;
-
-            opcionInvalida = opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size() || opcion <= Constant.SALIR;
-            if(opcionInvalida) {
+            if (opcion < Constant.SALIR || opcion > this.juego.obtenerCantidadDeItems())
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
-            }
+            else if (opcion == Constant.SALIR)
+                return opcion;
 
-            numeroItem = opcion - 1;
-            itemDisponible = entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() > 0;
-            if (!itemDisponible) {
-                VistaJuego.imprimir("Este item no tiene más usos");
-                continue;
-            } else { 
-                itemSeleccionadoValido = true;
-                itemEsAplicable = entrenadorActual.puedeAplicarItem(pokemonSeleccionado, numeroItem);
-            }
-            if (!itemEsAplicable) {
+            if (!this.juego.validarItem(opcion - 1))
+                VistaJuego.imprimir("Esta item no tiene más usos");
+            else if (!this.juego.itemAplicable(opcion - 1, pokemon))
                 VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
-                itemSeleccionadoValido = itemEsAplicable;
-            } 
+            else
+                itemValido = true;
         }
-        this.juego.usarItem(numeroItem, pokemonSeleccionado);
-        VistaItem.notificarUsoDeItem(entrenadorActual, numeroItem);
-        return true;
+        return opcion;
     }
 
     public void terminar() {
