@@ -9,11 +9,6 @@ import static org.mockito.Mockito.mock;
 public class EntrenadorTest {
     private Entrenador entrenador;
 
-    pokemon1 =Mockito.mock(Pokemon .class);
-    pokemon2 =Mockito.mock(Pokemon .class);
-    item1 =Mockito.mock(Item .class);
-    item2 =Mockito.mock(Item .class);
-
     @BeforeEach
     public void nuevoEntrenador() {
         entrenador = new Entrenador("Ash");
