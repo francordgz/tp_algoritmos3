@@ -5,8 +5,8 @@ public class HabilidadAtaque extends Habilidad{
     private final int poder;
     private final boolean mismoTipo;
 
-    public HabilidadAtaque(String nombre, int usos, int poder, boolean mismoTipo) {
-        super(nombre,usos);
+    public HabilidadAtaque(String nombre, int usos, int id, int poder, boolean mismoTipo) {
+        super(nombre,usos, id);
         this.poder = poder;
         this.mismoTipo = mismoTipo;
     }

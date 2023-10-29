@@ -22,21 +22,21 @@ public class DeserealizadorItem {
             if (item.get("id").asInt() == id) {
                 String nombre = item.get("nombre").asText();
 
-                if (nombre.equals("CuraTodo")) return new ItemEstado(nombre, cantidad);
+                if (nombre.equals("CuraTodo")) return new ItemEstado(nombre, cantidad, id);
 
-                if (nombre.equals("Revivir")) return new ItemRevivir(nombre, cantidad);
+                if (nombre.equals("Revivir")) return new ItemRevivir(nombre, cantidad, id);
 
                 if (item.has("poder")) {
-                    return new ItemCuracion(item.get("poder").asInt(), nombre, cantidad);
+                    return new ItemCuracion(item.get("poder").asInt(), nombre, id, cantidad);
                 }
 
                 if (item.has("porcentaje")) {
-                    return new ItemCurarPorcentaje(nombre, item.get("porcentaje").asInt(), cantidad);
+                    return new ItemCurarPorcentaje(nombre, cantidad, id, item.get("porcentaje").asInt());
                 }
 
                 if (item.has("tipoModifacion")) {
                     return new ItemEstadistica(nombre,
-                            stringTipoModificacion(item.get("tipoModifacion").asText()), cantidad);
+                            stringTipoModificacion(item.get("tipoModifacion").asText()), id, cantidad);
                 }
             }
         }

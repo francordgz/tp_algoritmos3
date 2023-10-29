@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Pokemon {
+    private final int id;
     private final String nombre;
     private final String historia;
     private final Tipo tipo;
@@ -22,7 +23,8 @@ public class Pokemon {
     private int turnosDormido;
     private int turnosConfundido;
 
-    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, int nivel, List<Habilidad> habilidades){
+    public Pokemon(int id, String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, int nivel, List<Habilidad> habilidades){
+        this.id = id;
         this.nombre = nombre;
         this.historia = historia;
         this.tipo = tipo;
@@ -226,5 +228,9 @@ public class Pokemon {
     public Boolean validarHabilidad(int opcion) {
         Habilidad habilidad = this.habilidades.get(opcion);
         return habilidad.quedanUsosDisponibles();
+    }
+
+    public int obtenerId() {
+        return this.id;
     }
 }

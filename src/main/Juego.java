@@ -12,7 +12,6 @@ public class Juego {
     private final AdministradorDeTurnos administrador;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
-    private Entrenador ganador;
     private Clima clima;
     private final double[][] efectividades;
     private Boolean terminado;
@@ -43,10 +42,6 @@ public class Juego {
 
     public Entrenador obtenerSegundoEntrenador() {
         return entrenador2;
-    }
-
-    public Entrenador obtenerGanador() {
-        return this.ganador;
     }
 
     public void modificarClima(Clima clima) {
@@ -192,13 +187,13 @@ public class Juego {
     }
 
     public void rendirse() {
-        this.ganador = this.administrador.obtenerEntrenadorRivalActual();
+        this.administrador.obtenerEntrenadorRivalActual().marcarComoGanador();
         this.terminado = true;
     }
 
     public boolean terminado() {
         if (!administrador.obtenerEntrenadorActual().tienePokemonesConVida()) {
-            this.ganador = obtenerEntrenadorRival();
+            obtenerEntrenadorRival().marcarComoGanador();
             return true;
         }
         return this.terminado;

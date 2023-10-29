@@ -3,8 +3,8 @@ import src.main.Enums.Estados;
 import src.main.Pokemon;
 
 public class ItemEstado extends Item {
-    public ItemEstado(String nombre, int cantidad) {
-        super(nombre, cantidad);
+    public ItemEstado(String nombre, int cantidad, int id) {
+        super(nombre, cantidad, id);
     }
 
     @Override

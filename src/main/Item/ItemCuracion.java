@@ -4,12 +4,12 @@ import src.main.Pokemon;
 public class ItemCuracion extends Item {
     private final int poder;
 
-    public ItemCuracion(int poder, String nombre, int cantidad) {
-        super(nombre, cantidad);
-        if (nombre.equals("Hiperpocion") && poder == 100 && cantidad > 1)
-            this.cantidad = 1;
-
+    public ItemCuracion(int poder, String nombre, int id, int cantidad) {
+        super(nombre, cantidad, id);
         this.poder = poder;
+
+        if (nombre.equals("Hiperpocion") && poder == 100 && cantidad > 1)
+            while(obtenerCantidad() > 1) decrementarCantidad();
     }
 
     @Override

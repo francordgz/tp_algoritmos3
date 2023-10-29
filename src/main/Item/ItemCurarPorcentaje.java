@@ -5,8 +5,8 @@ import src.main.Pokemon;
 public class ItemCurarPorcentaje extends Item{
 
     private final int porcentaje;
-    public ItemCurarPorcentaje(String nombre, int cantidad, int porcentaje) {
-        super(nombre, cantidad);
+    public ItemCurarPorcentaje(String nombre, int cantidad, int id, int porcentaje) {
+        super(nombre, cantidad, id);
         this.porcentaje = porcentaje;
     }
 

@@ -1,8 +1,13 @@
 package src.main;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import src.main.Enums.Estados;
 import src.main.Vista.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -229,8 +234,22 @@ public class Controller {
     }
 
     public void terminar() {
-        VistaJuego.imprimir("Presione cualquier tecla para terminar");
         this.scanner.close();
+        ObjectMapper objectMapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(Entrenador.class, new EntrenadorSerializer());
+        objectMapper.registerModule(module);
+
+        try {
+            String json = objectMapper.writeValueAsString(juego.obtenerEntrenadorActual());
+            System.out.println(json);
+            json = objectMapper.writeValueAsString(juego.obtenerEntrenadorRival());
+            System.out.println(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void declararGanador() {

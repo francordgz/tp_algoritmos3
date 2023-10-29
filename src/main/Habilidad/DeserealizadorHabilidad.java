@@ -33,7 +33,7 @@ public class DeserealizadorHabilidad {
                 int usos = habilidad.get("usos").asInt();
 
                 if (habilidad.has("estado")) {
-                    return new HabilidadEstado(nombre, usos, stringEstado(habilidad.get("estado").asText()));
+                    return new HabilidadEstado(nombre, usos, id, stringEstado(habilidad.get("estado").asText()));
                 } else {
                     int poder = habilidad.get("poder").asInt();
                     if (habilidad.has("atributo")) {
@@ -41,9 +41,10 @@ public class DeserealizadorHabilidad {
                                 nombre,
                                 stringAtributos(habilidad.get("atributo").asText()),
                                 usos,
+                                id,
                                 poder,
                                 habilidad.get("afectarRival").asBoolean());
-                    } else return new HabilidadAtaque(nombre, usos, poder, habilidad.get("mismoTipo").asBoolean());
+                    } else return new HabilidadAtaque(nombre, usos, id, poder, habilidad.get("mismoTipo").asBoolean());
                 }
             }
         }

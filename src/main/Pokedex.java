@@ -27,6 +27,7 @@ public class Pokedex {
 
             List<Integer> habilidadesId = objectMapper.convertValue(pokemon.get("habilidades"), new TypeReference<>() {});
             return new Pokemon(
+                    id,
                     pokemon.get("nombre").asText(),
                     stringTipo(pokemon.get("tipo").asText()),
                     pokemon.get("vidaMaxima").asInt(),

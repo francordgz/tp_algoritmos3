@@ -30,9 +30,8 @@ public class DeserealizadorPartida {
         List<Entrenador> entrenadores = new ArrayList<>();
         for (JsonNode entrenadorNode: partidaJSON) {
             Entrenador entrenador = new Entrenador(entrenadorNode.get("nombre").asText());
-            //crearItems(entrenador, entrenadorNode.get("items"));
+            crearItems(entrenador, entrenadorNode.get("items"));
             crearPokemons(entrenador, entrenadorNode.get("pokemons"));
-            entrenador.agregarItem(new ItemCuracion(30, "A", 4));
             entrenadores.add(entrenador);
         }
 
