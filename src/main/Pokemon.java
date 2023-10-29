@@ -222,4 +222,9 @@ public class Pokemon {
             this.estados = estadosActualizados;
         }
     }
+
+    public Boolean validarHabilidad(int opcion) {
+        Habilidad habilidad = this.habilidades.get(opcion);
+        return habilidad.quedanUsosDisponibles();
+    }
 }

@@ -1,10 +1,8 @@
 package src.main;
+
 import src.main.Enums.Estados;
-import src.main.Habilidad.Habilidad;
 import src.main.Vista.*;
 
-import javax.swing.text.StyledEditorKit;
-import java.util.Random;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -58,7 +56,7 @@ public class Controller {
 
         //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
         //TODO: No esta claro en el PDF
-        if (this.juego.pokemonActualEstaMuerto()) {
+        if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(entrenadorActual, true);
             turnoTerminado = true;
@@ -161,45 +159,40 @@ public class Controller {
         return opcion - 1;
     }
 
-    private int consultarHabilidad() {
-        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual()
-                                    .obtenerPokemonActual();
-        Habilidad habilidadSeleccionada;
-        boolean esHabilidadDeAtaque, opcionValida, habilidadValida = false;
+    private int pedirHabilidad() {
         int opcion = Constant.SALIR;
-        
-        VistaHabilidad.mostrarHabilidades(pokemonActual);
+        boolean habilidadValida = false;
+
+        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+
         while (!habilidadValida) {
             opcion = leerInt();
-            opcionValida = opcion <= 5 && opcion >= 0;
 
-            if (!opcionValida) {
+            if (opcion < 0 || opcion > 5)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
-            }
-            else if (opcion == Constant.SALIR) {
-                return opcion;
-            }
-            else {
-                esHabilidadDeAtaque = opcion == 1 || opcion == 2;
-            }
-            habilidadSeleccionada = pokemonActual.obtenerHabilidades().get(opcion - 1);
-
-            if (!habilidadSeleccionada.quedanUsosDisponibles())
-                VistaJuego.imprimir("Esta habilidad no tiene más usos");
-            else if (esHabilidadDeAtaque && !pokemonActual.puedeAtacar())
-                VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
             else
                 habilidadValida = true;
         }
+
+        if (opcion == Constant.SALIR)
+            return opcion;
+
+        if (!this.juego.validarHabilidad(opcion - 1))
+            VistaJuego.imprimir("Esta habilidad no tiene más usos");
+
         return opcion;
     }
 
-    public boolean seleccionarHabilidad(){
+    public Boolean seleccionarHabilidad(){
         double ataque;
         Boolean ataqueEfectivo = true;
-        int opcion = consultarHabilidad();
+        int opcion = pedirHabilidad();
         int habilidadSeleccionada = opcion - 1;
+
+        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
+            return true;
+        }
 
         switch (opcion) {
             case Constant.SALIR:
@@ -207,7 +200,7 @@ public class Controller {
             case 1:
                 ataque = this.juego.atacar(habilidadSeleccionada);
 
-                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
                     ataqueEfectivo = false;
                     break;
                 }
@@ -216,7 +209,7 @@ public class Controller {
             case 2:
                 ataque = this.juego.atacar(habilidadSeleccionada);
 
-                if (ataque == 0 && this.juego.pokemonActualEstaParalizado()) {
+                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
                     ataqueEfectivo = false;
                     break;
                 }

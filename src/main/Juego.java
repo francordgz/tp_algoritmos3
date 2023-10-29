@@ -101,6 +101,11 @@ public class Juego {
         this.clima.efectoClimatico(pokemonRival);
     }
 
+    public Boolean validarHabilidad(int opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarHabilidad(opcion);
+    }
+
     public double atacar(int habilidad) {
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
@@ -155,14 +160,9 @@ public class Juego {
         actual.actualizarEstado();
     }
 
-    public Boolean pokemonActualEstaMuerto() {
-        Pokemon pokemon = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        return pokemon.estaMuerto();
-    }
-
-    public Boolean pokemonActualEstaParalizado() {
-        Pokemon pokemon = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        return pokemon.tieneEstado(Estados.PARALIZADO);
+    public Boolean pokemonActualTieneEstado(Estados estado) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonActualTieneEstado(estado);
     }
 
     public void usarItem(int item, int pokemon) {

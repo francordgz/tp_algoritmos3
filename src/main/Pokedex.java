@@ -48,7 +48,7 @@ public class Pokedex {
                         new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
                         new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10, false),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
-                        new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
+                        new HabilidadEstado("Dormir", 1, Estados.DORMIDO)
                 ),5
         ));
 
@@ -70,7 +70,7 @@ public class Pokedex {
                         new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
                         new HabilidadEstadistica("Curar", Atributos.ATAQUE, 5, 15, false),
                         new HabilidadEstado("Envenenar", 5, Estados.ENVENENADO),
-                        new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
+                        new HabilidadEstado("Dormir", 3, Estados.DORMIDO)
                 ),9
         ));
 
@@ -135,7 +135,7 @@ public class Pokedex {
                         new HabilidadAtaque("Confusión", "Psiquico", 3, 90, true),
                         new HabilidadAtaque("Psicoonda", "Psiquico", 4, 120, true),
                         new HabilidadEstadistica("Aumentar defensa", Atributos.DEFENSA, 2, 20, false),
-                        new HabilidadEstado("DORMIDO", 1, Estados.DORMIDO),
+                        new HabilidadEstado("DORMIDO", 2, Estados.DORMIDO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
                 ),5
         ));
@@ -158,7 +158,7 @@ public class Pokedex {
                         new HabilidadAtaque("Acido", "Veneno", 2, 70, true),
                         new HabilidadEstadistica("Disminuir velocidad", Atributos.VELOCIDAD, 2, 20, true),
                         new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
-                        new HabilidadEstado("Confundir", 2, Estados.CONFUSO)
+                        new HabilidadEstado("Dormir", 2, Estados.DORMIDO)
                 ),2
         ));
 

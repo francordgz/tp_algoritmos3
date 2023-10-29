@@ -1,4 +1,5 @@
 package src.main;
+import src.main.Enums.Estados;
 import src.main.Item.Item;
 
 import java.util.*;
@@ -43,8 +44,8 @@ public class Entrenador {
         this.pokemonActual = this.pokemones.get(posicion);
     }
 
-    public void usarItem(int item, int indicePokemon) {
-        this.items.get(item).usarItem(pokemones.get(indicePokemon));
+    public Boolean pokemonActualTieneEstado(Estados estado) {
+        return this.pokemonActual.tieneEstado(estado);
     }
 
     public boolean tienePokemonesConVida() {
@@ -53,6 +54,14 @@ public class Entrenador {
                 return true;
         }
         return false;
+    }
+
+    public Boolean validarHabilidad(int opcion) {
+        return this.pokemonActual.validarHabilidad(opcion);
+    }
+
+    public void usarItem(int item, int indicePokemon) {
+        this.items.get(item).usarItem(pokemones.get(indicePokemon));
     }
 
     public boolean puedeAplicarItem(int indecePokemon, int item) {
