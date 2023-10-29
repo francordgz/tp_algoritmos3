@@ -68,7 +68,7 @@ public class Pokedex {
                 Arrays.asList(
                         new HabilidadAtaque("Golpe", "Normal", 5, 100, false),
                         new HabilidadAtaque("Latigo cepa", "Planta", 3, 150, true),
-                        new HabilidadEstadistica("Curar", Atributos.ATAQUE, 5, 15, false),
+                        new HabilidadEstadistica("Curar", Atributos.VIDA, 5, 15, false),
                         new HabilidadEstado("Envenenar", 5, Estados.ENVENENADO),
                         new HabilidadEstado("Dormir", 3, Estados.DORMIDO)
                 ),9
@@ -111,7 +111,7 @@ public class Pokedex {
                 "Magikarp es un Pokémon débil que se transforma en Gyarados cuando evoluciona.",
                 Arrays.asList(
                         new HabilidadAtaque("Salpicar", "Normal", 1, 0, false),
-                        new HabilidadAtaque("Giro rápido", "Agua", 2, 60, true),
+                        new HabilidadAtaque("Giro rápido", "Agua", 3, 60, true),
                         new HabilidadEstadistica("Disminuir ataque", Atributos.ATAQUE, 1, -5, true),
                         new HabilidadEstado("Paralizar", 0, Estados.PARALIZADO),
                         new HabilidadEstado("Confundir", 1, Estados.CONFUSO)

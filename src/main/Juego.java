@@ -107,6 +107,7 @@ public class Juego {
     }
 
     public double atacar(int habilidad) {
+        System.out.println("Atacar");
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
 

@@ -197,7 +197,7 @@ public class Controller {
         switch (opcion) {
             case Constant.SALIR:
                 return false;
-            case 1:
+            case 1, 2:
                 ataque = this.juego.atacar(habilidadSeleccionada);
 
                 if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
@@ -206,22 +206,8 @@ public class Controller {
                 }
                 VistaJuego.mostrarEfectividad(ataque);
                 break;
-            case 2:
-                ataque = this.juego.atacar(habilidadSeleccionada);
 
-                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
-                    ataqueEfectivo = false;
-                    break;
-                }
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
-                break;
-            case 3:
-                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
-                break;
-            case 4:
-                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
-                break;
-            case 5:
+            case 3, 4, 5:
                 ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
         }
