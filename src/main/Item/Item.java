@@ -26,7 +26,7 @@ public abstract class Item {
     public void usarItem(Pokemon pokemon) {
     }
 
-    protected void decrementarCantidad() {
+    public void decrementarCantidad() {
         this.cantidad -= 1;
     }
 }
