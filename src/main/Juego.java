@@ -3,6 +3,7 @@ package src.main;
 import src.main.Clima.*;
 import src.main.Item.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -200,21 +201,25 @@ public class Juego {
     }
 
     public void crearPokemones() {
-        Pokedex pokedex = new Pokedex();
+        Pokedex pokedex = new Pokedex("pokemons.json", "habilidades.json");
 
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Pikachu"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Bulbasur"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Venusar"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Charmander"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Charizard"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Squirtle"));
+        try {
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Pikachu"));
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Bulbasur"));
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Venusar"));
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Charmander"));
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Charizard"));
+            entrenador1.agregarPokemon(pokedex.crearPokemon("Squirtle"));
 
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Magikarp"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Raichu"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Kadabra"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Clefable"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Ekans"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Rattata"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Magikarp"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Raichu"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Kadabra"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Clefable"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Ekans"));
+            entrenador2.agregarPokemon(pokedex.crearPokemon("Rattata"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void crearItems() {

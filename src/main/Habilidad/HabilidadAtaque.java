@@ -2,13 +2,11 @@ package src.main.Habilidad;
 import java.util.Random;
 
 public class HabilidadAtaque extends Habilidad{
-    private final String tipo;
     private final int poder;
     private final boolean mismoTipo;
 
-    public HabilidadAtaque(String nombre, String tipo, int usos, int poder, boolean mismoTipo) {
+    public HabilidadAtaque(String nombre, int usos, int poder, boolean mismoTipo) {
         super(nombre,usos);
-        this.tipo = tipo;
         this.poder = poder;
         this.mismoTipo = mismoTipo;
     }

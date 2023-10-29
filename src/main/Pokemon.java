@@ -22,7 +22,7 @@ public class Pokemon {
     private int turnosDormido;
     private int turnosConfundido;
 
-    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, List<Habilidad> habilidades,int nivel){
+    public Pokemon(String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, int nivel, List<Habilidad> habilidades){
         this.nombre = nombre;
         this.historia = historia;
         this.tipo = tipo;
