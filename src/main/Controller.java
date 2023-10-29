@@ -1,9 +1,8 @@
 package src.main;
+
 import src.main.Enums.Estados;
-import src.main.Habilidad.Habilidad;
 import src.main.Vista.*;
 
-import java.util.Random;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -50,21 +49,26 @@ public class Controller {
         int opcion;
         boolean turnoTerminado = false;
         boolean mostrar = true;
+
+        this.juego.efectoClimatico();
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+
         //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
         //TODO: No esta claro en el PDF
-        this.juego.efectoClimatico();
-
-        if (pokemonActual.estaMuerto()) {
+        if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
-            this.seleccionarPokemon(this.juego.obtenerEntrenadorActual(), true);
+            this.seleccionarPokemon(entrenadorActual, true);
             turnoTerminado = true;
         }
 
+        this.juego.actualizarEstado();
+
         while (!turnoTerminado) {
-            if (mostrar) VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
-            else mostrar = true;
+            if (mostrar)
+                VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
+            else
+                mostrar = true;
 
             opcion = leerInt();
             switch (opcion) {
@@ -88,7 +92,7 @@ public class Controller {
                     mostrar = false;
             }
         }
-        this.juego.actualizarEstado();
+
         this.juego.cambiarTurno();
         this.juego.actualizarClima();
     }
@@ -106,6 +110,7 @@ public class Controller {
             if(!opcionValida)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
         }
+        //TODO: Controller necesita conocer el entrenador?
         entrenador.cambiarPokemon(opcion - 1);
         nombrePokemon = entrenador.obtenerPokemonActual().obtenerNombre();
         VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
@@ -118,7 +123,7 @@ public class Controller {
         int indicePokemon = Constant.NULA;
         
         while (!seleccionValida) {
-            indicePokemon = consultarPokemon(entrenador, seleccionObligatoria);
+            indicePokemon = pedirPokemon(entrenador, seleccionObligatoria);
 
             if (indicePokemon == NOT_INT && !seleccionObligatoria) { return false; }
 
@@ -134,7 +139,7 @@ public class Controller {
         return true;
     }
 
-    private int consultarPokemon(Entrenador entrenador, boolean seleccionObligatoria){
+    private int pedirPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion = Constant.SALIR;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
         boolean opcionValida, seleccionValida = false;
@@ -154,121 +159,100 @@ public class Controller {
         return opcion - 1;
     }
 
-    private int consultarHabilidad() {
-        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual()
-                                    .obtenerPokemonActual();
-        Habilidad habilidadSeleccionada;
-        boolean esHabilidadDeAtaque, opcionValida, habilidadValida = false;
+    public Boolean seleccionarHabilidad(){
+        double ataque;
+        Boolean ataqueEfectivo = true;
+        int opcion = pedirHabilidad();
+        int habilidadSeleccionada = opcion - 1;
+
+        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
+            return true;
+        }
+
+        switch (opcion) {
+            case Constant.SALIR:
+                return false;
+            case 1, 2:
+                ataque = this.juego.atacar(habilidadSeleccionada);
+
+                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
+                    ataqueEfectivo = false;
+                    break;
+                }
+                VistaJuego.mostrarEfectividad(ataque);
+                break;
+
+            case 3, 4, 5:
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
+        }
+        if (!ataqueEfectivo)
+            VistaJuego.imprimir("El pokemon esta paralizado!");
+
+        return true;
+    }
+
+    private int pedirHabilidad() {
         int opcion = Constant.SALIR;
-        
-        VistaHabilidad.mostrarHabilidades(pokemonActual);
+        boolean habilidadValida = false;
+
+        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+
         while (!habilidadValida) {
             opcion = leerInt();
-            opcionValida = opcion <= 5 && opcion >= 0;
 
-            if (!opcionValida) {
+            if (opcion < Constant.SALIR || opcion > 5)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
-            }
-            else if (opcion == Constant.SALIR) {
+            else if (opcion == Constant.SALIR)
                 return opcion;
-            }
-            else {
-                esHabilidadDeAtaque = opcion == 1 || opcion == 2;
-            }
-            habilidadSeleccionada = pokemonActual.obtenerHabilidades().get(opcion - 1);
 
-            if (!habilidadSeleccionada.quedanUsosDisponibles())
+            if (!this.juego.validarHabilidad(opcion - 1))
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
-            else if (esHabilidadDeAtaque && !pokemonActual.puedeAtacar())
-                VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
             else
                 habilidadValida = true;
         }
+
         return opcion;
     }
-
-    public boolean seleccionarHabilidad(){
-
-        //TODO: Esto va en juego, y la comparacion va en pokemon
-        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().tieneEstado(Estados.PARALIZADO)) {
-            Boolean probabilidad = calcularProbabilidad();
-            if(!probabilidad) {
-                VistaJuego.imprimir("El pokemon esta paralizado!");
-                return false;
-            }
-        }
-        int opcion = consultarHabilidad();
-        int habilidadSeleccionada = opcion - 1;
-
-        switch (opcion) {
-            case Constant.SALIR: return false;
-            case 1:
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
-                break;
-            case 2:
-                VistaJuego.mostrarEfectividad(this.juego.atacar(habilidadSeleccionada));
-                break;
-            case 3:
-                this.juego.usarHabilidad(habilidadSeleccionada);
-                break;
-            case 4:
-                this.juego.usarHabilidad(habilidadSeleccionada);
-                break;
-            case 5:
-                this.juego.usarHabilidad(habilidadSeleccionada);
-                break;
-        }
-        return true;
-    }
-
-    private Boolean calcularProbabilidad(){
-        Random rand = new Random();
-        int probabilidad = rand.nextInt(2);
-
-        return probabilidad == 1;
-    }
     
-    private boolean seleccionarItem() {
-        int opcion, numeroItem = NOT_INT;
-        boolean itemSeleccionadoValido = false, itemEsAplicable = false;
-        boolean opcionInvalida, itemDisponible;
-        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+    private Boolean seleccionarItem() {
+        int pokemonSeleccionado = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
 
-        int pokemonSeleccionado = consultarPokemon(entrenadorActual, false);
         if (pokemonSeleccionado == NOT_INT)
             return false;
 
-        while (!itemSeleccionadoValido) {
-            VistaItem.mostrarItems(entrenadorActual);
+        int opcion = pedirItem(pokemonSeleccionado);
+
+        if (opcion == Constant.SALIR)
+            return false;
+
+        this.juego.usarItem(opcion - 1, pokemonSeleccionado);
+        VistaItem.notificarUsoDeItem(this.juego.obtenerEntrenadorActual(), opcion - 1);
+        return true;
+    }
+
+    private Integer pedirItem(Integer pokemon) {
+        int opcion = Constant.SALIR;
+        boolean itemValido = false;
+        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
+
+        while (!itemValido) {
             opcion = leerInt();
 
-            if (opcion == Constant.SALIR)
-                return false;
-
-            opcionInvalida = opcion > this.juego.obtenerEntrenadorActual().obtenerItems().size() || opcion <= Constant.SALIR;
-            if(opcionInvalida) {
+            if (opcion < Constant.SALIR || opcion > this.juego.obtenerCantidadDeItems())
                 VistaJuego.imprimir("Seleccione una opción correcta!");
-                continue;
-            }
+            else if (opcion == Constant.SALIR)
+                return opcion;
 
-            numeroItem = opcion - 1;
-            itemDisponible = entrenadorActual.obtenerItems().get(opcion - 1).obtenerCantidad() > 0;
-            if (!itemDisponible) {
-                VistaJuego.imprimir("Este item no tiene más usos");
-                continue;
-            } else { 
-                itemSeleccionadoValido = true;
-                itemEsAplicable = entrenadorActual.puedeAplicarItem(pokemonSeleccionado, numeroItem);
-            }
-            if (!itemEsAplicable) {
+            if (!this.juego.validarItem(opcion - 1))
+                VistaJuego.imprimir("Esta item no tiene más usos");
+            else if (!this.juego.itemAplicable(opcion - 1, pokemon))
                 VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
-                itemSeleccionadoValido = itemEsAplicable;
-            } 
+            else
+                itemValido = true;
         }
-        this.juego.usarItem(numeroItem, pokemonSeleccionado);
-        VistaItem.notificarUsoDeItem(entrenadorActual, numeroItem);
-        return true;
+        return opcion;
     }
 
     public void terminar() {

@@ -3,9 +3,9 @@ package src.main.Habilidad;
 import src.main.Pokemon;
 
 public abstract class Habilidad {
-
     protected String nombre;
     protected int usos;
+
 
     public Habilidad(String nombre, int usos) {
         this.nombre = nombre;
@@ -28,7 +28,8 @@ public abstract class Habilidad {
         return 0;
     }
 
-    public void modificarEstado(Pokemon pokemon) {}
+    public void modificarEstado(Pokemon pokemon) {
+    }
 
     public Boolean AfectarRival() {
         return true;

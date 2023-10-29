@@ -44,7 +44,10 @@ public class Juego {
         this.entrenador2 = segundoEntrenador;
     }
 
-    //TODO: Esto es mejorable
+    public void modificarClima(Clima clima) {
+        this.clima = clima;
+    }
+
     public void inicializarClima() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
@@ -63,18 +66,6 @@ public class Juego {
             else
                 this.modificarClima(new ClimaHuracan());
         }
-    }
-
-    public void modificarClima(Clima clima) {
-        this.clima = clima;
-    }
-
-    public void efectoClimatico() {
-        Pokemon pokemonActual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        Pokemon pokemonRival = this.administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
-
-        this.clima.efectoClimatico(pokemonActual);
-        this.clima.efectoClimatico(pokemonRival);
     }
 
     public void actualizarClima() {
@@ -102,23 +93,110 @@ public class Juego {
         this.administrador.cambiarTurno();
     }
 
+    public void efectoClimatico() {
+        Pokemon pokemonActual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon pokemonRival = this.administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
+
+        this.clima.efectoClimatico(pokemonActual);
+        this.clima.efectoClimatico(pokemonRival);
+    }
+
+    public Boolean validarHabilidad(int opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarHabilidad(opcion);
+    }
+
+    public double atacar(int habilidad) {
+        System.out.println("Atacar");
+        Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO))
+            pokemonActual.actualizarEstadoConfuso();
+
+        double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
+        ataque = this.clima.afectarAtaque(pokemonActual, ataque);
+
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO)) {
+            Boolean probabilidad = calcularProbabilidad();
+            if (!probabilidad)
+                ataque = 0;
+        }
+
+        pokemonRival.recibirDanio(ataque);
+        return ataque;
+    }
+
+    private Boolean calcularProbabilidad(){
+        Random rand = new Random();
+        int probabilidad = rand.nextInt(2);
+
+        return probabilidad == 1;
+    }
+
+    public Boolean usarHabilidad(int habilidad) {
+        Boolean probabilidad = calcularProbabilidad();
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
+
+        Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+        Pokemon pokemonRival = entrenadorRival.obtenerPokemonActual();
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO))
+            pokemonActual.actualizarEstadoConfuso();
+
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO) && !probabilidad)
+            return false;
+
+        if (!pokemonActual.habilidades(habilidad).AfectarRival())
+            pokemonActual.UsarHabilidad(habilidad, pokemonActual);
+        else
+            pokemonActual.UsarHabilidad(habilidad, pokemonRival);
+
+        return true;
+    }
+
+    public void actualizarEstado(){
+        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        actual.actualizarEstado();
+    }
+
+    public Boolean pokemonActualTieneEstado(Estados estado) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonActualTieneEstado(estado);
+    }
+
     public void usarItem(int item, int pokemon) {
         this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
     }
 
-    public void usarHabilidad(int habilidad) {
+    public Integer obtenerCantidadDeItems() {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.obtenerCantidadDeItems();
+    }
+
+    public Boolean validarItem(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarItem(opcion);
+    }
+
+    public Boolean itemAplicable(Integer opcion, Integer pokemon) {
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
-        Entrenador entrenadorRival = this.administrador.obtenerEntrenadorRivalActual();
-        Pokemon actual = entrenadorActual.obtenerPokemonActual();
-        Pokemon rival = entrenadorRival.obtenerPokemonActual();
 
-        if (!actual.habilidades(habilidad).AfectarRival())
-            actual.UsarHabilidad(habilidad, actual);
-        else
-            actual.UsarHabilidad(habilidad, rival);
+        return entrenadorActual.puedeAplicarItem(opcion, pokemon);
+    }
 
-        if (actual.tieneEstado(Estados.CONFUSO))
-            actual.actualizarEstadoConfuso();
+    public void rendirse() {
+        this.ganador = this.administrador.obtenerEntrenadorRivalActual();
+        this.terminado = true;
+    }
+
+    public boolean terminado() {
+        if (!administrador.obtenerEntrenadorActual().tienePokemonesConVida()) {
+            this.ganador = obtenerEntrenadorRival();
+            return true;
+        }
+        return this.terminado;
     }
 
     public void crearPokemones() {
@@ -161,37 +239,5 @@ public class Juego {
         List<Item> segundoSetItems = setsDeIems.get(1);
         for (Item item: segundoSetItems)
             entrenador2.agregarItem(item);
-    }
-
-    public double atacar(int habilidad) {
-        Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
-
-        double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
-        ataque = this.clima.afectarAtaque(pokemonActual, ataque);
-        pokemonRival.recibirDanio(ataque);
-
-        if (pokemonActual.tieneEstado(Estados.CONFUSO))
-            pokemonActual.actualizarEstadoConfuso();
-
-        return ataque;
-    }
-
-    public void actualizarEstado(){
-        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        actual.actualizarEstado();
-    }
-
-    public void rendirse() {
-        this.ganador = this.administrador.obtenerEntrenadorRivalActual();
-        this.terminado = true;
-    }
-
-    public boolean terminado() {
-        if (!administrador.obtenerEntrenadorActual().tienePokemonesConVida()) {
-            this.ganador = obtenerEntrenadorRival();
-            return true;
-        }
-        return this.terminado;
     }
 }

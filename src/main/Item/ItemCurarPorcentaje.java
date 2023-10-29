@@ -17,4 +17,9 @@ public class ItemCurarPorcentaje extends Item{
         pokemon.curar(cantidadDeVida);
         decrementarCantidad();
     }
+
+    @Override
+    public boolean esAplicable(Pokemon pokemon) {
+        return !pokemon.estaMuerto();
+    }
 }
