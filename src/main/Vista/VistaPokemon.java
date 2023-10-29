@@ -19,8 +19,10 @@ public class VistaPokemon extends Vista {
 
     static public void mostrarPokemones(Entrenador entrenador, boolean seleccionObligatoria) {
         int i = 1;
-        if (seleccionObligatoria) imprimir("\n" + entrenador.obtenerNombre() + ", seleccione un Pokemon:\n");
-        else imprimir("\nSeleccione un Pokemon:\n");
+        if (seleccionObligatoria)
+            imprimir("\n" + entrenador.obtenerNombre() + ", seleccione un Pokemon:\n");
+        else
+            imprimir("\nSeleccione un Pokemon:\n");
 
         for (Pokemon pokemon : entrenador.obtenerPokemones()) {
                 imprimir(i + ":");
@@ -28,7 +30,8 @@ public class VistaPokemon extends Vista {
                 i++;
         }
 
-        if (!seleccionObligatoria) imprimir("0: Volver atrás");
+        if (!seleccionObligatoria)
+            imprimir("0: Volver atrás");
     }
 
     private static void infoPokemon(Pokemon pokemon, Boolean mostrarAtaqueDefensa) {
