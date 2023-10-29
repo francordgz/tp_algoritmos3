@@ -35,8 +35,9 @@ public class HabilidadAtaqueTest {
         danio = ((danio/5) +2)/50;
 
         float resultado = 32.496F;
+        float margenError = 0.0001F;
 
-        assertEquals(danio * (mismoTipoMultiplier * efectividad * numeroRandom), resultado);
+        assertEquals(danio * (mismoTipoMultiplier * efectividad * numeroRandom), resultado, margenError);
     }
 
     public void generarNumeroRandomRangoTest(){
