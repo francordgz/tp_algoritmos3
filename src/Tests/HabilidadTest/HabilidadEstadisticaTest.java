@@ -1,5 +1,3 @@
-package src.main.Tests;
-
 import src.main.Enums.Atributos;
 import src.main.Habilidad.Habilidad;
 import src.main.Habilidad.HabilidadEstadistica;

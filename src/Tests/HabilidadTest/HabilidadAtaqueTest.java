@@ -1,11 +1,10 @@
-package src.main.Tests;
+package HabilidadTest;
 
 import src.main.Habilidad.HabilidadAtaque;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
 
 public class HabilidadAtaqueTest {
     @Test
@@ -37,9 +36,10 @@ public class HabilidadAtaqueTest {
         assertEquals(danio * (mismoTipoMultiplier * efectividad * numeroRandom), resultado, margenError);
     }
 
+    @Test
     public void generarNumeroRandomRangoTest(){
         HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
         float nRandom = (habilidad.generarNumeroRandom());
-        assertTrue(nRandom >= 217/255 && nRandom <= 1.0);
+        assertTrue(nRandom >= (float)217/255 && nRandom <= 1.0);
     }
 }
