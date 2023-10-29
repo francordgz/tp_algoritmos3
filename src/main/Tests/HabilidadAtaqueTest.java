@@ -1,22 +1,19 @@
 package src.main.Tests;
 
-import org.junit.Before;
-import org.junit.Test;
 import src.main.Habilidad.HabilidadAtaque;
 
-import java.util.Random;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class HabilidadAtaqueTest {
-
     @Test
     public void testMismoTipo() {
-        habilidadAtaque = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
-        assertEquals(habilidadAtaque.MismoTipo(), 1.5);
-        habilidadAtaque = new HabilidadAtaque("HabilidadAtaqueTest", "Water", 5, 50, false);
-        assertEquals(habilidadAtaque.MismoTipo(), 1);
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+        assertEquals(habilidad.MismoTipo(), 1.5);
+        habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Water", 5, 50, false);
+        assertEquals(habilidad.MismoTipo(), 1);
     }
 
     @Test
@@ -41,7 +38,8 @@ public class HabilidadAtaqueTest {
     }
 
     public void generarNumeroRandomRangoTest(){
-        float nRandom = habilidadAtaque.generarNumeroRandom();
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+        float nRandom = (habilidad.generarNumeroRandom());
         assertTrue(nRandom >= 217/255 && nRandom <= 1.0);
     }
 }
