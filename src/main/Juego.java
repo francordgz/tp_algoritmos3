@@ -23,10 +23,10 @@ public class Juego {
         this.clima = new ClimaNormal();
         this.efectividades = Constant.crearEfectividades();
         this.terminado = false;
-        deserealizarPartida();
+        deserializarPartida();
     }
 
-    private void deserealizarPartida() {
+    private void deserializarPartida() {
         PartidaDeserializer partidaDeserializer = new PartidaDeserializer();
         try {
             List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();

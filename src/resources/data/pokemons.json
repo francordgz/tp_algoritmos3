@@ -9,7 +9,7 @@
     "velocidad": 25,
     "defensa": 5,
     "ataque": 25,
-    "habilidades": [0]
+    "habilidades": [0,5,6,7,8]
   },
   {
     "nombre": "Bulbasaur",
@@ -21,7 +21,7 @@
     "velocidad": 20,
     "defensa": 10,
     "ataque": 20,
-    "habilidades": [1,2]
+    "habilidades": [0,1,2,3,4]
   },
   {
     "nombre": "Charmander",

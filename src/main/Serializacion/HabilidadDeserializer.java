@@ -57,11 +57,9 @@ public class HabilidadDeserializer {
 
     public static Estados stringEstado(String estadoStr) {
         return switch (estadoStr) {
-            case "normal" -> Estados.NORMAL;
             case "envenenado" -> Estados.ENVENENADO;
             case "dormido" -> Estados.DORMIDO;
             case "paralizado" -> Estados.PARALIZADO;
-            case "muerto" -> Estados.MUERTO;
             case "confuso" -> Estados.CONFUSO;
             default -> null;
         };
