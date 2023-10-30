@@ -13,6 +13,7 @@ public class Controller {
     public Controller(Juego juego) {
         this.juego = juego;
         String nombre1 = pedirNombreEntrenador("");
+
         String nombre2 = pedirNombreEntrenador(nombre1);
 
         this.juego.asignarEntrenadores(new Entrenador(nombre1), new Entrenador(nombre2));

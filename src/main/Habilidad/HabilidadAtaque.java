@@ -41,4 +41,12 @@ public class HabilidadAtaque extends Habilidad{
         if(numeroAleatorio <= 90) return  2;
         return 1;
     }
+
+
+
+
+
+
+
+
 }
