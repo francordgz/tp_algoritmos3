@@ -113,4 +113,6 @@ public class EntrenadorTest {
         when(pokemon.estaMuerto()).thenReturn(true);
         assertFalse(entrenador.tienePokemonesConVida());
     }
+
+
 }

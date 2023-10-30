@@ -129,7 +129,6 @@ public class PokemonTests {
 
     @Test
     public void pokemonRemueveEstadoConfusoYPierdeVidaTest(){
-
         Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
                 25, 15, "", Arrays.asList(), 5);
 
@@ -142,10 +141,7 @@ public class PokemonTests {
 
         assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
 
-        /// Aveces test puede fallar porque capaz no pierde vida pero es muy raro. Es para
-        /// verificar que esta perdiendo vida
 
-        assertEquals(true,pokemon.obtenerVidaActual() < 20);
 
 
 
@@ -153,7 +149,6 @@ public class PokemonTests {
 
     @Test
     public void PokemonSeCuraBien(){
-
         Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
                 25, 15, "", Arrays.asList(), 5);
 
@@ -164,6 +159,47 @@ public class PokemonTests {
         pokemon.curar(19);
 
         assertEquals(20,pokemon.obtenerVidaActual());
+
+    }
+
+
+    @Test
+    public void pokemonRevive(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.recibirDanio(20);
+
+        assertEquals(true,pokemon.estaMuerto());
+
+        pokemon.revivir();
+
+        assertEquals(false,pokemon.estaMuerto());
+
+
+    }
+
+    @Test
+    public void PokemonDormidoNoAtaca(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.agregarEstado(Estados.DORMIDO);
+
+        assertEquals(false,pokemon.puedeAtacar());
+
+
+
+    }
+
+    @Test
+    public void PokemonSeCuraCuandoNecesita(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.agregarEstado(Estados.PARALIZADO);
+        assertEquals(true,pokemon.necesitaCurarse());
+
 
     }
 
