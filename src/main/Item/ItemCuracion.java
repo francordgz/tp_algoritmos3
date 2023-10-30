@@ -9,7 +9,7 @@ public class ItemCuracion extends Item {
         this.poder = poder;
 
         if (nombre.equals("Hiperpocion") && poder == 100 && cantidad > 1)
-            while(obtenerCantidad() > 1) decrementarCantidad();
+            while(this.obtenerCantidad() > 1) this.decrementarCantidad();
     }
 
     @Override

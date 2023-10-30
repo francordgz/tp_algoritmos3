@@ -5,5 +5,18 @@
     "usos" : 3,
     "poder": 100,
     "mismoTipo": false
+  },
+  {
+    "nombre": "Latigo cepa",
+    "id" : 1,
+    "usos" : 2,
+    "poder": 90,
+    "mismoTipo": true
+  },
+  {
+    "nombre": "Envenenar",
+    "id": 2,
+    "usos": 2,
+    "estado": "envenenado"
   }
 ]

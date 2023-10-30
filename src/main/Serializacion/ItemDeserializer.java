@@ -1,16 +1,17 @@
-package src.main.Item;
+package src.main.Serializacion;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import src.main.Enums.TipoModificacion;
+import src.main.Item.*;
 
 import java.io.File;
 import java.io.IOException;
 
-public class DeserealizadorItem {
+public class ItemDeserializer {
     final File itemJSON;
 
-    public DeserealizadorItem(String rutaJSONitems) {
+    public ItemDeserializer(String rutaJSONitems) {
         this.itemJSON = new File(rutaJSONitems);
     }
 

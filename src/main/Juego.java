@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import src.main.Enums.Estados;
+import src.main.Serializacion.PartidaDeserializer;
 
 public class Juego {
     private final AdministradorDeTurnos administrador;
@@ -26,9 +27,9 @@ public class Juego {
     }
 
     private void deserealizarPartida() {
-        DeserealizadorPartida deserealizadorPartida = new DeserealizadorPartida();
+        PartidaDeserializer partidaDeserializer = new PartidaDeserializer();
         try {
-            List<Entrenador> entrenadores = deserealizadorPartida.deserealizarPartida();
+            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
             this.entrenador1 = entrenadores.get(0);
             this.entrenador2 = entrenadores.get(1);
         } catch (IOException e) {
@@ -197,5 +198,11 @@ public class Juego {
             return true;
         }
         return this.terminado;
+    }
+
+    public Entrenador obtenerGanador() {
+        Entrenador entrenador = this.entrenador1;
+        if (entrenador.esGanador()) return entrenador;
+        return this.entrenador2;
     }
 }

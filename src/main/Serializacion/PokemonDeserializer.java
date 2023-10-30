@@ -1,23 +1,23 @@
-package src.main;
+package src.main.Serializacion;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import src.main.Enums.Tipo;
-import src.main.Habilidad.*;
+import src.main.Pokemon;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class Pokedex {
+public class PokemonDeserializer { // Rest In Peace "Pokedex" (2023 - 2023)
 
     final File JSONPokemones;
-    final DeserealizadorHabilidad deserealizadorHabilidad;
+    final HabilidadDeserializer habilidadDeserializer;
 
-    public Pokedex(String rutaJSONPokemones, String rutaJSONHabilidades) {
+    public PokemonDeserializer(String rutaJSONPokemones, String rutaJSONHabilidades) {
         this.JSONPokemones = new File(rutaJSONPokemones);
-        this.deserealizadorHabilidad = new DeserealizadorHabilidad(rutaJSONHabilidades);
+        this.habilidadDeserializer = new HabilidadDeserializer(rutaJSONHabilidades);
     }
 
     public Pokemon crearPokemon(int id) throws IOException {
@@ -36,7 +36,7 @@ public class Pokedex {
                     pokemon.get("velocidad").asInt(),
                     pokemon.get("historia").asText(),
                     pokemon.get("nivel").asInt(),
-                    this.deserealizadorHabilidad.crearHabilidades(habilidadesId)
+                    this.habilidadDeserializer.crearHabilidades(habilidadesId)
             );
     }
 

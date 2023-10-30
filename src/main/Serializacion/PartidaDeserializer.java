@@ -1,26 +1,25 @@
-package src.main;
+package src.main.Serializacion;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import src.main.Item.DeserealizadorItem;
-import src.main.Item.ItemCuracion;
+import src.main.Entrenador;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeserealizadorPartida {
+public class PartidaDeserializer {
     File partidaJSON = new File("src/resources/data/partida.json");
-    Pokedex pokedex;
-    DeserealizadorItem deserealizadorItem;
+    PokemonDeserializer pokemonDeserializer;
+    ItemDeserializer itemDeserializer;
 
-    public DeserealizadorPartida() {
-        this.pokedex = new Pokedex(
+    public PartidaDeserializer() {
+        this.pokemonDeserializer = new PokemonDeserializer(
                 "src/resources/data/pokemons.json",
                 "src/resources/data/habilidades.json");
-        this.deserealizadorItem = new DeserealizadorItem("src/resources/data/items.json");
+        this.itemDeserializer = new ItemDeserializer("src/resources/data/items.json");
     }
 
     public List<Entrenador> deserealizarPartida() throws IOException {
@@ -44,7 +43,7 @@ public class DeserealizadorPartida {
             int cantidad = entry.getValue().asInt();
 
             try {
-                entrenador.agregarItem(deserealizadorItem.encontrarItem(id, cantidad));
+                entrenador.agregarItem(itemDeserializer.encontrarItem(id, cantidad));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -55,7 +54,7 @@ public class DeserealizadorPartida {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Integer> pokemonsIDs = objectMapper.convertValue(pokemonsNode, new TypeReference<>() {});
         for (int id : pokemonsIDs) {
-            entrenador.agregarPokemon(pokedex.crearPokemon(id));
+            entrenador.agregarPokemon(pokemonDeserializer.crearPokemon(id));
         }
     }
 }

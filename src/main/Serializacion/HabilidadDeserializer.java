@@ -1,18 +1,22 @@
-package src.main.Habilidad;
+package src.main.Serializacion;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import src.main.Enums.Atributos;
 import src.main.Enums.Estados;
+import src.main.Habilidad.Habilidad;
+import src.main.Habilidad.HabilidadAtaque;
+import src.main.Habilidad.HabilidadEstadistica;
+import src.main.Habilidad.HabilidadEstado;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeserealizadorHabilidad {
+public class HabilidadDeserializer {
     final File habilidadesJSON;
-    public DeserealizadorHabilidad(String rutaJSONHabilidades) {
+    public HabilidadDeserializer(String rutaJSONHabilidades) {
         this.habilidadesJSON = new File(rutaJSONHabilidades);
     }
 

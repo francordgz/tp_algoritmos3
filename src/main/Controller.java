@@ -1,13 +1,12 @@
 package src.main;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import src.main.Enums.Estados;
+import src.main.Serializacion.InformeSerializer;
 import src.main.Vista.*;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -235,29 +234,20 @@ public class Controller {
 
     public void terminar() {
         this.scanner.close();
-        ObjectMapper objectMapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(Entrenador.class, new EntrenadorSerializer());
-        objectMapper.registerModule(module);
+
+        List<Entrenador> entrenadores = new ArrayList<>();
+        entrenadores.add(juego.obtenerEntrenadorActual());
+        entrenadores.add(juego.obtenerEntrenadorRival());
 
         try {
-            String json = objectMapper.writeValueAsString(juego.obtenerEntrenadorActual());
-            System.out.println(json);
-            json = objectMapper.writeValueAsString(juego.obtenerEntrenadorRival());
-            System.out.println(json);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            InformeSerializer.serializeJSON(entrenadores);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-
     }
 
     public void declararGanador() {
         VistaJuego.imprimir("El ganador es: " + juego.obtenerGanador().obtenerNombre());
-    }
-
-    private String leerString() {
-        return this.scanner.nextLine();
     }
 
     private int leerInt() {
