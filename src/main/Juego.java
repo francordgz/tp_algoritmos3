@@ -155,6 +155,22 @@ public class Juego {
         return true;
     }
 
+    public Boolean usarHabilidadClima(int habilidad) {
+        Boolean probabilidad = calcularProbabilidad();
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO))
+            pokemonActual.actualizarEstadoConfuso();
+
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO) && !probabilidad)
+            return false;
+
+        this.modificarClima(pokemonActual.habilidades(habilidad).modificarClima());
+
+        return true;
+    }
+
     public void actualizarEstado(){
         Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         actual.actualizarEstado();
