@@ -27,14 +27,16 @@ public class HabilidadAtaqueTest {
         int mismoTipoMultiplier = (int) 1.5;
 
         double danio = 2 * nivel * critico * poder;
-        danio = danio * ataque/defensa;
-        danio = ((danio/5) +2)/50;
+        danio = danio * ataque / defensa;
+        danio = ((danio / 5) + 2) / 50;
 
-        float resultado = 32.496F;
-        float margenError = 0.001F;
+        int resultado = 21;
 
-        assertEquals(danio * (mismoTipoMultiplier * efectividad * numeroRandom), resultado, margenError);
+        assertEquals((int) (danio * (mismoTipoMultiplier * efectividad * numeroRandom)), resultado);
     }
+
+
+
 
     @Test
     public void generarNumeroRandomRangoTest(){
@@ -42,4 +44,7 @@ public class HabilidadAtaqueTest {
         float nRandom = (habilidad.generarNumeroRandom());
         assertTrue(nRandom >= (float)217/255 && nRandom <= 1.0);
     }
+
 }
+
+

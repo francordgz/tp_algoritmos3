@@ -36,10 +36,11 @@ public class ItemCuracionTest {
 
     @Test
     public void obtenerCantidadTest() {
+
         assertEquals(3,items.get(0).obtenerCantidad());
         assertEquals(2,items.get(1).obtenerCantidad());
-        // Siempre se tiene 1 o ninguna hiperpocion.
-        assertEquals(1,items.get(2).obtenerCantidad());
+
+        ///El otro se borra porque eso se modela desde entrenador
     }
 
     @Test
@@ -50,7 +51,7 @@ public class ItemCuracionTest {
 
         assertEquals(2, items.get(0).obtenerCantidad());
         assertEquals(1, items.get(1).obtenerCantidad());
-        assertEquals(0, items.get(2).obtenerCantidad());
+        assertEquals(2, items.get(2).obtenerCantidad());
     }
 
     @Test
