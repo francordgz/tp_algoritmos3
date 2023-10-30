@@ -175,6 +175,10 @@ public class Controller {
             case 3, 4, 5:
                 ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
+
+            case 6:
+                ataqueEfectivo = this.juego.usarHabilidadClima(habilidadSeleccionada);
+                break;
         }
         if (!ataqueEfectivo)
             VistaJuego.imprimir("El pokemon esta paralizado!");
@@ -195,8 +199,7 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             else if (opcion == Constant.SALIR)
                 return opcion;
-
-            if (!this.juego.validarHabilidad(opcion - 1))
+            else if (!this.juego.validarHabilidad(opcion - 1))
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
             else
                 habilidadValida = true;

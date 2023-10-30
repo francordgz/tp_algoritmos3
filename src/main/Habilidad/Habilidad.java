@@ -1,5 +1,6 @@
 package src.main.Habilidad;
 
+import src.main.Clima.Clima;
 import src.main.Pokemon;
 
 public abstract class Habilidad {
@@ -26,6 +27,10 @@ public abstract class Habilidad {
 
     public double atacar(int ataque, int nivel, int defensa, double efectividad) {
         return 0;
+    }
+
+    public Clima modificarClima() {
+        return null;
     }
 
     public void modificarEstado(Pokemon pokemon) {
