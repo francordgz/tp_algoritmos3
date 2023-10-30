@@ -29,11 +29,11 @@ public class ItemEstadoTest {
         assertTrue(item.esAplicable(pokemon));
     }
 
-   /* @Test
+   @Test
     public void usarItemTest() {
         this.pokemon.agregarEstado(Estados.ENVENENADO);
         item.usarItem(this.pokemon);
         assertTrue(pokemon.tieneEstado(Estados.NORMAL));
         assertFalse(pokemon.tieneEstado(Estados.ENVENENADO));
-    } */
+    }
 }

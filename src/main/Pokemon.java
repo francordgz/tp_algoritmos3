@@ -139,7 +139,7 @@ public class Pokemon {
             this.actualizarEstadoDormido();
     }
 
-    private void actualizarEstadoDormido() {
+    public void actualizarEstadoDormido() {
         Boolean probabilidad = calcularProbabilidadDespertarse();
 
         if (probabilidad) {
@@ -208,7 +208,7 @@ public class Pokemon {
         return false;
     }
 
-    private void removerEstado(Estados eliminado) {
+    public void removerEstado(Estados eliminado) {
         if (this.estados.size() == 1) {
             this.estados.clear();
             this.estados.add(Estados.NORMAL);

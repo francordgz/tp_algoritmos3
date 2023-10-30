@@ -35,12 +35,6 @@ public class PokemonTests {
 
     }
 
-    /*
-            Pokemon envenenado muere luego de perder el %5 de su vida durante una determinada
-        cantidad de turnos consecutivos.
-            Dicha cantidad esta en funcion de su vida maxima y actual.
-    */
-
     @Test
     public void pokemonEnvenenadoMuereTest() {
         int vidaMaxima = 20;
@@ -60,7 +54,7 @@ public class PokemonTests {
         assertTrue(pokemon.tieneEstado(Estados.MUERTO));
     }
 
-    /*
+
     @Test
     public void pokemonPierdeEstadosTest() {
         Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
@@ -80,5 +74,104 @@ public class PokemonTests {
         assertEquals(false, pokemon.tieneEstado(Estados.ENVENENADO));
         assertEquals(true, pokemon.tieneEstado(Estados.NORMAL));
     }
-    */
+
+    @Test
+    public void pokemonAgregaEstadosTest(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+
+        pokemon.agregarEstado(Estados.DORMIDO);
+
+        assertEquals(true, pokemon.tieneEstado(Estados.DORMIDO));
+
+
+    }
+
+    @Test
+    public void pokemonRecibeDanioYmuereTest(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.recibirDanio(19);
+
+        assertEquals(1,pokemon.obtenerVidaActual());
+
+        pokemon.recibirDanio(1);
+
+        assertEquals(0,pokemon.obtenerVidaActual());
+
+        assertEquals(true,pokemon.estaMuerto());
+
+
+    }
+
+    @Test
+    public void pokemonSeDespiertaTest(){
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.agregarEstado(Estados.DORMIDO);
+
+        pokemon.actualizarEstadoDormido();
+        pokemon.actualizarEstadoDormido();
+        pokemon.actualizarEstadoDormido();
+        pokemon.actualizarEstadoDormido();
+
+        ///Pokemon a se desperto si o si con esa cantidad de turnos///
+
+        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+
+
+    }
+
+
+    @Test
+    public void pokemonRemueveEstadoConfusoYPierdeVidaTest(){
+
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.agregarEstado(Estados.CONFUSO);
+
+        pokemon.actualizarEstadoConfuso();
+        pokemon.actualizarEstadoConfuso();
+        pokemon.actualizarEstadoConfuso();
+        pokemon.actualizarEstadoConfuso();
+
+        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+
+        /// Aveces test puede fallar porque capaz no pierde vida pero es muy raro. Es para
+        /// verificar que esta perdiendo vida
+
+        assertEquals(true,pokemon.obtenerVidaActual() < 20);
+
+
+
+    }
+
+    @Test
+    public void PokemonSeCuraBien(){
+
+        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", Arrays.asList(), 5);
+
+        pokemon.recibirDanio(19);
+
+        assertEquals(1,pokemon.obtenerVidaActual());
+
+        pokemon.curar(19);
+
+        assertEquals(20,pokemon.obtenerVidaActual());
+
+    }
+
+
+
+
+
+
+
+
 }
