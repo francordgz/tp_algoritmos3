@@ -35,6 +35,17 @@ public class HabilidadAtaqueTest {
         assertEquals((int) (danio * (mismoTipoMultiplier * efectividad * numeroRandom)), resultado);
     }
 
+    @Test
+    public void atacarAtacaEnRango(){
+
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+
+
+        assertTrue(habilidad.atacar(10,10,10,1) > 10);
+
+
+    }
+
 
 
 
@@ -44,6 +55,11 @@ public class HabilidadAtaqueTest {
         float nRandom = (habilidad.generarNumeroRandom());
         assertTrue(nRandom >= (float)217/255 && nRandom <= 1.0);
     }
+
+
+
+
+
 
 }
 

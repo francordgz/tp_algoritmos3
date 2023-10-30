@@ -48,6 +48,15 @@ public class Juego {
         this.clima = clima;
     }
 
+    public Clima getClima() {
+        return this.clima;
+    }
+
+
+    public void asignarPrimerTurno(){
+        this.administrador.asignarPrimerTurno(entrenador1,entrenador2);
+    }
+
     public void inicializarClima() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
@@ -123,6 +132,7 @@ public class Juego {
         }
 
         pokemonRival.recibirDanio(ataque);
+
         return ataque;
     }
 
