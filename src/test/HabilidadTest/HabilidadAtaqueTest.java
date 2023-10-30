@@ -41,7 +41,8 @@ public class HabilidadAtaqueTest {
         HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
 
 
-        assertTrue(habilidad.atacar(10,10,10,1) > 10);
+
+        assertTrue(habilidad.atacar(10,10,10,1) < 25);
 
 
     }
