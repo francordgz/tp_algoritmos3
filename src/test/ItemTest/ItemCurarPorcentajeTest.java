@@ -18,9 +18,9 @@ public class ItemCurarPorcentajeTest {
     @BeforeEach
     public void setUp() {
         int porcentaje = Constant.TERCIO;
-        this.item = new ItemCurarPorcentaje("Pocion molesta alumnos", 2, porcentaje);
-        this.pokemon = new Pokemon("Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", Arrays.asList(), 5);
+        this.item = new ItemCurarPorcentaje("Pocion molesta alumnos", 2,  0, porcentaje);
+        this.pokemon = new Pokemon( 0,"Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
+                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
     }
 
     @Test

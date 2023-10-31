@@ -2,12 +2,13 @@ package src.main.Serializacion;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import src.main.Clima.*;
+
 import src.main.Enums.Atributos;
 import src.main.Enums.Estados;
-import src.main.Habilidad.Habilidad;
-import src.main.Habilidad.HabilidadAtaque;
-import src.main.Habilidad.HabilidadEstadistica;
-import src.main.Habilidad.HabilidadEstado;
+
+import src.main.Habilidad.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +37,10 @@ public class HabilidadDeserializer {
                 String nombre = habilidad.get("nombre").asText();
                 int usos = habilidad.get("usos").asInt();
 
+                if (habilidad.has("clima")) {
+                    return new HabilidadClima(nombre, usos, id, stringClima(habilidad.get("clima").asText()));
+                }
+
                 if (habilidad.has("estado")) {
                     return new HabilidadEstado(nombre, usos, id, stringEstado(habilidad.get("estado").asText()));
                 } else {
@@ -55,23 +60,36 @@ public class HabilidadDeserializer {
         throw new IllegalArgumentException("Habilidad no encontrada: " + id);
     }
 
-    public static Estados stringEstado(String estadoStr) {
+    private Estados stringEstado(String estadoStr) {
         return switch (estadoStr) {
             case "envenenado" -> Estados.ENVENENADO;
             case "dormido" -> Estados.DORMIDO;
             case "paralizado" -> Estados.PARALIZADO;
             case "confuso" -> Estados.CONFUSO;
-            default -> null;
+            default -> throw new IllegalArgumentException("Estado Iválido: " + estadoStr);
         };
     }
 
-    public static Atributos stringAtributos(String atributoStr) {
+    private Atributos stringAtributos(String atributoStr) {
         return switch (atributoStr) {
             case "vida" -> Atributos.VIDA;
             case "ataque" -> Atributos.ATAQUE;
             case "velocidad" -> Atributos.VELOCIDAD;
             case "defensa" -> Atributos.DEFENSA;
-            default -> null;
+            default -> throw new IllegalArgumentException("Atributo Iválido: " + atributoStr);
         };
     }
+
+    private Clima stringClima(String climaStr) {
+        return switch (climaStr) {
+            case "huracan" -> new ClimaHuracan();
+            case "lluvia" -> new ClimaLluvia();
+            case "niebla" -> new ClimaNiebla();
+            case "soleado" -> new ClimaSoleado();
+            case "tormentaDeArena" -> new ClimaTormentaDeArena();
+            case "tormentaDeRayos" -> new ClimaTormentaDeRayos();
+            default -> throw new IllegalArgumentException("Clima Inválido: " + climaStr);
+        };
+    }
+
 }

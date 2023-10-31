@@ -19,12 +19,12 @@ public class ItemCuracionTest {
     @BeforeEach
     public void setUp() {
         this.items = new ArrayList<Item>();
-        items.add(new ItemCuracion(20, "Pocion", 3));
-        items.add(new ItemCuracion(50, "MegaPocion", 2));
-        items.add(new ItemCuracion(100, "HiperPocion", 3));
+        items.add(new ItemCuracion(20, "Pocion", 0, 3));
+        items.add(new ItemCuracion(50, "MegaPocion", 0, 2));
+        items.add(new ItemCuracion(100, "HiperPocion", 0, 3));
 
-        this.pokemon = new Pokemon("Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", Arrays.asList(), 5);
+        this.pokemon = new Pokemon( 0,"Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
+                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
     }
 
     @Test
@@ -51,7 +51,8 @@ public class ItemCuracionTest {
 
         assertEquals(2, items.get(0).obtenerCantidad());
         assertEquals(1, items.get(1).obtenerCantidad());
-        assertEquals(2, items.get(2).obtenerCantidad());
+        assertEquals(0, items.get(2).obtenerCantidad());
+        // Este último es una HiperPocion y por lo tanto solo se puede usar una vez
     }
 
     @Test

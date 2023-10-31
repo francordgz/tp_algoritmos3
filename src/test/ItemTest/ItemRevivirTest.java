@@ -17,9 +17,9 @@ public class ItemRevivirTest {
     private ItemRevivir item;
     @BeforeEach
     public void setUp() {
-        this.pokemon = new Pokemon("Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", Arrays.asList(), 5);
-        this.item = new ItemRevivir("Revivir", 1);
+        this.pokemon = new Pokemon(0, "Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
+                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
+        this.item = new ItemRevivir("Revivir", 1, 0);
     }
 
     @Test

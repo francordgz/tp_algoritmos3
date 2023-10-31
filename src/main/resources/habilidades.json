@@ -52,12 +52,12 @@
     "nombre": "Paralizar",
     "id": 7,
     "usos": 2,
-    "estado": "PARALIZADO"
+    "estado": "paralizado"
   },
   {
     "nombre": "Dormir",
     "id": 8,
     "usos": 1,
-    "estado": "DORMIDO"
+    "estado": "dormido"
   }
 ]

@@ -92,6 +92,7 @@ public class Entrenador {
 
     public boolean esGanador() {
         return this.ganador;
+    }
 
     public Integer obtenerCantidadDePokemones() {
         return this.pokemones.size();

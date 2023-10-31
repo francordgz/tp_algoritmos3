@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class HabilidadAtaqueTest {
     @Test
     public void testMismoTipo() {
-        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5,0,50, true);
         assertEquals(habilidad.MismoTipo(), 1.5);
-        habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Water", 5, 50, false);
+        habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5,0, 50, false);
         assertEquals(habilidad.MismoTipo(), 1);
     }
 
@@ -38,7 +38,7 @@ public class HabilidadAtaqueTest {
     @Test
     public void atacarAtacaEnRango(){
 
-        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5, 0, 50, true);
 
 
 
@@ -52,7 +52,7 @@ public class HabilidadAtaqueTest {
 
     @Test
     public void generarNumeroRandomRangoTest(){
-        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", "Fire", 5, 50, true);
+        HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest",5, 0, 50, true);
         float nRandom = (habilidad.generarNumeroRandom());
         assertTrue(nRandom >= (float)217/255 && nRandom <= 1.0);
     }

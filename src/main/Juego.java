@@ -33,11 +33,15 @@ public class Juego {
             );
 
             List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
-            this.entrenador1 = entrenadores.get(0);
-            this.entrenador2 = entrenadores.get(1);
+            this.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException("Error al leer archivos JSON");
         }
+    }
+
+    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
+        this.entrenador1 = primerEntrenador;
+        this.entrenador2 = segundoEntrenador;
     }
 
     public Entrenador obtenerPrimerEntrenador() {
@@ -54,11 +58,6 @@ public class Juego {
 
     public Clima getClima() {
         return this.clima;
-    }
-
-
-    public void asignarPrimerTurno(){
-        this.administrador.asignarPrimerTurno(entrenador1,entrenador2);
     }
 
     public void inicializarClima() {
