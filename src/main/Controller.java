@@ -234,14 +234,17 @@ public class Controller {
 
     public void terminar() {
         this.scanner.close();
+        this.crearInforme();
+    }
 
+    private void crearInforme() {
         List<Entrenador> entrenadores = new ArrayList<>();
         entrenadores.add(juego.obtenerPrimerEntrenador());
         entrenadores.add(juego.obtenerSegundoEntrenador());
 
         try {
             String informePath = InformeSerializer.serializeJSON(entrenadores, "informe.json");
-            VistaJuego.imprimir("El informe ha sido creado en: " + informePath);
+            System.out.println("El informe ha sido creado en: " + informePath);
         } catch (IOException e) {
             throw new RuntimeException("Error al crear informe JSON");
         }

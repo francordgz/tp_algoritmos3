@@ -1,16 +1,17 @@
 package src.main.Serializacion;
 
+import src.main.Entrenador;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import src.main.Entrenador;
-
 
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PartidaDeserializer {
     final File partidaJSON;
