@@ -1,8 +1,12 @@
 package src.main;
 
 import src.main.Enums.Estados;
+import src.main.Serializacion.InformeSerializer;
 import src.main.Vista.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static src.main.Constant.NOT_INT;
 
@@ -12,38 +16,18 @@ public class Controller {
 
     public Controller(Juego juego) {
         this.juego = juego;
-        String nombre1 = pedirNombreEntrenador("");
 
-        String nombre2 = pedirNombreEntrenador(nombre1);
+        this.juego.deserializarPartida(
+                "partida.json",
+                "pokemons.json",
+                "habilidades.json",
+                "items.json"
+        );
 
-        this.juego.asignarEntrenadores(new Entrenador(nombre1), new Entrenador(nombre2));
-        this.juego.crearPokemones();
-        this.juego.crearItems();
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.inicializarTurnos();
         this.juego.inicializarClima();
-    }
-
-    private String pedirNombreEntrenador(String nombreOponente) {
-        String ingreso;
-        boolean longitudValida;
-        boolean nombreRepetido;
-
-        do {
-            VistaJuego.imprimirMismaLinea("Ingrese un nombre para el entrenador: ");
-            ingreso = leerString();
-            longitudValida = !ingreso.isEmpty() && ingreso.length() < Constant.MAX_NOMBRE;
-            nombreRepetido = ingreso.equals(nombreOponente);
-
-            if (!longitudValida)
-                VistaJuego.imprimir("Error! El nombre debe contener al menos 1 caracter y menos de 50.");
-            else if (nombreRepetido)
-                VistaJuego.imprimir("Error! El nombre no puede coincidir con el del entrenador rival.");
-
-        } while (!longitudValida || nombreRepetido);
-
-        return ingreso;
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
@@ -249,16 +233,22 @@ public class Controller {
     }
 
     public void terminar() {
-        VistaJuego.imprimir("Presione cualquier tecla para terminar");
         this.scanner.close();
+
+        List<Entrenador> entrenadores = new ArrayList<>();
+        entrenadores.add(juego.obtenerPrimerEntrenador());
+        entrenadores.add(juego.obtenerSegundoEntrenador());
+
+        try {
+            String informePath = InformeSerializer.serializeJSON(entrenadores, "informe.json");
+            VistaJuego.imprimir("El informe ha sido creado en: " + informePath);
+        } catch (IOException e) {
+            throw new RuntimeException("Error al crear informe JSON");
+        }
     }
 
     public void declararGanador() {
         VistaJuego.imprimir("El ganador es: " + juego.obtenerGanador().obtenerNombre());
-    }
-
-    private String leerString() {
-        return this.scanner.nextLine();
     }
 
     private int leerInt() {

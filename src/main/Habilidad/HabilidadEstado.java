@@ -6,8 +6,8 @@ import src.main.Pokemon;
 public class HabilidadEstado extends Habilidad{
     private final Estados tipo;
 
-    public HabilidadEstado(String nombre, int usos, Estados tipo) {
-        super(nombre,usos);
+    public HabilidadEstado(String nombre, int usos, int id, Estados tipo) {
+        super(nombre,usos, id);
         this.tipo = tipo;
     }
 

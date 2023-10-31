@@ -1,20 +1,19 @@
 package src.main;
 
 import src.main.Clima.*;
-import src.main.Item.*;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Random;
 
 import src.main.Enums.Estados;
-import src.main.Enums.TipoModificacion;
+import src.main.Serializacion.PartidaDeserializer;
 
 public class Juego {
     private final AdministradorDeTurnos administrador;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
-    private Entrenador ganador;
     private Clima clima;
     private final double[][] efectividades;
     private Boolean terminado;
@@ -27,21 +26,26 @@ public class Juego {
         this.terminado = false;
     }
 
+    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
+        try {
+            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
+                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
+            );
+
+            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
+            this.entrenador1 = entrenadores.get(0);
+            this.entrenador2 = entrenadores.get(1);
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Error al leer archivos JSON");
+        }
+    }
+
     public Entrenador obtenerPrimerEntrenador() {
         return entrenador1;
     }
 
     public Entrenador obtenerSegundoEntrenador() {
         return entrenador2;
-    }
-
-    public Entrenador obtenerGanador() {
-        return this.ganador;
-    }
-
-    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
-        this.entrenador1 = primerEntrenador;
-        this.entrenador2 = segundoEntrenador;
     }
 
     public void modificarClima(Clima clima) {
@@ -212,58 +216,22 @@ public class Juego {
     }
 
     public void rendirse() {
-        this.ganador = this.administrador.obtenerEntrenadorRivalActual();
+        this.administrador.obtenerEntrenadorRivalActual().marcarComoGanador();
         this.terminado = true;
     }
 
     public boolean terminado() {
         if (!administrador.obtenerEntrenadorActual().tienePokemonesConVida()) {
-            this.ganador = obtenerEntrenadorRival();
+            obtenerEntrenadorRival().marcarComoGanador();
             return true;
         }
         return this.terminado;
     }
 
-    public void crearPokemones() {
-        Pokedex pokedex = new Pokedex();
-
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Pikachu"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Bulbasur"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Venusar"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Charmander"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Charizard"));
-        entrenador1.agregarPokemon(pokedex.crearPokemon("Squirtle"));
-
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Magikarp"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Raichu"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Kadabra"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Clefable"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Ekans"));
-        entrenador2.agregarPokemon(pokedex.crearPokemon("Rattata"));
-    }
-
-    public void crearItems() {
-
-        List<List<Item>> setsDeIems = new ArrayList<List<Item>>();
-
-        for (int i = 0; i < 2; i ++) {
-            setsDeIems.add(new ArrayList<Item>());
-            setsDeIems.get(i).add(new ItemCuracion(20, "Pocion", 3));
-            setsDeIems.get(i).add(new ItemCuracion(50, "MegaPocion", 2));
-            setsDeIems.get(i).add(new ItemCuracion(100, "Hiperpocion", 3));
-            setsDeIems.get(i).add(new ItemCurarPorcentaje("Pocion molesta alumnos", 2, 33));
-            setsDeIems.get(i).add(new ItemEstadistica("Ataque", TipoModificacion.ATAQUE, 2));
-            setsDeIems.get(i).add(new ItemEstadistica("Defensa", TipoModificacion.DEFENSA, 1));
-            setsDeIems.get(i).add(new ItemEstado("CuraTodo", 3));
-            setsDeIems.get(i).add(new ItemRevivir("Revivir", 1));
-        }
-        List<Item> primerSetItems = setsDeIems.get(0);
-        for (Item item: primerSetItems)
-            entrenador1.agregarItem(item);
-
-        List<Item> segundoSetItems = setsDeIems.get(1);
-        for (Item item: segundoSetItems)
-            entrenador2.agregarItem(item);
+    public Entrenador obtenerGanador() {
+        Entrenador entrenador = this.entrenador1;
+        if (entrenador.esGanador()) return entrenador;
+        return this.entrenador2;
     }
 
     public Integer obtenerCantidadDePokemones(Entrenador entrenador) {

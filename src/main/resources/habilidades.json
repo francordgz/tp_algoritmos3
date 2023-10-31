@@ -1,0 +1,63 @@
+[
+  {
+    "nombre": "Golpe",
+    "id" : 0,
+    "usos" : 3,
+    "poder": 100,
+    "mismoTipo": false
+  },
+  {
+    "nombre": "Latigo cepa",
+    "id" : 1,
+    "usos" : 2,
+    "poder": 90,
+    "mismoTipo": true
+  },
+  {
+    "nombre": "Disminuir ataque",
+    "id": 2,
+    "atributo": "ataque",
+    "usos": 2,
+    "poder": -10,
+    "afectarRival": true
+  },
+  {
+    "nombre": "Envenenar",
+    "id": 3,
+    "usos": 2,
+    "estado": "envenenado"
+  },
+  {
+    "nombre": "Confundir",
+    "id": 4,
+    "usos": 1,
+    "estado": "confuso"
+  },
+  {
+    "nombre": "Impactrueno",
+    "id": 5,
+    "usos": 1,
+    "poder": 120,
+    "mismoTipo": true
+  },
+  {
+    "nombre": "Aumentar ataque",
+    "id": 6,
+    "atributo": "ataque",
+    "usos": 2,
+    "poder": 10,
+    "afectarRival": false
+  },
+  {
+    "nombre": "Paralizar",
+    "id": 7,
+    "usos": 2,
+    "estado": "PARALIZADO"
+  },
+  {
+    "nombre": "Dormir",
+    "id": 8,
+    "usos": 1,
+    "estado": "DORMIDO"
+  }
+]

@@ -6,8 +6,8 @@ public class ItemEstadistica extends Item {
     
     private final TipoModificacion tipo;
 
-    public ItemEstadistica(String nombre, TipoModificacion tipo, int cantidad) {
-        super(nombre, cantidad);
+    public ItemEstadistica(String nombre, TipoModificacion tipo, int id, int cantidad) {
+        super(nombre, cantidad, id);
         this.tipo = tipo;
     }
 

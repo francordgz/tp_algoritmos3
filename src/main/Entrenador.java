@@ -1,4 +1,6 @@
 package src.main;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import src.main.Enums.Estados;
 import src.main.Item.Item;
 
@@ -10,10 +12,14 @@ public class Entrenador {
     private Pokemon pokemonActual;
     private final ArrayList<Item> items;
 
-    public Entrenador(String nombre) {
+    boolean ganador;
+
+    @JsonCreator
+    public Entrenador(@JsonProperty("nombre") String nombre) {
         this.nombre = nombre;
         this.pokemones = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.ganador = false;
     }
 
     public String obtenerNombre() {
@@ -79,6 +85,13 @@ public class Entrenador {
         Pokemon pokemon = this.pokemones.get(indicePokemon);
         return item.esAplicable(pokemon);
     }
+
+    public void marcarComoGanador() {
+        this.ganador = true;
+    }
+
+    public boolean esGanador() {
+        return this.ganador;
 
     public Integer obtenerCantidadDePokemones() {
         return this.pokemones.size();
