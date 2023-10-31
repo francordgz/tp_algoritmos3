@@ -46,8 +46,9 @@ public class Entrenador {
         this.items.add(items);
     }
 
-    public void cambiarPokemon(int posicion){
+    public String cambiarPokemon(int posicion){
         this.pokemonActual = this.pokemones.get(posicion);
+        return this.pokemonActual.obtenerNombre();
     }
 
     public Boolean pokemonActualTieneEstado(Estados estado) {
@@ -91,5 +92,19 @@ public class Entrenador {
 
     public boolean esGanador() {
         return this.ganador;
+
+    public Integer obtenerCantidadDePokemones() {
+        return this.pokemones.size();
+    }
+
+    public Boolean pokemonEstaMuerto(Integer opcion) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        return pokemon.tieneEstado(Estados.MUERTO);
+    }
+
+    public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        String nombrePokemonActual = pokemonActual.obtenerNombre();
+        return nombrePokemonActual.equals(pokemon.obtenerNombre());
     }
 }

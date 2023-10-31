@@ -30,17 +30,24 @@ public class Controller {
         this.juego.inicializarClima();
     }
 
+    private void seleccionarPrimerPokemon(Entrenador entrenador){
+        int opcion = pedirPokemon(entrenador, true);
+
+        String nombrePokemon = this.juego.cambiarPokemon(entrenador, opcion);
+        VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
+    }
+
     public void menuPrincipal() {
         int opcion;
         boolean turnoTerminado = false;
         boolean mostrar = true;
 
+        //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
+        //TODO: No esta claro en el PDF
         this.juego.efectoClimatico();
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
 
-        //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
-        //TODO: No esta claro en el PDF
         if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(entrenadorActual, true);
@@ -82,65 +89,47 @@ public class Controller {
         this.juego.actualizarClima();
     }
 
-    private void seleccionarPrimerPokemon(Entrenador entrenador){
-        int opcion = NOT_INT;
-        boolean opcionValida = false;
-        VistaPokemon.mostrarPokemones(entrenador, true);
-        String nombrePokemon;
-
-        while (!opcionValida) {
-            opcion = leerInt();
-            opcionValida = !(opcion > entrenador.obtenerPokemones().size() || opcion < 1);
-            
-            if(!opcionValida)
-                VistaJuego.imprimir("Seleccione una opción correcta!");
-        }
-        //TODO: Controller necesita conocer el entrenador?
-        entrenador.cambiarPokemon(opcion - 1);
-        nombrePokemon = entrenador.obtenerPokemonActual().obtenerNombre();
-        VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
-    }
-
     private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria) {
-        boolean seleccionValida = false;
-        Pokemon pokemonSeleccionado;
-        String nombrePokemonActual = entrenador.obtenerPokemonActual().obtenerNombre();
-        int indicePokemon = Constant.NULA;
+        boolean opcionValida = false;
+        int opcion = Constant.NULA;
         
-        while (!seleccionValida) {
-            indicePokemon = pedirPokemon(entrenador, seleccionObligatoria);
+        while (!opcionValida) {
+            opcion = pedirPokemon(entrenador, seleccionObligatoria);
 
-            if (indicePokemon == NOT_INT && !seleccionObligatoria) { return false; }
+            if(opcion == Constant.SALIR)
+                return false;
 
-            pokemonSeleccionado = entrenador.obtenerPokemones().get(indicePokemon);
-            if (pokemonSeleccionado.estaMuerto())
+            if (this.juego.pokemonEstaMuerto(opcion))
                 VistaJuego.imprimir("Ese Pokemon esta muerto!");
-            else if (nombrePokemonActual.equals(pokemonSeleccionado.obtenerNombre()))
+            else if (this.juego.validarPokemon(opcion))
                 VistaJuego.imprimir("Se debe elegir un Pokemon distinto al actual mientras él siga con vida!");
             else
-                seleccionValida = true;
+                opcionValida = true;
         }
-        entrenador.cambiarPokemon(indicePokemon);
+
+        String nombrePokemon = this.juego.cambiarPokemon(entrenador, opcion);
+        VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon);
         return true;
     }
 
     private int pedirPokemon(Entrenador entrenador, boolean seleccionObligatoria){
         int opcion = Constant.SALIR;
         VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
-        boolean opcionValida, seleccionValida = false;
+        boolean opcionValida = false;
 
-        while (!seleccionValida) {
+        while (!opcionValida) {
             opcion = leerInt();
-            if (!seleccionObligatoria && opcion == Constant.SALIR)
-                return NOT_INT;
 
-            opcionValida = opcion < this.juego.obtenerEntrenadorActual().obtenerItems().size() && opcion > Constant.SALIR;
-            if (!opcionValida) {
-                VistaJuego.imprimir("Seleccione una opcion correcta porfavor");
-                continue;
-            }
-            seleccionValida = true;
+            if (opcion < Constant.SALIR || opcion > this.juego.obtenerCantidadDePokemones(entrenador))
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR && seleccionObligatoria)
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR)
+                return opcion;
+            else
+                opcionValida = true;
         }
+
         return opcion - 1;
     }
 
@@ -171,6 +160,10 @@ public class Controller {
             case 3, 4, 5:
                 ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
                 break;
+
+            case 6:
+                ataqueEfectivo = this.juego.usarHabilidadClima(habilidadSeleccionada);
+                break;
         }
         if (!ataqueEfectivo)
             VistaJuego.imprimir("El pokemon esta paralizado!");
@@ -191,8 +184,7 @@ public class Controller {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             else if (opcion == Constant.SALIR)
                 return opcion;
-
-            if (!this.juego.validarHabilidad(opcion - 1))
+            else if (!this.juego.validarHabilidad(opcion - 1))
                 VistaJuego.imprimir("Esta habilidad no tiene más usos");
             else
                 habilidadValida = true;

@@ -28,7 +28,7 @@ public class HabilidadAtaque extends Habilidad{
         return danio * (MismoTipo() * efectividad * numeroRandom);
     }
 
-    private float generarNumeroRandom(){
+    public float generarNumeroRandom(){
         Random rand = new Random();
         return  ((float)rand.nextInt(39) + 217) / 255;
     }
@@ -39,4 +39,12 @@ public class HabilidadAtaque extends Habilidad{
         if(numeroAleatorio <= 90) return  2;
         return 1;
     }
+
+
+
+
+
+
+
+
 }

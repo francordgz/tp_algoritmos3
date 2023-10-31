@@ -52,6 +52,15 @@ public class Juego {
         this.clima = clima;
     }
 
+    public Clima getClima() {
+        return this.clima;
+    }
+
+
+    public void asignarPrimerTurno(){
+        this.administrador.asignarPrimerTurno(entrenador1,entrenador2);
+    }
+
     public void inicializarClima() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
@@ -111,7 +120,6 @@ public class Juego {
     }
 
     public double atacar(int habilidad) {
-        System.out.println("Atacar");
         Pokemon pokemonActual = administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
 
@@ -128,6 +136,7 @@ public class Juego {
         }
 
         pokemonRival.recibirDanio(ataque);
+
         return ataque;
     }
 
@@ -156,6 +165,22 @@ public class Juego {
             pokemonActual.UsarHabilidad(habilidad, pokemonActual);
         else
             pokemonActual.UsarHabilidad(habilidad, pokemonRival);
+
+        return true;
+    }
+
+    public Boolean usarHabilidadClima(int habilidad) {
+        Boolean probabilidad = calcularProbabilidad();
+        Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+        Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+
+        if (pokemonActual.tieneEstado(Estados.CONFUSO))
+            pokemonActual.actualizarEstadoConfuso();
+
+        if (pokemonActual.tieneEstado(Estados.PARALIZADO) && !probabilidad)
+            return false;
+
+        this.modificarClima(pokemonActual.habilidades(habilidad).modificarClima());
 
         return true;
     }
@@ -207,5 +232,23 @@ public class Juego {
         Entrenador entrenador = this.entrenador1;
         if (entrenador.esGanador()) return entrenador;
         return this.entrenador2;
+    }
+
+    public Integer obtenerCantidadDePokemones(Entrenador entrenador) {
+        return entrenador.obtenerCantidadDePokemones();
+    }
+
+    public String cambiarPokemon(Entrenador entrenador, Integer opcion) {
+        return entrenador.cambiarPokemon(opcion);
+    }
+
+    public Boolean pokemonEstaMuerto(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonEstaMuerto(opcion);
+    }
+
+    public Boolean validarPokemon(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
     }
 }
