@@ -1,8 +1,6 @@
 package src.test;
 
-import org.mockito.Mockito;
 import org.junit.jupiter.api.*;
-import src.main.Clima.ClimaHuracan;
 import src.main.Enums.Tipo;
 import src.main.Pokemon;
 import src.main.Entrenador;
@@ -34,11 +32,11 @@ public class AdministradorTurnosTest {
    @Test
    public void  administradorAsignaPrimerTurnoBien(){
 
-       when(entrenador1.obtenerPokemonActual()).thenReturn(new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-               25, 15, "", Arrays.asList(), 5));
+       when(entrenador1.obtenerPokemonActual()).thenReturn(new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+               25, 15, "", 5, Arrays.asList()));
 
-       when(entrenador2.obtenerPokemonActual()).thenReturn(new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-               20, 15, "", Arrays.asList(), 5));
+       when(entrenador2.obtenerPokemonActual()).thenReturn(new Pokemon(0,"Picachu", Tipo.RAYO, 20, 5,
+               20, 15, "", 5, Arrays.asList()));
 
         admin.asignarPrimerTurno(entrenador1,entrenador2);
 
@@ -49,11 +47,11 @@ public class AdministradorTurnosTest {
    @Test
    public void administradorDeTurnosCambiaBienPokemon(){
 
-        when(entrenador1.obtenerPokemonActual()).thenReturn(new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-               25, 15, "", Arrays.asList(), 5));
+        when(entrenador1.obtenerPokemonActual()).thenReturn(new Pokemon(0,"Picachu", Tipo.RAYO, 20, 5,
+               25, 15, "",5, Arrays.asList()));
 
-        when(entrenador2.obtenerPokemonActual()).thenReturn(new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-               20, 15, "", Arrays.asList(), 5));
+        when(entrenador2.obtenerPokemonActual()).thenReturn(new Pokemon(0,"Picachu", Tipo.RAYO, 20, 5,
+               20, 15, "", 5, Arrays.asList()));
 
         admin.asignarPrimerTurno(entrenador1,entrenador2);
 

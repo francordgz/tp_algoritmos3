@@ -11,8 +11,7 @@ import src.main.Pokemon;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PokemonTests {
 
@@ -21,14 +20,14 @@ public class PokemonTests {
     public void test01Pokemon() {
 
 
-        Pokemon p = new Pokemon("Picachu",Tipo.RAYO, 100, 5, 25, 15,
-                "Este Pokémon es conocido por su cola en forma de rayo y su capacidad para generar electricidad.", Arrays.asList(
-                new HabilidadAtaque("Golpe", "Normal", 3, 100, false),
-                new HabilidadAtaque("Impactrueno", "Rayo", 1, 120, true),
-                new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 10,true),
-                new HabilidadEstado("Paralizar", 2, Estados.PARALIZADO),
-                new HabilidadEstado("Confundir", 1, Estados.CONFUSO)
-        ),5);
+        Pokemon p = new Pokemon(0, "Picachu",Tipo.RAYO, 100, 5, 25, 15,
+                "Este Pokémon es conocido por su cola en forma de rayo y su capacidad para generar electricidad.", 5, Arrays.asList(
+                new HabilidadAtaque("Golpe", 0, 3, 100, false),
+                new HabilidadAtaque("Impactrueno", 0, 1, 120, true),
+                new HabilidadEstadistica("Aumentar ataque", Atributos.ATAQUE, 2, 0,10,true),
+                new HabilidadEstado("Paralizar", 2, 0, Estados.PARALIZADO),
+                new HabilidadEstado("Confundir", 1, 0, Estados.CONFUSO)
+        ));
 
         assertEquals(p, p);
 
@@ -38,8 +37,8 @@ public class PokemonTests {
     @Test
     public void pokemonEnvenenadoMuereTest() {
         int vidaMaxima = 20;
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, vidaMaxima, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, vidaMaxima, 5,
+                25, 15, "", 5, Arrays.asList());
         pokemon.recibirDanio(9);
         pokemon.agregarEstado(Estados.ENVENENADO);
 
@@ -57,42 +56,42 @@ public class PokemonTests {
 
     @Test
     public void pokemonPierdeEstadosTest() {
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.agregarEstado(Estados.DORMIDO);
         pokemon.agregarEstado(Estados.PARALIZADO);
         pokemon.agregarEstado(Estados.ENVENENADO);
 
         pokemon.removerEstado(Estados.PARALIZADO);
-        assertEquals(false, pokemon.tieneEstado(Estados.PARALIZADO));
+        assertFalse(pokemon.tieneEstado(Estados.PARALIZADO));
 
         pokemon.removerEstado(Estados.DORMIDO);
-        assertEquals(false, pokemon.tieneEstado(Estados.DORMIDO));
+        assertFalse(pokemon.tieneEstado(Estados.DORMIDO));
 
         pokemon.removerEstado(Estados.ENVENENADO);
-        assertEquals(false, pokemon.tieneEstado(Estados.ENVENENADO));
-        assertEquals(true, pokemon.tieneEstado(Estados.NORMAL));
+        assertFalse(pokemon.tieneEstado(Estados.ENVENENADO));
+        assertTrue(pokemon.tieneEstado(Estados.NORMAL));
     }
 
     @Test
     public void pokemonAgregaEstadosTest(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
-        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+        assertTrue(pokemon.tieneEstado(Estados.NORMAL));
 
         pokemon.agregarEstado(Estados.DORMIDO);
 
-        assertEquals(true, pokemon.tieneEstado(Estados.DORMIDO));
+        assertTrue(pokemon.tieneEstado(Estados.DORMIDO));
 
 
     }
 
     @Test
     public void pokemonRecibeDanioYmuereTest(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.recibirDanio(19);
 
@@ -102,15 +101,15 @@ public class PokemonTests {
 
         assertEquals(0,pokemon.obtenerVidaActual());
 
-        assertEquals(true,pokemon.estaMuerto());
+        assertTrue(pokemon.estaMuerto());
 
 
     }
 
     @Test
     public void pokemonSeDespiertaTest(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.agregarEstado(Estados.DORMIDO);
 
@@ -121,7 +120,7 @@ public class PokemonTests {
 
         ///Pokemon a se desperto si o si con esa cantidad de turnos///
 
-        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+        assertTrue(pokemon.tieneEstado(Estados.NORMAL));
 
 
     }
@@ -129,8 +128,8 @@ public class PokemonTests {
 
     @Test
     public void pokemonRemueveEstadoConfusoYPierdeVidaTest(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.agregarEstado(Estados.CONFUSO);
 
@@ -139,7 +138,7 @@ public class PokemonTests {
         pokemon.actualizarEstadoConfuso();
         pokemon.actualizarEstadoConfuso();
 
-        assertEquals(true,pokemon.tieneEstado(Estados.NORMAL));
+        assertTrue(pokemon.tieneEstado(Estados.NORMAL));
 
 
 
@@ -149,8 +148,8 @@ public class PokemonTests {
 
     @Test
     public void PokemonSeCuraBien(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.recibirDanio(19);
 
@@ -165,28 +164,28 @@ public class PokemonTests {
 
     @Test
     public void pokemonRevive(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.recibirDanio(20);
 
-        assertEquals(true,pokemon.estaMuerto());
+        assertTrue(pokemon.estaMuerto());
 
         pokemon.revivir();
 
-        assertEquals(false,pokemon.estaMuerto());
+        assertFalse(pokemon.estaMuerto());
 
 
     }
 
     @Test
     public void PokemonDormidoNoAtaca(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.agregarEstado(Estados.DORMIDO);
 
-        assertEquals(false,pokemon.puedeAtacar());
+        assertFalse(pokemon.puedeAtacar());
 
 
 
@@ -194,13 +193,11 @@ public class PokemonTests {
 
     @Test
     public void PokemonSeCuraCuandoNecesita(){
-        Pokemon pokemon = new Pokemon("Picachu", Tipo.RAYO, 20, 5,
-                25, 15, "", Arrays.asList(), 5);
+        Pokemon pokemon = new Pokemon(0, "Picachu", Tipo.RAYO, 20, 5,
+                25, 15, "", 5, Arrays.asList());
 
         pokemon.agregarEstado(Estados.PARALIZADO);
-        assertEquals(true,pokemon.necesitaCurarse());
-
-
+        assertTrue(pokemon.necesitaCurarse());
     }
 
 

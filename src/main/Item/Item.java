@@ -3,12 +3,14 @@ import src.main.Pokemon;
 
 public abstract class Item {
 
-    protected String nombre;
-    protected int cantidad;
+    private final String nombre;
+    int id;
+    private int cantidad;
 
-    public Item(String nombre, int cantidad) {
+    public Item(String nombre, int cantidad, int id) {
         this.nombre = nombre;
         this.cantidad = cantidad;
+        this.id = id;
     }
 
     public String obtenerNombre() {
@@ -28,5 +30,9 @@ public abstract class Item {
 
     public void decrementarCantidad() {
         this.cantidad -= 1;
+    }
+
+    public int obtenerId() {
+        return this.id;
     }
 }

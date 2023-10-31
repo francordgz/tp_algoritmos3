@@ -19,7 +19,7 @@ public class HabilidadEstadoTest {
 
     @Test
     public void testModificarEstadoEnvenenado() {
-        habilidadEstado = new HabilidadEstado("HabilidadEstadoEnvenenado", 5, Estados.ENVENENADO);
+        habilidadEstado = new HabilidadEstado("HabilidadEstadoEnvenenado", 5, 0, Estados.ENVENENADO);
         habilidadEstado.modificarEstado(pokemon);
 
         verify(pokemon, times(1)).agregarEstado(Estados.ENVENENADO);
@@ -28,7 +28,7 @@ public class HabilidadEstadoTest {
 
     @Test
     public void testModificarEstadoDormido() {
-        habilidadEstado = new HabilidadEstado("HabilidadEstadoDormido", 5, Estados.DORMIDO);
+        habilidadEstado = new HabilidadEstado("HabilidadEstadoDormido", 5, 0, Estados.DORMIDO);
         habilidadEstado.modificarEstado(pokemon);
 
         verify(pokemon, times(1)).agregarEstado(Estados.DORMIDO);
@@ -37,7 +37,7 @@ public class HabilidadEstadoTest {
 
     @Test
     public void testModificarEstadoParalizado() {
-        habilidadEstado = new HabilidadEstado("HabilidadEstadoParalizado", 5, Estados.PARALIZADO);
+        habilidadEstado = new HabilidadEstado("HabilidadEstadoParalizado", 5, 0, Estados.PARALIZADO);
         habilidadEstado.modificarEstado(pokemon);
 
         verify(pokemon, times(1)).agregarEstado(Estados.PARALIZADO);
@@ -46,7 +46,7 @@ public class HabilidadEstadoTest {
 
     @Test
     public void testModificarEstadoConfuso() {
-        habilidadEstado = new HabilidadEstado("HabilidadEstadoConfuso", 5, Estados.CONFUSO);
+        habilidadEstado = new HabilidadEstado("HabilidadEstadoConfuso", 5, 0, Estados.CONFUSO);
         habilidadEstado.modificarEstado(pokemon);
 
         verify(pokemon, times(1)).agregarEstado(Estados.CONFUSO);

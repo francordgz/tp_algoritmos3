@@ -13,7 +13,7 @@ public class HabilidadEstadisticaTest {
 
     @Test
     public void testModificarEstadoVida() {
-        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VIDA, 5, 20, true);
+        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VIDA, 5, 0,20, true);
         Pokemon pokemon = mock(Pokemon.class);
         habilidadEstadistica.modificarEstado(pokemon);
 
@@ -23,7 +23,7 @@ public class HabilidadEstadisticaTest {
 
     @Test
     public void testModificarEstadoAtaque() {
-        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.ATAQUE, 5, 10, true);
+        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.ATAQUE, 5, 0, 10, true);
         Pokemon pokemon = mock(Pokemon.class);
         habilidadEstadistica.modificarEstado(pokemon);
 
@@ -33,7 +33,7 @@ public class HabilidadEstadisticaTest {
 
     @Test
     public void testModificarEstadoDefensa() {
-        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.DEFENSA, 5, 15, true);
+        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.DEFENSA, 5, 0,15, true);
         Pokemon pokemon = mock(Pokemon.class);
         habilidadEstadistica.modificarEstado(pokemon);
 
@@ -43,7 +43,7 @@ public class HabilidadEstadisticaTest {
 
     @Test
     public void testModificarEstadoVelocidad() {
-        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VELOCIDAD, 5, 25, true);
+        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VELOCIDAD, 5, 0, 25, true);
         Pokemon pokemon = mock(Pokemon.class);
         habilidadEstadistica.modificarEstado(pokemon);
 
@@ -53,10 +53,10 @@ public class HabilidadEstadisticaTest {
 
     @Test
     public void testAfectarRival() {
-        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VIDA, 5, 20, true);
+        Habilidad habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.VIDA, 5, 20, 0, true);
         assertTrue(habilidadEstadistica.AfectarRival());
 
-        habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.ATAQUE, 5, 10, false);
+        habilidadEstadistica = new HabilidadEstadistica("HabilidadEstadisticaTest", Atributos.ATAQUE, 5, 0,10, false);
         assertFalse(habilidadEstadistica.AfectarRival());
     }
 }
