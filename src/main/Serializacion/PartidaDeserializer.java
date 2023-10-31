@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import src.main.Entrenador;
-import src.main.Item.Item;
 
 
 import java.io.*;
@@ -50,8 +49,7 @@ public class PartidaDeserializer {
             int cantidad = entry.getValue().asInt();
 
             try {
-                Item item = itemDeserializer.encontrarItem(id, cantidad);
-                entrenador.agregarItem(item);
+                entrenador.agregarItem(itemDeserializer.encontrarItem(id, cantidad));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

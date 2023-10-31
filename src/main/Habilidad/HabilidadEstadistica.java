@@ -7,7 +7,6 @@ public class HabilidadEstadistica extends Habilidad{
     private final int poder;
     private final Atributos atributo;
     private final Boolean afectarRival;
-    int id;
 
     public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int id, int poder, Boolean afectarRival) {
         super(nombre,usos, id);

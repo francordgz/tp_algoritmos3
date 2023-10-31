@@ -1,18 +1,32 @@
 [
   {
-    "nombre" : "Ash" ,
-    "items" : {
-    "0" : 1,
-    "2" : 3
+    "nombre": "Ash",
+    "items": {
+      "0": 1,
+      "1": 4,
+      "2": 3,
+      "3": 1,
+      "4": 3,
+      "5": 1,
+      "6": 2,
+      "7": 1
     },
-    "pokemons" : [0]
+    "pokemons": [
+      0,
+      1,
+      2
+    ]
   },
   {
-    "nombre" : "Brook" ,
-    "items" : {
-      "3" : 1,
-      "1" : 3
+    "nombre": "Brook",
+    "items": {
+      "3": 1,
+      "1": 3
     },
-    "pokemons" : [1]
+    "pokemons": [
+      3,
+      7,
+      64
+    ]
   }
 ]

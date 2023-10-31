@@ -36,9 +36,9 @@ public class ItemDeserializer {
                     return new ItemCurarPorcentaje(nombre, cantidad, id, item.get("porcentaje").asInt());
                 }
 
-                if (item.has("tipoModifacion")) {
+                if (item.has("tipoModificacion")) {
                     return new ItemEstadistica(nombre,
-                            stringTipoModificacion(item.get("tipoModifacion").asText()), id, cantidad);
+                            stringTipoModificacion(item.get("tipoModificacion").asText()), id, cantidad);
                 }
             }
         }

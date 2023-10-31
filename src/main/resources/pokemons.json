@@ -9,7 +9,7 @@
     "velocidad": 25,
     "defensa": 5,
     "ataque": 25,
-    "habilidades": [0,5,6,7,8]
+    "habilidades": [0,6,7,8,9,10]
   },
   {
     "nombre": "Bulbasaur",
@@ -21,7 +21,7 @@
     "velocidad": 20,
     "defensa": 10,
     "ataque": 20,
-    "habilidades": [0,1,2,3,4]
+    "habilidades": [0,1,2,3,5,4]
   },
   {
     "nombre": "Charmander",
@@ -33,7 +33,7 @@
     "velocidad": 20,
     "defensa": 10,
     "ataque": 22,
-    "habilidades": []
+    "habilidades": [28,11,12,13,15,14]
   },
   {
     "nombre": "Squirtle",
@@ -45,43 +45,7 @@
     "velocidad": 18,
     "defensa": 15,
     "ataque": 18,
-    "habilidades": []
-  },
-  {
-    "nombre": "Jigglypuff",
-    "id": 4,
-    "nivel": 8,
-    "tipo": "normal",
-    "historia": "Jigglypuff es conocido por su habilidad de cantar canciones que hacen dormir a quienes lo escuchan.",
-    "vidaMaxima": 110,
-    "velocidad": 15,
-    "defensa": 12,
-    "ataque": 17,
-    "habilidades": []
-  },
-  {
-    "nombre": "Meowth",
-    "id": 5,
-    "nivel": 10,
-    "tipo": "normal",
-    "historia": "Meowth es un gato travieso que adora el dinero y tiene una moneda en la frente.",
-    "vidaMaxima": 90,
-    "velocidad": 25,
-    "defensa": 10,
-    "ataque": 21,
-    "habilidades": []
-  },
-  {
-    "nombre": "Machop",
-    "id": 6,
-    "nivel": 13,
-    "tipo": "lucha",
-    "historia": "Machop es un Pokémon musculoso que se entrena para aumentar su fuerza.",
-    "vidaMaxima": 75,
-    "velocidad": 22,
-    "defensa": 15,
-    "ataque": 24,
-    "habilidades": []
+    "habilidades": [16,17,18,19,21,20]
   },
   {
     "nombre": "Geodude",
@@ -93,30 +57,18 @@
     "velocidad": 15,
     "defensa": 20,
     "ataque": 18,
-    "habilidades": []
+    "habilidades": [22,23,24,25,27,26]
   },
   {
-    "nombre": "Eevee",
-    "id": 8,
-    "nivel": 10,
-    "tipo": "normal",
-    "historia": "Eevee tiene la capacidad de evolucionar en diferentes tipos de Pokémon según las circunstancias.",
-    "vidaMaxima": 95,
-    "velocidad": 20,
-    "defensa": 10,
-    "ataque": 20,
-    "habilidades": []
-  },
-  {
-    "nombre": "Magikarp",
-    "id": 9,
-    "nivel": 5,
-    "tipo": "agua",
-    "historia": "Magikarp es un Pokémon débil que se transforma en Gyarados cuando evoluciona.",
-    "vidaMaxima": 50,
-    "velocidad": 10,
-    "defensa": 5,
-    "ataque": 10,
-    "habilidades": []
+    "nombre": "Mew",
+    "id": 64,
+    "nivel": 50,
+    "tipo": "psiquico",
+    "historia": "Mew es un Pokémon psíquico muy raro, conocido por su capacidad de aprender y utilizar cualquier tipo de ataque. Es considerado un Pokémon legendario.",
+    "vidaMaxima": 100,
+    "velocidad": 100,
+    "defensa": 100,
+    "ataque": 100,
+    "habilidades": [52,53,54,55,57,56]
   }
 ]
