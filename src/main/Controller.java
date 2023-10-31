@@ -180,7 +180,7 @@ public class Controller {
         while (!habilidadValida) {
             opcion = leerInt();
 
-            if (opcion < Constant.SALIR || opcion > 5)
+            if (opcion < Constant.SALIR || opcion > 6)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             else if (opcion == Constant.SALIR)
                 return opcion;
