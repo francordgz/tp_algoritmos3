@@ -12,17 +12,17 @@ import java.util.List;
 
 public class PokemonDeserializer { // Rest In Peace "Pokedex" (2023 - 2023)
 
-    final File JSONPokemones;
+    final File pokemonsJSON;
     final HabilidadDeserializer habilidadDeserializer;
 
-    public PokemonDeserializer(String rutaJSONPokemones, String rutaJSONHabilidades) {
-        this.JSONPokemones = new File(rutaJSONPokemones);
-        this.habilidadDeserializer = new HabilidadDeserializer(rutaJSONHabilidades);
+    public PokemonDeserializer(File pokemonsJSON, File habilidadesJSON) {
+        this.pokemonsJSON = pokemonsJSON;
+        this.habilidadDeserializer = new HabilidadDeserializer(habilidadesJSON);
     }
 
     public Pokemon crearPokemon(int id) throws IOException {
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode pokemonJSON = objectMapper.readTree(this.JSONPokemones);
+            JsonNode pokemonJSON = objectMapper.readTree(this.pokemonsJSON);
             JsonNode pokemon = encontrarPokemon(id, pokemonJSON);
 
             List<Integer> habilidadesId = objectMapper.convertValue(pokemon.get("habilidades"), new TypeReference<>() {});

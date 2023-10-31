@@ -16,8 +16,8 @@ import java.util.List;
 
 public class HabilidadDeserializer {
     final File habilidadesJSON;
-    public HabilidadDeserializer(String rutaJSONHabilidades) {
-        this.habilidadesJSON = new File(rutaJSONHabilidades);
+    public HabilidadDeserializer(File habilidadesJSON) {
+        this.habilidadesJSON = habilidadesJSON;
     }
 
     public List<Habilidad> crearHabilidades(List<Integer> habilidadesIDs) throws IOException {

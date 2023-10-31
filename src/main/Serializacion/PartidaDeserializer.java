@@ -4,22 +4,29 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import src.main.Entrenador;
+import src.main.Item.Item;
 
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PartidaDeserializer {
-    File partidaJSON = new File("src/resources/data/partida.json");
+    final File partidaJSON;
     PokemonDeserializer pokemonDeserializer;
     ItemDeserializer itemDeserializer;
 
-    public PartidaDeserializer() {
+    public PartidaDeserializer(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON)
+            throws FileNotFoundException, URISyntaxException
+    {
+        this.partidaJSON = recursoFile(partidaJSON);
+
         this.pokemonDeserializer = new PokemonDeserializer(
-                "src/resources/data/pokemons.json",
-                "src/resources/data/habilidades.json");
-        this.itemDeserializer = new ItemDeserializer("src/resources/data/items.json");
+                recursoFile(pokemonsJSON), recursoFile(habilidadesJSON));
+
+        this.itemDeserializer = new ItemDeserializer(recursoFile(itemsJSON));
     }
 
     public List<Entrenador> deserealizarPartida() throws IOException {
@@ -43,7 +50,8 @@ public class PartidaDeserializer {
             int cantidad = entry.getValue().asInt();
 
             try {
-                entrenador.agregarItem(itemDeserializer.encontrarItem(id, cantidad));
+                Item item = itemDeserializer.encontrarItem(id, cantidad);
+                entrenador.agregarItem(item);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -56,5 +64,12 @@ public class PartidaDeserializer {
         for (int id : pokemonsIDs) {
             entrenador.agregarPokemon(pokemonDeserializer.crearPokemon(id));
         }
+    }
+
+    private File recursoFile(String nombreRecurso) throws URISyntaxException, FileNotFoundException {
+        URL resourceURL = ClassLoader.getSystemResource(nombreRecurso);
+
+        if (resourceURL == null) throw new FileNotFoundException();
+        return new File(resourceURL.toURI());
     }
 }

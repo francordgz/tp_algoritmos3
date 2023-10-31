@@ -9,17 +9,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class ItemDeserializer {
-    final File itemJSON;
+    final File itemsJSON;
 
-    public ItemDeserializer(String rutaJSONitems) {
-        this.itemJSON = new File(rutaJSONitems);
+    public ItemDeserializer(File itemsJSON) {
+        this.itemsJSON = itemsJSON;
     }
 
     public Item encontrarItem(int id, int cantidad) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode itemJSON = objectMapper.readTree(this.itemJSON);
+        JsonNode itemNode = objectMapper.readTree(this.itemsJSON);
 
-        for (JsonNode item : itemJSON) {
+
+        for (JsonNode item : itemNode) {
             if (item.get("id").asInt() == id) {
                 String nombre = item.get("nombre").asText();
 

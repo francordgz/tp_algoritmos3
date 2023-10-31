@@ -16,6 +16,14 @@ public class Controller {
 
     public Controller(Juego juego) {
         this.juego = juego;
+
+        this.juego.deserializarPartida(
+                "partida.json",
+                "pokemons.json",
+                "habilidades.json",
+                "items.json"
+        );
+
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
         this.juego.inicializarTurnos();
@@ -236,13 +244,14 @@ public class Controller {
         this.scanner.close();
 
         List<Entrenador> entrenadores = new ArrayList<>();
-        entrenadores.add(juego.obtenerEntrenadorActual());
-        entrenadores.add(juego.obtenerEntrenadorRival());
+        entrenadores.add(juego.obtenerPrimerEntrenador());
+        entrenadores.add(juego.obtenerSegundoEntrenador());
 
         try {
-            InformeSerializer.serializeJSON(entrenadores);
+            String informePath = InformeSerializer.serializeJSON(entrenadores, "informe.json");
+            VistaJuego.imprimir("El informe ha sido creado en: " + informePath);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error al crear informe JSON");
         }
     }
 

@@ -8,7 +8,7 @@ public class ItemCuracion extends Item {
         super(nombre, cantidad, id);
         this.poder = poder;
 
-        if (nombre.equals("Hiperpocion") && poder == 100 && cantidad > 1)
+        if (nombre.equals("Hiperpocion") || poder >= 100)
             while(this.obtenerCantidad() > 1) this.decrementarCantidad();
     }
 

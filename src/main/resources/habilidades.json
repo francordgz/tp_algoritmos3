@@ -43,8 +43,10 @@
   {
     "nombre": "Aumentar ataque",
     "id": 6,
+    "atributo": "ataque",
     "usos": 2,
-    "afectaEstado": false
+    "poder": 10,
+    "afectarRival": false
   },
   {
     "nombre": "Paralizar",

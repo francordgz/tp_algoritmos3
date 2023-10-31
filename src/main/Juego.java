@@ -3,6 +3,7 @@ package src.main;
 import src.main.Clima.*;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Random;
 
@@ -23,17 +24,19 @@ public class Juego {
         this.clima = new ClimaNormal();
         this.efectividades = Constant.crearEfectividades();
         this.terminado = false;
-        deserializarPartida();
     }
 
-    private void deserializarPartida() {
-        PartidaDeserializer partidaDeserializer = new PartidaDeserializer();
+    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
         try {
+            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
+                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
+            );
+
             List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
             this.entrenador1 = entrenadores.get(0);
             this.entrenador2 = entrenadores.get(1);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Error al leer archivos JSON");
         }
     }
 

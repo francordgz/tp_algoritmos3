@@ -10,13 +10,14 @@ import src.main.Pokemon;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 public class InformeSerializer {
-    public static void serializeJSON(List<Entrenador> entrenadores) throws IOException {
-        String path = "src/resources/data/informe.json";
+    public static String serializeJSON(List<Entrenador> entrenadores, String nombre) throws IOException {
+        File informe = informeFile(nombre);
         JsonFactory factory = new JsonFactory();
-        JsonGenerator jsonGenerator = factory.createGenerator(new File(path), JsonEncoding.UTF8);
+        JsonGenerator jsonGenerator = factory.createGenerator(informe, JsonEncoding.UTF8);
 
         jsonGenerator.writeStartArray();
         for (Entrenador entrenador: entrenadores) {
@@ -52,6 +53,8 @@ public class InformeSerializer {
         jsonGenerator.writeEndArray();
 
         jsonGenerator.close();
+
+        return informe.getPath();
     }
 
     private static String estadoString(Estados estadoActual) {
@@ -63,6 +66,14 @@ public class InformeSerializer {
             case MUERTO -> "Muerto";
             case CONFUSO -> "Confuso";
         };
+    }
+
+    private static File informeFile(String nombre) throws IOException {
+        URL resourcesURL = ClassLoader.getSystemResource("");
+        if (resourcesURL == null) throw new IOException();
+
+        String resourcesPath = resourcesURL.getPath();
+        return new File(resourcesPath + nombre);
     }
 }
 
