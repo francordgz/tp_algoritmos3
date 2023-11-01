@@ -37,7 +37,7 @@ public class JuegoTest {
     @Test
     public void juegoInicializaClimaTest(){
         juego.inicializarClima();
-        assertNotSame(juego.getClima(), new ClimaNormal());
+        assertNotSame(juego.obtenerClima(), new ClimaNormal());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class JuegoTest {
         juego.actualizarClima();
         juego.actualizarClima();
 
-        assertEquals(ClimaNormal.class, juego.getClima().getClass());
+        assertEquals(ClimaNormal.class, juego.obtenerClima().getClass());
     }
 
     @Test

@@ -1,5 +1,7 @@
 package src.test.HabilidadTest;
 
+import src.main.Constant;
+import src.main.Enums.Tipo;
 import src.main.Habilidad.HabilidadAtaque;
 
 import org.junit.jupiter.api.*;
@@ -38,7 +40,8 @@ public class HabilidadAtaqueTest {
     @Test
     public void atacarAtacaEnRangoTest() {
         HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5, 0, 50, true);
-        assertTrue(habilidad.atacar(10, 10, 10, 1) < 25);
+        double efectividad = Constant.calcularEfectividad(Tipo.RAYO, Tipo.FUEGO);
+        assertTrue(habilidad.atacar(10,10,10, efectividad) < 25);
     }
 
     @Test
@@ -48,4 +51,3 @@ public class HabilidadAtaqueTest {
         assertTrue(nRandom >= (float) 217 / 255 && nRandom <= 1.0);
     }
 }
-
