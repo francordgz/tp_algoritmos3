@@ -2,7 +2,6 @@ package src.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import src.main.Clima.ClimaNormal;
 import src.main.Clima.ClimaSoleado;
 import src.main.Clima.ClimaTormentaDeRayos;
@@ -56,16 +55,16 @@ public class JuegoTest {
 
     @Test
     void efectoClimaticoTest() {
-        Pokemon pokemon = Mockito.mock(Pokemon.class);
+        Pokemon pokemon = mock(Pokemon.class);
         when(pokemon.obtenerTipo()).thenReturn(Tipo.NORMAL);
         when(pokemon.obtenerVidaMaxima()).thenReturn(100);
 
         juego.modificarClima(new ClimaSoleado());
         juego.obtenerClima().efectoClimatico(pokemon);
-        verify(pokemon, never()).recibirDanio(anyDouble());
+        verify(pokemon, never()).recibirAtaque(anyDouble());
 
         juego.modificarClima(new ClimaTormentaDeRayos());
         juego.obtenerClima().efectoClimatico(pokemon);
-        verify(pokemon).recibirDanio(anyDouble());
+        verify(pokemon).recibirAtaque(anyDouble());
     }
 }

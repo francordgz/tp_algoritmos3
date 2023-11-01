@@ -17,6 +17,6 @@ public class ClimaTormentaDeArena implements Clima {
         if (pokemon.obtenerTipo() == Tipo.TIERRA || pokemon.obtenerTipo() == Tipo.ROCA)
             return;
 
-        pokemon.recibirDanio((pokemon.obtenerVidaMaxima()*0.03));
+        pokemon.recibirAtaque((pokemon.obtenerVidaMaxima()*0.03));
     }
 }

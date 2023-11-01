@@ -11,8 +11,7 @@ public class Entrenador {
     private final ArrayList<Pokemon> pokemones;
     private Pokemon pokemonActual;
     private final ArrayList<Item> items;
-
-    boolean ganador;
+    private boolean ganador;
 
     @JsonCreator
     public Entrenador(@JsonProperty("nombre") String nombre) {
@@ -38,6 +37,10 @@ public class Entrenador {
         return items;
     }
 
+    public boolean esGanador() {
+        return this.ganador;
+    }
+
     public void agregarPokemon(Pokemon pokemon) {
         this.pokemones.add(pokemon);
     }
@@ -46,21 +49,40 @@ public class Entrenador {
         this.items.add(items);
     }
 
+    public void marcarComoGanador() {
+        this.ganador = true;
+    }
+
     public String cambiarPokemon(int posicion){
         this.pokemonActual = this.pokemones.get(posicion);
         return this.pokemonActual.obtenerNombre();
+    }
+
+    public Integer obtenerCantidadDePokemones() {
+        return this.pokemones.size();
+    }
+
+    public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        String nombrePokemonActual = pokemonActual.obtenerNombre();
+        return nombrePokemonActual.equals(pokemon.obtenerNombre());
+    }
+
+    public Boolean tienePokemonesConVida() {
+        for (Pokemon pokemon: this.pokemones) {
+            if (!pokemon.estaMuerto())
+                return true;
+        }
+        return false;
     }
 
     public Boolean pokemonActualTieneEstado(Estados estado) {
         return this.pokemonActual.tieneEstado(estado);
     }
 
-    public boolean tienePokemonesConVida() {
-        for (Pokemon pokemon: this.pokemones) {
-            if (!pokemon.estaMuerto())
-                return true;
-        }
-        return false;
+    public Boolean pokemonEstaMuerto(Integer opcion) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        return pokemon.tieneEstado(Estados.MUERTO);
     }
 
     public Boolean validarHabilidad(int opcion) {
@@ -71,41 +93,18 @@ public class Entrenador {
         this.items.get(item).usarItem(pokemones.get(indicePokemon));
     }
 
-    public Integer obtenerCantidadDeItems() {
-        return this.obtenerItems().size();
-    }
-
     public Boolean validarItem(Integer opcion) {
         Item item = this.items.get(opcion);
         return item.obtenerCantidad() > 0;
     }
 
-    public Boolean puedeAplicarItem(int opcion, Integer indicePokemon) {
+    public Boolean itemAplicable(int opcion, Integer indicePokemon) {
         Item item = this.items.get(opcion);
         Pokemon pokemon = this.pokemones.get(indicePokemon);
         return item.esAplicable(pokemon);
     }
 
-    public void marcarComoGanador() {
-        this.ganador = true;
-    }
-
-    public boolean esGanador() {
-        return this.ganador;
-    }
-
-    public Integer obtenerCantidadDePokemones() {
-        return this.pokemones.size();
-    }
-
-    public Boolean pokemonEstaMuerto(Integer opcion) {
-        Pokemon pokemon = this.pokemones.get(opcion);
-        return pokemon.tieneEstado(Estados.MUERTO);
-    }
-
-    public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
-        Pokemon pokemon = this.pokemones.get(opcion);
-        String nombrePokemonActual = pokemonActual.obtenerNombre();
-        return nombrePokemonActual.equals(pokemon.obtenerNombre());
+    public Integer obtenerCantidadDeItems() {
+        return this.obtenerItems().size();
     }
 }

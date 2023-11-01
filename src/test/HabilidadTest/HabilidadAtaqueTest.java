@@ -12,9 +12,9 @@ public class HabilidadAtaqueTest {
     @Test
     public void testMismoTipo() {
         HabilidadAtaque habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5, 0, 50, true);
-        assertEquals(habilidad.MismoTipo(), 1.5);
+        assertEquals(habilidad.mismoTipo(), 1.5);
         habilidad = new HabilidadAtaque("HabilidadAtaqueTest", 5, 0, 50, false);
-        assertEquals(habilidad.MismoTipo(), 1);
+        assertEquals(habilidad.mismoTipo(), 1);
     }
 
     @Test

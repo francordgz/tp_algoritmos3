@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class HabilidadAtaque extends Habilidad{
     private final int poder;
-    private final boolean mismoTipo;
+    private final Boolean mismoTipo;
 
     public HabilidadAtaque(String nombre, int usos, int id, int poder, boolean mismoTipo) {
         super(nombre,usos, id);
@@ -11,7 +11,7 @@ public class HabilidadAtaque extends Habilidad{
         this.mismoTipo = mismoTipo;
     }
 
-    public double MismoTipo() {
+    public double mismoTipo() {
         if (mismoTipo) return 1.5;
         return 1;
     }
@@ -25,7 +25,7 @@ public class HabilidadAtaque extends Habilidad{
         double danio = 2 * nivel * critico * this.poder;
         danio = danio * ataque/defensa;
         danio = ((danio/5) +2)/50;
-        return danio * (MismoTipo() * efectividad * numeroRandom);
+        return danio * (mismoTipo() * efectividad * numeroRandom);
     }
 
     public float generarNumeroRandom(){
@@ -39,12 +39,4 @@ public class HabilidadAtaque extends Habilidad{
         if(numeroAleatorio <= 90) return  2;
         return 1;
     }
-
-
-
-
-
-
-
-
 }

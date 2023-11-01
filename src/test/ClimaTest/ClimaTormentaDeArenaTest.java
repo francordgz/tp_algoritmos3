@@ -42,14 +42,14 @@ public class ClimaTormentaDeArenaTest {
     public void testEfectoClimaticoTierra() {
         when(pokemon.obtenerTipo()).thenReturn(Tipo.TIERRA);
         climaTormentaDeArena.efectoClimatico(pokemon);
-        verify(pokemon, never()).recibirDanio(anyDouble());
+        verify(pokemon, never()).recibirAtaque(anyDouble());
     }
 
     @Test
     public void testEfectoClimaticoRoca() {
         when(pokemon.obtenerTipo()).thenReturn(Tipo.ROCA);
         climaTormentaDeArena.efectoClimatico(pokemon);
-        verify(pokemon, never()).recibirDanio(anyDouble());
+        verify(pokemon, never()).recibirAtaque(anyDouble());
     }
 
     @Test
@@ -58,6 +58,6 @@ public class ClimaTormentaDeArenaTest {
         when(pokemon.obtenerVidaMaxima()).thenReturn(100);
 
         climaTormentaDeArena.efectoClimatico(pokemon);
-        verify(pokemon).recibirDanio(100*0.03);
+        verify(pokemon).recibirAtaque(100*0.03);
     }
 }

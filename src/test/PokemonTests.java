@@ -21,7 +21,7 @@ public class PokemonTests {
     @Test
     public void pokemonEnvenenadoMuereTest() {
         int vidaMaxima = 20;
-        pokemon.recibirDanio(9);
+        pokemon.recibirAtaque(9);
         pokemon.agregarEstado(Estados.ENVENENADO);
 
         int vidaActual = pokemon.obtenerVidaActual();
@@ -66,11 +66,11 @@ public class PokemonTests {
 
     @Test
     public void pokemonRecibeDanioYmuereTest() {
-        pokemon.recibirDanio(19);
+        pokemon.recibirAtaque(19);
 
         assertEquals(1, pokemon.obtenerVidaActual());
 
-        pokemon.recibirDanio(1);
+        pokemon.recibirAtaque(1);
 
         assertEquals(0, pokemon.obtenerVidaActual());
 
@@ -108,7 +108,7 @@ public class PokemonTests {
 
     @Test
     public void PokemonSeCuraBien() {
-        pokemon.recibirDanio(19);
+        pokemon.recibirAtaque(19);
 
         assertEquals(1, pokemon.obtenerVidaActual());
 
@@ -120,7 +120,7 @@ public class PokemonTests {
 
     @Test
     public void pokemonRevive() {
-        pokemon.recibirDanio(20);
+        pokemon.recibirAtaque(20);
 
         assertTrue(pokemon.estaMuerto());
 

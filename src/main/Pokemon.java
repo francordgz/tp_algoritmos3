@@ -23,7 +23,9 @@ public class Pokemon {
     private int turnosDormido;
     private int turnosConfundido;
 
-    public Pokemon(int id, String nombre,Tipo tipo,int vidaMaxima,int defensa,int velocidad,int danio, String historia, int nivel, List<Habilidad> habilidades){
+    public Pokemon(int id, String nombre, Tipo tipo,
+                   int vidaMaxima, int defensa, int velocidad, int danio,
+                   String historia, int nivel, List<Habilidad> habilidades){
         this.id = id;
         this.nombre = nombre;
         this.historia = historia;
@@ -42,6 +44,10 @@ public class Pokemon {
     }
 
     //GETTERS
+    public int obtenerId() {
+        return this.id;
+    }
+
     public String obtenerNombre(){
         return nombre;
     }
@@ -81,8 +87,12 @@ public class Pokemon {
     public List<Habilidad> obtenerHabilidades() {
         return habilidades;
     }
+    public Habilidad habilidades(int habilidad) {
+        return habilidades.get(habilidad);
+    }
 
     //SETTERS
+
     public void modificarAtaque(int poder){
         this.ataque += poder;
     }
@@ -96,23 +106,13 @@ public class Pokemon {
     }
 
     public void agregarEstado(Estados estado) {
-        if (estado == Estados.MUERTO || 
+        if (estado == Estados.MUERTO ||
             estado == Estados.NORMAL ||
             tieneEstado(Estados.NORMAL)) {
-            
+
             this.estados.clear();
         }
         this.estados.add(estado);
-    }
-
-    public void recibirDanio(double danio){
-        this.vidaActual -= danio;
-
-        if (this.vidaActual <= 0) {
-            this.vidaActual = 0;
-            this.estados.clear();
-            this.estados.add(Estados.MUERTO);
-        }
     }
 
     public double atacar(int habilidad, Pokemon rival){
@@ -124,9 +124,19 @@ public class Pokemon {
         this.habilidades.get(Numerohabilidad).modificarEstado(rival);
     }
 
+    public void recibirAtaque(double danio){
+        this.vidaActual -= danio;
+
+        if (this.vidaActual <= 0) {
+            this.vidaActual = 0;
+            this.estados.clear();
+            this.estados.add(Estados.MUERTO);
+        }
+    }
+
     public void actualizarEstado() {
         if (tieneEstado(Estados.ENVENENADO))
-            this.recibirDanio(this.vidaMaxima * 0.05);
+            this.recibirAtaque(this.vidaMaxima * 0.05);
 
         if (tieneEstado(Estados.DORMIDO))
             this.actualizarEstadoDormido();
@@ -156,7 +166,7 @@ public class Pokemon {
         boolean pierdeVida = probabilidad <= Constant.TERCIO;
 
         if (pierdeVida)
-            recibirDanio(this.vidaMaxima * 0.15);
+            recibirAtaque(this.vidaMaxima * 0.15);
 
         this.turnosConfundido += 1;
         if (this.turnosConfundido == 3) {
@@ -165,40 +175,24 @@ public class Pokemon {
         }
     }
 
-    public void curar(int poder){
-        this.vidaActual += poder;
-        if (vidaActual > vidaMaxima)
-            this.vidaActual = this.vidaMaxima;
-    }
-
-    public void revivir() {
-        this.estados.clear();
-        this.estados.add(Estados.NORMAL);
-        this.vidaActual = this.vidaMaxima;
-    }
-
-    public boolean estaMuerto() {
-        return tieneEstado(Estados.MUERTO);
-    }
-
-    public Habilidad habilidades(int habilidad) {
-        return habilidades.get(habilidad);
-    }
-
-    public boolean puedeAtacar() {
-        return !tieneEstado(Estados.DORMIDO);
-    }
-
-    public boolean necesitaCurarse() {
-        return !tieneEstado(Estados.NORMAL) && !tieneEstado(Estados.MUERTO);
-    }
-
-    public boolean tieneEstado(Estados estadoBuscado) {
+    public Boolean tieneEstado(Estados estadoBuscado) {
         for (Estados estado : estados) {
             if (estado == estadoBuscado)
                 return true;
         }
         return false;
+    }
+
+    public Boolean estaMuerto() {
+        return tieneEstado(Estados.MUERTO);
+    }
+
+    public Boolean puedeAtacar() {
+        return !tieneEstado(Estados.DORMIDO);
+    }
+
+    public Boolean necesitaCurarse() {
+        return !tieneEstado(Estados.NORMAL) && !tieneEstado(Estados.MUERTO);
     }
 
     public void removerEstado(Estados eliminado) {
@@ -221,7 +215,15 @@ public class Pokemon {
         return habilidad.quedanUsosDisponibles();
     }
 
-    public int obtenerId() {
-        return this.id;
+    public void curar(int poder){
+        this.vidaActual += poder;
+        if (vidaActual > vidaMaxima)
+            this.vidaActual = this.vidaMaxima;
+    }
+
+    public void revivir() {
+        this.estados.clear();
+        this.estados.add(Estados.NORMAL);
+        this.vidaActual = this.vidaMaxima;
     }
 }

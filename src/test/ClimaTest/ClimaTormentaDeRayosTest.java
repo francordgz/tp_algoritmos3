@@ -37,7 +37,7 @@ public class ClimaTormentaDeRayosTest {
     public void testEfectoClimaticoRayo() {
         when(pokemon.obtenerTipo()).thenReturn(Tipo.RAYO);
         climaTormentaDeRayos.efectoClimatico(pokemon);
-        Mockito.verify(pokemon, never()).recibirDanio(100*0.03);
+        Mockito.verify(pokemon, never()).recibirAtaque(100*0.03);
     }
 
     @Test
@@ -46,6 +46,6 @@ public class ClimaTormentaDeRayosTest {
         when(pokemon.obtenerVidaMaxima()).thenReturn(100);
 
         climaTormentaDeRayos.efectoClimatico(pokemon);
-        Mockito.verify(pokemon, times(1)).recibirDanio(100*0.03);
+        Mockito.verify(pokemon, times(1)).recibirAtaque(100*0.03);
     }
 }

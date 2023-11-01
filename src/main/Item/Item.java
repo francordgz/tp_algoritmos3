@@ -4,7 +4,7 @@ import src.main.Pokemon;
 public abstract class Item {
 
     private final String nombre;
-    int id;
+    private final int id;
     private int cantidad;
 
     public Item(String nombre, int cantidad, int id) {
@@ -17,22 +17,22 @@ public abstract class Item {
         return nombre;
     }
 
-    public int obtenerCantidad() {
-        return cantidad;
+    public int obtenerId() {
+        return this.id;
     }
 
-    public boolean esAplicable(Pokemon pokemon) {
-        return true;
+    public int obtenerCantidad() {
+        return cantidad;
     }
 
     public void usarItem(Pokemon pokemon) {
     }
 
-    public void decrementarCantidad() {
-        this.cantidad -= 1;
+    public Boolean esAplicable(Pokemon pokemon) {
+        return true;
     }
 
-    public int obtenerId() {
-        return this.id;
+    public void decrementarCantidad() {
+        this.cantidad -= 1;
     }
 }
