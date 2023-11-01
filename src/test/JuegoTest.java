@@ -1,22 +1,13 @@
 package src.test;
 
-import org.mockito.Mockito;
-import org.junit.jupiter.api.*;
-import src.main.AdministradorDeTurnos;
-import src.main.Clima.ClimaLluvia;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import src.main.Clima.ClimaNormal;
-import src.main.Enums.Tipo;
-import src.main.Juego;
 import src.main.Entrenador;
-import src.main.Item.Item;
-import src.main.Pokemon;
+import src.main.Juego;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class JuegoTest {
 
@@ -51,7 +42,7 @@ public class JuegoTest {
 
         juego.inicializarClima();
 
-        assertTrue(juego.getClima() != new ClimaNormal());
+        assertNotSame(juego.getClima(), new ClimaNormal());
 
 
     }
@@ -61,7 +52,7 @@ public class JuegoTest {
 
         juego.inicializarClima();
 
-        assertTrue(juego.getClima() != new ClimaNormal());
+        assertNotSame(juego.getClima(), new ClimaNormal());
 
         juego.actualizarClima();
         juego.actualizarClima();
@@ -71,7 +62,7 @@ public class JuegoTest {
         juego.actualizarClima();
 
 
-        assertEquals((new ClimaNormal()).getClass(),juego.getClima().getClass());
+        assertEquals(ClimaNormal.class,juego.getClima().getClass());
 
 
     }

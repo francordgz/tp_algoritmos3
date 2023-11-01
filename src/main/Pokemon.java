@@ -34,7 +34,7 @@ public class Pokemon {
         this.ataque = danio;
         this.defensa = defensa;
         this.velocidad = velocidad;
-        this.estados = new ArrayList<Estados>();
+        this.estados = new ArrayList<>();
         estados.add(Estados.NORMAL);
         this.habilidades = habilidades;
         this.turnosDormido = 0;
@@ -108,10 +108,8 @@ public class Pokemon {
     public void recibirDanio(double danio){
         this.vidaActual -= danio;
 
-        if (this.vidaActual < 0) {
+        if (this.vidaActual <= 0) {
             this.vidaActual = 0;
-        }
-        if (this.vidaActual == 0){
             this.estados.clear();
             this.estados.add(Estados.MUERTO);
         }
@@ -215,7 +213,7 @@ public class Pokemon {
             this.estados.clear();
             this.estados.add(Estados.NORMAL);
         } else {
-            List<Estados> estadosActualizados = new ArrayList<Estados>();
+            List<Estados> estadosActualizados = new ArrayList<>();
 
             for (Estados estado : estados) {
                 if (estado != eliminado)

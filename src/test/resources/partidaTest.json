@@ -3,7 +3,8 @@
     "nombre": "Entrenador1",
     "items": {
       "0": 1,
-      "1": 1
+      "1": 1,
+      "6": 1
     },
     "pokemons": [0]
   },
@@ -11,7 +12,8 @@
     "nombre": "Entrenador2",
     "items": {
       "0": 1,
-      "1": 1
+      "1": 1,
+      "6": 1
     },
     "pokemons": [1]
   }
