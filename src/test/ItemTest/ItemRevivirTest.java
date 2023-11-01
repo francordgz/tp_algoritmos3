@@ -2,38 +2,36 @@ package src.test.ItemTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.main.Enums.Estados;
-import src.main.Enums.Tipo;
+import org.mockito.Mockito;
 import src.main.Item.ItemRevivir;
 import src.main.Pokemon;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class ItemRevivirTest {
-    private Pokemon pokemon;
     private ItemRevivir item;
+    private Pokemon pokemon;
+
     @BeforeEach
     public void setUp() {
-        this.pokemon = new Pokemon(0, "Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
-        this.item = new ItemRevivir("Revivir", 1, 0);
+        this.item = new ItemRevivir("Revivir", 3, 0);
+        this.pokemon = Mockito.mock(Pokemon.class);
     }
 
     @Test
     public void esAplicableTest() {
+        when(pokemon.estaMuerto()).thenReturn(false);
         assertFalse(item.esAplicable(pokemon));
-        pokemon.agregarEstado(Estados.MUERTO);
+
+        when(pokemon.estaMuerto()).thenReturn(true);
         assertTrue(item.esAplicable(pokemon));
     }
 
     @Test
     public void usarItemTest() {
-        this.pokemon.agregarEstado(Estados.MUERTO);
-        item.usarItem(pokemon);
-        assertFalse(pokemon.tieneEstado(Estados.MUERTO));
-        assertTrue(pokemon.tieneEstado(Estados.NORMAL));
+        item.usarItem(this.pokemon);
+        Mockito.verify(pokemon).revivir();
+        assertEquals(2, item.obtenerCantidad());
     }
 }

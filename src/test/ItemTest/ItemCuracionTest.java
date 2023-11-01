@@ -1,30 +1,27 @@
 package src.test.ItemTest;
 
-import org.junit.jupiter.api.*;
-import src.main.Enums.Tipo;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import src.main.Item.Item;
 import src.main.Item.ItemCuracion;
 import src.main.Pokemon;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class ItemCuracionTest {
     private List<Item> items;
-    private Pokemon pokemon;
 
     @BeforeEach
     public void setUp() {
-        this.items = new ArrayList<Item>();
+        this.items = new ArrayList<>();
         items.add(new ItemCuracion(20, "Pocion", 0, 3));
         items.add(new ItemCuracion(50, "MegaPocion", 0, 2));
         items.add(new ItemCuracion(100, "HiperPocion", 0, 3));
-
-        this.pokemon = new Pokemon( 0,"Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
     }
 
     @Test
@@ -36,11 +33,11 @@ public class ItemCuracionTest {
 
     @Test
     public void obtenerCantidadTest() {
-
         assertEquals(3,items.get(0).obtenerCantidad());
         assertEquals(2,items.get(1).obtenerCantidad());
+        assertEquals(1,items.get(2).obtenerCantidad());
 
-        ///El otro se borra porque eso se modela desde entrenador
+        // Este último es una HiperPocion y, por lo tanto, solo tiene 1
     }
 
     @Test
@@ -52,15 +49,28 @@ public class ItemCuracionTest {
         assertEquals(2, items.get(0).obtenerCantidad());
         assertEquals(1, items.get(1).obtenerCantidad());
         assertEquals(0, items.get(2).obtenerCantidad());
-        // Este último es una HiperPocion y por lo tanto solo se puede usar una vez
+
+        // Este último es una HiperPocion y, por lo tanto, solo se puede usar una vez
+    }
+
+    @Test
+    public void esAplicableTest() {
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
+
+        when(pokemon.estaMuerto()).thenReturn(false);
+        assertTrue(items.get(0).esAplicable(pokemon));
+
+        when(pokemon.estaMuerto()).thenReturn(true);
+        assertFalse(items.get(1).esAplicable(pokemon));
     }
 
     @Test
     public void usarItemTest() {
-        this.pokemon.recibirDanio(30);
-        int vidaActual = this.pokemon.obtenerVidaActual();
-        items.get(0).usarItem(this.pokemon);
-        assertEquals(vidaActual + 20, pokemon.obtenerVidaActual());
-    }
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
+        when(pokemon.obtenerVidaMaxima()).thenReturn(100);
+        when(pokemon.obtenerVidaActual()).thenReturn(90);
 
+        items.get(0).usarItem(pokemon);
+        Mockito.verify(pokemon).curar(20);
+    }
 }

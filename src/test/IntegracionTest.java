@@ -19,8 +19,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegracionTest {
-
     Juego juego = new Juego();
+
     @Test
     public void deserializarArchivoInvalidoTest() {
         String mensaje = "";
@@ -35,13 +35,10 @@ public class IntegracionTest {
         assertNull(juego.obtenerPrimerEntrenador());
         assertNull(juego.obtenerSegundoEntrenador());
     }
+
     @Test
     public void partidaTest() {
-        this.juego.deserializarPartida(
-                "partidaTest.json",
-                "pokemonsTest.json",
-                "habilidadesTest.json",
-                "itemsTest.json");
+        this.juego.deserializarPartida("partidaTest.json", "pokemonsTest.json", "habilidadesTest.json", "itemsTest.json");
 
         this.juego.modificarClima(new ClimaNormal());
         this.juego.obtenerPrimerEntrenador().cambiarPokemon(0);
@@ -63,7 +60,7 @@ public class IntegracionTest {
 
         this.juego.cambiarTurno();
 
-        juego.usarItem(2,0);
+        juego.usarItem(2, 0);
         Pokemon actual = juego.obtenerEntrenadorActual().obtenerPokemonActual();
         assertFalse(actual.tieneEstado(Estados.PARALIZADO));
         int cantidad = juego.obtenerEntrenadorActual().obtenerItems().get(2).obtenerCantidad();
@@ -98,8 +95,8 @@ public class IntegracionTest {
         }
 
         List<String> nombres = new ArrayList<>();
-        for (JsonNode entrenadorNode: jsonNode) {
-           nombres.add(entrenadorNode.get("nombre").asText());
+        for (JsonNode entrenadorNode : jsonNode) {
+            nombres.add(entrenadorNode.get("nombre").asText());
         }
 
         assertEquals(nombres.get(0), "Entrenador1");

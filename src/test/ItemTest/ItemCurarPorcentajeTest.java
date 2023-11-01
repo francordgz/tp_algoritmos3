@@ -2,35 +2,55 @@ package src.test.ItemTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import src.main.Constant;
-import src.main.Enums.Tipo;
 import src.main.Item.ItemCurarPorcentaje;
 import src.main.Pokemon;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 public class ItemCurarPorcentajeTest {
-    private ItemCurarPorcentaje item;
-    private Pokemon pokemon;
+    ItemCurarPorcentaje item;
 
     @BeforeEach
     public void setUp() {
-        int porcentaje = Constant.TERCIO;
-        this.item = new ItemCurarPorcentaje("Pocion molesta alumnos", 2,  0, porcentaje);
-        this.pokemon = new Pokemon( 0,"Bulbasur", Tipo.PLANTA, 120, 10, 10, 10,
-                "Bulbasur lleva una planta en su espalda, que crece a medida que evoluciona.", 5, Arrays.asList());
+        this.item = new ItemCurarPorcentaje("Pocion molesta alumnos", 2, 0, Constant.TERCIO);
+    }
+    @Test
+    public void obtenerNombreTest() {
+        assertEquals("Pocion molesta alumnos", item.obtenerNombre());
+    }
+
+    @Test
+    public void obtenerCantidadTest() {
+        assertEquals(2, item.obtenerCantidad());
+    }
+
+    @Test
+    public void decrementarCantidadTest() {
+        item.decrementarCantidad();
+        assertEquals(1, item.obtenerCantidad());
+    }
+
+    @Test
+    public void esAplicableTest() {
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
+
+        when(pokemon.estaMuerto()).thenReturn(false);
+        assertTrue(item.esAplicable(pokemon));
+
+        when(pokemon.estaMuerto()).thenReturn(true);
+        assertFalse(item.esAplicable(pokemon));
     }
 
     @Test
     public void usarItemTest() {
-        pokemon.recibirDanio(60);
-        int vidaActual = pokemon.obtenerVidaActual();
-        int vidaRecuperada = pokemon.obtenerVidaMaxima() * Constant.TERCIO;
-        vidaRecuperada = vidaRecuperada / 100;
-        item.usarItem(pokemon);
+        Pokemon pokemon = Mockito.mock(Pokemon.class);
+        when(pokemon.obtenerVidaMaxima()).thenReturn(100);
+        when(pokemon.obtenerVidaActual()).thenReturn(90);
 
-        assertEquals(vidaActual + vidaRecuperada, pokemon.obtenerVidaActual());
+        item.usarItem(pokemon);
+        Mockito.verify(pokemon).curar(100 * Constant.TERCIO / 100);
     }
 }

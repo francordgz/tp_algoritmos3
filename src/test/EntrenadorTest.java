@@ -1,7 +1,8 @@
 package src.test;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.junit.jupiter.api.*;
 import src.main.Entrenador;
 import src.main.Enums.Estados;
 import src.main.Item.Item;
@@ -22,7 +23,6 @@ public class EntrenadorTest {
 
     @Test
     public void obtenerNombreTest() {
-        entrenador = new Entrenador("Ash");
         assertEquals("Ash", entrenador.obtenerNombre());
     }
 
@@ -117,18 +117,15 @@ public class EntrenadorTest {
 
 
     @Test
-    public void ValidarItemTest(){
+    public void ValidarItemTest() {
         Item item = Mockito.mock(Item.class);
         when(item.obtenerCantidad()).thenReturn(2);
         entrenador.agregarItem(item);
         assertTrue(entrenador.validarItem(0));
-
-
-}
+    }
 
     @Test
-    public void puedeAplicarItem(){
-
+    public void puedeAplicarItem() {
         Item item = Mockito.mock(Item.class);
         Pokemon pokemon = Mockito.mock(Pokemon.class);
 
@@ -137,29 +134,15 @@ public class EntrenadorTest {
         entrenador.agregarItem(item);
         entrenador.agregarPokemon(pokemon);
 
-        assertTrue(entrenador.puedeAplicarItem(0,0));
-
-
-
-}
-
+        assertTrue(entrenador.puedeAplicarItem(0, 0));
+    }
 
     @Test
-    public void pokemonEstaMuerto(){
-
+    public void pokemonEstaMuerto() {
         Pokemon pokemon = Mockito.mock(Pokemon.class);
         when(pokemon.tieneEstado(Estados.MUERTO)).thenReturn(true);
         entrenador.agregarPokemon(pokemon);
 
         assertTrue(entrenador.pokemonEstaMuerto(0));
-
-
-}
-
-
-
-
-
-
-
+    }
 }
