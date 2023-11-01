@@ -54,7 +54,7 @@ public class Controller {
             turnoTerminado = true;
         }
 
-        this.juego.actualizarEstado();
+        this.juego.actualizarEstadoPokemonActual();
 
         while (!turnoTerminado) {
             if (mostrar)
