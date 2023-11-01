@@ -61,11 +61,11 @@ public class JuegoTest {
         when(pokemon.obtenerVidaMaxima()).thenReturn(100);
 
         juego.modificarClima(new ClimaSoleado());
-        juego.getClima().efectoClimatico(pokemon);
+        juego.obtenerClima().efectoClimatico(pokemon);
         verify(pokemon, never()).recibirDanio(anyDouble());
 
         juego.modificarClima(new ClimaTormentaDeRayos());
-        juego.getClima().efectoClimatico(pokemon);
+        juego.obtenerClima().efectoClimatico(pokemon);
         verify(pokemon).recibirDanio(anyDouble());
     }
 }
