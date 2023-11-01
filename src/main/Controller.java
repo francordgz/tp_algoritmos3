@@ -96,7 +96,7 @@ public class Controller {
         while (!opcionValida) {
             opcion = pedirPokemon(entrenador, seleccionObligatoria);
 
-            if (opcion == -1) return false;
+            if (opcion == Constant.SALIR - 1) return false;
 
             if (this.juego.pokemonEstaMuerto(opcion))
                 VistaJuego.imprimir("Ese Pokemon esta muerto!");
@@ -124,7 +124,7 @@ public class Controller {
             else if (opcion == Constant.SALIR && seleccionObligatoria)
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             else if (opcion == Constant.SALIR)
-                return opcion - 1;
+                return Constant.SALIR - 1;
             else
                 opcionValida = true;
         }
