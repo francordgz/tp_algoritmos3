@@ -15,33 +15,13 @@ public class Juego {
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private Clima clima;
-    private final double[][] efectividades;
     private Boolean terminado;
 
     public Juego() {
         this.administrador = new AdministradorDeTurnos();
         this.administrador.modificarDiasDelClimaActual(1);
         this.clima = new ClimaNormal();
-        this.efectividades = Constant.crearEfectividades();
         this.terminado = false;
-    }
-
-    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
-        try {
-            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
-                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
-            );
-
-            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
-            this.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
-        } catch (IOException | URISyntaxException e) {
-            throw new RuntimeException("Error al leer archivos JSON");
-        }
-    }
-
-    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
-        this.entrenador1 = primerEntrenador;
-        this.entrenador2 = segundoEntrenador;
     }
 
     public Entrenador obtenerPrimerEntrenador() {
@@ -52,12 +32,25 @@ public class Juego {
         return entrenador2;
     }
 
-    public void modificarClima(Clima clima) {
-        this.clima = clima;
+    public Entrenador obtenerGanador() {
+        Entrenador entrenador = this.entrenador1;
+        if (entrenador.esGanador())
+            return entrenador;
+
+        return this.entrenador2;
     }
 
-    public Clima getClima() {
+    public Clima obtenerClima() {
         return this.clima;
+    }
+
+    public void asignarEntrenadores(Entrenador primerEntrenador, Entrenador segundoEntrenador) {
+        this.entrenador1 = primerEntrenador;
+        this.entrenador2 = segundoEntrenador;
+    }
+
+    public void modificarClima(Clima clima) {
+        this.clima = clima;
     }
 
     public void inicializarClima() {
@@ -113,9 +106,9 @@ public class Juego {
         this.clima.efectoClimatico(pokemonRival);
     }
 
-    public Boolean validarHabilidad(int opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.validarHabilidad(opcion);
+    public void actualizarEstado(){
+        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        actual.actualizarEstado();
     }
 
     public double atacar(int habilidad) {
@@ -125,7 +118,7 @@ public class Juego {
         if (pokemonActual.tieneEstado(Estados.CONFUSO))
             pokemonActual.actualizarEstadoConfuso();
 
-        double ataque = pokemonActual.atacar(habilidad, pokemonRival, efectividades);
+        double ataque = pokemonActual.atacar(habilidad, pokemonRival);
         ataque = this.clima.afectarAtaque(pokemonActual, ataque);
 
         if (pokemonActual.tieneEstado(Estados.PARALIZADO)) {
@@ -184,9 +177,16 @@ public class Juego {
         return true;
     }
 
-    public void actualizarEstado(){
-        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        actual.actualizarEstado();
+    public void usarItem(int item, int pokemon) {
+        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
+    }
+
+    public String cambiarPokemon(Entrenador entrenador, Integer opcion) {
+        return entrenador.cambiarPokemon(opcion);
+    }
+
+    public Integer obtenerCantidadDePokemones(Entrenador entrenador) {
+        return entrenador.obtenerCantidadDePokemones();
     }
 
     public Boolean pokemonActualTieneEstado(Estados estado) {
@@ -194,18 +194,29 @@ public class Juego {
         return entrenador.pokemonActualTieneEstado(estado);
     }
 
-    public void usarItem(int item, int pokemon) {
-        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
+    public Boolean pokemonEstaMuerto(Integer opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonEstaMuerto(opcion);
     }
 
-    public Integer obtenerCantidadDeItems() {
+    public Boolean validarPokemon(Integer opcion) {
         Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.obtenerCantidadDeItems();
+        return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
+    }
+
+    public Boolean validarHabilidad(int opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarHabilidad(opcion);
     }
 
     public Boolean validarItem(Integer opcion) {
         Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
         return entrenador.validarItem(opcion);
+    }
+
+    public Integer obtenerCantidadDeItems() {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.obtenerCantidadDeItems();
     }
 
     public Boolean itemAplicable(Integer opcion, Integer pokemon) {
@@ -227,27 +238,16 @@ public class Juego {
         return this.terminado;
     }
 
-    public Entrenador obtenerGanador() {
-        Entrenador entrenador = this.entrenador1;
-        if (entrenador.esGanador()) return entrenador;
-        return this.entrenador2;
-    }
+    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
+        try {
+            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
+                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
+            );
 
-    public Integer obtenerCantidadDePokemones(Entrenador entrenador) {
-        return entrenador.obtenerCantidadDePokemones();
-    }
-
-    public String cambiarPokemon(Entrenador entrenador, Integer opcion) {
-        return entrenador.cambiarPokemon(opcion);
-    }
-
-    public Boolean pokemonEstaMuerto(Integer opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.pokemonEstaMuerto(opcion);
-    }
-
-    public Boolean validarPokemon(Integer opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
+            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
+            this.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Error al leer archivos JSON");
+        }
     }
 }

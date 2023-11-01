@@ -59,7 +59,7 @@ public class IntegracionTest {
         this.juego.cambiarTurno();
 
         assertTrue(juego.usarHabilidadClima(5));
-        assertEquals(this.juego.getClima().getClass(), ClimaLluvia.class);
+        assertEquals(this.juego.obtenerClima().getClass(), ClimaLluvia.class);
 
         this.juego.cambiarTurno();
 

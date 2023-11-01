@@ -1,14 +1,16 @@
 package src.main;
 
+import src.main.Enums.Tipo;
+
 public class Constant {
     public static final int NULA = 0;
     public static final double MEDIA = 0.5;
     public static final int SIMPLE = 1;
     public static final int DOBLE = 2;
     public static final int TERCIO = 33;
-    static final int MAX_NOMBRE = 50;
     static final int NOT_INT = -1;
     static final int SALIR = 0;
+    static final double[][] EFECTIVIDADES = crearEfectividades();
 
     static public double[][] crearEfectividades() {
         double[][] efectividades = new double[15][15];
@@ -78,4 +80,13 @@ public class Constant {
 
         return efectividades;
     }
+
+    public static double calcularEfectividad(Tipo tipoActual, Tipo tipoRival){
+        int posicionAtacante = tipoActual.ordinal();
+        int PosicionRival = tipoRival.ordinal();
+
+        return EFECTIVIDADES[posicionAtacante][PosicionRival];
+    }
 }
+
+
