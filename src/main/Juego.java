@@ -195,6 +195,11 @@ public class Juego {
         return entrenador.pokemonActualTieneEstado(estado);
     }
 
+    public Boolean pokemonRivalTieneEstado(Estados estado) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorRivalActual();
+        return entrenador.pokemonActualTieneEstado(estado);
+    }
+
     public Boolean pokemonEstaMuerto(Integer opcion) {
         Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
         return entrenador.pokemonEstaMuerto(opcion);
