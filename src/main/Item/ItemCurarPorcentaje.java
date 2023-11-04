@@ -3,8 +3,8 @@ package src.main.Item;
 import src.main.Pokemon;
 
 public class ItemCurarPorcentaje extends Item{
-
     private final int porcentaje;
+
     public ItemCurarPorcentaje(String nombre, int cantidad, int id, int porcentaje) {
         super(nombre, cantidad, id);
         this.porcentaje = porcentaje;
@@ -19,7 +19,7 @@ public class ItemCurarPorcentaje extends Item{
     }
 
     @Override
-    public boolean esAplicable(Pokemon pokemon) {
+    public Boolean esAplicable(Pokemon pokemon) {
         return !pokemon.estaMuerto();
     }
 }

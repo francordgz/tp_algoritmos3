@@ -6,8 +6,7 @@ import src.main.Pokemon;
 public abstract class Habilidad {
     protected String nombre;
     protected int usos;
-    int id;
-
+    protected int id;
 
     public Habilidad(String nombre, int usos, int id) {
         this.nombre = nombre;

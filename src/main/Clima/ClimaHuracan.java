@@ -17,6 +17,6 @@ public class ClimaHuracan implements Clima {
         if (pokemon.obtenerTipo() == Tipo.VOLADOR)
             return;
 
-        pokemon.recibirDanio((pokemon.obtenerVidaMaxima()*0.03));
+        pokemon.recibirAtaque((pokemon.obtenerVidaMaxima()*0.03));
     }
 }

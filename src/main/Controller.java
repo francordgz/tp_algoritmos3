@@ -42,8 +42,6 @@ public class Controller {
         boolean turnoTerminado = false;
         boolean mostrar = true;
 
-        //TODO: Que pasa si el clima mata al pokemon rival pero no al actual??
-        //TODO: No esta claro en el PDF
         this.juego.efectoClimatico();
         Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
         Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
@@ -52,9 +50,12 @@ public class Controller {
             VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
             this.seleccionarPokemon(entrenadorActual, true);
             turnoTerminado = true;
+        } else if (this.juego.pokemonRivalTieneEstado(Estados.MUERTO)) {
+            VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
+            this.seleccionarPokemon(this.juego.obtenerEntrenadorRival(), true);
         }
 
-        this.juego.actualizarEstado();
+        this.juego.actualizarEstadoPokemonActual();
 
         while (!turnoTerminado) {
             if (mostrar)

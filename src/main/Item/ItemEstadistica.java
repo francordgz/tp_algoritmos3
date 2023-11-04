@@ -27,7 +27,7 @@ public class ItemEstadistica extends Item {
     }
 
     @Override
-    public boolean esAplicable(Pokemon pokemon) {
+    public Boolean esAplicable(Pokemon pokemon) {
         return !pokemon.estaMuerto();
     }
 }

@@ -49,6 +49,22 @@ public class Juego {
         this.entrenador2 = segundoEntrenador;
     }
 
+    public Entrenador obtenerEntrenadorActual() {
+        return this.administrador.obtenerEntrenadorActual();
+    }
+
+    public Entrenador obtenerEntrenadorRival() {
+        return this.administrador.obtenerEntrenadorRivalActual();
+    }
+
+    public void inicializarTurnos() {
+        this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
+    }
+
+    public void cambiarTurno() {
+        this.administrador.cambiarTurno();
+    }
+
     public void modificarClima(Clima clima) {
         this.clima = clima;
     }
@@ -82,33 +98,12 @@ public class Juego {
             this.administrador.modificarDiasDelClimaActual(dias + 1);
     }
 
-    public Entrenador obtenerEntrenadorActual() {
-        return this.administrador.obtenerEntrenadorActual();
-    }
-
-    public Entrenador obtenerEntrenadorRival() {
-        return this.administrador.obtenerEntrenadorRivalActual();
-    }
-
-    public void inicializarTurnos() {
-        this.administrador.asignarPrimerTurno(this.entrenador1, this.entrenador2);
-    }
-
-    public void cambiarTurno() {
-        this.administrador.cambiarTurno();
-    }
-
     public void efectoClimatico() {
         Pokemon pokemonActual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
         Pokemon pokemonRival = this.administrador.obtenerEntrenadorRivalActual().obtenerPokemonActual();
 
         this.clima.efectoClimatico(pokemonActual);
         this.clima.efectoClimatico(pokemonRival);
-    }
-
-    public void actualizarEstado(){
-        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        actual.actualizarEstado();
     }
 
     public double atacar(int habilidad) {
@@ -127,7 +122,7 @@ public class Juego {
                 ataque = 0;
         }
 
-        pokemonRival.recibirDanio(ataque);
+        pokemonRival.recibirAtaque(ataque);
 
         return ataque;
     }
@@ -177,8 +172,9 @@ public class Juego {
         return true;
     }
 
-    public void usarItem(int item, int pokemon) {
-        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
+    public Boolean validarHabilidad(int opcion) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.validarHabilidad(opcion);
     }
 
     public String cambiarPokemon(Entrenador entrenador, Integer opcion) {
@@ -189,8 +185,18 @@ public class Juego {
         return entrenador.obtenerCantidadDePokemones();
     }
 
+    public void actualizarEstadoPokemonActual(){
+        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
+        actual.actualizarEstado();
+    }
+
     public Boolean pokemonActualTieneEstado(Estados estado) {
         Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
+        return entrenador.pokemonActualTieneEstado(estado);
+    }
+
+    public Boolean pokemonRivalTieneEstado(Estados estado) {
+        Entrenador entrenador = this.administrador.obtenerEntrenadorRivalActual();
         return entrenador.pokemonActualTieneEstado(estado);
     }
 
@@ -204,9 +210,8 @@ public class Juego {
         return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
     }
 
-    public Boolean validarHabilidad(int opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.validarHabilidad(opcion);
+    public void usarItem(int item, int pokemon) {
+        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
     }
 
     public Boolean validarItem(Integer opcion) {
@@ -222,7 +227,7 @@ public class Juego {
     public Boolean itemAplicable(Integer opcion, Integer pokemon) {
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
 
-        return entrenadorActual.puedeAplicarItem(opcion, pokemon);
+        return entrenadorActual.itemAplicable(opcion, pokemon);
     }
 
     public void rendirse() {

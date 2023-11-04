@@ -17,6 +17,6 @@ public class ClimaTormentaDeRayos implements Clima {
         if (pokemon.obtenerTipo() == Tipo.RAYO)
             return;
 
-        pokemon.recibirDanio((pokemon.obtenerVidaMaxima()*0.03));
+        pokemon.recibirAtaque((pokemon.obtenerVidaMaxima()*0.03));
     }
 }

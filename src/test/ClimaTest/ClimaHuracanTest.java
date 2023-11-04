@@ -36,7 +36,7 @@ public class ClimaHuracanTest {
     public void testEfectoClimaticoVolador() {
         when(pokemon.obtenerTipo()).thenReturn(Tipo.VOLADOR);
         climaHuracan.efectoClimatico(pokemon);
-        Mockito.verify(pokemon, never()).recibirDanio(100*0.03);
+        Mockito.verify(pokemon, never()).recibirAtaque(100*0.03);
     }
 
     @Test
@@ -45,6 +45,6 @@ public class ClimaHuracanTest {
         when(pokemon.obtenerVidaMaxima()).thenReturn(100);
 
         climaHuracan.efectoClimatico(pokemon);
-        Mockito.verify(pokemon, times(1)).recibirDanio(100*0.03);
+        Mockito.verify(pokemon, times(1)).recibirAtaque(100*0.03);
     }
 }

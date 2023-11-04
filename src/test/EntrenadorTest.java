@@ -134,7 +134,7 @@ public class EntrenadorTest {
         entrenador.agregarItem(item);
         entrenador.agregarPokemon(pokemon);
 
-        assertTrue(entrenador.puedeAplicarItem(0, 0));
+        assertTrue(entrenador.itemAplicable(0, 0));
     }
 
     @Test

@@ -11,6 +11,14 @@ public class AdministradorDeTurnos {
         return this.entrenadorRival;
     }
 
+    public Integer obtenerDiasDelClimaActual() {
+        return this.diasDelClimaActual;
+    }
+
+    public void modificarDiasDelClimaActual(Integer dias) {
+        this.diasDelClimaActual = dias;
+    }
+
     public void cambiarTurno() {
         Entrenador aux = this.entrenadorActual;
         this.entrenadorActual = this.entrenadorRival;
@@ -27,13 +35,5 @@ public class AdministradorDeTurnos {
             this.entrenadorActual = entrenador2;
             this.entrenadorRival = entrenador1;
         }
-    }
-
-    public void modificarDiasDelClimaActual(Integer dias) {
-        this.diasDelClimaActual = dias;
-    }
-
-    public Integer obtenerDiasDelClimaActual() {
-        return this.diasDelClimaActual;
     }
 }
