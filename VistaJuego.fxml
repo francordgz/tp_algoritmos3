@@ -24,14 +24,13 @@
 
     <center>
         <GridPane hgap="20.0" vgap="10.0" alignment="CENTER">
-            <!-- Player's Pokémon -->
+
             <ImageView GridPane.columnIndex="0">
                 <image>
                     <Image url="@path/to/playerPokemonImage.png" />
                 </image>
             </ImageView>
-            <!-- Health Bars and Other Elements -->
-            <!-- Adjust column indices and add more components as needed -->
+
         </GridPane>
     </center>
 
@@ -40,7 +39,7 @@
             <Button text="Attack" />
             <Button text="Defend" />
             <Button text="Switch" />
-            <!-- Add more buttons as needed -->
+
         </HBox>
     </bottom>
 </BorderPane>
