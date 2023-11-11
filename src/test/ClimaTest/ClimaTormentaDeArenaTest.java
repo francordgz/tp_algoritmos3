@@ -2,9 +2,9 @@ package src.test.ClimaTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.main.Clima.ClimaTormentaDeArena;
-import src.main.Enums.Tipo;
-import src.main.Pokemon;
+import src.main.Modelo.Clima.ClimaTormentaDeArena;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;

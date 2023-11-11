@@ -3,9 +3,9 @@ package src.test.ItemTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.Constant;
-import src.main.Item.ItemCurarPorcentaje;
-import src.main.Pokemon;
+import src.main.Modelo.Constant;
+import src.main.Modelo.Item.ItemCurarPorcentaje;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;

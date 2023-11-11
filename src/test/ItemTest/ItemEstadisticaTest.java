@@ -3,9 +3,9 @@ package src.test.ItemTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.Enums.TipoModificacion;
-import src.main.Item.ItemEstadistica;
-import src.main.Pokemon;
+import src.main.Modelo.Enums.TipoModificacion;
+import src.main.Modelo.Item.ItemEstadistica;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;

@@ -1,8 +1,8 @@
 package src.test.HabilidadTest;
 
 import org.junit.jupiter.api.Test;
-import src.main.Clima.ClimaLluvia;
-import src.main.Habilidad.HabilidadClima;
+import src.main.Modelo.Clima.ClimaLluvia;
+import src.main.Modelo.Habilidad.HabilidadClima;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

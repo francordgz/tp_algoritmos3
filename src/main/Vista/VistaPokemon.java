@@ -1,9 +1,9 @@
 package src.main.Vista;
 
-import src.main.Entrenador;
-import src.main.Enums.Estados;
-import src.main.Enums.Tipo;
-import src.main.Pokemon;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Enums.Estados;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Pokemon;
 
 import java.util.List;
 
@@ -61,7 +61,6 @@ public class VistaPokemon extends Vista {
             case PARALIZADO -> "Paralizado";
             case MUERTO -> "Muerto";
             case CONFUSO -> "Confuso";
-            default -> "Desconocido";
         };
     }
 
@@ -82,7 +81,6 @@ public class VistaPokemon extends Vista {
             case TIERRA -> "Tierra";
             case VENENO -> "Veneno";
             case VOLADOR -> "Volador";
-            default -> "Desconocido";
         };
     }
 }

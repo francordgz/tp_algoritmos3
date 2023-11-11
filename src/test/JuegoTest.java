@@ -2,13 +2,13 @@ package src.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.main.Clima.ClimaNormal;
-import src.main.Clima.ClimaSoleado;
-import src.main.Clima.ClimaTormentaDeRayos;
-import src.main.Entrenador;
-import src.main.Enums.Tipo;
-import src.main.Juego;
-import src.main.Pokemon;
+import src.main.Modelo.Clima.ClimaNormal;
+import src.main.Modelo.Clima.ClimaSoleado;
+import src.main.Modelo.Clima.ClimaTormentaDeRayos;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Juego;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;

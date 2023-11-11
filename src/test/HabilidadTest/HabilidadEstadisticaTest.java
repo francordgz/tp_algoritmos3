@@ -1,9 +1,9 @@
 package src.test.HabilidadTest;
 
-import src.main.Enums.Atributos;
-import src.main.Habilidad.Habilidad;
-import src.main.Habilidad.HabilidadEstadistica;
-import src.main.Pokemon;
+import src.main.Modelo.Enums.Atributos;
+import src.main.Modelo.Habilidad.Habilidad;
+import src.main.Modelo.Habilidad.HabilidadEstadistica;
+import src.main.Modelo.Pokemon;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;

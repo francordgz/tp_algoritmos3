@@ -1,9 +1,9 @@
 package src.test.HabilidadTest;
 
 import org.junit.jupiter.api.*;
-import src.main.Enums.Estados;
-import src.main.Habilidad.HabilidadEstado;
-import src.main.Pokemon;
+import src.main.Modelo.Enums.Estados;
+import src.main.Modelo.Habilidad.HabilidadEstado;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;

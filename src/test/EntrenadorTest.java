@@ -3,10 +3,10 @@ package src.test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.Entrenador;
-import src.main.Enums.Estados;
-import src.main.Item.Item;
-import src.main.Pokemon;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Enums.Estados;
+import src.main.Modelo.Item.Item;
+import src.main.Modelo.Pokemon;
 
 import java.util.List;
 

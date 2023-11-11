@@ -1,6 +1,6 @@
 package src.main.Vista;
 
-import src.main.Constant;
+import src.main.Modelo.Constant;
 
 public class VistaJuego extends Vista {
     static public void mostrarMenu(String nombreActual) {

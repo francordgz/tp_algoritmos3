@@ -2,9 +2,9 @@ package src.test.ClimaTest;
 
 import org.mockito.Mockito;
 import org.junit.jupiter.api.*;
-import src.main.Clima.ClimaHuracan;
-import src.main.Enums.Tipo;
-import src.main.Pokemon;
+import src.main.Modelo.Clima.ClimaHuracan;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

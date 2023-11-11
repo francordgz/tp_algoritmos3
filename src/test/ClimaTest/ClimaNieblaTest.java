@@ -1,8 +1,8 @@
 package src.test.ClimaTest;
 
-import src.main.Clima.ClimaNiebla;
-import src.main.Enums.Tipo;
-import src.main.Pokemon;
+import src.main.Modelo.Clima.ClimaNiebla;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Pokemon;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
