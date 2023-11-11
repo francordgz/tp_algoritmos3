@@ -3,9 +3,9 @@ package src.test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.AdministradorDeTurnos;
-import src.main.Entrenador;
-import src.main.Pokemon;
+import src.main.Modelo.AdministradorDeTurnos;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;

@@ -1,8 +1,8 @@
 package src.test.HabilidadTest;
 
-import src.main.Constant;
-import src.main.Enums.Tipo;
-import src.main.Habilidad.HabilidadAtaque;
+import src.main.Modelo.Constant;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Habilidad.HabilidadAtaque;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -3,8 +3,8 @@ package src.test.ItemTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.Item.ItemRevivir;
-import src.main.Pokemon;
+import src.main.Modelo.Item.ItemRevivir;
+import src.main.Modelo.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;

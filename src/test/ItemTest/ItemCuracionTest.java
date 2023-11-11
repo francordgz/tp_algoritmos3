@@ -3,9 +3,9 @@ package src.test.ItemTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import src.main.Item.Item;
-import src.main.Item.ItemCuracion;
-import src.main.Pokemon;
+import src.main.Modelo.Item.Item;
+import src.main.Modelo.Item.ItemCuracion;
+import src.main.Modelo.Pokemon;
 
 import java.util.ArrayList;
 import java.util.List;

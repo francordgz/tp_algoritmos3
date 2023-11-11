@@ -1,7 +1,7 @@
 package src.main.Vista;
 
-import src.main.Entrenador;
-import src.main.Item.Item;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Item.Item;
 
 public class VistaItem extends Vista {
     static public void mostrarItems(Entrenador entrenador) {

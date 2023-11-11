@@ -1,0 +1,36 @@
+package src.main.Modelo.Habilidad;
+
+import src.main.Modelo.Enums.Atributos;
+import src.main.Modelo.Pokemon;
+
+public class HabilidadEstadistica extends Habilidad{
+    private final int poder;
+    private final Atributos atributo;
+    private final Boolean afectarRival;
+
+    public HabilidadEstadistica(String nombre, Atributos atributo, int usos, int id, int poder, Boolean afectarRival) {
+        super(nombre,usos, id);
+        this.poder = poder;
+        this.atributo = atributo;
+        this.afectarRival = afectarRival;
+    }
+
+    @Override
+    public void modificarEstado(Pokemon pokemon) {
+        if(atributo == Atributos.VIDA) {
+            pokemon.curar(poder);
+        } else if(atributo == Atributos.ATAQUE) {
+            pokemon.modificarAtaque(poder);
+        } else if(atributo == Atributos.VELOCIDAD) {
+            pokemon.modificarVelocidad(poder);
+        } else if(atributo == Atributos.DEFENSA) {
+            pokemon.modificarDefensa(poder);
+        }
+        this.usos -=1;
+    }
+
+    @Override
+    public Boolean AfectarRival() {
+        return afectarRival;
+    }
+}

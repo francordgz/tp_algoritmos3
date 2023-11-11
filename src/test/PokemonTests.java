@@ -2,9 +2,9 @@ package src.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.main.Enums.Estados;
-import src.main.Enums.Tipo;
-import src.main.Pokemon;
+import src.main.Modelo.Enums.Estados;
+import src.main.Modelo.Enums.Tipo;
+import src.main.Modelo.Pokemon;
 
 import java.util.List;
 
