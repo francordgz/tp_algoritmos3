@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class VistaJuegoController {
@@ -26,19 +27,19 @@ public class VistaJuegoController {
     private void setPokemonImages() {
         try {
 
-            InputStream opponentInputStream = getClass().getResourceAsStream("MyriamBregman.png");
 
-            InputStream playerInputStream = getClass().getResourceAsStream("Massa.png");
+            String opponentImagePath = "C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes/MyriamBregman.png";
+            String playerImagePath = "C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes/Massa.png";
 
-            if (opponentInputStream != null && playerInputStream != null) {
-                Image opponentImage = new Image(opponentInputStream);
-                Image playerImage = new Image(playerInputStream);
+            File opponentImageFile = new File(opponentImagePath);
+            File playerImageFile = new File(playerImagePath);
 
-                opponentPokemonImageView.setImage(opponentImage);
-                playerPokemonImageView.setImage(playerImage);
-            } else {
-                System.err.println("Error Cargando la imagen.");
-            }
+            Image opponentImage = new Image(opponentImageFile.toURI().toString());
+            Image playerImage = new Image(playerImageFile.toURI().toString());
+
+            opponentPokemonImageView.setImage(opponentImage);
+            playerPokemonImageView.setImage(playerImage);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,3 +50,7 @@ public class VistaJuegoController {
 
     }
 }
+
+
+
+

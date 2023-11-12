@@ -15,14 +15,14 @@
     <top>
         <VBox alignment="CENTER" spacing="10.0">
             <Label text="BATALLA" />
-            <ImageView fitHeight="100.0" fitWidth="100.0">
+            <ImageView fx:id="opponentPokemonImageView" fitHeight="100.0" fitWidth="100.0">
             </ImageView>
         </VBox>
     </top>
     <center>
         <GridPane hgap="20.0" vgap="10.0" alignment="CENTER">
 
-            <ImageView GridPane.columnIndex="0">
+            <ImageView fx:id="playerPokemonImageView" GridPane.columnIndex="0">
             </ImageView>
 
         </GridPane>
