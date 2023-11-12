@@ -14,24 +14,31 @@
             prefHeight="600.0" prefWidth="800.0">
     <top>
         <VBox alignment="CENTER" spacing="10.0">
-            <Label text="PokemonRival" />
+            <Label text="NombreRival" />
+            <Label text="Vida" />
+            <Label text="PokemonsDisponibles" />
             <ImageView fx:id="opponentPokemonImageView" fitHeight="100.0" fitWidth="100.0">
             </ImageView>
         </VBox>
     </top>
     <center>
         <VBox alignment="CENTER" spacing="10.0">
-            <Label text="Pokemon" />
+            <Label text="Nombre" />
+            <Label text="Vida" />
+            <Label text="PokemonsDisponibles" />
             <ImageView fx:id="playerPokemonImageView" fitHeight="100.0" fitWidth="100.0">
             </ImageView>
         </VBox>
     </center>
     <bottom>
-        <HBox alignment="CENTER" spacing="20.0">
-            <Button text="Attack" />
-            <Button text="Defend" />
-            <Button text="Switch" />
-
+        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
+            <Button text="Habilidades" />
+            <Button text="Items" />
+            <Button text="CambiarPokemon" />
+            <Button text="Rendirse" />
         </HBox>
     </bottom>
 </BorderPane>
+
+
+
