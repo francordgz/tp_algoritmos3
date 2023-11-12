@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="ControllerCreadoYappSeLanza">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="SeCarganLasImagenes">
       <change beforePath="$PROJECT_DIR$/src/main/VistaJuego.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaJuego.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaJuegoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +136,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1699735841811</updated>
-      <workItem from="1699735846240" duration="17189000" />
+      <workItem from="1699735846240" duration="17534000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -196,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699813048069</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="SeCarganLasImagenes">
+      <option name="closed" value="true" />
+      <created>1699815146524</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699815146524</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +217,8 @@
     <MESSAGE value="Modelo del controller anda y Aplicacion se lanza pero no se cargan las imagenes" />
     <MESSAGE value="Modelo main y vistas + imagenes" />
     <MESSAGE value="ControllerCreadoYappSeLanza" />
-    <option name="LAST_COMMIT_MESSAGE" value="ControllerCreadoYappSeLanza" />
+    <MESSAGE value="SeCarganLasImagenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="SeCarganLasImagenes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
