@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
@@ -9,35 +8,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="..."
+            fx:controller="src.main.VistaJuegoController"
             prefHeight="600.0" prefWidth="800.0">
-
     <top>
         <VBox alignment="CENTER" spacing="10.0">
-            <Label text="Opponent Pokémon Name" />
+            <Label text="BATALLA" />
             <ImageView fitHeight="100.0" fitWidth="100.0">
-                <image>
-                    <Image url="..." />
-                </image>
             </ImageView>
         </VBox>
     </top>
-
     <center>
         <GridPane hgap="20.0" vgap="10.0" alignment="CENTER">
 
             <ImageView GridPane.columnIndex="0">
-                <image>
-                    <Image url="...." />
-                </image>
             </ImageView>
 
         </GridPane>
     </center>
-
     <bottom>
         <HBox alignment="CENTER" spacing="20.0">
             <Button text="Attack" />
