@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
 import java.io.InputStream;
 
 public class VistaJuegoController {
@@ -26,16 +25,15 @@ public class VistaJuegoController {
 
     private void setPokemonImages() {
         try {
+            String opponentImagePath = "Imagenes/MyriamBregman.png";
+            String playerImagePath = "Imagenes/Massa.png";
 
-
-            String opponentImagePath = "C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes/MyriamBregman.png";
-            String playerImagePath = "C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes/Massa.png";
-
-            File opponentImageFile = new File(opponentImagePath);
-            File playerImageFile = new File(playerImagePath);
-
-            Image opponentImage = new Image(opponentImageFile.toURI().toString());
-            Image playerImage = new Image(playerImageFile.toURI().toString());
+            InputStream opponentImageFile = getClass().getResourceAsStream(opponentImagePath);
+            assert opponentImageFile != null;
+            Image opponentImage = new Image(opponentImageFile);
+            InputStream playerImageFile =  getClass().getResourceAsStream(playerImagePath);
+            assert playerImageFile != null;
+            Image playerImage = new Image(playerImageFile);
 
             opponentPokemonImageView.setImage(opponentImage);
             playerPokemonImageView.setImage(playerImage);
