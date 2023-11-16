@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Apply styles to ImageView */
+#opponentPokemonImageView,
+#playerPokemonImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 4);
+}
+
+/* Apply styles to Text elements */
+.text {
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 14px;
+    -fx-fill: red;
+}
+
+/* Styling for health bars */
+.health-bar {
+    -fx-background-color: rgb(128, 128, 128);
+}
+
+.health-fill {
+    -fx-background-color: green;
+}
+
+/* Additional styling for the BorderPane */
+#mainPane {
+    -fx-background-color: linear-gradient(to bottom, #ff0000, #9BA9BA);
+}
+
+/* Add more styles as needed */

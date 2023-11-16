@@ -1,44 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.HBox?>
+
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="src.main.VistaJuegoController"
-            prefHeight="600.0" prefWidth="800.0">
-    <top>
-        <VBox alignment="CENTER" spacing="10.0">
-            <Label text="NombreRival" />
-            <Label text="Vida" />
-            <Label text="PokemonsDisponibles" />
-            <ImageView fx:id="opponentPokemonImageView" fitHeight="100.0" fitWidth="100.0">
-            </ImageView>
-        </VBox>
-    </top>
-    <center>
-        <VBox alignment="CENTER" spacing="10.0">
-            <Label text="Nombre" />
-            <Label text="Vida" />
-            <Label text="PokemonsDisponibles" />
-            <ImageView fx:id="playerPokemonImageView" fitHeight="100.0" fitWidth="100.0">
-            </ImageView>
-        </VBox>
-    </center>
-    <bottom>
-        <HBox alignment="BOTTOM_RIGHT" spacing="10.0">
-            <Button text="Habilidades" />
-            <Button text="Items" />
-            <Button text="CambiarPokemon" />
-            <Button text="Rendirse" />
-        </HBox>
-    </bottom>
-</BorderPane>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.VistaJuegoController">
+    <SplitPane dividerPositions="0.5" layoutX="1.0" layoutY="295.0" prefHeight="187.0" prefWidth="640.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="191.0" prefWidth="223.0">
+            <Text fx:id="dialogo" layoutX="24.0" layoutY="81.0" wrappingWidth="278.0" />
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <GridPane layoutY="3.0" prefHeight="185.0" prefWidth="316.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <Button mnemonicParsing="false" prefHeight="162.0" prefWidth="158.0" text="Button" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" prefHeight="180.0" prefWidth="218.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" prefHeight="145.0" prefWidth="251.0" text="Button" GridPane.rowIndex="2" />
+                <Button mnemonicParsing="false" prefHeight="107.0" prefWidth="249.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </GridPane>
+        </AnchorPane>
+    </SplitPane>
+    <ImageView fx:id="opponentPokemonImageView" fitHeight="111.0" fitWidth="116.0" layoutX="420.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+    </ImageView>
 
+          <!-- Opponent Pokemon Stats -->
+    <Pane layoutX="127.0" layoutY="56.0" prefHeight="57.0" prefWidth="190.0">
+        <Text fx:id="rivalPokemonNivel" layoutX="140.0" layoutY="2.0" />
+        <Text fx:id="rivalPokemonNombre" layoutX="37.0" layoutY="2.0" />
+        <!-- Replace ProgressBar with Health Bar -->
+        <!-- Add styling for the health bar, for example, using CSS -->
+        <StackPane fx:id="rivalPokemonHealthBar" layoutX="37.0" layoutY="36.0" prefHeight="14.0" prefWidth="153.0">
+            <!-- Background of the Health Bar -->
+            <Rectangle width="153" height="14" style="-fx-fill: rgb(128,128,128);" />
 
+            <!-- Green fill indicating health -->
+            <Rectangle fx:id="rivalPokemonVida" width="153" height="14" fill = "green" StackPane.alignment="BOTTOM_RIGHT"/>
+        </StackPane>
+        <Text fx:id="rivalPokemonRestantes" layoutX="3.0" layoutY="31.0" />
+    </Pane>
+    <ImageView fx:id="playerPokemonImageView" fitHeight="140.0" fitWidth="140.0" layoutX="82.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+    </ImageView>
 
+          <!-- Player Pokémon Stats -->
+    <Pane layoutX="332.0" layoutY="180.0" prefHeight="85.0" prefWidth="190.0">
+        <Text fx:id="jugadorPokemonNivel" layoutX="135.0" layoutY="5.0" />
+        <Text fx:id="jugadorPokemonNombre" layoutX="38.0" layoutY="5.0" />
+        <!-- Replace ProgressBar with Health Bar -->
+        <!-- Add styling for the health bar, for example, using CSS -->
+        <StackPane fx:id="jugadorPokemonHealthBar" layoutX="37.0" layoutY="36.0" prefHeight="14.0" prefWidth="153.0">
+            <!-- Background of the Health Bar -->
+            <Rectangle width="153" height="14" style="-fx-fill: rgb(128,128,128);" />
+
+            <!-- Green fill indicating health -->
+            <Rectangle fx:id="jugadorPokemonVida" width="153" height="14" fill = "green" StackPane.alignment="BOTTOM_LEFT" />
+        </StackPane>
+
+        <Text fx:id="jugadorPokemonVidaNumero" layoutX="116.0" layoutY="89.0" wrappingWidth="39.0" />
+        <Text fx:id="jugadorPokemonRestantes" layoutY="36.0" />
+    </Pane>
+</AnchorPane>

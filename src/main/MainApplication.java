@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class MainApplication extends Application {
 
     public static void main(String[] args) {
@@ -14,9 +16,12 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("VistaJuego.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("VistaJuego.fxml")));
         primaryStage.setTitle("PeleaPoliticos");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
+        primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 
