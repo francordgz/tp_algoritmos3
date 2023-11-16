@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="ImagenMasomenos">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mejoro Escena">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaJuegoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +67,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -139,6 +140,9 @@
       <option name="presentableId" value="Default" />
       <updated>1699735841811</updated>
       <workItem from="1699735846240" duration="18138000" />
+      <workItem from="1700086902486" duration="9753000" />
+      <workItem from="1700097448068" duration="94000" />
+      <workItem from="1700102490532" duration="1688000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -220,7 +224,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699815569538</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cambio imagenes a path relativo para que todos lo podamos correr, no solo vos Ezequiel">
+      <option name="closed" value="true" />
+      <created>1700000566112</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700000566112</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Mejoro Escena">
+      <option name="closed" value="true" />
+      <created>1700097520526</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700097520526</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +257,8 @@
     <MESSAGE value="ControllerCreadoYappSeLanza" />
     <MESSAGE value="SeCarganLasImagenes" />
     <MESSAGE value="ImagenMasomenos" />
-    <option name="LAST_COMMIT_MESSAGE" value="ImagenMasomenos" />
+    <MESSAGE value="Cambio imagenes a path relativo para que todos lo podamos correr, no solo vos Ezequiel" />
+    <MESSAGE value="Mejoro Escena" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejoro Escena" />
   </component>
 </project>
