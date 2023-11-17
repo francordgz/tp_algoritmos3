@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,169 +10,16 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <HBox prefHeight="375.0" prefWidth="600.0">
+            <Pane prefHeight="497.0" prefWidth="600.0">
                <children>
-                  <Pane prefHeight="337.0" prefWidth="107.0" />
-                  <VBox prefHeight="277.0" prefWidth="400.0">
-                     <children>
-                        <Pane prefHeight="25.0" prefWidth="400.0" />
-                        <HBox layoutX="10.0" layoutY="246.0" prefHeight="55.0" prefWidth="400.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" text="PS" textAlignment="CENTER" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="55.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" text="PS" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="61.0" prefHeight="55.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" text="PS" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="112.0" prefHeight="55.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" text="PS" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="163.0" prefHeight="55.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="14.0" text="PS" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="239.0" prefHeight="55.0">
-                           <children>
-                              <Pane prefWidth="20.0" />
-                              <ImageView fitHeight="51.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                              <VBox prefHeight="51.0" prefWidth="130.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="109.0" text="Nombre" />
-                                    <Label prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                                    <Label layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="85.0" layoutY="10.0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="14.0" text="PS" />
-                                          <ProgressBar progress="0.0" />
-                                       </children>
-                                    </HBox>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="114.0" text="HP" textAlignment="RIGHT" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
+                  <ListView fx:id="pokemonListView" layoutX="123.0" layoutY="34.0" prefHeight="319.0" prefWidth="355.0" />
                </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="122.0" prefWidth="600.0">
                <children>
-                  <Pane prefHeight="75.0" prefWidth="418.0">
-                     <children>
-                        <Text layoutX="50.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" wrappingWidth="368.0" />
-                     </children>
-                  </Pane>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" textAlignment="CENTER" wrappingWidth="601.35546875" />
                </children>
-            </HBox>
+            </Pane>
          </children>
       </VBox>
    </children>

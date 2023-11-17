@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 public class VistaMochilaController {
     private Scene escena;
 
-    public VistaMochilaController(Scene escena) {
+    public void setEscena(Scene escena) {
         this.escena = escena;
     }
 

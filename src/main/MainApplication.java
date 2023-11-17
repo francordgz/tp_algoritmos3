@@ -14,6 +14,7 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Pelea Politicos");
         primaryStage.setResizable(false);
+        primaryStage.show();
 
         MainController controlador = new MainController(new Juego(), primaryStage);
 

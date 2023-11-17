@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -33,7 +32,7 @@ public class VistaCampoController {
     @FXML
     private ImageView jugadorImagen;
 
-    public VistaCampoController(Scene escena) {
+    public void setEscena(Scene escena) {
         this.escena = escena;
     }
 

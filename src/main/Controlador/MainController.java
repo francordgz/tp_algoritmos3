@@ -33,40 +33,60 @@ public class MainController {
         );
 
         try {
-            inicializarEscenas();
+            inicializarPrimeraSeleccion();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+        this.primaryStage.setScene(getEscena("pokemones"));
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
         //this.juego.inicializarTurnos();
         this.juego.inicializarClima();
-
-        this.primaryStage.show();
     }
 
-    private void inicializarEscenas() throws IOException {
-        Scene campo = new Scene(setFXML("Campo"));
-        setEstilo(campo, "campo");
-        this.vistaCampoController = new VistaCampoController(campo);
+    private void inicializarCampo() throws IOException {
+        String path = "/src/main/Vista/VistaCampo.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
-        Scene mochila = new Scene(setFXML("Mochila"));
-        //setEstilo(mochila, "mochila");
-        this.vistaMochilaController = new VistaMochilaController(mochila);
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "campo");
 
-        Scene pokemones = new Scene(setFXML("Pokemones"));
-        setEstilo(pokemones, "pokemones");
-
-        Scene primeraSeleccion = new Scene(setFXML("PrimeraSeleccion"));
-        setEstilo(primeraSeleccion, "pokemones");
-
-        this.vistaPokemonesController = new VistaPokemonesController(pokemones, primeraSeleccion);
+        this.vistaCampoController = loader.getController();
+        this.vistaCampoController.setEscena(escena);
     }
 
-    private Parent setFXML(String nombre) throws IOException {
-        String fxmlPath = "/src/main/Vista/Vista" + nombre + ".fxml";
-        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+    private void inicializarMochila() throws IOException {
+        String path = "/src/main/Vista/VistaMochila.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "mochila");
+
+        this.vistaMochilaController = loader.getController();
+        this.vistaMochilaController.setEscena(escena);
+    }
+
+    private void inicializarPokemones() throws IOException {
+        String path = "/src/main/Vista/VistaPokemones.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "pokemones");
+
+        this.vistaPokemonesController = loader.getController();
+        this.vistaPokemonesController.setEscena(escena);
+    }
+
+    private void inicializarPrimeraSeleccion() throws IOException {
+        String path = "/src/main/Vista/VistaPrimeraSeleccion.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "pokemones");
+
+        this.vistaPokemonesController = loader.getController();
+        this.vistaPokemonesController.setEscena(escena);
     }
 
     private void setEstilo(Scene escena, String estilo) {
@@ -77,7 +97,6 @@ public class MainController {
 
     private Scene getEscena(String nombre) {
         return switch (nombre) {
-            case "primeraSeleccion" -> this.vistaPokemonesController.getEscenaPrimeraSeleccion();
             case "pokemones" -> this.vistaPokemonesController.getEscena();
             case "mochila" -> this.vistaMochilaController.getEscena();
             case "campo" -> this.vistaCampoController.getEscena();
@@ -86,8 +105,7 @@ public class MainController {
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
-        primaryStage.setScene(getEscena("primeraSeleccion"));
-
+        this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
     }
 
     private void crearInforme() {

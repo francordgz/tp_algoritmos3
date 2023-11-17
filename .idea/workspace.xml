@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Creo vistas">
+      <change afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Constant.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/Vista.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaHabilidad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaJuego.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemones.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemones.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +86,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="src.main.Controlador" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
       <recent name="C:\Users\Ezela\tp3algoritmos3\src\main\Imagenes" />
