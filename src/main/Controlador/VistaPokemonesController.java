@@ -32,6 +32,7 @@ public class VistaPokemonesController {
                 Button button = loader.load();
                 PokemonButtonController pokemonButtonController = loader.getController();
                 pokemonButtonController.setPokemonInfo(pokemon);
+                button.setUserData(pokemon);
                 pokemonListView.getItems().add(button);
             }
         } catch (IOException e) {
@@ -45,9 +46,5 @@ public class VistaPokemonesController {
 
     public Scene getEscena() {
         return escena;
-    }
-
-    public void handleButtonClick(ActionEvent event) {
-        // Your implementation here
     }
 }

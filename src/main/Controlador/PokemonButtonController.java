@@ -29,6 +29,8 @@ public class PokemonButtonController {
     @FXML
     private Label hpLabel;
 
+    private Pokemon pokemonAsociado;
+
     public void setPokemonInfo(Pokemon pokemon) {
         // Set the information from the Pokemon object to the UI elements
         //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
@@ -37,15 +39,18 @@ public class PokemonButtonController {
         this.pokemonImage.setImage(new Image(temporal));
         this.nombreLabel.setText(pokemon.obtenerNombre());
         this.nivelLabel.setText("Nv " + pokemon.obtenerNivel());
-        this.estadosLabel.setText("Your logic for states here"); // You need to define how you want to display states
+        this.estadosLabel.setText("Logica Estados"); // You need to define how you want to display states
 
         int vidaActual = pokemon.obtenerVidaActual();
         int vidaMaxima = pokemon.obtenerVidaMaxima();
         this.progressBar.setProgress((double) vidaActual/vidaMaxima);
         this.hpLabel.setText("HP: " + vidaActual + " / " + vidaMaxima);
+
+        this.pokemonAsociado = pokemon;
     }
 
-    public void handleButtonClick(ActionEvent event) {
-        // Your implementation here
+    public Pokemon handleButtonClick() {
+        System.out.println(pokemonAsociado.obtenerNombre());
+        return this.pokemonAsociado;
     }
 }
