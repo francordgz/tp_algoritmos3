@@ -1,30 +1,17 @@
-/* styles.css */
-
-/* Apply styles to ImageView */
-#opponentPokemonImageView,
-#playerPokemonImageView {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 4);
-}
-
-/* Apply styles to Text elements */
 .text {
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 14px;
-    -fx-fill: red;
+    -fx-font-family: 'Courier New', monospace; /* Use a pixelated font */
+    -fx-font-size: 14px; /* Adjust the font size as needed */
+    -fx-letter-spacing: 1px; /* Add letter spacing for a pixelated look */
+    -fx-color: #fff; /* Set the text color to white */
 }
-
-/* Styling for health bars */
-.health-bar {
-    -fx-background-color: rgb(128, 128, 128);
+.button {
+    -fx-background-color: #cdcdcd; /* Set button background color */
+    -fx-text-fill: #000; /* Set button text color */
+    -fx-font-family: 'Courier New', monospace; /* Use a pixelated font */
 }
-
-.health-fill {
-    -fx-background-color: green;
+.label {
+    -fx-font-family: 'Courier New', monospace; /* Use a pixelated font */
 }
-
-/* Additional styling for the BorderPane */
-#mainPane {
-    -fx-background-color: linear-gradient(to bottom, #ff0000, #9BA9BA);
+.split-pane {
+    -fx-divider-position: 0.8; /* Set the initial divider position */
 }
-
-/* Add more styles as needed */

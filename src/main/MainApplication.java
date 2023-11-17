@@ -16,12 +16,15 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("VistaJuego.fxml")));
         primaryStage.setTitle("Pelea Politicos");
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
-        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
 
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("VistaCampo.fxml")));
+
+        Scene campo = new Scene(root);
+        campo.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
+
+        primaryStage.setScene(campo);
         primaryStage.show();
     }
 

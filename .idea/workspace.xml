@@ -7,7 +7,9 @@
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mejoro Escena">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaJuegoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaJuego.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +46,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="2f7b198f-f470-464a-9b7e-03943e562a3e" />
+        <option name="accountId" value="9267e3b9-3919-472e-a024-d65b40dc1ce3" />
         <option name="url" value="https://github.com/francordgz/tp1_algoritmos3.git" />
       </UrlAndAccount>
     </option>
@@ -66,7 +68,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;UI&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -74,6 +76,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -142,7 +145,11 @@
       <workItem from="1699735846240" duration="18138000" />
       <workItem from="1700086902486" duration="9753000" />
       <workItem from="1700097448068" duration="94000" />
-      <workItem from="1700102490532" duration="1688000" />
+      <workItem from="1700102490532" duration="2462000" />
+      <workItem from="1700166171533" duration="215000" />
+      <workItem from="1700176526976" duration="1040000" />
+      <workItem from="1700182674712" duration="594000" />
+      <workItem from="1700186381892" duration="3150000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -240,11 +247,30 @@
       <option name="project" value="LOCAL" />
       <updated>1700097520526</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Mejoro Escena">
+      <option name="closed" value="true" />
+      <created>1700104449390</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1700104449390</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Agrego dependencias con javafx al pom" />
