@@ -29,6 +29,8 @@ public class PokemonButtonController {
     @FXML
     private Label hpLabel;
 
+    private Pokemon pokemonAsociado;
+
     public void setPokemonInfo(Pokemon pokemon) {
         // Set the information from the Pokemon object to the UI elements
         //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
@@ -43,9 +45,12 @@ public class PokemonButtonController {
         int vidaMaxima = pokemon.obtenerVidaMaxima();
         this.progressBar.setProgress((double) vidaActual/vidaMaxima);
         this.hpLabel.setText("HP: " + vidaActual + " / " + vidaMaxima);
+
+        this.pokemonAsociado = pokemon;
     }
 
-    public void handleButtonClick(ActionEvent event) {
-        // Your implementation here
+    public Pokemon handleButtonClick() {
+        System.out.println(pokemonAsociado.obtenerNombre());
+        return this.pokemonAsociado;
     }
 }
