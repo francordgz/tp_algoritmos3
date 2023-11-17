@@ -7,4 +7,6 @@ module src.main {
     requires org.mockito;
     opens src.main to javafx.fxml;
     exports src.main;
+    exports src.main.Controlador;
+    opens src.main.Controlador to javafx.fxml;
 }
