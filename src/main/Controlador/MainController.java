@@ -1,23 +1,29 @@
 package src.main.Controlador;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import src.main.Modelo.Entrenador;
-import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Juego;
-import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
-import src.main.Vista.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class MainController {
     Juego juego;
-    Scanner scanner = new Scanner(System.in);
+    Stage primaryStage;
 
-    public MainController(Juego juego) {
+    VistaCampoController vistaCampoController;
+    VistaMochilaController vistaMochilaController;
+    VistaPokemonesController vistaPokemonesController;
+
+    public MainController(Juego juego, Stage primaryStage) {
         this.juego = juego;
+        this.primaryStage = primaryStage;
 
         this.juego.deserializarPartida(
                 "partida.json",
@@ -26,19 +32,87 @@ public class MainController {
                 "items.json"
         );
 
+        try {
+            inicializarEscenas();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
         this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
-        this.juego.inicializarTurnos();
+        //this.juego.inicializarTurnos();
         this.juego.inicializarClima();
+
+        this.primaryStage.show();
+    }
+
+    private void inicializarEscenas() throws IOException {
+        Scene campo = new Scene(setFXML("Campo"));
+        setEstilo(campo, "campo");
+        this.vistaCampoController = new VistaCampoController(campo);
+
+        Scene mochila = new Scene(setFXML("Mochila"));
+        //setEstilo(mochila, "mochila");
+        this.vistaMochilaController = new VistaMochilaController(mochila);
+
+        Scene pokemones = new Scene(setFXML("Pokemones"));
+        setEstilo(pokemones, "pokemones");
+
+        Scene primeraSeleccion = new Scene(setFXML("PrimeraSeleccion"));
+        setEstilo(primeraSeleccion, "pokemones");
+
+        this.vistaPokemonesController = new VistaPokemonesController(pokemones, primeraSeleccion);
+    }
+
+    private Parent setFXML(String nombre) throws IOException {
+        String fxmlPath = "/src/main/Vista/Vista" + nombre + ".fxml";
+        return FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
+    }
+
+    private void setEstilo(Scene escena, String estilo) {
+        String cssPath = "/" + estilo + ".css";
+        escena.getStylesheets().add(Objects.requireNonNull(getClass()
+                .getResource(cssPath)).toExternalForm());
+    }
+
+    private Scene getEscena(String nombre) {
+        return switch (nombre) {
+            case "primeraSeleccion" -> this.vistaPokemonesController.getEscenaPrimeraSeleccion();
+            case "pokemones" -> this.vistaPokemonesController.getEscena();
+            case "mochila" -> this.vistaMochilaController.getEscena();
+            case "campo" -> this.vistaCampoController.getEscena();
+            default -> throw new IllegalStateException("Unexpected value: " + nombre);
+        };
     }
 
     private void seleccionarPrimerPokemon(Entrenador entrenador){
-        int opcion = pedirPokemon(entrenador, true);
+        primaryStage.setScene(getEscena("primeraSeleccion"));
 
-        String nombrePokemon = this.juego.cambiarPokemon(entrenador, opcion);
-        VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon + " como primer Pokemon");
     }
 
+    private void crearInforme() {
+        List<Entrenador> entrenadores = new ArrayList<>();
+        entrenadores.add(juego.obtenerPrimerEntrenador());
+        entrenadores.add(juego.obtenerSegundoEntrenador());
+
+        try {
+            String informePath = InformeSerializer.serializeJSON(entrenadores, "informe.json");
+            System.out.println("El informe ha sido creado en: " + informePath);
+        } catch (IOException e) {
+            throw new RuntimeException("Error al crear informe JSON");
+        }
+    }
+
+    public boolean juegoTerminado() {
+        return this.juego.terminado();
+    }
+
+    public void terminar() {
+        crearInforme();
+    }
+}
+
+/*
     public void menuPrincipal() {
         int opcion;
         boolean turnoTerminado = false;
@@ -95,7 +169,7 @@ public class MainController {
     private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria) {
         boolean opcionValida = false;
         int opcion = src.main.Modelo.Constant.NULA;
-        
+
         while (!opcionValida) {
             opcion = pedirPokemon(entrenador, seleccionObligatoria);
 
@@ -194,7 +268,7 @@ public class MainController {
 
         return opcion;
     }
-    
+
     private Boolean seleccionarItem() {
         int pokemonSeleccionado = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
 
@@ -234,37 +308,4 @@ public class MainController {
         return opcion;
     }
 
-    public void terminar() {
-        this.scanner.close();
-        this.crearInforme();
-    }
-
-    private void crearInforme() {
-        List<Entrenador> entrenadores = new ArrayList<>();
-        entrenadores.add(juego.obtenerPrimerEntrenador());
-        entrenadores.add(juego.obtenerSegundoEntrenador());
-
-        try {
-            String informePath = InformeSerializer.serializeJSON(entrenadores, "informe.json");
-            System.out.println("El informe ha sido creado en: " + informePath);
-        } catch (IOException e) {
-            throw new RuntimeException("Error al crear informe JSON");
-        }
-    }
-
-    public void declararGanador() {
-        VistaJuego.imprimir("El ganador es: " + juego.obtenerGanador().obtenerNombre());
-    }
-
-    private int leerInt() {
-        VistaJuego.imprimirMismaLinea("\nIngrese un numero: ");
-        if (this.scanner.hasNextInt()) {
-            int entero = this.scanner.nextInt();
-            scanner.nextLine(); // Consume el /n
-            return entero;
-        } else {
-            scanner.nextLine(); // Consume la entrada inválida
-            return Constant.NOT_INT;
-        }
-    }
-}
+*/

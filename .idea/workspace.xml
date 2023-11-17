@@ -4,26 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Creo carpetas">
-      <change afterPath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/campo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/PressStart2P.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pokemones.css" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Creo vistas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaCampo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaMochila.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/habilidadesTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/habilidadesTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/itemsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/itemsTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/partidaTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/partidaTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemonsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemonsTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/Vista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaHabilidad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaJuego.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemon.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,23 +71,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "UI",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;UI&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
@@ -204,7 +198,8 @@
       <workItem from="1700182674712" duration="594000" />
       <workItem from="1700186381892" duration="3150000" />
       <workItem from="1700189587762" duration="576000" />
-      <workItem from="1700225922845" duration="11976000" />
+      <workItem from="1700225922845" duration="12283000" />
+      <workItem from="1700251829390" duration="4196000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -318,7 +313,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700189889378</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Creo vistas">
+      <option name="closed" value="true" />
+      <created>1700239498503</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700239498503</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Creo vistas">
+      <option name="closed" value="true" />
+      <created>1700239560245</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700239560245</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,6 +361,7 @@
     <MESSAGE value="Mejoro Escena" />
     <MESSAGE value="Agrego Escenas" />
     <MESSAGE value="Creo carpetas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creo carpetas" />
+    <MESSAGE value="Creo vistas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creo vistas" />
   </component>
 </project>

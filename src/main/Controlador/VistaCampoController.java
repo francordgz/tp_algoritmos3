@@ -1,6 +1,7 @@
 package src.main.Controlador;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SplitPane;
@@ -10,6 +11,7 @@ import javafx.scene.text.Text;
 import java.io.InputStream;
 
 public class VistaCampoController {
+    private Scene escena;
     @FXML
     public Label rivalNombre;
     @FXML
@@ -30,6 +32,14 @@ public class VistaCampoController {
     private ImageView rivalImagen;
     @FXML
     private ImageView jugadorImagen;
+
+    public VistaCampoController(Scene escena) {
+        this.escena = escena;
+    }
+
+    public Scene getEscena() {
+        return escena;
+    }
 
     @FXML
     public void initialize() {
