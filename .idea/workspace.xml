@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mejoro Escena">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Creo carpetas">
+      <change afterPath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/campo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/PressStart2P.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/pokemones.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaJuego.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaCampo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaMochila.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/habilidadesTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/habilidadesTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/itemsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/itemsTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/partidaTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/partidaTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemonsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemonsTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/styles.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,30 +77,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;UI&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "UI",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
       <recent name="C:\Users\Ezela\tp3algoritmos3\src\main\Imagenes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ezela\tp3algoritmos3\src\main\Imagenes" />
-      <recent name="C:\Users\Ezela\tp3algoritmos3\src\main" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources\persistencia" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources\fonts" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\Vista" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\Vista7" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src.main" />
+      <recent name="src.main.Controlador" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
@@ -95,7 +117,7 @@
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.main.*" />
+          <option name="PATTERN" value="src.main.Controlador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,10 +130,39 @@
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.main.*" />
+          <option name="PATTERN" value="src.main.Controlador.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegracionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="src.test in tp1_algoritmos3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,6 +181,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.src.test in tp1_algoritmos3" />
+        <item itemvalue="JUnit.IntegracionTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -150,6 +203,8 @@
       <workItem from="1700176526976" duration="1040000" />
       <workItem from="1700182674712" duration="594000" />
       <workItem from="1700186381892" duration="3150000" />
+      <workItem from="1700189587762" duration="576000" />
+      <workItem from="1700225922845" duration="11976000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -255,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700104449390</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Agrego Escenas">
+      <option name="closed" value="true" />
+      <created>1700189889378</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700189889378</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +348,8 @@
     <MESSAGE value="ImagenMasomenos" />
     <MESSAGE value="Cambio imagenes a path relativo para que todos lo podamos correr, no solo vos Ezequiel" />
     <MESSAGE value="Mejoro Escena" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejoro Escena" />
+    <MESSAGE value="Agrego Escenas" />
+    <MESSAGE value="Creo carpetas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creo carpetas" />
   </component>
 </project>

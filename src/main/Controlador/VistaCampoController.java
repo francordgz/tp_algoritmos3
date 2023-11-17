@@ -1,8 +1,9 @@
-package src.main;
+package src.main.Controlador;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -32,7 +33,8 @@ public class VistaCampoController {
 
     @FXML
     public void initialize() {
-        setPokemonImages("Imagenes/MyriamBregman.png", "Imagenes/Massa.png");
+
+        setPokemonImages("/src/main/Imagenes/MyriamBregman.png", "/src/main/Imagenes/Massa.png");
 
         this.jugadorNombre.setText("Massa");
         this.jugadorNivel.setText("Nv 99");

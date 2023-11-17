@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Controller {
+public class MainController {
     Juego juego;
     Scanner scanner = new Scanner(System.in);
 
-    public Controller(Juego juego) {
+    public MainController(Juego juego) {
         this.juego = juego;
 
         this.juego.deserializarPartida(
