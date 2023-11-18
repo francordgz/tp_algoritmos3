@@ -9,4 +9,6 @@ module src.main {
     exports src.main;
     exports src.main.Controlador;
     opens src.main.Controlador to javafx.fxml;
+    exports src.main.Controlador.Eventos;
+    opens src.main.Controlador.Eventos to javafx.fxml;
 }

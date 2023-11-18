@@ -2,8 +2,9 @@ package src.main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import src.main.Controlador.EligePokemonEvent;
+import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Controlador.MainController;
+import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Modelo.Juego;
 
 public class MainApplication extends Application {
@@ -18,7 +19,8 @@ public class MainApplication extends Application {
         primaryStage.show();
 
         MainController controlador = new MainController(new Juego(), primaryStage);
-        primaryStage.addEventHandler(EligePokemonEvent.ELIGE_POKEMON_EVENT, controlador);
+        primaryStage.addEventHandler(EligePokemonEvento.ELIGE_POKEMON_EVENT, controlador);
+        //primaryStage.addEventHandler(RendirseEvento.RENDIRSE_EVENT, controlador);
 
         /*
         while (!controlador.juegoTerminado()) {

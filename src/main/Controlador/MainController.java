@@ -1,12 +1,11 @@
 package src.main.Controlador;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import src.main.Controlador.Eventos.EligePokemonEvento;
+import src.main.Controlador.Eventos.EligePokemonEventoHandler;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Serializacion.InformeSerializer;
@@ -16,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainController implements EventHandler<EligePokemonEvent> {
+public class MainController implements EligePokemonEventoHandler {
     Juego juego;
     Stage primaryStage;
 
+    @FXML
     VistaCampoController vistaCampoController;
     VistaMochilaController vistaMochilaController;
 
@@ -47,7 +47,6 @@ public class MainController implements EventHandler<EligePokemonEvent> {
         this.primaryStage.setScene(getEscena("pokemones"));
 
         this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
-        //this.juego.inicializarTurnos();
         this.juego.inicializarClima();
     }
 
@@ -137,7 +136,7 @@ public class MainController implements EventHandler<EligePokemonEvent> {
     }
 
     @Override
-    public void handle(EligePokemonEvent event) {
+    public void handle(EligePokemonEvento event) {
         int opcion = event.getOpcion();
         String nombre;
         Entrenador entrenador = juego.obtenerPrimerEntrenador();
@@ -145,10 +144,12 @@ public class MainController implements EventHandler<EligePokemonEvent> {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo(nombre);
             this.vistaPokemonesController.llenarLista(this.juego.obtenerSegundoEntrenador().obtenerPokemones());
+            this.vistaPokemonesController.setDialogo("Elegir un POKéMON");
             return;
         }
         nombre = juego.obtenerSegundoEntrenador().cambiarPokemon(opcion);
         this.vistaPokemonesController.setDialogo(nombre);
+        this.juego.inicializarTurnos();
         this.primaryStage.setScene(getEscena("campo"));
     }
 }

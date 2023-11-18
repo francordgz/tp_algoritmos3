@@ -1,16 +1,12 @@
 package src.main.Controlador;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Modelo.Pokemon;
 
 import java.io.IOException;
@@ -36,7 +32,7 @@ public class VistaPokemonesController {
                 pokemonButtonController.setPokemonInfo(pokemon, opcion);
 
                 int finalOpcion = opcion;
-                button.setOnAction(e -> button.fireEvent(new EligePokemonEvent(finalOpcion)));
+                button.setOnAction(e -> button.fireEvent(new EligePokemonEvento(finalOpcion)));
                 pokemonListView.getItems().add(button);
                 opcion++;
             }

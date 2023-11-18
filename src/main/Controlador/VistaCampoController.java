@@ -2,11 +2,14 @@ package src.main.Controlador;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import src.main.Controlador.Eventos.RendirseEvento;
+
 import java.io.InputStream;
 
 public class VistaCampoController {
@@ -31,6 +34,8 @@ public class VistaCampoController {
     private ImageView rivalImagen;
     @FXML
     private ImageView jugadorImagen;
+    @FXML
+    private Button botonRendirse;
 
     public void setEscena(Scene escena) {
         this.escena = escena;
@@ -54,6 +59,8 @@ public class VistaCampoController {
         setRivalVida(3, 10);
 
         this.dialogo.setText("Que debe hacer Sergio?");
+
+        botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {

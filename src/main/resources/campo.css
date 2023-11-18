@@ -17,13 +17,13 @@
     -fx-background-color: #ffcc00;
 }
 
-#rendirse {
+#botonRendirse {
     -fx-background-color: #e8270e;
     -fx-text-fill: #000000;
     -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
 }
 
-#rendirse:hover {
+#botonRendirse:hover {
     -fx-background-color: #ff0000;
 }
 
