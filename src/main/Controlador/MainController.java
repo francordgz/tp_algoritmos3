@@ -1,8 +1,11 @@
 package src.main.Controlador;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Juego;
@@ -19,6 +22,8 @@ public class MainController implements EventHandler<EligePokemonEvent> {
 
     VistaCampoController vistaCampoController;
     VistaMochilaController vistaMochilaController;
+
+    @FXML
     VistaPokemonesController vistaPokemonesController;
 
     public MainController(Juego juego, Stage primaryStage) {
@@ -132,15 +137,8 @@ public class MainController implements EventHandler<EligePokemonEvent> {
     }
 
     @Override
-    public void handle(EligePokemonEvent eligePokemonEvent) {
-        System.out.println("DEBUG");
-        int opcion = eligePokemonEvent.getOpcion();
-        Entrenador primerEntrenador = juego.obtenerPrimerEntrenador();
-        if (primerEntrenador.obtenerPokemonActual() == null) {
-            seleccionarPrimerPokemon(primerEntrenador, opcion);
-            return;
-        }
-        seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador(), opcion);
+    public void handle(EligePokemonEvent event) {
+        System.out.println("DEBUG 2");
     }
 }
 
