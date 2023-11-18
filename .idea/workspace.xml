@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Handle Button Click">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemones.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemones.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/habilidades.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/habilidades.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemons.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemons.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,17 +151,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="src.test" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

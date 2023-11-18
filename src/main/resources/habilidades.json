@@ -231,5 +231,34 @@
     "id": 56,
     "usos": 1,
     "clima": "tormentaDeArena"
+  },
+  //
+  {
+    "nombre": "Mordisco",
+    "id": 71,
+    "usos": 3,
+    "poder": 60,
+    "mismoTipo": false
+  },
+  {
+    "nombre": "Hipercolmillo",
+    "id": 72,
+    "usos": 3,
+    "poder": 60,
+    "mismoTipo": true
+  },
+  {
+    "nombre": "Ataque Rápido",
+    "id": 73,
+    "usos": 2,
+    "poder": 60,
+    "mismoTipo": false
+  },
+  {
+    "nombre": "Ácido",
+    "id": 74,
+    "usos": 2,
+    "poder": 70,
+    "mismoTipo": true
   }
 ]
