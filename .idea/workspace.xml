@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Handle Button Click">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_11_2023_10_10_p__m___Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Nuevos pokemon y habilidades">
       <change beforePath="$PROJECT_DIR$/src/main/resources/habilidades.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/habilidades.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemons.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemons.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700265612093</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Nuevos pokemon y habilidades">
+      <option name="closed" value="true" />
+      <created>1700343496615</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700343496615</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,6 +379,7 @@
     <MESSAGE value="Creo vistas" />
     <MESSAGE value="List View" />
     <MESSAGE value="Handle Button Click" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handle Button Click" />
+    <MESSAGE value="Nuevos pokemon y habilidades" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nuevos pokemon y habilidades" />
   </component>
 </project>
