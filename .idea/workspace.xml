@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Handle Button Click">
+      <change afterPath="$PROJECT_DIR$/src/main/Controlador/EligePokemonEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemones.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemones.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/PokemonButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/PokemonButton.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +198,7 @@
       <workItem from="1700251829390" duration="4196000" />
       <workItem from="1700266631095" duration="78000" />
       <workItem from="1700273239809" duration="1531000" />
-      <workItem from="1700330609289" duration="1747000" />
+      <workItem from="1700330609289" duration="7383000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -351,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700265612093</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Handle Button Click">
+      <option name="closed" value="true" />
+      <created>1700332450456</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700332450456</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

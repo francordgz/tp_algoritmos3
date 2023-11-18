@@ -1,5 +1,8 @@
 package src.main.Controlador;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,8 +18,6 @@ public class VistaPokemonesController {
     @FXML
     private ListView<Button> pokemonListView;
 
-    private PokemonButtonController pokemonButtonController;
-
     public void llenarLista(List<Pokemon> pokemones) {
         String path = "/src/main/Vista/PokemonButton.fxml";
         int opcion = 0;
@@ -25,8 +26,17 @@ public class VistaPokemonesController {
             for (Pokemon pokemon : pokemones) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 Button button = loader.load();
+
                 PokemonButtonController pokemonButtonController = loader.getController();
                 pokemonButtonController.setPokemonInfo(pokemon, opcion);
+
+                int finalOpcion = opcion;
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        button.fireEvent(new EligePokemonEvent(finalOpcion));
+                    }
+                });
                 pokemonListView.getItems().add(button);
                 opcion++;
             }

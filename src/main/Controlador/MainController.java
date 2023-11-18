@@ -1,7 +1,7 @@
 package src.main.Controlador;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.main.Modelo.Entrenador;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainController {
+public class MainController implements EventHandler<EligePokemonEvent> {
     Juego juego;
     Stage primaryStage;
 
@@ -39,8 +39,9 @@ public class MainController {
         }
 
         this.primaryStage.setScene(getEscena("pokemones"));
-        this.seleccionarPrimerPokemon(this.juego.obtenerPrimerEntrenador());
-        this.seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador());
+
+        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
+
         //this.juego.inicializarTurnos();
         this.juego.inicializarClima();
     }
@@ -104,8 +105,9 @@ public class MainController {
         };
     }
 
-    private void seleccionarPrimerPokemon(Entrenador entrenador){
-        this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
+    private void seleccionarPrimerPokemon(Entrenador entrenador, int opcion) {
+        String nombre = this.juego.cambiarPokemon(entrenador, opcion);
+        System.out.println(nombre);
     }
 
     private void crearInforme() {
@@ -127,6 +129,18 @@ public class MainController {
 
     public void terminar() {
         crearInforme();
+    }
+
+    @Override
+    public void handle(EligePokemonEvent eligePokemonEvent) {
+        System.out.println("DEBUG");
+        int opcion = eligePokemonEvent.getOpcion();
+        Entrenador primerEntrenador = juego.obtenerPrimerEntrenador();
+        if (primerEntrenador.obtenerPokemonActual() == null) {
+            seleccionarPrimerPokemon(primerEntrenador, opcion);
+            return;
+        }
+        seleccionarPrimerPokemon(this.juego.obtenerSegundoEntrenador(), opcion);
     }
 }
 

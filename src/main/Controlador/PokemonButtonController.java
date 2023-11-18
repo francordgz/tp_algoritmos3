@@ -1,5 +1,6 @@
 package src.main.Controlador;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -9,7 +10,7 @@ import src.main.Modelo.Pokemon;
 
 import java.io.InputStream;
 
-public class PokemonButtonController {
+public class PokemonButtonController  {
     @FXML
     private ImageView pokemonImage;
 
@@ -28,8 +29,6 @@ public class PokemonButtonController {
     @FXML
     private Label hpLabel;
 
-    private int opcion;
-
     public void setPokemonInfo(Pokemon pokemon, int opcion) {
         // Set the information from the Pokemon object to the UI elements
         //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
@@ -44,12 +43,5 @@ public class PokemonButtonController {
         int vidaMaxima = pokemon.obtenerVidaMaxima();
         this.progressBar.setProgress((double) vidaActual/vidaMaxima);
         this.hpLabel.setText("HP: " + vidaActual + " / " + vidaMaxima);
-
-        this.opcion = opcion;
-    }
-
-    public int handleButtonClick() {
-        System.out.println(opcion);
-        return this.opcion;
     }
 }
