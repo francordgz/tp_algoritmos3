@@ -1,6 +1,5 @@
 package src.main.Controlador;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -29,9 +28,9 @@ public class PokemonButtonController {
     @FXML
     private Label hpLabel;
 
-    private Pokemon pokemonAsociado;
+    private int opcion;
 
-    public void setPokemonInfo(Pokemon pokemon) {
+    public void setPokemonInfo(Pokemon pokemon, int opcion) {
         // Set the information from the Pokemon object to the UI elements
         //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
         InputStream temporal = getClass().getResourceAsStream("/src/main/Imagenes/Massa.png");
@@ -46,11 +45,11 @@ public class PokemonButtonController {
         this.progressBar.setProgress((double) vidaActual/vidaMaxima);
         this.hpLabel.setText("HP: " + vidaActual + " / " + vidaMaxima);
 
-        this.pokemonAsociado = pokemon;
+        this.opcion = opcion;
     }
 
-    public Pokemon handleButtonClick() {
-        System.out.println(pokemonAsociado.obtenerNombre());
-        return this.pokemonAsociado;
+    public int handleButtonClick() {
+        System.out.println(opcion);
+        return this.opcion;
     }
 }

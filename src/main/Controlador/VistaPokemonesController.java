@@ -1,19 +1,13 @@
 package src.main.Controlador;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import src.main.Modelo.Pokemon;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class VistaPokemonesController {
@@ -25,15 +19,16 @@ public class VistaPokemonesController {
 
     public void llenarLista(List<Pokemon> pokemones) {
         String path = "/src/main/Vista/PokemonButton.fxml";
+        int opcion = 0;
         try {
             pokemonListView.getItems().clear();
             for (Pokemon pokemon : pokemones) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/Vista/PokemonButton.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 Button button = loader.load();
                 PokemonButtonController pokemonButtonController = loader.getController();
-                pokemonButtonController.setPokemonInfo(pokemon);
-                button.setUserData(pokemon);
+                pokemonButtonController.setPokemonInfo(pokemon, opcion);
                 pokemonListView.getItems().add(button);
+                opcion++;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

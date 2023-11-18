@@ -17,7 +17,7 @@
             </Pane>
             <Pane layoutX="10.0" layoutY="10.0" prefHeight="122.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" textAlignment="CENTER" wrappingWidth="601.35546875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" fx:id="dialogo" textAlignment="CENTER" wrappingWidth="601.35546875" />
                </children>
             </Pane>
          </children>
