@@ -157,7 +157,7 @@
                <children>
                   <Pane prefHeight="75.0" prefWidth="418.0">
                      <children>
-                        <Text layoutX="50.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" wrappingWidth="368.0" />
+                        <Text fx:id="dialogo" layoutX="50.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elegir un POKéMON" wrappingWidth="368.0" />
                      </children>
                   </Pane>
                   <Button mnemonicParsing="false" prefHeight="87.0" prefWidth="182.0" text="Salir" />

@@ -12,7 +12,7 @@
          <children>
             <Pane prefHeight="497.0" prefWidth="600.0">
                <children>
-                  <ListView onMouseClicked="#handleMouseClicked" fx:id="pokemonListView" layoutX="123.0" layoutY="34.0" prefHeight="319.0" prefWidth="355.0" />
+                  <ListView fx:id="pokemonListView" layoutX="123.0" layoutY="34.0" prefHeight="319.0" prefWidth="355.0" />
                </children>
             </Pane>
             <Pane layoutX="10.0" layoutY="10.0" prefHeight="122.0" prefWidth="600.0">

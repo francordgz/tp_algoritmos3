@@ -39,6 +39,7 @@ public class MainController implements EventHandler<EligePokemonEvent> {
 
         try {
             inicializarPrimeraSeleccion();
+            inicializarCampo();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +47,6 @@ public class MainController implements EventHandler<EligePokemonEvent> {
         this.primaryStage.setScene(getEscena("pokemones"));
 
         this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
-
         //this.juego.inicializarTurnos();
         this.juego.inicializarClima();
     }
@@ -138,7 +138,18 @@ public class MainController implements EventHandler<EligePokemonEvent> {
 
     @Override
     public void handle(EligePokemonEvent event) {
-        System.out.println("DEBUG 2");
+        int opcion = event.getOpcion();
+        String nombre;
+        Entrenador entrenador = juego.obtenerPrimerEntrenador();
+        if (entrenador.obtenerPokemonActual() == null) {
+            nombre = entrenador.cambiarPokemon(opcion);
+            this.vistaPokemonesController.setDialogo(nombre);
+            this.vistaPokemonesController.llenarLista(this.juego.obtenerSegundoEntrenador().obtenerPokemones());
+            return;
+        }
+        nombre = juego.obtenerSegundoEntrenador().cambiarPokemon(opcion);
+        this.vistaPokemonesController.setDialogo(nombre);
+        this.primaryStage.setScene(getEscena("campo"));
     }
 }
 

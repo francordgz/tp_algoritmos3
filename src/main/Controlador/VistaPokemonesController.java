@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import src.main.Modelo.Pokemon;
 
 import java.io.IOException;
@@ -18,7 +19,9 @@ import java.util.List;
 public class VistaPokemonesController {
     private Scene escena;
     @FXML
-    public ListView<Button> pokemonListView;
+    private ListView<Button> pokemonListView;
+    @FXML
+    private Text dialogo;
 
     public void llenarLista(List<Pokemon> pokemones) {
         String path = "/src/main/Vista/PokemonButton.fxml";
@@ -51,7 +54,7 @@ public class VistaPokemonesController {
         return escena;
     }
 
-    public void handleMouseClicked() {
-        this.pokemonListView.fireEvent(new EligePokemonEvent(9));
+    public void setDialogo(String texto) {
+        this.dialogo.setText(texto);
     }
 }
