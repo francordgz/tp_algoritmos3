@@ -111,7 +111,7 @@
     "nombre": "Raichu",
     "id": 11,
     "nivel": 3,
-    "tipo": "rayo",
+    "tipo": "electrico",
     "historia": "Raichu es la evolución de Pikachu y es conocido por su velocidad y poder eléctrico.",
     "vidaMaxima": 150,
     "velocidad": 15,
