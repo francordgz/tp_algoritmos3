@@ -8,7 +8,11 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import src.main.Controlador.Eventos.RendirseEvento;
+import src.main.Modelo.Juego;
+import src.main.Modelo.Entrenador;
+import src.main.Modelo.Juego;
 
 import java.io.InputStream;
 
@@ -37,12 +41,30 @@ public class VistaCampoController {
     @FXML
     private Button botonRendirse;
 
+    Juego juego;
+
+    Stage primaryStage;
+
+
     public void setEscena(Scene escena) {
         this.escena = escena;
     }
 
     public Scene getEscena() {
         return escena;
+    }
+
+
+    public void SetJuego(Juego Unjuego){
+
+        this.juego = Unjuego;
+
+    }
+
+    public void setStage(Stage unStage){
+
+        this.primaryStage = unStage;
+
     }
 
     @FXML
@@ -99,7 +121,16 @@ public class VistaCampoController {
 
         this.rivalImagen.setImage(opponentImage);
         this.jugadorImagen.setImage(playerImage);
+
     }
+
+
+
+
+
+
+
+
 }
 
 

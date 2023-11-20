@@ -152,6 +152,12 @@ public class MainController implements EligePokemonEventoHandler {
         this.juego.inicializarTurnos();
         this.primaryStage.setScene(getEscena("campo"));
     }
+
+
+
+
+
+
 }
 
 /*
