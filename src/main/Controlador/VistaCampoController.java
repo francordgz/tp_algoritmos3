@@ -41,6 +41,15 @@ public class VistaCampoController {
     @FXML
     private Button botonRendirse;
 
+    @FXML
+    private Button botonPokemones;
+
+    @FXML
+    private Button botonMochila;
+
+    @FXML
+    private Button botonLucha;
+
     Juego juego;
 
     Stage primaryStage;
@@ -83,6 +92,13 @@ public class VistaCampoController {
         this.dialogo.setText("Que debe hacer Sergio?");
 
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
+
+        botonPokemones.setOnAction(e -> handlePokemones());
+        botonMochila.setOnAction(e -> handleMochila());
+        botonRendirse.setOnAction(e -> handleRendirse());
+        botonLucha.setOnAction(e -> handleLucha());
+
+
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -126,6 +142,24 @@ public class VistaCampoController {
 
 
 
+    private void handlePokemones() {
+
+
+    }
+
+    private void handleMochila() {
+
+
+    }
+
+    private void handleRendirse() {
+
+
+    }
+
+    private void handleLucha() {
+
+    }
 
 
 

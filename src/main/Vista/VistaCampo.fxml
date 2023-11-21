@@ -54,10 +54,10 @@
                         </rowConstraints>
    
                            <!-- Botones y opciones -->
-                        <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="148.0" text="Pokémones" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="178.0" text="Mochila" GridPane.rowIndex="1" />
+                        <Button fx:id="botonPokemones" mnemonicParsing="false" prefHeight="59.0" prefWidth="148.0" text="Pokémones" GridPane.columnIndex="1" />
+                        <Button fx:id="botonMochila" mnemonicParsing="false" prefHeight="57.0" prefWidth="178.0" text="Mochila" GridPane.rowIndex="1" />
                         <Button fx:id="botonRendirse" mnemonicParsing="false" prefHeight="57.0" prefWidth="148.0" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha" />
+                        <Button fx:id="botonLucha" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha" />
 
                     </GridPane>
                 </AnchorPane>
