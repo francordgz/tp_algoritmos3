@@ -21,7 +21,7 @@ public class MainController implements EligePokemonEventoHandler {
 
     @FXML
     VistaCampoController vistaCampoController;
-    VistaMochilaController vistaMochilaController;
+    VistaItemsController vistaItemsController;
 
     @FXML
     VistaPokemonesController vistaPokemonesController;
@@ -40,6 +40,7 @@ public class MainController implements EligePokemonEventoHandler {
         try {
             inicializarPrimeraSeleccion();
             inicializarCampo();
+            inicializarMochila();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -62,14 +63,14 @@ public class MainController implements EligePokemonEventoHandler {
     }
 
     private void inicializarMochila() throws IOException {
-        String path = "/src/main/Vista/VistaMochila.fxml";
+        String path = "/src/main/Vista/VistaItems.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
         Scene escena = new Scene(loader.load());
         setEstilo(escena, "mochila");
 
-        this.vistaMochilaController = loader.getController();
-        this.vistaMochilaController.setEscena(escena);
+        this.vistaItemsController = loader.getController();
+        this.vistaItemsController.setEscena(escena);
     }
 
     private void inicializarPokemones() throws IOException {
@@ -103,7 +104,7 @@ public class MainController implements EligePokemonEventoHandler {
     private Scene getEscena(String nombre) {
         return switch (nombre) {
             case "pokemones" -> this.vistaPokemonesController.getEscena();
-            case "mochila" -> this.vistaMochilaController.getEscena();
+            case "mochila" -> this.vistaItemsController.getEscena();
             case "campo" -> this.vistaCampoController.getEscena();
             default -> throw new IllegalStateException("Unexpected value: " + nombre);
         };
