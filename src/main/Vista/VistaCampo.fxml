@@ -16,28 +16,28 @@
 <?import javafx.scene.text.Text?>
 
 <StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.Controlador.VistaCampoController">
-     <!-- Sección de información del jugador y rival -->
-     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="306.0" prefWidth="598.0">
-         <!-- Información del rival -->
-         <AnchorPane layoutX="23.0" layoutY="44.0" prefHeight="75.0" prefWidth="250.0">
-             <ProgressBar fx:id="rivalVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="15.0" />
-             <Label fx:id="rivalNombre" layoutX="14.0" layoutY="12.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" text="Nombre Rival" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-             <Label fx:id="rivalNivel" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Rival" />
-         </AnchorPane>
+    <!-- Sección de información del jugador y rival -->
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="306.0" prefWidth="598.0">
+        <!-- Información del rival -->
+        <AnchorPane layoutX="23.0" layoutY="44.0" prefHeight="75.0" prefWidth="250.0">
+            <ProgressBar fx:id="rivalVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="15.0" />
+            <Label fx:id="rivalNombre" layoutX="14.0" layoutY="12.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" text="Nombre Rival" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="rivalNivel" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Rival" />
+        </AnchorPane>
 
-            <!-- Información del jugador -->
-         <AnchorPane layoutX="325.0" layoutY="196.0" prefHeight="118.0" prefWidth="250.0">
-             <ProgressBar fx:id="jugadorVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="59.0" />
-             <Label fx:id="jugadorNombre" layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="150.0" text="Nombre Pokemon" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-             <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="85.0" layoutY="60.0" prefHeight="25.0" prefWidth="150.0" text="Vida Numero" />
-             <Label fx:id="jugadorNivel" alignment="CENTER_RIGHT" layoutX="152.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Jugador" />
-         </AnchorPane>
+        <!-- Información del jugador -->
+        <AnchorPane layoutX="325.0" layoutY="196.0" prefHeight="118.0" prefWidth="250.0">
+            <ProgressBar fx:id="jugadorVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="59.0" />
+            <Label fx:id="jugadorNombre" layoutX="25.0" layoutY="14.0" prefHeight="25.0" prefWidth="150.0" text="Nombre Pokemon" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="85.0" layoutY="60.0" prefHeight="25.0" prefWidth="150.0" text="Vida Numero" />
+            <Label fx:id="jugadorNivel" alignment="CENTER_RIGHT" layoutX="152.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Jugador" />
+        </AnchorPane>
 
-            <!-- Imágenes del jugador y rival -->
-         <ImageView fx:id="jugadorImagen" fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView fx:id="rivalImagen" fitHeight="111.0" fitWidth="150.0" layoutX="375.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-   
-           <!-- Sección de diálogo y opciones -->
+        <!-- Imágenes del jugador y rival -->
+        <ImageView fx:id="jugadorImagen" fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="rivalImagen" fitHeight="111.0" fitWidth="150.0" layoutX="375.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+
+        <!-- Sección de diálogo y opciones -->
         <AnchorPane layoutY="326.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="66.0" prefWidth="600.0">
             <SplitPane dividerPositions="0.5" layoutY="-1.0" prefHeight="76.0" prefWidth="600.0">
                 <Text fx:id="dialogo" strokeType="OUTSIDE" strokeWidth="0.0" text="Dialogo" textAlignment="CENTER" wrappingWidth="305.13671875" />
@@ -52,16 +52,27 @@
                             <RowConstraints maxHeight="60.79999999999999" minHeight="10.0" prefHeight="51.40001220703126" vgrow="SOMETIMES" />
                             <RowConstraints maxHeight="25.60001220703124" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                         </rowConstraints>
-   
-                           <!-- Botones y opciones -->
-                        <Button fx:id="botonPokemones" mnemonicParsing="false" prefHeight="59.0" prefWidth="148.0" text="Pokémones" GridPane.columnIndex="1" />
-                        <Button fx:id="botonMochila" mnemonicParsing="false" prefHeight="57.0" prefWidth="178.0" text="Mochila" GridPane.rowIndex="1" />
-                        <Button fx:id="botonRendirse" mnemonicParsing="false" prefHeight="57.0" prefWidth="148.0" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="botonLucha" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha" />
 
+                        <!-- Botones y opciones -->
+                        <Button fx:id ="botonPokemones" mnemonicParsing="false" prefHeight="59.0" prefWidth="148.0" text="Pokémones" GridPane.columnIndex="1" />
+                        <Button fx:id ="botonMochila" mnemonicParsing="false" prefHeight="57.0" prefWidth="178.0" text="Mochila" GridPane.rowIndex="1" />
+                        <Button fx:id="botonRendirse" mnemonicParsing="false" prefHeight="57.0" prefWidth="148.0" text="Huir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <!-- Menú de Atacar -->
+                        <MenuButton alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Habilidad 1" />
+                                <MenuItem mnemonicParsing="false" text="Habilidad 2" />
+                                <MenuItem mnemonicParsing="false" text="Habilidad 3" />
+                                <MenuItem mnemonicParsing="false" text="Habilidad 4" />
+                            </items>
+                            <padding>
+                                <Insets left="50.0" />
+                            </padding>
+                        </MenuButton>
                     </GridPane>
                 </AnchorPane>
             </SplitPane>
         </AnchorPane>
-     </AnchorPane>
+    </AnchorPane>
 </StackPane>

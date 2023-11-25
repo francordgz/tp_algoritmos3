@@ -151,6 +151,8 @@ public class MainController implements EligePokemonEventoHandler {
         nombre = juego.obtenerSegundoEntrenador().cambiarPokemon(opcion);
         this.vistaPokemonesController.setDialogo(nombre);
         this.juego.inicializarTurnos();
+        vistaCampoController.setStage(this.primaryStage);
+        vistaCampoController.setEscenaItems(this.getEscena("mochila"));
         this.primaryStage.setScene(getEscena("campo"));
     }
 

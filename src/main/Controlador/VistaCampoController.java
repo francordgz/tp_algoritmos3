@@ -18,6 +18,11 @@ import java.io.InputStream;
 
 public class VistaCampoController {
     private Scene escena;
+
+    private Scene escenaPokemon;
+
+    private Scene escenaItems;
+
     @FXML
     public Label rivalNombre;
     @FXML
@@ -47,8 +52,7 @@ public class VistaCampoController {
     @FXML
     private Button botonMochila;
 
-    @FXML
-    private Button botonLucha;
+
 
     Juego juego;
 
@@ -57,6 +61,10 @@ public class VistaCampoController {
 
     public void setEscena(Scene escena) {
         this.escena = escena;
+    }
+
+    public void setEscenaItems(Scene escena1){
+        this.escenaItems = escena1;
     }
 
     public Scene getEscena() {
@@ -94,9 +102,11 @@ public class VistaCampoController {
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
 
         botonPokemones.setOnAction(e -> handlePokemones());
+
         botonMochila.setOnAction(e -> handleMochila());
+
         botonRendirse.setOnAction(e -> handleRendirse());
-        botonLucha.setOnAction(e -> handleLucha());
+
 
 
     }
@@ -149,7 +159,7 @@ public class VistaCampoController {
 
     private void handleMochila() {
 
-
+        this.primaryStage.setScene(escenaItems);
     }
 
     private void handleRendirse() {
