@@ -47,8 +47,7 @@ public class VistaCampoController {
     @FXML
     private Button botonMochila;
 
-    @FXML
-    private Button botonLucha;
+
 
     Juego juego;
 
@@ -96,7 +95,7 @@ public class VistaCampoController {
         botonPokemones.setOnAction(e -> handlePokemones());
         botonMochila.setOnAction(e -> handleMochila());
         botonRendirse.setOnAction(e -> handleRendirse());
-        botonLucha.setOnAction(e -> handleLucha());
+
 
 
     }
