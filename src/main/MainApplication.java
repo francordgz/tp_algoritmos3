@@ -28,6 +28,6 @@ public class MainApplication extends Application {
         primaryStage.addEventHandler(VerMochilaEvento.VER_MOCHILA_EVENTO, controlador);
         primaryStage.addEventHandler(VolverEvento.VOLVER_EVENT, controlador);
         primaryStage.addEventHandler(VerPokemonesEvento.EligeItemEvento.ELIGE_ITEM_EVENT, controlador);
-        primaryStage.addEventHandler(EligePokemonEvento.ELIGE_POKEMON_EVENT,controlador);
+        primaryStage.addEventHandler(EligeHabilidadEvento.ELIGE_HABILIDAD_EVENT,controlador);
     }
 }

@@ -92,9 +92,10 @@ public class MainController implements EventHandler<Event> {
                 terminar();
                 break;
             case "Elige Habilidad":
+                System.out.println("Entra");
                 EligeHabilidadEvento eventoHabilidadPokemon = (EligeHabilidadEvento) customEvent;
                 int opcion = eventoHabilidadPokemon.getOpcion();
-                atacar(opcion);
+                this.atacar(opcion);
                 break;
 
         }
@@ -130,6 +131,7 @@ public class MainController implements EventHandler<Event> {
 
 
     public void atacar(int opcion){
+
 
         double ataque;
         Boolean ataqueEfectivo = true;
