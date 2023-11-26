@@ -99,6 +99,7 @@ public class MainController implements EventHandler<Event> {
                 break;
 
         }
+
     }
 
     private void eligeItem(int opcion) {
@@ -138,6 +139,11 @@ public class MainController implements EventHandler<Event> {
         int habilidadSeleccionada = opcion - 1;
 
         if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            return;
+        }
+
+        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estaMuerto()){
+            verPokemones();
             return;
         }
         switch (opcion) {

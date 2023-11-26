@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="EventoSeTiraNoSeXQNOrestalavida">
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligeHabilidadEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligeHabilidadEvento.java" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="FuncionaAtaque">
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -474,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701035375189</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="FuncionaAtaque">
+      <option name="closed" value="true" />
+      <created>1701035774584</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1701035774584</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modelo del controller anda y Aplicacion se lanza pero no se cargan las imagenes" />
     <MESSAGE value="Modelo main y vistas + imagenes" />
     <MESSAGE value="ControllerCreadoYappSeLanza" />
     <MESSAGE value="SeCarganLasImagenes" />
@@ -517,6 +523,7 @@
     <MESSAGE value="Items Hecho" />
     <MESSAGE value="NombresSeMuestranHabilidades" />
     <MESSAGE value="EventoSeTiraNoSeXQNOrestalavida" />
-    <option name="LAST_COMMIT_MESSAGE" value="EventoSeTiraNoSeXQNOrestalavida" />
+    <MESSAGE value="FuncionaAtaque" />
+    <option name="LAST_COMMIT_MESSAGE" value="FuncionaAtaque" />
   </component>
 </project>
