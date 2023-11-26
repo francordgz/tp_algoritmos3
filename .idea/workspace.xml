@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="4 botones en el campo">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Stage de items subida">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaMochilaController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -400,31 +401,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700525702355</updated>
     </task>
-    <task id="LOCAL-00026" summary="Corregi tremendo Bug">
-      <option name="closed" value="true" />
-      <created>1700956050999</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1700956050999</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Corregi tremendo Bug">
-      <option name="closed" value="true" />
-      <created>1700956073592</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1700956073592</updated>
-    </task>
-    <task id="LOCAL-00028" summary="4 botones en el campo">
-      <option name="closed" value="true" />
-      <created>1700956651231</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1700956651231</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,8 +440,6 @@
     <MESSAGE value="push para mi amigo Mati" />
     <MESSAGE value="VistaCampoModificada" />
     <MESSAGE value="Stage de items subida" />
-    <MESSAGE value="Corregi tremendo Bug" />
-    <MESSAGE value="4 botones en el campo" />
-    <option name="LAST_COMMIT_MESSAGE" value="4 botones en el campo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stage de items subida" />
   </component>
 </project>
