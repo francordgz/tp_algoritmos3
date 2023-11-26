@@ -32,6 +32,10 @@ public class Juego {
         return entrenador2;
     }
 
+    public boolean turnosAsignados() {
+        return this.administrador.turnosAsignados();
+    }
+
     public Entrenador obtenerGanador() {
         Entrenador entrenador = this.entrenador1;
         if (entrenador.esGanador())
@@ -67,6 +71,7 @@ public class Juego {
 
     public void modificarClima(Clima clima) {
         this.clima = clima;
+        this.administrador.modificarDiasDelClimaActual(1);
     }
 
     public void inicializarClima() {

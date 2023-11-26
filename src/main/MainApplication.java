@@ -1,29 +1,31 @@
 package src.main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.Objects;
+import src.main.Controlador.Eventos.*;
+import src.main.Controlador.MainController;
+import src.main.Modelo.Juego;
 
 public class MainApplication extends Application {
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("VistaJuego.fxml")));
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Pelea Politicos");
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
-        primaryStage.setScene(scene);
-
+        primaryStage.setResizable(false);
         primaryStage.show();
+
+        MainController controlador = new MainController(new Juego(), primaryStage);
+        addHandlers(primaryStage, controlador);
     }
 
-
+    private void addHandlers(Stage primaryStage, MainController controlador) {
+        primaryStage.addEventHandler(EligePokemonEvento.ELIGE_POKEMON_EVENT, controlador);
+        primaryStage.addEventHandler(RendirseEvento.RENDIRSE_EVENT, controlador);
+        primaryStage.addEventHandler(VerPokemonesEvento.VER_POKEMONES_EVENTO, controlador);
+        primaryStage.addEventHandler(VerMochilaEvento.VER_MOCHILA_EVENTO, controlador);
+        primaryStage.addEventHandler(VolverEvento.VOLVER_EVENT, controlador);
+    }
 }

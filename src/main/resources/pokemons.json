@@ -70,5 +70,77 @@
     "defensa": 100,
     "ataque": 100,
     "habilidades": [52,53,54,55,57,56]
+  },
+  {
+    "nombre": "Venusaur",
+    "id": 8,
+    "nivel": 9,
+    "tipo": "veneno",
+    "historia": "Venusaur es la evolución final de Bulbasur y tiene una flor gigante en su espalda.",
+    "vidaMaxima": 70,
+    "velocidad": 12,
+    "defensa": 10,
+    "ataque": 20,
+    "habilidades": [0,1,3,7,26,4,55]
+  },
+  {
+    "nombre": "Charizard",
+    "id": 9,
+    "nivel": 8,
+    "tipo": "dragon",
+    "historia": "Charizard es un poderoso dragón volador con aliento de fuego.",
+    "vidaMaxima": 120,
+    "velocidad": 50,
+    "defensa": 2,
+    "ataque": 15,
+    "habilidades": [0,28,24,8,14,27]
+  },
+  {
+    "nombre": "Rattata",
+    "id": 10,
+    "nivel": 2,
+    "tipo": "bicho",
+    "historia": "Rattata es un roedor ágil y astuto con dientes afilados.",
+    "vidaMaxima": 100,
+    "velocidad": 45,
+    "defensa": 4,
+    "ataque": 35,
+    "habilidades": [4,5,12,55,71,72]
+  },
+  {
+    "nombre": "Raichu",
+    "id": 11,
+    "nivel": 3,
+    "tipo": "electrico",
+    "historia": "Raichu es la evolución de Pikachu y es conocido por su velocidad y poder eléctrico.",
+    "vidaMaxima": 150,
+    "velocidad": 15,
+    "defensa": 3,
+    "ataque": 25,
+    "habilidades": [6, 73, 12, 8, 56, 9]
+  },
+  {
+    "nombre": "Kadabra",
+    "id": 12,
+    "nivel": 5,
+    "tipo": "psiquico",
+    "historia": "Kadabra es un Pokémon psíquico con habilidades mentales poderosas.",
+    "vidaMaxima": 140,
+    "velocidad": 20,
+    "defensa": 3,
+    "ataque": 30,
+    "habilidades": [22,25,26,27,54,55]
+  },
+  {
+    "nombre": "Ekans",
+    "id": 13,
+    "nivel": 2,
+    "tipo": "veneno",
+    "historia": "Ekans es una serpiente venenosa que puede paralizar a sus presas.",
+    "vidaMaxima": 120,
+    "velocidad": 20,
+    "defensa": 5,
+    "ataque": 30,
+    "habilidades": [3,12,26,55,71,74]
   }
 ]

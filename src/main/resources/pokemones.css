@@ -1,0 +1,18 @@
+@font-face {
+    src: url('fonts/PressStart2P.ttf');
+}
+
+.text, #dialogo {
+    -fx-font-size: 8px;
+    -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+.button {
+    -fx-background-color: #cdcdcd;
+    -fx-text-fill: #000;
+    -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+.button:hover, .menu-button:hover, .menu-button:hover .label, .menu-item:hover{
+    -fx-background-color: #ffcc00;
+}

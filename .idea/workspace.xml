@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mejoro Escena">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Imagenes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/VistaJuegoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/VistaJuegoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/Massa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/MyriamBregman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +37,11 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="UiRealPosta" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -44,7 +52,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="2f7b198f-f470-464a-9b7e-03943e562a3e" />
+        <option name="accountId" value="9267e3b9-3919-472e-a024-d65b40dc1ce3" />
         <option name="url" value="https://github.com/francordgz/tp1_algoritmos3.git" />
       </UrlAndAccount>
     </option>
@@ -66,24 +74,40 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CustomEvent&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ezela/tp3algoritmos3/src/main/Imagenes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="src.main.Controlador.Eventos" />
+      <recent name="src.main.Controlador" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
       <recent name="C:\Users\Ezela\tp3algoritmos3\src\main\Imagenes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ezela\tp3algoritmos3\src\main\Imagenes" />
-      <recent name="C:\Users\Ezela\tp3algoritmos3\src\main" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources\persistencia" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources\fonts" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\Vista" />
+      <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\Vista7" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src.main" />
+      <recent name="src.main.Controlador" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="src.main.Controlador.Eventos" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
@@ -92,7 +116,7 @@
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.main.*" />
+          <option name="PATTERN" value="src.main.Controlador.Eventos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,7 +129,7 @@
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.main.*" />
+          <option name="PATTERN" value="src.main.Controlador.Eventos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,13 +137,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="IntegracionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+    <configuration name="src.test in tp1_algoritmos3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -127,6 +169,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.src.test in tp1_algoritmos3" />
+        <item itemvalue="JUnit.IntegracionTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -142,7 +186,19 @@
       <workItem from="1699735846240" duration="18138000" />
       <workItem from="1700086902486" duration="9753000" />
       <workItem from="1700097448068" duration="94000" />
-      <workItem from="1700102490532" duration="1688000" />
+      <workItem from="1700102490532" duration="2462000" />
+      <workItem from="1700166171533" duration="215000" />
+      <workItem from="1700176526976" duration="1040000" />
+      <workItem from="1700182674712" duration="594000" />
+      <workItem from="1700186381892" duration="3150000" />
+      <workItem from="1700189587762" duration="576000" />
+      <workItem from="1700225922845" duration="12283000" />
+      <workItem from="1700251829390" duration="4196000" />
+      <workItem from="1700266631095" duration="78000" />
+      <workItem from="1700273239809" duration="1531000" />
+      <workItem from="1700330609289" duration="17664000" />
+      <workItem from="1700348621685" duration="239000" />
+      <workItem from="1701004983264" duration="6069000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -240,14 +296,176 @@
       <option name="project" value="LOCAL" />
       <updated>1700097520526</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Mejoro Escena">
+      <option name="closed" value="true" />
+      <created>1700104449390</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1700104449390</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Agrego Escenas">
+      <option name="closed" value="true" />
+      <created>1700189889378</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700189889378</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Creo vistas">
+      <option name="closed" value="true" />
+      <created>1700239498503</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700239498503</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Creo vistas">
+      <option name="closed" value="true" />
+      <created>1700239560245</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700239560245</updated>
+    </task>
+    <task id="LOCAL-00017" summary="List View">
+      <option name="closed" value="true" />
+      <created>1700264773587</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700264773587</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Handle Button Click">
+      <option name="closed" value="true" />
+      <created>1700265527431</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700265527431</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Handle Button Click">
+      <option name="closed" value="true" />
+      <created>1700265612093</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1700265612093</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Handle Button Click">
+      <option name="closed" value="true" />
+      <created>1700332450456</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700332450456</updated>
+    </task>
+    <task id="LOCAL-00021" summary="push para mi amigo Ezequiel">
+      <option name="closed" value="true" />
+      <created>1700338040034</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1700338040034</updated>
+    </task>
+    <task id="LOCAL-00022" summary="push para mi amigo Ezequiel">
+      <option name="closed" value="true" />
+      <created>1700343128988</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1700343128988</updated>
+    </task>
+    <task id="LOCAL-00023" summary="push para mi amigo Mati">
+      <option name="closed" value="true" />
+      <created>1700344647717</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1700344647717</updated>
+    </task>
+    <task id="LOCAL-00024" summary="push para mi amigo Mati">
+      <option name="closed" value="true" />
+      <created>1700344722129</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1700344722129</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Stage de items subida">
+      <option name="closed" value="true" />
+      <created>1700525702355</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1700525702355</updated>
+    </task>
+    <task id="LOCAL-00026" summary="cambio">
+      <option name="closed" value="true" />
+      <created>1700957515848</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700957515848</updated>
+    </task>
+    <task id="LOCAL-00027" summary="cambio">
+      <option name="closed" value="true" />
+      <created>1700957520960</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1700957520960</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Pokemon Vista en Batalla">
+      <option name="closed" value="true" />
+      <created>1700963651224</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1700963651224</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Cambio el git ignore a que ignore todo el .idea">
+      <option name="closed" value="true" />
+      <created>1700963786953</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1700963786953</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Pokemon Data">
+      <option name="closed" value="true" />
+      <created>1700965690214</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1700965690214</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Imagenes">
+      <option name="closed" value="true" />
+      <created>1701017527092</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701017527092</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Agrego dependencias con javafx al pom" />
     <MESSAGE value="JavaFX Vista" />
     <MESSAGE value="CorrijoVista" />
     <MESSAGE value="Refactor de clases y carpetas (#24)&#10;&#10;* Refactor a patron MVC&#10;&#10;* Dependencias y plugins agregados&#10;&#10;* Modifico dependencias que se rompieron&#10;&#10;---------&#10;&#10;Co-authored-by: Franco Rodriguez &lt;frodriguez@fi.uba.ar&gt;" />
@@ -259,6 +477,20 @@
     <MESSAGE value="ImagenMasomenos" />
     <MESSAGE value="Cambio imagenes a path relativo para que todos lo podamos correr, no solo vos Ezequiel" />
     <MESSAGE value="Mejoro Escena" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejoro Escena" />
+    <MESSAGE value="Agrego Escenas" />
+    <MESSAGE value="Creo carpetas" />
+    <MESSAGE value="Creo vistas" />
+    <MESSAGE value="List View" />
+    <MESSAGE value="Handle Button Click" />
+    <MESSAGE value="push para mi amigo Ezequiel" />
+    <MESSAGE value="push para mi amigo Mati" />
+    <MESSAGE value="VistaCampoModificada" />
+    <MESSAGE value="Stage de items subida" />
+    <MESSAGE value="cambio" />
+    <MESSAGE value="Pokemon Vista en Batalla" />
+    <MESSAGE value="Cambio el git ignore a que ignore todo el .idea" />
+    <MESSAGE value="Pokemon Data" />
+    <MESSAGE value="Imagenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imagenes" />
   </component>
 </project>
