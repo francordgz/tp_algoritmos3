@@ -105,7 +105,7 @@
     "velocidad": 45,
     "defensa": 4,
     "ataque": 35,
-    "habilidades": [4,5,12,55,71,72]
+    "habilidades": [72,5,12,55,71,4]
   },
   {
     "nombre": "Raichu",
