@@ -204,8 +204,8 @@ public class MainController implements EventHandler<Event> {
     }
 
     public void actualizarDatos() {
-        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
-        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        Entrenador actual = this.juego.obtenerEntrenadorActual();
+        Entrenador rival = this.juego.obtenerEntrenadorRival();
         vistaCampoController.setDatos(actual, rival);
     }
 
@@ -241,12 +241,13 @@ public class MainController implements EventHandler<Event> {
             throw new RuntimeException(e);
         }
 
-        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
-        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        Entrenador actual = this.juego.obtenerEntrenadorActual();
+        Entrenador rival = this.juego.obtenerEntrenadorRival();
         vistaCampoController.setDatos(actual, rival);
     }
 
     private void esperar(int segundos) {
+        /*
         synchronized (lock) {
             try {
                 lock.wait(segundos * 1000L);
@@ -254,6 +255,7 @@ public class MainController implements EventHandler<Event> {
                 throw new RuntimeException(e);
             }
         }
+                 */
     }
 
     private void crearInforme() {

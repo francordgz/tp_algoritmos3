@@ -17,6 +17,10 @@
     -fx-background-color: #ffcc00;
 }
 
+.progress-bar {
+    -fx-control-inner-background: rgba(0, 0, 0, 0.62);
+}
+
 .list-view {
     -fx-background-color: transparent;
 }

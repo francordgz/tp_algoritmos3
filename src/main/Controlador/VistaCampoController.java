@@ -7,15 +7,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Controlador.Eventos.VerMochilaEvento;
 import src.main.Controlador.Eventos.VerPokemonesEvento;
+import src.main.Modelo.Entrenador;
 import src.main.Modelo.Pokemon;
 
 import java.io.InputStream;
 
 public class VistaCampoController {
+    public ImageView background;
+    public Label estadosRival;
+    public Label estadosActual;
+    public Label cantidadPokemonesActual;
+    public Label cantidadPokemonesRival;
     private Scene escena;
     @FXML
     public Label rivalNombre;
@@ -65,22 +72,35 @@ public class VistaCampoController {
         botonPokemones.setOnAction(e -> botonPokemones.fireEvent(new VerPokemonesEvento()));
 
         botonMochila.setOnAction(e -> botonMochila.fireEvent(new VerMochilaEvento()));
+
+        actualizarClima("normal");
     }
 
-    public void setDatos(Pokemon pokemonActual, Pokemon pokemonRival) {
+    public void setDatos(Entrenador actual, Entrenador rival) {
+        Pokemon pokemonActual = actual.obtenerPokemonActual();
         String nombre = pokemonActual.obtenerNombre();
-        this.jugadorImagen.setImage(getImagen(nombre, true));
+        this.jugadorImagen.setImage(getImagenPokemon(nombre, true));
         this.jugadorNombre.setText(nombre);
+        this.estadosActual.setText(pokemonActual.obtenerEstados() + "");
         this.dialogo.setText("Que debe hacer " + nombre + "?");
 
         this.jugadorNivel.setText("Nv " + pokemonActual.obtenerNivel());
         setJugadorVida(pokemonActual.obtenerVidaActual(), pokemonActual.obtenerVidaMaxima());
 
+        Pokemon pokemonRival = rival.obtenerPokemonActual();
         nombre = pokemonRival.obtenerNombre();
-        this.rivalImagen.setImage(getImagen(nombre, false));
+        this.rivalImagen.setImage(getImagenPokemon(nombre, false));
         this.rivalNombre.setText(nombre);
         this.rivalNivel.setText("Nv " + pokemonRival.obtenerNivel());
+        this.estadosRival.setText(pokemonRival.obtenerEstados() + "");
         setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
+
+        this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerPokemones().size()));
+        this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerPokemones().size()));
+    }
+
+    public void actualizarClima(String nombreClima) {
+        this.background.setImage(getImagenClima(nombreClima));
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -109,11 +129,18 @@ public class VistaCampoController {
         return "#00FF00"; // Green
     }
 
-    private Image getImagen(String nombre, boolean dorso) {
+    private Image getImagenPokemon(String nombre, boolean dorso) {
         String path = "/Imagenes/pokemon/";
         if (dorso) path = path + "dorso";
         else path = path + "frente";
         path = path + "_gif/" + nombre + ".gif";
+        InputStream imagen = getClass().getResourceAsStream(path);
+        assert imagen != null;
+        return new Image(imagen);
+    }
+
+    private Image getImagenClima(String nombre) {
+        String path = "/Imagenes/bgs/climas/" + nombre + ".png";
         InputStream imagen = getClass().getResourceAsStream(path);
         assert imagen != null;
         return new Image(imagen);

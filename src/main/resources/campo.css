@@ -30,3 +30,16 @@
 .label {
     -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
 }
+
+.progress-bar {
+    -fx-control-inner-background: rgba(0, 0, 0, 0.4);
+}
+
+#paneActual, #paneRival {
+    -fx-background-color: rgba(255, 227, 176, 0.84);
+}
+
+#cantidadPokemonesActual, #cantidadPokemonesRival {
+    -fx-text-fill: #ff0000;
+    -fx-font-size: 30;
+}
