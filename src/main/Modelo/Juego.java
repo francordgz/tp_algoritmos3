@@ -67,6 +67,7 @@ public class Juego {
 
     public void modificarClima(Clima clima) {
         this.clima = clima;
+        this.administrador.modificarDiasDelClimaActual(1);
     }
 
     public void inicializarClima() {
