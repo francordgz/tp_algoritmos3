@@ -33,7 +33,6 @@ public class VistaItemsController {
     }
 
     private void configurarVisibilidades() {
-        System.out.println("entro");
         int i = 0;
         for (Button button : this.itemListView.getItems()) {
             int finalI = i;

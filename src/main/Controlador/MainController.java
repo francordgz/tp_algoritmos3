@@ -1,12 +1,10 @@
 package src.main.Controlador;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import src.main.Controlador.Eventos.CustomEvent;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Juego;
@@ -161,7 +159,10 @@ public class MainController implements EventHandler<EligePokemonEvento> {
             this.inicializarPokemones();
             Entrenador actual = this.juego.obtenerEntrenadorActual();
             this.vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
+            this.vistaItemsController.setElementosScene(this.juego.obtenerPrimerEntrenador().obtenerItems());
             vistaCampoController.setEscenaPokemones(this.getEscena("pokemones"));
+            vistaCampoController.setDatos(this.juego.obtenerEntrenadorActual().obtenerPokemonActual(),
+                                        this.juego.obtenerEntrenadorRival().obtenerPokemonActual());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

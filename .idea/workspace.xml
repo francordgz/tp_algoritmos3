@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="cambio">
-      <change afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/CustomEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Cambio el git ignore a que ignore todo el .idea">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligePokemonEventoHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/RendriseEventoHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/CustomEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/ItemButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/ItemButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaMochila.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,7 +409,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700957520960</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Pokemon Vista en Batalla">
+      <option name="closed" value="true" />
+      <created>1700963651224</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1700963651224</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Cambio el git ignore a que ignore todo el .idea">
+      <option name="closed" value="true" />
+      <created>1700963786953</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1700963786953</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,6 +465,8 @@
     <MESSAGE value="VistaCampoModificada" />
     <MESSAGE value="Stage de items subida" />
     <MESSAGE value="cambio" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio" />
+    <MESSAGE value="Pokemon Vista en Batalla" />
+    <MESSAGE value="Cambio el git ignore a que ignore todo el .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio el git ignore a que ignore todo el .idea" />
   </component>
 </project>

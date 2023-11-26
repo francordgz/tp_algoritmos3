@@ -11,9 +11,7 @@ public class ItemButtonController {
     private Label cantidadLabel;
 
     public void setItemInfo(Item item) {
-        String cantiadad = ((Integer)item.obtenerCantidad()).toString();
         this.nombreLabel.setText(item.obtenerNombre());
-        this.cantidadLabel.setText("x" + cantiadad);
+        this.cantidadLabel.setText("x " + item.obtenerCantidad());
     }
 }
-
