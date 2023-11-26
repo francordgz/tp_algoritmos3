@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.VolverEvento;
 import src.main.Modelo.Item.*;
 
@@ -63,6 +64,7 @@ public class VistaItemsController {
     private void agregarDescripcionItems(List<Item> items) {
         this.descripciones = new ArrayList<Pane>();
         String path = "/src/main/Vista/ItemPane.fxml";
+        int opcion = 0;
         try {
             for (Item item : items) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -70,9 +72,9 @@ public class VistaItemsController {
                 ItemPaneController itemPaneController = loader.getController();
                 itemPane.setVisible(false);
                 itemPaneController.setItemInfo(item);
-
                 infoItemPane.getChildren().add(itemPane);
                 descripciones.add(itemPane);
+                opcion++;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -81,6 +83,7 @@ public class VistaItemsController {
 
     public void llenarLista(List<Item> items) {
         String buttonPath = "/src/main/Vista/ItemButton.fxml";
+        int opcion = 0;
         try {
             itemListView.getItems().clear();
             for (Item item : items) {
@@ -88,8 +91,10 @@ public class VistaItemsController {
                 Button button = loader.load();
                 ItemButtonController itemButtonController = loader.getController();
                 itemButtonController.setItemInfo(item);
-
+                int finalOpcion = opcion;
+                button.setOnAction(e -> button.fireEvent(new EligeItemEvento(finalOpcion)));
                 itemListView.getItems().add(button);
+                opcion++;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

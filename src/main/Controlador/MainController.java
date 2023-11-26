@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Modelo.Entrenador;
+import src.main.Modelo.Item.Item;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
@@ -21,6 +23,8 @@ public class MainController implements EventHandler<Event> {
     Juego juego;
     Stage primaryStage;
     private final Object lock = new Object();
+
+    private Item itemSeleccionado = null;
 
     @FXML
     VistaCampoController vistaCampoController;
@@ -66,8 +70,8 @@ public class MainController implements EventHandler<Event> {
     public void handle(Event customEvent) {
         switch (customEvent.getEventType().getName()) {
             case "Elige Pokemon":
-                EligePokemonEvento evento = (EligePokemonEvento) customEvent;
-                eligePokemonEvento(evento.getOpcion());
+                EligePokemonEvento eventoEligePokemon = (EligePokemonEvento) customEvent;
+                eligePokemonEvento(eventoEligePokemon.getOpcion());
                 break;
             case "Ver Pokemones":
                 verPokemones();
@@ -78,10 +82,26 @@ public class MainController implements EventHandler<Event> {
             case "Volver":
                 volver();
                 break;
+            case "Elige Item":
+                EligeItemEvento eventoEligeItem = (EligeItemEvento) customEvent;
+                eligeItem(eventoEligeItem.getOpcion());
+                break;
             case "Rendirse":
                 terminar();
                 break;
         }
+    }
+
+    private void eligeItem(int opcion) {
+        Entrenador actual = juego.obtenerEntrenadorActual();
+        this.itemSeleccionado = actual.obtenerItems().get(opcion);
+        try {
+            inicializarPrimeraSeleccion();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
+        this.primaryStage.setScene(getEscena("pokemones"));
     }
 
     private void volver() {
@@ -166,9 +186,20 @@ public class MainController implements EventHandler<Event> {
             return;
         }
 
+        if (itemSeleccionado != null) {
+            Pokemon pokemonItem = this.juego.obtenerEntrenadorActual().obtenerPokemones().get(opcion);
+            this.itemSeleccionado.usarItem(pokemonItem);
+            this.itemSeleccionado = null;
+            this.juego.cambiarTurno();
+            actualizarDatos();
+            this.primaryStage.setScene(getEscena("campo"));
+            return;
+        }
+
         this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion);
         this.juego.cambiarTurno();
         actualizarDatos();
+
         this.primaryStage.setScene(getEscena("campo"));
     }
 

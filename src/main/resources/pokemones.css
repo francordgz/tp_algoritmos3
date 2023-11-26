@@ -16,3 +16,7 @@
 .button:hover, .menu-button:hover, .menu-button:hover .label, .menu-item:hover{
     -fx-background-color: #ffcc00;
 }
+
+.list-view {
+    -fx-background-color: transparent;
+}
