@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import src.main.Controlador.Eventos.EligeItemEvento;
+import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
+import src.main.Controlador.Eventos.VerPokemonesEvento;
 import src.main.Modelo.Entrenador;
+import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Item.Item;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Pokemon;
@@ -83,12 +85,18 @@ public class MainController implements EventHandler<Event> {
                 volver();
                 break;
             case "Elige Item":
-                EligeItemEvento eventoEligeItem = (EligeItemEvento) customEvent;
+                VerPokemonesEvento.EligeItemEvento eventoEligeItem = (VerPokemonesEvento.EligeItemEvento) customEvent;
                 eligeItem(eventoEligeItem.getOpcion());
                 break;
             case "Rendirse":
                 terminar();
                 break;
+            case "Elige Habilidad":
+                EligeHabilidadEvento eventoHabilidadPokemon = (EligeHabilidadEvento) customEvent;
+                int opcion = eventoHabilidadPokemon.getOpcion();
+                atacar(opcion);
+                break;
+
         }
     }
 
@@ -119,6 +127,40 @@ public class MainController implements EventHandler<Event> {
         vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
         primaryStage.setScene(getEscena("pokemones"));
     }
+
+
+    public void atacar(int opcion){
+
+        double ataque;
+        Boolean ataqueEfectivo = true;
+        int habilidadSeleccionada = opcion - 1;
+
+        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            return;
+        }
+        switch (opcion) {
+            case 1, 2:
+                ataque = this.juego.atacar(habilidadSeleccionada);
+
+                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
+                    ataqueEfectivo = false;
+                    break;
+                }
+
+            case 3, 4, 5:
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
+
+            case 6:
+                ataqueEfectivo = this.juego.usarHabilidadClima(habilidadSeleccionada);
+                break;
+        }
+
+        this.juego.cambiarTurno();
+        actualizarDatos();
+
+    }
+
 
     private void inicializarCampo() throws IOException {
         String path = "/src/main/Vista/VistaCampo.fxml";

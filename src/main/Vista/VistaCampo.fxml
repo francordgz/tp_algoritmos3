@@ -55,12 +55,12 @@
                         <!-- Menú de Atacar -->
                         <MenuButton alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha">
                             <items>
-                                <MenuItem fx:id="botonHabilidad1" mnemonicParsing="false" onAction="#handleHabilidad1" text=" " />
-                                <MenuItem fx:id="botonHabilidad2" mnemonicParsing="false" onAction="#handleHabilidad2" text=" " />
-                                <MenuItem fx:id="botonHabilidad3" mnemonicParsing="false" onAction="#handleHabilidad3" text=" " />
-                                <MenuItem fx:id="botonHabilidad4" mnemonicParsing="false" onAction="#handleHabilidad4" text=" " />
-                                <MenuItem fx:id="botonHabilidad5" mnemonicParsing="false" onAction="#handleHabilidad4" text=" " />
-                                <MenuItem fx:id="botonHabilidadClima" mnemonicParsing="false" onAction="#handleHabilidad4" text="Habilidad Clima" />
+                                <MenuItem fx:id= "botonHabilidad1" mnemonicParsing="false"  text=" " />
+                                <MenuItem fx:id= "botonHabilidad2" mnemonicParsing="false"  text=" " />
+                                <MenuItem fx:id= "botonHabilidad3" mnemonicParsing="false"  text=" " />
+                                <MenuItem fx:id= "botonHabilidad4" mnemonicParsing="false"  text=" " />
+                                <MenuItem fx:id= "botonHabilidad5" mnemonicParsing="false"  text=" " />
+                                <MenuItem fx:id= "botonHabilidadClima" mnemonicParsing="false"  text="Habilidad Clima" />
                             </items>
                             <padding>
                                 <Insets left="50.0" />

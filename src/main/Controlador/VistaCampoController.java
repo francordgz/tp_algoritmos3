@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Controlador.Eventos.VerMochilaEvento;
 import src.main.Controlador.Eventos.VerPokemonesEvento;
@@ -84,14 +85,35 @@ public class VistaCampoController {
 
     @FXML
     public void initialize() {
+
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
 
         botonPokemones.setOnAction(e -> botonPokemones.fireEvent(new VerPokemonesEvento()));
 
         botonMochila.setOnAction(e -> botonMochila.fireEvent(new VerMochilaEvento()));
 
+        botonHabilidad1.setOnAction(e -> habilidad(1));
+
+        botonHabilidad2.setOnAction(e -> habilidad(2));
+
+        botonHabilidad3.setOnAction(e -> habilidad(3));
+
+        botonHabilidad4.setOnAction(e -> habilidad(4));
+
+        botonHabilidad5.setOnAction(e -> habilidad(5));
+
         actualizarClima("normal");
     }
+
+
+    private void habilidad(int habilidad) {
+
+        System.out.println("A");
+        botonRendirse.fireEvent(new EligeHabilidadEvento(habilidad));
+
+
+    }
+
 
     public void setDatos(Entrenador actual, Entrenador rival) {
         Pokemon pokemonActual = actual.obtenerPokemonActual();
@@ -115,11 +137,11 @@ public class VistaCampoController {
         this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerPokemones().size()));
         this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerPokemones().size()));
 
-        botonHabilidad1.setText(pokemonActual.habilidades(1).obtenerNombre());
-        botonHabilidad2.setText(pokemonActual.habilidades(2).obtenerNombre());
-        botonHabilidad3.setText(pokemonActual.habilidades(3).obtenerNombre());
-        botonHabilidad4.setText(pokemonActual.habilidades(4).obtenerNombre());
-        botonHabilidad5.setText(pokemonActual.habilidades(5).obtenerNombre());
+        botonHabilidad1.setText(pokemonActual.habilidades(0).obtenerNombre());
+        botonHabilidad2.setText(pokemonActual.habilidades(1).obtenerNombre());
+        botonHabilidad3.setText(pokemonActual.habilidades(2).obtenerNombre());
+        botonHabilidad4.setText(pokemonActual.habilidades(3).obtenerNombre());
+        botonHabilidad5.setText(pokemonActual.habilidades(4).obtenerNombre());
 
 
     }
@@ -171,21 +193,7 @@ public class VistaCampoController {
         return new Image(imagen);
     }
 
-    public void handleHabilidad1() {
 
-    }
-
-    public void handleHabilidad2() {
-
-    }
-
-    public void handleHabilidad3() {
-
-    }
-
-    public void handleHabilidad4() {
-
-    }
 
 
 }

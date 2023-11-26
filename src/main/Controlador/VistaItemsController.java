@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import src.main.Controlador.Eventos.EligeItemEvento;
+import src.main.Controlador.Eventos.VerPokemonesEvento;
 import src.main.Controlador.Eventos.VolverEvento;
 import src.main.Modelo.Item.*;
 
@@ -92,7 +92,7 @@ public class VistaItemsController {
                 ItemButtonController itemButtonController = loader.getController();
                 itemButtonController.setItemInfo(item);
                 int finalOpcion = opcion;
-                button.setOnAction(e -> button.fireEvent(new EligeItemEvento(finalOpcion)));
+                button.setOnAction(e -> button.fireEvent(new VerPokemonesEvento.EligeItemEvento(finalOpcion)));
                 itemListView.getItems().add(button);
                 opcion++;
             }

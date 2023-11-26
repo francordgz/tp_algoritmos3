@@ -7,13 +7,13 @@
     -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
 }
 
-.button, .menu-button, .menu-button .label, .menu-item, .menu-item .label {
+.button, .menu-button, .menu-button .label, .menu-item, .menu-button .label {
     -fx-background-color: #cdcdcd;
     -fx-text-fill: #000;
     -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
 }
 
-.button:hover, .menu-button:hover, .menu-button:hover .label, .menu-item:hover{
+.button:hover, .menu-button:hover, .menu-button:hover .label, .menu-button:hover{
     -fx-background-color: #ffcc00;
 }
 
