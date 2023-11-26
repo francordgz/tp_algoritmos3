@@ -129,7 +129,7 @@
     "velocidad": 20,
     "defensa": 3,
     "ataque": 30,
-    "habilidades": [22,25,26,27,54,55]
+    "habilidades": [22,25,55,27,54,26]
   },
   {
     "nombre": "Ekans",
@@ -141,6 +141,6 @@
     "velocidad": 20,
     "defensa": 5,
     "ataque": 30,
-    "habilidades": [3,12,26,55,71,74]
+    "habilidades": [3,12,74,55,71,26]
   }
 ]

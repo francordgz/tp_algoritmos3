@@ -146,6 +146,7 @@ public class MainController implements EventHandler<Event> {
             verPokemones();
             return;
         }
+
         switch (opcion) {
             case 1, 2:
                 ataque = this.juego.atacar(habilidadSeleccionada);

@@ -60,7 +60,7 @@
                                 <MenuItem fx:id= "botonHabilidad3" mnemonicParsing="false"  text=" " />
                                 <MenuItem fx:id= "botonHabilidad4" mnemonicParsing="false"  text=" " />
                                 <MenuItem fx:id= "botonHabilidad5" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidadClima" mnemonicParsing="false"  text="Habilidad Clima" />
+                                <MenuItem fx:id= "botonHabilidad6" mnemonicParsing="false"  text="Habilidad Clima" />
                             </items>
                             <padding>
                                 <Insets left="50.0" />

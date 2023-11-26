@@ -71,6 +71,9 @@ public class VistaCampoController {
     @FXML
     private MenuItem botonHabilidad5;
 
+    @FXML
+    private MenuItem botonHabilidad6;
+
 
     public void setEscena(Scene escena) {
         this.escena = escena;
@@ -102,14 +105,23 @@ public class VistaCampoController {
 
         botonHabilidad5.setOnAction(e -> habilidad(5));
 
+        botonHabilidad6.setOnAction(e -> habilidadClima(6));
+
         actualizarClima("normal");
     }
 
 
     private void habilidad(int habilidad) {
 
-        System.out.println("A");
+
         botonRendirse.fireEvent(new EligeHabilidadEvento(habilidad));
+
+
+    }
+
+    private void habilidadClima(int habilidad){
+        this.habilidad(habilidad);
+
 
 
     }
@@ -142,6 +154,7 @@ public class VistaCampoController {
         botonHabilidad3.setText(pokemonActual.habilidades(2).obtenerNombre());
         botonHabilidad4.setText(pokemonActual.habilidades(3).obtenerNombre());
         botonHabilidad5.setText(pokemonActual.habilidades(4).obtenerNombre());
+        botonHabilidad6.setText(pokemonActual.habilidades(5).obtenerNombre());
 
 
     }

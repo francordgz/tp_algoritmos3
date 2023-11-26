@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="FuncionaAtaque">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mew esta re OP">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemons.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pokemons.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +47,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="9267e3b9-3919-472e-a024-d65b40dc1ce3" />
+        <option name="accountId" value="2f7b198f-f470-464a-9b7e-03943e562a3e" />
         <option name="url" value="https://github.com/francordgz/tp1_algoritmos3.git" />
       </UrlAndAccount>
     </option>
@@ -481,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701035774584</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Mew esta re OP">
+      <option name="closed" value="true" />
+      <created>1701036198945</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701036198945</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modelo main y vistas + imagenes" />
     <MESSAGE value="ControllerCreadoYappSeLanza" />
     <MESSAGE value="SeCarganLasImagenes" />
     <MESSAGE value="ImagenMasomenos" />
@@ -524,6 +535,7 @@
     <MESSAGE value="NombresSeMuestranHabilidades" />
     <MESSAGE value="EventoSeTiraNoSeXQNOrestalavida" />
     <MESSAGE value="FuncionaAtaque" />
-    <option name="LAST_COMMIT_MESSAGE" value="FuncionaAtaque" />
+    <MESSAGE value="Mew esta re OP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mew esta re OP" />
   </component>
 </project>
