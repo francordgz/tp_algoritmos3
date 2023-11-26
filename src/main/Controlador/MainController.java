@@ -329,22 +329,31 @@ public class MainController implements EligePokemonEventoHandler {
     }
 
     private Boolean seleccionarItem() {
-        int pokemonSeleccionado = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
-
-        if (pokemonSeleccionado == Constant.NOT_INT)
-            return false;
-
-        int opcion = pedirItem(pokemonSeleccionado);
+        boolean itemAplicable = false;
+        int pokemon = NOT_INT;
+        int opcion = pedirItem();
 
         if (opcion == Constant.SALIR)
             return false;
 
-        this.juego.usarItem(opcion - 1, pokemonSeleccionado);
+        while (!itemAplicable) {
+            pokemon = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
+
+            if (pokemon == NOT_INT)
+                return false;
+
+            if (!this.juego.itemAplicable(opcion - 1, pokemon))
+                VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
+            else
+                itemAplicable = true;
+        }
+
+        this.juego.usarItem(opcion - 1, pokemon);
         VistaItem.notificarUsoDeItem(this.juego.obtenerEntrenadorActual(), opcion - 1);
         return true;
     }
 
-    private Integer pedirItem(Integer pokemon) {
+    private Integer pedirItem() {
         int opcion = Constant.SALIR;
         boolean itemValido = false;
         VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
@@ -356,11 +365,8 @@ public class MainController implements EligePokemonEventoHandler {
                 VistaJuego.imprimir("Seleccione una opción correcta!");
             else if (opcion == Constant.SALIR)
                 return opcion;
-
-            if (!this.juego.validarItem(opcion - 1))
+            else if (!this.juego.validarItem(opcion - 1))
                 VistaJuego.imprimir("Esta item no tiene más usos");
-            else if (!this.juego.itemAplicable(opcion - 1, pokemon))
-                VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
             else
                 itemValido = true;
         }
