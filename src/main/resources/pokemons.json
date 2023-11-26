@@ -72,11 +72,11 @@
     "habilidades": [52,53,54,55,57,56]
   },
   {
-    "nombre": "Venusar",
+    "nombre": "Venusaur",
     "id": 8,
     "nivel": 9,
     "tipo": "veneno",
-    "historia": "Venusar es la evolución final de Bulbasur y tiene una flor gigante en su espalda.",
+    "historia": "Venusaur es la evolución final de Bulbasur y tiene una flor gigante en su espalda.",
     "vidaMaxima": 70,
     "velocidad": 12,
     "defensa": 10,

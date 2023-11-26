@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import src.main.Controlador.Eventos.VolverEvento;
 import src.main.Modelo.Item.*;
 
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 public class VistaItemsController {
+    @FXML
+    public Button salir;
     @FXML
     private ListView<Button> itemListView;
 
@@ -25,6 +28,12 @@ public class VistaItemsController {
     private Map<Integer, String> descripcionesItems;
     private Map<Integer, String> imagenesItems;
     private Scene escena;
+
+    @FXML
+    public void initialize() {
+        this.salir.setOnAction(e -> salir.fireEvent(new VolverEvento()));
+    }
+
 
     private void configurarVisibilidades() {
         int i = 0;

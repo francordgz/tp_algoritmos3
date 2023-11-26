@@ -30,11 +30,7 @@ public class PokemonButtonController  {
     private Label hpLabel;
 
     public void setPokemonInfo(Pokemon pokemon) {
-        // Set the information from the Pokemon object to the UI elements
-        //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
-        InputStream temporal = getClass().getResourceAsStream("/src/main/Imagenes/Massa.png");
-        assert temporal != null;
-        this.pokemonImage.setImage(new Image(temporal));
+        this.pokemonImage.setImage(getImagen(pokemon.obtenerNombre()));
         this.nombreLabel.setText(pokemon.obtenerNombre());
         this.nivelLabel.setText("Nv " + pokemon.obtenerNivel());
         this.estadosLabel.setText(pokemon.obtenerEstados() + ""); // TODO: You need to define how you want to display states
@@ -43,5 +39,16 @@ public class PokemonButtonController  {
         int vidaMaxima = pokemon.obtenerVidaMaxima();
         this.progressBar.setProgress((double) vidaActual/vidaMaxima);
         this.hpLabel.setText("HP: " + vidaActual + " / " + vidaMaxima);
+    }
+
+    private Image getImagen(String nombre) {
+        String path = "/Imagenes/pokemon/frente_gif/" + nombre + ".gif";
+        InputStream imagen = getClass().getResourceAsStream(path);
+        if (imagen != null) {
+            return new Image(imagen);
+        } else {
+            System.err.println("Image not found for: " + nombre);
+            return null;
+        }
     }
 }

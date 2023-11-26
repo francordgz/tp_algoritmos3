@@ -20,6 +20,7 @@ import java.util.Objects;
 public class MainController implements EventHandler<Event> {
     Juego juego;
     Stage primaryStage;
+    private final Object lock = new Object();
 
     @FXML
     VistaCampoController vistaCampoController;
@@ -63,7 +64,12 @@ public class MainController implements EventHandler<Event> {
                 break;
             case "Ver Pokemones":
                 verPokemones();
-                debug();
+                break;
+            case "Ver Mochila":
+                verMochila();
+                break;
+            case "Volver":
+                volver();
                 break;
             case "Rendirse":
                 terminar();
@@ -71,8 +77,17 @@ public class MainController implements EventHandler<Event> {
         }
     }
 
+    private void volver() {
+        this.primaryStage.setScene(getEscena("campo"));
+    }
+
+    private void verMochila() {
+        Entrenador actual = juego.obtenerEntrenadorActual();
+        vistaItemsController.llenarLista(actual.obtenerItems());
+        primaryStage.setScene(getEscena("mochila"));
+    }
+
     private void verPokemones() {
-        debug();
         Entrenador actual = juego.obtenerEntrenadorActual();
         vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
         primaryStage.setScene(getEscena("pokemones"));
@@ -108,6 +123,7 @@ public class MainController implements EventHandler<Event> {
         setEstilo(escena, "pokemones");
 
         this.vistaPokemonesController = loader.getController();
+        this.vistaPokemonesController.setSalir();
         this.vistaPokemonesController.setEscena(escena);
     }
 
@@ -145,7 +161,14 @@ public class MainController implements EventHandler<Event> {
 
         this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion);
         this.juego.cambiarTurno();
+        actualizarDatos();
         this.primaryStage.setScene(getEscena("campo"));
+    }
+
+    public void actualizarDatos() {
+        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        vistaCampoController.setDatos(actual, rival);
     }
 
     private void seleccionarPrimerPokemon(int opcion) {
@@ -156,7 +179,7 @@ public class MainController implements EventHandler<Event> {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
-            esperar(3);
+            esperar(1);
 
             entrenador = juego.obtenerSegundoEntrenador();
             this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
@@ -167,7 +190,7 @@ public class MainController implements EventHandler<Event> {
         nombre = entrenador.cambiarPokemon(opcion);
         this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
-        esperar(3);
+        esperar(2);
         inicializarBatalla();
     }
 
@@ -187,12 +210,13 @@ public class MainController implements EventHandler<Event> {
     }
 
     private void esperar(int segundos) {
-        /*
-        try {
-            wait(segundos * 1000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }*/
+        synchronized (lock) {
+            try {
+                lock.wait(segundos * 1000L);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     private void crearInforme() {

@@ -63,22 +63,27 @@ public class VistaCampoController {
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
 
         botonPokemones.setOnAction(e -> botonPokemones.fireEvent(new VerPokemonesEvento()));
+
+        botonMochila.setOnAction(e -> botonMochila.fireEvent(new VerMochilaEvento()));
     }
 
     public void setDatos(Pokemon pokemonActual, Pokemon pokemonRival) {
         String nombre = pokemonActual.obtenerNombre();
+        this.jugadorImagen.setImage(getImagen(nombre));
         this.jugadorNombre.setText(nombre);
         this.dialogo.setText("Que debe hacer " + nombre + "?");
 
         this.jugadorNivel.setText("Nv " + pokemonActual.obtenerNivel());
         setJugadorVida(pokemonActual.obtenerVidaActual(), pokemonActual.obtenerVidaMaxima());
 
-        this.rivalNombre.setText(pokemonRival.obtenerNombre());
+        nombre = pokemonRival.obtenerNombre();
+        this.rivalImagen.setImage(getImagen(nombre));
+        this.rivalNombre.setText(nombre);
         this.rivalNivel.setText("Nv " + pokemonRival.obtenerNivel());
         setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
 
 
-        setPokemonImages("/src/main/Imagenes/MyriamBregman.png", "/src/main/Imagenes/Massa.png");
+        getImagen(nombre);
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -107,16 +112,11 @@ public class VistaCampoController {
         return "#00FF00"; // Green
     }
 
-    private void setPokemonImages(String opponentImagePath, String playerImagePath) {
-        InputStream opponentImageFile = getClass().getResourceAsStream(opponentImagePath);
-        assert opponentImageFile != null;
-        Image opponentImage = new Image(opponentImageFile);
-        InputStream playerImageFile = getClass().getResourceAsStream(playerImagePath);
-        assert playerImageFile != null;
-        Image playerImage = new Image(playerImageFile);
-
-        this.rivalImagen.setImage(opponentImage);
-        this.jugadorImagen.setImage(playerImage);
+    private Image getImagen(String nombre) {
+        String path = "/Imagenes/pokemon/frente_gif/" + nombre + ".gif";
+        InputStream imagen = getClass().getResourceAsStream(path);
+        assert imagen != null;
+        return new Image(imagen);
     }
 
     public void handleHabilidad1(ActionEvent actionEvent) {

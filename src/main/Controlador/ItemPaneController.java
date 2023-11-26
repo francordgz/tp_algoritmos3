@@ -27,12 +27,18 @@ public class ItemPaneController {
     }
 
     private String obtenerImagen(int idItem) {
-        // Falta agregar imagenes
-
-        //return switch (idItem) {
-        //    default -> "";
-        //};
-        return "/src/main/Imagenes/Massa.png";
+        String path = "/Imagenes/items/";
+        return switch(idItem) {
+            case 0 -> path + "pocion.png";
+            case 1 -> path + "mega_pocion.png";
+            case 2 -> path + "hiper_pocion.png";
+            case 3 -> path + "pocion_molesta_alumnos.png";
+            case 4 -> path + "ataque.png";
+            case 5 -> path + "defensa.png";
+            case 6 -> path + "cura_todo.png";
+            case 7 -> path + "revivir.png";
+            default -> "";
+        };
     }
 
     private String obtenerDescripcion(int idItem) {
