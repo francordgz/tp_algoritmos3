@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -53,6 +54,22 @@ public class VistaCampoController {
     @FXML
     private Button botonMochila;
 
+    @FXML
+    private MenuItem botonHabilidad1;
+
+    @FXML
+    private MenuItem botonHabilidad2;
+
+    @FXML
+    private MenuItem botonHabilidad3;
+
+    @FXML
+    private MenuItem botonHabilidad4;
+
+
+    @FXML
+    private MenuItem botonHabilidad5;
+
 
     public void setEscena(Scene escena) {
         this.escena = escena;
@@ -97,6 +114,14 @@ public class VistaCampoController {
 
         this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerPokemones().size()));
         this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerPokemones().size()));
+
+        botonHabilidad1.setText(pokemonActual.habilidades(1).obtenerNombre());
+        botonHabilidad2.setText(pokemonActual.habilidades(2).obtenerNombre());
+        botonHabilidad3.setText(pokemonActual.habilidades(3).obtenerNombre());
+        botonHabilidad4.setText(pokemonActual.habilidades(4).obtenerNombre());
+        botonHabilidad5.setText(pokemonActual.habilidades(5).obtenerNombre());
+
+
     }
 
     public void actualizarClima(String nombreClima) {
