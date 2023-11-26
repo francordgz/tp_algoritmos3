@@ -53,8 +53,15 @@ public class MainController implements EventHandler<Event> {
 
         this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
         this.juego.inicializarClima();
+        test(juego.obtenerPrimerEntrenador());
+        test(juego.obtenerSegundoEntrenador());
     }
 
+    public void test(Entrenador entrenador) {
+        for (Pokemon pokemon : entrenador.obtenerPokemones()) {
+            pokemon.recibirAtaque((double) pokemon.obtenerVidaMaxima() / 2);
+        }
+    }
     @Override
     public void handle(Event customEvent) {
         switch (customEvent.getEventType().getName()) {
@@ -179,8 +186,7 @@ public class MainController implements EventHandler<Event> {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
-            esperar(1);
-
+            esperar(2);
             entrenador = juego.obtenerSegundoEntrenador();
             this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
             return;
@@ -235,7 +241,7 @@ public class MainController implements EventHandler<Event> {
     public void terminar() {
         juego.obtenerEntrenadorRival().marcarComoGanador();
         //crearInforme();
-        primaryStage.setScene(null);
+        debug();
     }
 
     private void debug() {

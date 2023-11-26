@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Pokemon Data">
-      <change afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/VerMochilaEvento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/VolverEvento.java" afterDir="false" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Imagenes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/ItemPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/ItemPaneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/Massa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/MyriamBregman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +440,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700965690214</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Imagenes">
+      <option name="closed" value="true" />
+      <created>1701017527092</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701017527092</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +466,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Agrego dependencias con javafx al pom" />
     <MESSAGE value="JavaFX Vista" />
     <MESSAGE value="CorrijoVista" />
     <MESSAGE value="Refactor de clases y carpetas (#24)&#10;&#10;* Refactor a patron MVC&#10;&#10;* Dependencias y plugins agregados&#10;&#10;* Modifico dependencias que se rompieron&#10;&#10;---------&#10;&#10;Co-authored-by: Franco Rodriguez &lt;frodriguez@fi.uba.ar&gt;" />
@@ -485,6 +490,7 @@
     <MESSAGE value="Pokemon Vista en Batalla" />
     <MESSAGE value="Cambio el git ignore a que ignore todo el .idea" />
     <MESSAGE value="Pokemon Data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pokemon Data" />
+    <MESSAGE value="Imagenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imagenes" />
   </component>
 </project>

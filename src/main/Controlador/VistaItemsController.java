@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import src.main.Controlador.Eventos.VolverEvento;
 import src.main.Modelo.Item.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +21,8 @@ import java.util.Map;
 public class VistaItemsController {
     @FXML
     public Button salir;
+    public ImageView mochilaImagen;
+    public ImageView background;
     @FXML
     private ListView<Button> itemListView;
 
@@ -32,6 +37,16 @@ public class VistaItemsController {
     @FXML
     public void initialize() {
         this.salir.setOnAction(e -> salir.fireEvent(new VolverEvento()));
+
+        String path = "/Imagenes/bgs/menu_selecciones.png";
+        InputStream imagen = getClass().getResourceAsStream(path);
+        assert imagen != null;
+        this.background.setImage(new Image(imagen));
+
+        path = "/Imagenes/mochila.png";
+        imagen = getClass().getResourceAsStream(path);
+        assert imagen != null;
+        this.mochilaImagen.setImage(new Image(imagen));
     }
 
 
@@ -53,7 +68,6 @@ public class VistaItemsController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 Pane itemPane = loader.load();
                 ItemPaneController itemPaneController = loader.getController();
-                // Ocultamiento de Pane´s
                 itemPane.setVisible(false);
                 itemPaneController.setItemInfo(item);
 

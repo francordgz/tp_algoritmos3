@@ -1,6 +1,5 @@
 package src.main.Controlador;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,8 +8,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-
-import src.main.Controlador.Eventos.*;
+import src.main.Controlador.Eventos.RendirseEvento;
+import src.main.Controlador.Eventos.VerMochilaEvento;
+import src.main.Controlador.Eventos.VerPokemonesEvento;
 import src.main.Modelo.Pokemon;
 
 import java.io.InputStream;
@@ -69,7 +69,7 @@ public class VistaCampoController {
 
     public void setDatos(Pokemon pokemonActual, Pokemon pokemonRival) {
         String nombre = pokemonActual.obtenerNombre();
-        this.jugadorImagen.setImage(getImagen(nombre));
+        this.jugadorImagen.setImage(getImagen(nombre, true));
         this.jugadorNombre.setText(nombre);
         this.dialogo.setText("Que debe hacer " + nombre + "?");
 
@@ -77,13 +77,10 @@ public class VistaCampoController {
         setJugadorVida(pokemonActual.obtenerVidaActual(), pokemonActual.obtenerVidaMaxima());
 
         nombre = pokemonRival.obtenerNombre();
-        this.rivalImagen.setImage(getImagen(nombre));
+        this.rivalImagen.setImage(getImagen(nombre, false));
         this.rivalNombre.setText(nombre);
         this.rivalNivel.setText("Nv " + pokemonRival.obtenerNivel());
         setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
-
-
-        getImagen(nombre);
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -112,26 +109,29 @@ public class VistaCampoController {
         return "#00FF00"; // Green
     }
 
-    private Image getImagen(String nombre) {
-        String path = "/Imagenes/pokemon/frente_gif/" + nombre + ".gif";
+    private Image getImagen(String nombre, boolean dorso) {
+        String path = "/Imagenes/pokemon/";
+        if (dorso) path = path + "dorso";
+        else path = path + "frente";
+        path = path + "_gif/" + nombre + ".gif";
         InputStream imagen = getClass().getResourceAsStream(path);
         assert imagen != null;
         return new Image(imagen);
     }
 
-    public void handleHabilidad1(ActionEvent actionEvent) {
+    public void handleHabilidad1() {
 
     }
 
-    public void handleHabilidad2(ActionEvent actionEvent) {
+    public void handleHabilidad2() {
 
     }
 
-    public void handleHabilidad3(ActionEvent actionEvent) {
+    public void handleHabilidad3() {
 
     }
 
-    public void handleHabilidad4(ActionEvent actionEvent) {
+    public void handleHabilidad4() {
 
     }
 
