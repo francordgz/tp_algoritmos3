@@ -61,10 +61,10 @@
                         <!-- Menú de Atacar -->
                         <MenuButton alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Habilidad 1" />
-                                <MenuItem mnemonicParsing="false" text="Habilidad 2" />
-                                <MenuItem mnemonicParsing="false" text="Habilidad 3" />
-                                <MenuItem mnemonicParsing="false" text="Habilidad 4" />
+                                <MenuItem onAction= "#handleHabilidad1" mnemonicParsing="false" text="Habilidad 1" />
+                                <MenuItem onAction= "#handleHabilidad2" mnemonicParsing="false" text="Habilidad 2" />
+                                <MenuItem onAction= "#handleHabilidad3" mnemonicParsing="false" text="Habilidad 3" />
+                                <MenuItem onAction= "#handleHabilidad4" mnemonicParsing="false" text="Habilidad 4" />
                             </items>
                             <padding>
                                 <Insets left="50.0" />

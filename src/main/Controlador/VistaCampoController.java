@@ -1,5 +1,6 @@
 package src.main.Controlador;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ import java.io.InputStream;
 
 public class VistaCampoController {
     private Scene escena;
+
 
     private Scene escenaPokemon;
 
@@ -154,6 +156,7 @@ public class VistaCampoController {
 
     private void handlePokemones() {
 
+        this.primaryStage.setScene(escenaPokemon);
 
     }
 
@@ -172,7 +175,26 @@ public class VistaCampoController {
     }
 
 
+    public void setEscenaPokemones(Scene pokemonesBatalla) {
 
+        this.escenaPokemon = pokemonesBatalla;
+    }
+
+    public void handleHabilidad1(ActionEvent actionEvent) {
+
+    }
+
+    public void handleHabilidad2(ActionEvent actionEvent) {
+
+    }
+
+    public void handleHabilidad3(ActionEvent actionEvent) {
+
+    }
+
+    public void handleHabilidad4(ActionEvent actionEvent) {
+
+    }
 
 
 }

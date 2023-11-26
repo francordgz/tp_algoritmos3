@@ -41,6 +41,7 @@ public class MainController implements EligePokemonEventoHandler {
             inicializarPrimeraSeleccion();
             inicializarCampo();
             inicializarMochila();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -78,9 +79,10 @@ public class MainController implements EligePokemonEventoHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
         Scene escena = new Scene(loader.load());
-        setEstilo(escena, "pokemones");
+        setEstilo(escena, "pokemonesBatalla");
 
         this.vistaPokemonesController = loader.getController();
+
         this.vistaPokemonesController.setEscena(escena);
     }
 
@@ -154,6 +156,12 @@ public class MainController implements EligePokemonEventoHandler {
         vistaCampoController.setStage(this.primaryStage);
         vistaCampoController.setEscenaItems(this.getEscena("mochila"));
         this.primaryStage.setScene(getEscena("campo"));
+        try {
+            this.inicializarPokemones();
+            vistaCampoController.setEscenaPokemones(this.getEscena("pokemonesBatalla"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
