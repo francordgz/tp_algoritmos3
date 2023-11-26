@@ -22,23 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-/.idea/.gitignore
-/.idea/compiler.xml
-/.idea/dictionaries/facun.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/tp1_algoritmos3.iml
-/.idea/vcs.xml
+/.idea
 /tp1_algoritmos3.iml
-/.idea/uiDesigner.xml
 /target/classes/.gitignore
 /target/classes/pom.xml
 /target/classes/README.md
 /target
-/.idea/target/classes/.gitignore
-/.idea/target/classes/pom.xml
-/.idea/target/classes/README.md
-/.idea/target/tp1_algoritmos3.iml
-/.idea/codeStyles/codeStyleConfig.xml
-/.idea/codeStyles/Project.xml
