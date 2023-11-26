@@ -29,7 +29,7 @@ public class PokemonButtonController  {
     @FXML
     private Label hpLabel;
 
-    public void setPokemonInfo(Pokemon pokemon, int opcion) {
+    public void setPokemonInfo(Pokemon pokemon) {
         // Set the information from the Pokemon object to the UI elements
         //imageView.setImage(new Image(pokemon.getImagePath())); // Assuming Pokemon class has a method getImagePath()
         InputStream temporal = getClass().getResourceAsStream("/src/main/Imagenes/Massa.png");

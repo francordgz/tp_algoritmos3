@@ -178,6 +178,7 @@ public class VistaCampoController {
     public void setEscenaPokemones(Scene pokemonesBatalla) {
 
         this.escenaPokemon = pokemonesBatalla;
+
     }
 
     public void handleHabilidad1(ActionEvent actionEvent) {

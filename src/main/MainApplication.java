@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Controlador.MainController;
-import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Modelo.Juego;
 
 public class MainApplication extends Application {

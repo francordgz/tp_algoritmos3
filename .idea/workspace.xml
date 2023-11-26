@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="cambio">
+      <change afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/CustomEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligePokemonEventoHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/RendriseEventoHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +42,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -152,19 +160,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="src.test" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="tp1_algoritmos3" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="tp1_algoritmos3" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

@@ -1,11 +1,13 @@
 package src.main.Controlador;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import src.main.Controlador.Eventos.CustomEvent;
 import src.main.Controlador.Eventos.EligePokemonEvento;
-import src.main.Controlador.Eventos.EligePokemonEventoHandler;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Serializacion.InformeSerializer;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainController implements EligePokemonEventoHandler {
+public class MainController implements EventHandler<EligePokemonEvento> {
     Juego juego;
     Stage primaryStage;
 
@@ -48,7 +50,7 @@ public class MainController implements EligePokemonEventoHandler {
 
         this.primaryStage.setScene(getEscena("pokemones"));
 
-        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
+        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones(), null);
         this.juego.inicializarClima();
     }
 
@@ -79,10 +81,9 @@ public class MainController implements EligePokemonEventoHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 
         Scene escena = new Scene(loader.load());
-        setEstilo(escena, "pokemonesBatalla");
+        setEstilo(escena, "pokemones");
 
         this.vistaPokemonesController = loader.getController();
-
         this.vistaPokemonesController.setEscena(escena);
     }
 
@@ -146,7 +147,7 @@ public class MainController implements EligePokemonEventoHandler {
         if (entrenador.obtenerPokemonActual() == null) {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo(nombre);
-            this.vistaPokemonesController.llenarLista(this.juego.obtenerSegundoEntrenador().obtenerPokemones());
+            this.vistaPokemonesController.llenarLista(this.juego.obtenerSegundoEntrenador().obtenerPokemones(), null);
             this.vistaPokemonesController.setDialogo("Elegir un POKéMON");
             return;
         }
@@ -158,17 +159,13 @@ public class MainController implements EligePokemonEventoHandler {
         this.primaryStage.setScene(getEscena("campo"));
         try {
             this.inicializarPokemones();
-            vistaCampoController.setEscenaPokemones(this.getEscena("pokemonesBatalla"));
+            Entrenador actual = this.juego.obtenerEntrenadorActual();
+            this.vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
+            vistaCampoController.setEscenaPokemones(this.getEscena("pokemones"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
-
 }
 
 /*
