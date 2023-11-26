@@ -26,12 +26,6 @@ public class VistaItemsController {
     private Map<Integer, String> imagenesItems;
     private Scene escena;
 
-    public void setElementosScene(List<Item> items) {
-        llenarListaItems(items);
-        agregarDescripcionItems(items);
-        configurarVisibilidades();
-    }
-
     private void configurarVisibilidades() {
         int i = 0;
         for (Button button : this.itemListView.getItems()) {
@@ -62,7 +56,7 @@ public class VistaItemsController {
         }
     }
 
-    private void llenarListaItems(List<Item> items) {
+    public void llenarLista(List<Item> items) {
         String buttonPath = "/src/main/Vista/ItemButton.fxml";
         try {
             itemListView.getItems().clear();
@@ -77,6 +71,9 @@ public class VistaItemsController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        agregarDescripcionItems(items);
+        configurarVisibilidades();
     }
 
     public void setEscena(Scene escena) {

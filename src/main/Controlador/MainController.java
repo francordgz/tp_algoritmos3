@@ -1,5 +1,6 @@
 package src.main.Controlador;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Juego;
+import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
 
 import java.io.IOException;
@@ -15,14 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainController implements EventHandler<EligePokemonEvento> {
+public class MainController implements EventHandler<Event> {
     Juego juego;
     Stage primaryStage;
 
     @FXML
     VistaCampoController vistaCampoController;
+    @FXML
     VistaItemsController vistaItemsController;
-
     @FXML
     VistaPokemonesController vistaPokemonesController;
 
@@ -48,8 +50,32 @@ public class MainController implements EventHandler<EligePokemonEvento> {
 
         this.primaryStage.setScene(getEscena("pokemones"));
 
-        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones(), null);
+        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
         this.juego.inicializarClima();
+    }
+
+    @Override
+    public void handle(Event customEvent) {
+        switch (customEvent.getEventType().getName()) {
+            case "Elige Pokemon":
+                EligePokemonEvento evento = (EligePokemonEvento) customEvent;
+                eligePokemonEvento(evento.getOpcion());
+                break;
+            case "Ver Pokemones":
+                verPokemones();
+                debug();
+                break;
+            case "Rendirse":
+                terminar();
+                break;
+        }
+    }
+
+    private void verPokemones() {
+        debug();
+        Entrenador actual = juego.obtenerEntrenadorActual();
+        vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
+        primaryStage.setScene(getEscena("pokemones"));
     }
 
     private void inicializarCampo() throws IOException {
@@ -111,9 +137,62 @@ public class MainController implements EventHandler<EligePokemonEvento> {
         };
     }
 
-    private void seleccionarPrimerPokemon(Entrenador entrenador, int opcion) {
-        String nombre = this.juego.cambiarPokemon(entrenador, opcion);
-        System.out.println(nombre);
+    public void eligePokemonEvento(int opcion) {
+        if (!this.juego.turnosAsignados()) {
+            seleccionarPrimerPokemon(opcion);
+            return;
+        }
+
+        this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion);
+        this.juego.cambiarTurno();
+        this.primaryStage.setScene(getEscena("campo"));
+    }
+
+    private void seleccionarPrimerPokemon(int opcion) {
+        String nombre;
+        Entrenador entrenador = juego.obtenerPrimerEntrenador();
+
+        if (!entrenador.tienePokemonActual()) {
+            nombre = entrenador.cambiarPokemon(opcion);
+            this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
+
+            esperar(3);
+
+            entrenador = juego.obtenerSegundoEntrenador();
+            this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
+            return;
+        }
+
+        entrenador = juego.obtenerSegundoEntrenador();
+        nombre = entrenador.cambiarPokemon(opcion);
+        this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
+
+        esperar(3);
+        inicializarBatalla();
+    }
+
+    private void inicializarBatalla() {
+        this.juego.inicializarTurnos();
+        this.primaryStage.setScene(getEscena("campo"));
+
+        try {
+            this.inicializarPokemones();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        vistaCampoController.setDatos(actual, rival);
+    }
+
+    private void esperar(int segundos) {
+        /*
+        try {
+            wait(segundos * 1000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
     }
 
     private void crearInforme() {
@@ -129,43 +208,14 @@ public class MainController implements EventHandler<EligePokemonEvento> {
         }
     }
 
-    public boolean juegoTerminado() {
-        return this.juego.terminado();
-    }
-
     public void terminar() {
-        crearInforme();
+        juego.obtenerEntrenadorRival().marcarComoGanador();
+        //crearInforme();
+        primaryStage.setScene(null);
     }
 
-    @Override
-    public void handle(EligePokemonEvento event) {
-        int opcion = event.getOpcion();
-        String nombre;
-        Entrenador entrenador = juego.obtenerPrimerEntrenador();
-        if (entrenador.obtenerPokemonActual() == null) {
-            nombre = entrenador.cambiarPokemon(opcion);
-            this.vistaPokemonesController.setDialogo(nombre);
-            this.vistaPokemonesController.llenarLista(this.juego.obtenerSegundoEntrenador().obtenerPokemones(), null);
-            this.vistaPokemonesController.setDialogo("Elegir un POKéMON");
-            return;
-        }
-        nombre = juego.obtenerSegundoEntrenador().cambiarPokemon(opcion);
-        this.vistaPokemonesController.setDialogo(nombre);
-        this.juego.inicializarTurnos();
-        vistaCampoController.setStage(this.primaryStage);
-        vistaCampoController.setEscenaItems(this.getEscena("mochila"));
-        this.primaryStage.setScene(getEscena("campo"));
-        try {
-            this.inicializarPokemones();
-            Entrenador actual = this.juego.obtenerEntrenadorActual();
-            this.vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
-            this.vistaItemsController.setElementosScene(this.juego.obtenerPrimerEntrenador().obtenerItems());
-            vistaCampoController.setEscenaPokemones(this.getEscena("pokemones"));
-            vistaCampoController.setDatos(this.juego.obtenerEntrenadorActual().obtenerPokemonActual(),
-                                        this.juego.obtenerEntrenadorRival().obtenerPokemonActual());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private void debug() {
+        System.out.println("DEBUG");
     }
 }
 

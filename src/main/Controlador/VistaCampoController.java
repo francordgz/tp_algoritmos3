@@ -9,22 +9,14 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import src.main.Controlador.Eventos.RendirseEvento;
-import src.main.Modelo.Juego;
-import src.main.Modelo.Entrenador;
-import src.main.Modelo.Juego;
+
+import src.main.Controlador.Eventos.*;
+import src.main.Modelo.Pokemon;
 
 import java.io.InputStream;
 
 public class VistaCampoController {
     private Scene escena;
-
-
-    private Scene escenaPokemon;
-
-    private Scene escenaItems;
-
     @FXML
     public Label rivalNombre;
     @FXML
@@ -55,18 +47,8 @@ public class VistaCampoController {
     private Button botonMochila;
 
 
-
-    Juego juego;
-
-    Stage primaryStage;
-
-
     public void setEscena(Scene escena) {
         this.escena = escena;
-    }
-
-    public void setEscenaItems(Scene escena1){
-        this.escenaItems = escena1;
     }
 
     public Scene getEscena() {
@@ -74,43 +56,29 @@ public class VistaCampoController {
     }
 
 
-    public void SetJuego(Juego Unjuego){
 
-        this.juego = Unjuego;
-
-    }
-
-    public void setStage(Stage unStage){
-
-        this.primaryStage = unStage;
-
-    }
 
     @FXML
     public void initialize() {
-
-        setPokemonImages("/src/main/Imagenes/MyriamBregman.png", "/src/main/Imagenes/Massa.png");
-
-        this.jugadorNombre.setText("Massa");
-        this.jugadorNivel.setText("Nv 99");
-        setJugadorVida(14, 20);
-
-        this.rivalNombre.setText("Myriam");
-        this.rivalNivel.setText("Nv 65");
-        setRivalVida(3, 10);
-
-        this.dialogo.setText("Que debe hacer Sergio?");
-
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
 
-        botonPokemones.setOnAction(e -> handlePokemones());
+        botonPokemones.setOnAction(e -> botonPokemones.fireEvent(new VerPokemonesEvento()));
+    }
 
-        botonMochila.setOnAction(e -> handleMochila());
+    public void setDatos(Pokemon pokemonActual, Pokemon pokemonRival) {
+        String nombre = pokemonActual.obtenerNombre();
+        this.jugadorNombre.setText(nombre);
+        this.dialogo.setText("Que debe hacer " + nombre + "?");
 
-        botonRendirse.setOnAction(e -> handleRendirse());
+        this.jugadorNivel.setText("Nv " + pokemonActual.obtenerNivel());
+        setJugadorVida(pokemonActual.obtenerVidaActual(), pokemonActual.obtenerVidaMaxima());
+
+        this.rivalNombre.setText(pokemonRival.obtenerNombre());
+        this.rivalNivel.setText("Nv " + pokemonRival.obtenerNivel());
+        setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
 
 
-
+        setPokemonImages("/src/main/Imagenes/MyriamBregman.png", "/src/main/Imagenes/Massa.png");
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -143,42 +111,12 @@ public class VistaCampoController {
         InputStream opponentImageFile = getClass().getResourceAsStream(opponentImagePath);
         assert opponentImageFile != null;
         Image opponentImage = new Image(opponentImageFile);
-        InputStream playerImageFile =  getClass().getResourceAsStream(playerImagePath);
+        InputStream playerImageFile = getClass().getResourceAsStream(playerImagePath);
         assert playerImageFile != null;
         Image playerImage = new Image(playerImageFile);
 
         this.rivalImagen.setImage(opponentImage);
         this.jugadorImagen.setImage(playerImage);
-
-    }
-
-
-
-    private void handlePokemones() {
-
-        this.primaryStage.setScene(escenaPokemon);
-
-    }
-
-    private void handleMochila() {
-
-        this.primaryStage.setScene(escenaItems);
-    }
-
-    private void handleRendirse() {
-
-
-    }
-
-    private void handleLucha() {
-
-    }
-
-
-    public void setEscenaPokemones(Scene pokemonesBatalla) {
-
-        this.escenaPokemon = pokemonesBatalla;
-
     }
 
     public void handleHabilidad1(ActionEvent actionEvent) {

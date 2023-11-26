@@ -33,6 +33,10 @@ public class Entrenador {
         return pokemonActual;
     }
 
+    public Boolean tienePokemonActual() {
+        return pokemonActual != null;
+    }
+
     public List<Item> obtenerItems() {
         return items;
     }

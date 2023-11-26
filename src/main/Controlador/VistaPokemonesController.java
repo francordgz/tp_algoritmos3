@@ -59,6 +59,12 @@ public class VistaPokemonesController {
         }
     }
 
+    public void llenarLista(List<Pokemon> pokemones) {
+        this.llenarLista(pokemones, null);
+        setDialogo("Elegir un POKéMON");
+    }
+
+
 
     public void setEscena(Scene escena) {
         this.escena = escena;

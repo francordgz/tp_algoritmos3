@@ -36,4 +36,8 @@ public class AdministradorDeTurnos {
             this.entrenadorRival = entrenador1;
         }
     }
+
+    public boolean turnosAsignados() {
+        return (this.entrenadorActual != null || this.entrenadorRival != null);
+    }
 }
