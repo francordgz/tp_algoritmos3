@@ -12,6 +12,10 @@ public class ClimaHuracan implements Clima {
         return ataque;
     }
 
+    public String getNombre() {
+        return "huracan";
+    }
+
     @Override
     public void efectoClimatico(Pokemon pokemon) {
         if (pokemon.obtenerTipo() == Tipo.VOLADOR)

@@ -15,4 +15,9 @@ public class ClimaSoleado implements Clima {
     @Override
     public void efectoClimatico(Pokemon pokemon) {
     }
+
+    @Override
+    public String getNombre() {
+        return "soleado";
+    }
 }

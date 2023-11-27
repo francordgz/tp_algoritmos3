@@ -1,4 +1,4 @@
-package src.main.Controlador;
+package src.main.Controlador.Nodos;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

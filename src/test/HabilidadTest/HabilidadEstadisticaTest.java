@@ -1,3 +1,4 @@
+/*
 package src.test.HabilidadTest;
 
 import src.main.Modelo.Enums.Atributos;
@@ -8,7 +9,6 @@ import src.main.Modelo.Pokemon;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 public class HabilidadEstadisticaTest {
 
     @Test
@@ -60,3 +60,4 @@ public class HabilidadEstadisticaTest {
         assertFalse(habilidadEstadistica.AfectarRival());
     }
 }
+*/

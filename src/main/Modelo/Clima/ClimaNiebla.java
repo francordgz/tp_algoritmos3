@@ -12,7 +12,13 @@ public class ClimaNiebla implements Clima {
         return ataque;
     }
 
+
     @Override
     public void efectoClimatico(Pokemon pokemon) {
+    }
+
+    @Override
+    public String getNombre() {
+        return "niebla";
     }
 }

@@ -11,4 +11,9 @@ public class ClimaNormal implements Clima {
     @Override
     public void efectoClimatico(Pokemon pokemon) {
     }
+
+    @Override
+    public String getNombre() {
+        return "normal";
+    }
 }

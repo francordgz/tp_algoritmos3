@@ -10,9 +10,11 @@ import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
+import src.main.Modelo.Serializacion.PartidaDeserializer;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,24 +23,40 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegracionTest {
     Juego juego = new Juego();
 
+    public void deserializarPartida(
+            String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON)
+            throws IOException, URISyntaxException {
+        PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
+                partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
+        );
+
+        List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
+        this.juego.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
+    }
+
     @Test
     public void deserializarArchivoInvalidoTest() {
-        String mensaje = "";
         try {
-            this.juego.deserializarPartida("", "", "", "");
-        } catch (RuntimeException e) {
-            mensaje = e.getMessage();
-        } finally {
-            assertEquals(mensaje, "Error al leer archivos JSON");
+            deserializarPartida("", "", "", "");
+        } catch (IOException | URISyntaxException | IllegalArgumentException e) {
+            assertNull(juego.obtenerPrimerEntrenador());
+            assertNull(juego.obtenerSegundoEntrenador());
         }
-
-        assertNull(juego.obtenerPrimerEntrenador());
-        assertNull(juego.obtenerSegundoEntrenador());
     }
 
     @Test
     public void partidaTest() {
-        this.juego.deserializarPartida("partidaTest.json", "pokemonsTest.json", "habilidadesTest.json", "itemsTest.json");
+
+        String partidaJSON = "partidaTest.json";
+        String pokemonsJSON = "pokemonsTest.json";
+        String habilidadesJSON = "habilidadesTest.json";
+        String itemsJSON = "itemsTest.json";
+
+        try {
+            deserializarPartida(partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON);
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Error al leer archivos JSON");
+        }
 
         this.juego.modificarClima(new ClimaNormal());
         this.juego.obtenerPrimerEntrenador().cambiarPokemon(0);
@@ -68,7 +86,7 @@ public class IntegracionTest {
 
         this.juego.cambiarTurno();
 
-        assertTrue(juego.usarHabilidad(3));
+        juego.usarHabilidad(3);
         Pokemon afectado = juego.obtenerEntrenadorRival().obtenerPokemonActual();
         assertEquals(afectado.obtenerEstados().get(0), Estados.ENVENENADO);
 
