@@ -8,17 +8,4 @@ public class VerPokemonesEvento extends Event {
     public VerPokemonesEvento() {
         super(VER_POKEMONES_EVENTO);
     }
-
-    public static class EligeItemEvento extends Event {
-        public static final EventType<src.main.Controlador.Eventos.EligeItemEvento> ELIGE_ITEM_EVENT = new EventType<>("Elige Item");
-        int opcion;
-        public EligeItemEvento(int opcion) {
-            super(ELIGE_ITEM_EVENT);
-            this.opcion = opcion;
-        }
-
-        public int getOpcion() {
-            return opcion;
-        }
-    }
 }

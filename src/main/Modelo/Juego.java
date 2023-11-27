@@ -67,6 +67,7 @@ public class Juego {
 
     public void cambiarTurno() {
         this.administrador.cambiarTurno();
+        this.actualizarClima();
     }
 
     public void modificarClima(Clima clima) {
@@ -74,7 +75,7 @@ public class Juego {
         this.administrador.modificarDiasDelClimaActual(1);
     }
 
-    public void inicializarClima() {
+    public Clima inicializarClima() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
         if (probabilidad > 66) {
@@ -92,6 +93,8 @@ public class Juego {
             else
                 this.modificarClima(new ClimaHuracan());
         }
+
+        return clima;
     }
 
     public void actualizarClima() {

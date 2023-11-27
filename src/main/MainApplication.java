@@ -27,7 +27,7 @@ public class MainApplication extends Application {
         primaryStage.addEventHandler(VerPokemonesEvento.VER_POKEMONES_EVENTO, controlador);
         primaryStage.addEventHandler(VerMochilaEvento.VER_MOCHILA_EVENTO, controlador);
         primaryStage.addEventHandler(VolverEvento.VOLVER_EVENT, controlador);
-        primaryStage.addEventHandler(VerPokemonesEvento.EligeItemEvento.ELIGE_ITEM_EVENT, controlador);
+        primaryStage.addEventHandler(EligeItemEvento.ELIGE_ITEM_EVENT, controlador);
         primaryStage.addEventHandler(EligeHabilidadEvento.ELIGE_HABILIDAD_EVENT,controlador);
     }
 }

@@ -1,5 +1,8 @@
 package src.main.Controlador;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,10 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Controlador.Eventos.VerMochilaEvento;
 import src.main.Controlador.Eventos.VerPokemonesEvento;
+import src.main.Modelo.Clima.Clima;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Pokemon;
 
@@ -74,7 +79,6 @@ public class VistaCampoController {
     @FXML
     private MenuItem botonHabilidad6;
 
-
     public void setEscena(Scene escena) {
         this.escena = escena;
     }
@@ -95,37 +99,22 @@ public class VistaCampoController {
 
         botonMochila.setOnAction(e -> botonMochila.fireEvent(new VerMochilaEvento()));
 
-        botonHabilidad1.setOnAction(e -> habilidad(1));
-
-        botonHabilidad2.setOnAction(e -> habilidad(2));
-
-        botonHabilidad3.setOnAction(e -> habilidad(3));
-
-        botonHabilidad4.setOnAction(e -> habilidad(4));
-
-        botonHabilidad5.setOnAction(e -> habilidad(5));
-
-        botonHabilidad6.setOnAction(e -> habilidadClima(6));
-
-        actualizarClima("normal");
+        botonHabilidad1.setOnAction(e -> habilidad(0));
+        botonHabilidad2.setOnAction(e -> habilidad(1));
+        botonHabilidad3.setOnAction(e -> habilidad(2));
+        botonHabilidad4.setOnAction(e -> habilidad(3));
+        botonHabilidad5.setOnAction(e -> habilidad(4));
+        botonHabilidad6.setOnAction(e -> habilidad(5));
     }
 
 
     private void habilidad(int habilidad) {
-
-
         botonRendirse.fireEvent(new EligeHabilidadEvento(habilidad));
-
-
     }
 
-    private void habilidadClima(int habilidad){
-        this.habilidad(habilidad);
-
-
-
+    public void setDialogo(String mensaje) {
+        dialogo.setText(mensaje);
     }
-
 
     public void setDatos(Entrenador actual, Entrenador rival) {
         Pokemon pokemonActual = actual.obtenerPokemonActual();
@@ -155,12 +144,10 @@ public class VistaCampoController {
         botonHabilidad4.setText(pokemonActual.habilidades(3).obtenerNombre());
         botonHabilidad5.setText(pokemonActual.habilidades(4).obtenerNombre());
         botonHabilidad6.setText(pokemonActual.habilidades(5).obtenerNombre());
-
-
     }
 
-    public void actualizarClima(String nombreClima) {
-        this.background.setImage(getImagenClima(nombreClima));
+    public void setClima(String clima) {
+        this.background.setImage(getImagenClima(clima));
     }
 
     private void setJugadorVida(int vidaActual, int vidaMaxima) {
@@ -206,6 +193,21 @@ public class VistaCampoController {
         return new Image(imagen);
     }
 
+    public void titilar() {
+        ImageView imageView = this.rivalImagen;
+
+    Timeline timeline = new Timeline(
+            new KeyFrame(Duration.ZERO, new KeyValue(imageView.opacityProperty(), 1.0)),
+            new KeyFrame(Duration.seconds(0.2), new KeyValue(imageView.opacityProperty(), 0.0)),
+            new KeyFrame(Duration.seconds(0.5), new KeyValue(imageView.opacityProperty(), 1.0))
+    );
+
+    // Configurar la animación para que se repita indefinidamente
+        timeline.setCycleCount(2);
+
+    // Iniciar la animación
+        timeline.play();
+    }
 
 
 

@@ -7,11 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.main.Controlador.Eventos.EligeHabilidadEvento;
+import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
-import src.main.Controlador.Eventos.VerPokemonesEvento;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Enums.Estados;
-import src.main.Modelo.Item.Item;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
@@ -21,12 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static src.main.Controlador.Constant.NOT_INT;
+
 public class MainController implements EventHandler<Event> {
     Juego juego;
     Stage primaryStage;
+
     private final Object lock = new Object();
 
-    private Item itemSeleccionado = null;
+    private int itemSeleccionado = NOT_INT;
+
+    private boolean cambiaElTurno = true;
 
     @FXML
     VistaCampoController vistaCampoController;
@@ -58,15 +62,7 @@ public class MainController implements EventHandler<Event> {
         this.primaryStage.setScene(getEscena("pokemones"));
 
         this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
-        this.juego.inicializarClima();
-        test(juego.obtenerPrimerEntrenador());
-        test(juego.obtenerSegundoEntrenador());
-    }
-
-    public void test(Entrenador entrenador) {
-        for (Pokemon pokemon : entrenador.obtenerPokemones()) {
-            pokemon.recibirAtaque((double) pokemon.obtenerVidaMaxima() / 2);
-        }
+        vistaCampoController.setClima(this.juego.inicializarClima().getNombre());
     }
     @Override
     public void handle(Event customEvent) {
@@ -85,26 +81,22 @@ public class MainController implements EventHandler<Event> {
                 volver();
                 break;
             case "Elige Item":
-                VerPokemonesEvento.EligeItemEvento eventoEligeItem = (VerPokemonesEvento.EligeItemEvento) customEvent;
+                EligeItemEvento eventoEligeItem = (EligeItemEvento) customEvent;
                 eligeItem(eventoEligeItem.getOpcion());
                 break;
             case "Rendirse":
                 terminar();
                 break;
             case "Elige Habilidad":
-                System.out.println("Entra");
                 EligeHabilidadEvento eventoHabilidadPokemon = (EligeHabilidadEvento) customEvent;
-                int opcion = eventoHabilidadPokemon.getOpcion();
-                this.atacar(opcion);
+                this.atacar(eventoHabilidadPokemon.getOpcion());
                 break;
-
         }
-
     }
 
     private void eligeItem(int opcion) {
         Entrenador actual = juego.obtenerEntrenadorActual();
-        this.itemSeleccionado = actual.obtenerItems().get(opcion);
+        this.itemSeleccionado = opcion;
         try {
             inicializarPrimeraSeleccion();
         } catch (IOException e) {
@@ -126,48 +118,55 @@ public class MainController implements EventHandler<Event> {
 
     private void verPokemones() {
         Entrenador actual = juego.obtenerEntrenadorActual();
+        try {
+            this.inicializarPokemones();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
         primaryStage.setScene(getEscena("pokemones"));
     }
 
 
     public void atacar(int opcion){
-
-
         double ataque;
         Boolean ataqueEfectivo = true;
-        int habilidadSeleccionada = opcion - 1;
 
         if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            vistaCampoController.setDialogo("El Pokemon esta dormido, no puede atacar");
             return;
         }
 
-        if(this.juego.obtenerEntrenadorActual().obtenerPokemonActual().estaMuerto()){
-            verPokemones();
-            return;
-        }
+        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        String nombreHabilidad = pokemonActual.obtenerHabilidades().get(opcion).obtenerNombre();
+
+        this.vistaCampoController.setDialogo(pokemonActual.obtenerNombre() + " ha usado " + nombreHabilidad + "!");
 
         switch (opcion) {
-            case 1, 2:
-                ataque = this.juego.atacar(habilidadSeleccionada);
+            case 0, 1:
+                ataque = this.juego.atacar(opcion);
 
                 if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
                     ataqueEfectivo = false;
                     break;
                 }
 
-            case 3, 4, 5:
-                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
+            case 2, 3, 4:
+                ataqueEfectivo = this.juego.usarHabilidad(opcion);
                 break;
 
-            case 6:
-                ataqueEfectivo = this.juego.usarHabilidadClima(habilidadSeleccionada);
+            case 5:
+                ataqueEfectivo = this.juego.usarHabilidadClima(opcion);
                 break;
         }
 
-        this.juego.cambiarTurno();
-        actualizarDatos();
+        if (!ataqueEfectivo)
+            this.vistaCampoController.setDialogo("El pokemon esta paralizado!");
+        else this.vistaCampoController.titilar();
 
+        esperar(2);
+
+        this.cambiarTurno();
     }
 
 
@@ -231,27 +230,50 @@ public class MainController implements EventHandler<Event> {
         };
     }
 
+    private void cambiarTurno() {
+        if (this.cambiaElTurno) this.juego.cambiarTurno();
+        else this.cambiaElTurno = true;
+
+        actualizarDatos();
+        this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
+
+        this.juego.efectoClimatico();
+        if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
+            try {
+                this.inicializarPrimeraSeleccion();
+                this.primaryStage.setScene(getEscena("pokemones"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            this.vistaPokemonesController.llenarLista(this.juego.obtenerEntrenadorActual().obtenerPokemones());
+            this.cambiaElTurno = false;
+        } else this.primaryStage.setScene(getEscena("campo"));
+    }
+
     public void eligePokemonEvento(int opcion) {
         if (!this.juego.turnosAsignados()) {
             seleccionarPrimerPokemon(opcion);
             return;
         }
 
-        if (itemSeleccionado != null) {
-            Pokemon pokemonItem = this.juego.obtenerEntrenadorActual().obtenerPokemones().get(opcion);
-            this.itemSeleccionado.usarItem(pokemonItem);
-            this.itemSeleccionado = null;
-            this.juego.cambiarTurno();
-            actualizarDatos();
-            this.primaryStage.setScene(getEscena("campo"));
-            return;
+        if (itemSeleccionado != NOT_INT) {
+            if (!this.juego.itemAplicable(this.itemSeleccionado, opcion)) {
+                vistaPokemonesController.setDialogo("No es posible aplicar el item debido al estado del pokemon");
+                return;
+            }
+            this.juego.usarItem(this.itemSeleccionado, opcion);
+            this.itemSeleccionado = NOT_INT;
+        } else {
+            Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+            Pokemon pokemonSeleccionado = entrenadorActual.obtenerPokemones().get(opcion);
+            if(pokemonSeleccionado.estaMuerto()) {
+                vistaPokemonesController.setDialogo(pokemonSeleccionado.obtenerNombre() + " esta muerto!");
+                return;
+            }
+            entrenadorActual.cambiarPokemon(opcion);
         }
 
-        this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion);
-        this.juego.cambiarTurno();
-        actualizarDatos();
-
-        this.primaryStage.setScene(getEscena("campo"));
+        this.cambiarTurno();
     }
 
     public void actualizarDatos() {
@@ -295,6 +317,8 @@ public class MainController implements EventHandler<Event> {
         Entrenador actual = this.juego.obtenerEntrenadorActual();
         Entrenador rival = this.juego.obtenerEntrenadorRival();
         vistaCampoController.setDatos(actual, rival);
+
+        this.juego.efectoClimatico();
     }
 
     private void esperar(int segundos) {
@@ -306,7 +330,7 @@ public class MainController implements EventHandler<Event> {
                 throw new RuntimeException(e);
             }
         }
-                 */
+        */
     }
 
     private void crearInforme() {
@@ -326,6 +350,7 @@ public class MainController implements EventHandler<Event> {
         juego.obtenerEntrenadorRival().marcarComoGanador();
         //crearInforme();
         debug();
+        this.primaryStage.close();
     }
 
     private void debug() {

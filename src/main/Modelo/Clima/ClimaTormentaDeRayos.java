@@ -19,4 +19,9 @@ public class ClimaTormentaDeRayos implements Clima {
 
         pokemon.recibirAtaque((pokemon.obtenerVidaMaxima()*0.03));
     }
+
+    @Override
+    public String getNombre() {
+        return "tormenta_de_rayos";
+    }
 }
