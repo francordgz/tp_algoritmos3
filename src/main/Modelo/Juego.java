@@ -249,17 +249,4 @@ public class Juego {
         }
         return this.terminado;
     }
-
-    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
-        try {
-            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
-                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
-            );
-
-            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
-            this.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
-        } catch (IOException | URISyntaxException e) {
-            throw new RuntimeException("Error al leer archivos JSON");
-        }
-    }
 }

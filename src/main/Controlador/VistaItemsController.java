@@ -10,8 +10,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import src.main.Controlador.Eventos.EligeItemEvento;
-import src.main.Controlador.Eventos.VerPokemonesEvento;
 import src.main.Controlador.Eventos.VolverEvento;
+import src.main.Controlador.Nodos.ItemButtonController;
+import src.main.Controlador.Nodos.ItemPaneController;
 import src.main.Modelo.Item.*;
 
 import java.io.IOException;

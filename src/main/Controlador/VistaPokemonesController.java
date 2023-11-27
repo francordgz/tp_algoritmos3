@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Controlador.Eventos.VolverEvento;
+import src.main.Controlador.Nodos.PokemonButtonController;
 import src.main.Modelo.Pokemon;
 
 import java.io.IOException;

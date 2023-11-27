@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Item se aplica bien">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Emprolijo código">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/ItemButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/Nodos/ItemButtonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/ItemPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/Nodos/ItemPaneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/Nodos/PokemonButtonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/ItemButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/ItemButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/ItemPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/ItemPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/PokemonButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/PokemonButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/IntegracionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/IntegracionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,19 +115,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="src.main.Main" />
-      <module name="tp1_algoritmos3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.main.Controlador.Eventos.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.MainApplication" />
       <module name="tp1_algoritmos3" />
@@ -144,6 +143,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IntegracionTest.deserializarArchivoInvalidoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
+      <option name="METHOD_NAME" value="deserializarArchivoInvalidoTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegracionTest.partidaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test" />
+      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
+      <option name="METHOD_NAME" value="partidaTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="src.test in tp1_algoritmos3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
@@ -161,9 +192,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
-        <item itemvalue="JUnit.src.test in tp1_algoritmos3" />
+        <item itemvalue="JUnit.IntegracionTest.partidaTest" />
+        <item itemvalue="JUnit.IntegracionTest.deserializarArchivoInvalidoTest" />
         <item itemvalue="JUnit.IntegracionTest" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.src.test in tp1_algoritmos3" />
       </list>
     </recent_temporary>
   </component>
@@ -488,15 +520,7 @@
       <option name="project" value="LOCAL" />
       <updated>1701036198945</updated>
     </task>
-    <task id="LOCAL-00038" summary="Item se aplica bien">
-      <option name="closed" value="true" />
-      <created>1701054599055</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1701054599056</updated>
-    </task>
-    <option name="localTasksCounter" value="39" />
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +562,7 @@
     <MESSAGE value="EventoSeTiraNoSeXQNOrestalavida" />
     <MESSAGE value="FuncionaAtaque" />
     <MESSAGE value="Mew esta re OP" />
-    <MESSAGE value="Item se aplica bien" />
-    <option name="LAST_COMMIT_MESSAGE" value="Item se aplica bien" />
+    <MESSAGE value="Emprolijo código" />
+    <option name="LAST_COMMIT_MESSAGE" value="Emprolijo código" />
   </component>
 </project>
