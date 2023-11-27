@@ -20,6 +20,6 @@ public class ItemCurarPorcentaje extends Item{
 
     @Override
     public Boolean esAplicable(Pokemon pokemon) {
-        return !pokemon.estaMuerto();
+        return !pokemon.estaMuerto() && !pokemon.estaCurado();
     }
 }

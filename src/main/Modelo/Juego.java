@@ -234,7 +234,6 @@ public class Juego {
 
     public Boolean itemAplicable(Integer opcion, Integer pokemon) {
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
-
         return entrenadorActual.itemAplicable(opcion, pokemon);
     }
 

@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mew esta re OP">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/VerPokemonesEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/Eventos/VerPokemonesEvento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/Clima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/Clima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaHuracan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaHuracan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaLluvia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaLluvia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNiebla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNiebla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNormal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaSoleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaSoleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeArena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeRayos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeRayos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCuracion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCurarPorcentaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCurarPorcentaje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Pokemon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

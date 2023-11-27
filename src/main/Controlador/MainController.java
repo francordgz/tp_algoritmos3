@@ -162,7 +162,8 @@ public class MainController implements EventHandler<Event> {
 
         if (!ataqueEfectivo)
             this.vistaCampoController.setDialogo("El pokemon esta paralizado!");
-        else this.vistaCampoController.titilar();
+        else
+            this.vistaCampoController.titilar();
 
         esperar(2);
 

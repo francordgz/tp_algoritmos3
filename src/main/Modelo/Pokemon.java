@@ -191,6 +191,10 @@ public class Pokemon {
         return !tieneEstado(Estados.DORMIDO);
     }
 
+    public boolean estaCurado() {
+        return this.vidaActual == this.vidaMaxima;
+    }
+
     public Boolean necesitaCurarse() {
         return !tieneEstado(Estados.NORMAL) && !tieneEstado(Estados.MUERTO);
     }
