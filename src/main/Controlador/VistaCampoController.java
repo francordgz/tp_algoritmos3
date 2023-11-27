@@ -17,6 +17,7 @@ import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Controlador.Eventos.VerMochilaEvento;
 import src.main.Controlador.Eventos.VerPokemonesEvento;
+import src.main.Modelo.Constant;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Pokemon;
 
@@ -191,7 +192,7 @@ public class VistaCampoController {
         return new Image(imagen);
     }
 
-    public void titilar() {
+    public void titilarRival() {
         ImageView imageView = this.rivalImagen;
 
     Timeline timeline = new Timeline(
@@ -205,6 +206,18 @@ public class VistaCampoController {
 
     // Iniciar la animación
         timeline.play();
+    }
+
+    public void mostrarEfectividad(double efectividad) {
+        this.setDialogo("El ataque ha sido" + getEfectividad(efectividad) + " efectivo!");
+        if (efectividad > Constant.NULA) titilarRival();
+    }
+    private String getEfectividad(double efectividad) {
+        if (efectividad == Constant.NULA) return " cero";
+        if (efectividad == Constant.MEDIA) return " poco";
+        if (efectividad == Constant.SIMPLE) return "";
+        if (efectividad == Constant.DOBLE) return " muy";
+        else throw new RuntimeException("Error Efectividades");
     }
 
 

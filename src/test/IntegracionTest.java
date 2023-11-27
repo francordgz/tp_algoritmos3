@@ -86,7 +86,7 @@ public class IntegracionTest {
 
         this.juego.cambiarTurno();
 
-        assertTrue(juego.usarHabilidad(3));
+        juego.usarHabilidad(3);
         Pokemon afectado = juego.obtenerEntrenadorRival().obtenerPokemonActual();
         assertEquals(afectado.obtenerEstados().get(0), Estados.ENVENENADO);
 

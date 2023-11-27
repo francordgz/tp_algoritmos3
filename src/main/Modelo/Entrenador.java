@@ -84,9 +84,14 @@ public class Entrenador {
         return this.pokemonActual.tieneEstado(estado);
     }
 
-    public Boolean pokemonEstaMuerto(Integer opcion) {
+    public Boolean pokemonEstaMuerto(int opcion) {
         Pokemon pokemon = this.pokemones.get(opcion);
         return pokemon.tieneEstado(Estados.MUERTO);
+    }
+
+    public String pokemonObtenerNombre(int opcion) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        return pokemon.obtenerNombre();
     }
 
     public Boolean validarHabilidad(int opcion) {

@@ -77,38 +77,36 @@ public class MainController implements EventHandler<Event> {
     }
 
     public void habilidadHandler(int opcion){
-        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+
+        if (!juego.validarHabilidad(opcion)) {
+            this.vistaCampoController.setDialogo("Esa habilidad no tiene más usos!");
+            return;
+        }
+
+        if (this.juego.estaDormido()) {
             vistaCampoController.setDialogo("El Pokemon esta dormido, no puede atacar");
             return;
         }
 
-        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon pokemonActual = this.juego.obtenerPokemonActual();
         String nombreHabilidad = pokemonActual.obtenerHabilidades().get(opcion).obtenerNombre();
         String nombre = pokemonActual.obtenerNombre();
         this.vistaCampoController.setDialogo(nombre + " ha usado " + nombreHabilidad + "!");
 
         esperar(1);
 
-        boolean ataqueEfectivo = atacar(opcion);
-        if (!ataqueEfectivo)
-            this.vistaCampoController.setDialogo(nombre + " esta paralizado! No ataca!");
-        else this.vistaCampoController.titilar();
-
-        esperar(2);
-
-        this.cambiarTurno();
-    }
-
-    private boolean atacar(int opcion) {
-        if (opcion < 2) {
-            double ataque = this.juego.atacar(opcion);
-            return ataque != 0 || !this.juego.pokemonActualTieneEstado(Estados.PARALIZADO);
+        if (!this.juego.puedeAtacarParalisis()) {
+            vistaCampoController.setDialogo(nombre + " esta paralizado y no ataca!");
+        } else if (this.juego.seLastimaASiMismo()) {
+            vistaCampoController.setDialogo(nombre + " se lastima a si mismo en la confusion!");
+        } else {
+            Double efectividad = this.juego.usarHabilidad(opcion);
+            if (efectividad == null)  this.vistaCampoController.setDialogo(nombre + " se cambia su estado!");
+            else this.vistaCampoController.mostrarEfectividad(efectividad);
         }
 
-        if (opcion < 5) return this.juego.usarHabilidad(opcion);
-
-        return this.juego.usarHabilidadClima(opcion);
-
+        esperar(2);
+        this.cambiarTurno();
     }
 
     private void verPokemonesHandler() {
@@ -138,13 +136,11 @@ public class MainController implements EventHandler<Event> {
     }
 
     private void cambiarPokemon(int opcion) {
-        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
-        Pokemon pokemonSeleccionado = entrenadorActual.obtenerPokemones().get(opcion);
-        if(pokemonSeleccionado.estaMuerto()) {
-            this.vistaPokemonesController.setDialogo(pokemonSeleccionado.obtenerNombre() + " esta muerto!");
+        if(this.juego.pokemonEstaMuerto(opcion)) {
+            this.vistaPokemonesController.setDialogo(this.juego.pokemonObtenerNombre(opcion) + " esta muerto!");
             return;
         }
-        entrenadorActual.cambiarPokemon(opcion);
+        this.juego.cambiarPokemon(opcion);
         this.cambiarTurno();
     }
 
@@ -205,6 +201,7 @@ public class MainController implements EventHandler<Event> {
 
         this.actualizarDatos();
         this.juego.efectoClimatico();
+        this.juego.actualizarEstadoPokemonActual();
 
         Entrenador actual = this.juego.obtenerEntrenadorActual();
 
@@ -226,17 +223,8 @@ public class MainController implements EventHandler<Event> {
         this.vistaCampoController.setDatos(actual, rival);
         this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
     }
-
-    private void esperar(int segundos) {
-        /*
-        synchronized (lock) {
-            try {
-                lock.wait(segundos * 1000L);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        */
+    private void esperar(int seconds) {
+        System.out.println("Milisegundos = " + seconds * 1000L);
     }
 
     public void deserializarPartida() {
@@ -339,7 +327,7 @@ public class MainController implements EventHandler<Event> {
         if (nombreFXML.equals("Items")) nombreCSS = "mochila";
         if (nombreFXML.equals("Campo")) nombreCSS = "campo";
 
-        String cssPath = "/" + nombreCSS + ".css";
+        String cssPath = "/Stylesheets/" + nombreCSS + ".css";
         escena.getStylesheets().add(Objects.requireNonNull(getClass()
                 .getResource(cssPath)).toExternalForm());
     }
