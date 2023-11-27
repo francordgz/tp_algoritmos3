@@ -134,8 +134,8 @@ public class VistaCampoController {
         this.estadosRival.setText(pokemonRival.obtenerEstados() + "");
         setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
 
-        this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerPokemones().size()));
-        this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerPokemones().size()));
+        this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerCantidadDePokemones()));
+        this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerCantidadDePokemones()));
 
         botonHabilidad1.setText(pokemonActual.habilidades(0).obtenerNombre());
         botonHabilidad2.setText(pokemonActual.habilidades(1).obtenerNombre());

@@ -62,8 +62,12 @@ public class Entrenador {
         return this.pokemonActual.obtenerNombre();
     }
 
-    public Integer obtenerCantidadDePokemones() {
-        return this.pokemones.size();
+    public int obtenerCantidadDePokemones() {
+        int i = 0;
+        for (Pokemon pokemon: this.pokemones) {
+            if (!pokemon.estaMuerto()) i++;
+        }
+        return i;
     }
 
     public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
