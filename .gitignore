@@ -23,8 +23,6 @@
 hs_err_pid*
 replay_pid*
 /.idea
+/.idea/workspace.xml
 /tp1_algoritmos3.iml
-/target/classes/.gitignore
-/target/classes/pom.xml
-/target/classes/README.md
 /target
