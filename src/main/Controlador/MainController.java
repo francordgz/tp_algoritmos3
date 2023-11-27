@@ -83,7 +83,9 @@ public class MainController implements EventHandler<Event> {
     public void habilidadHandler(int opcion){
         if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
             vistaCampoController.setDialogo("El Pokemon esta dormido, no puede atacar");
+            this.cambiarTurno();
             return;
+
         }
 
         Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
