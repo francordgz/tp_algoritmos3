@@ -125,8 +125,6 @@ public class MainController implements EventHandler<Event> {
 
         if (itemSeleccionado != null) aplicarItemPokemon(opcion);
         else cambiarPokemon(opcion);
-
-        this.cambiarTurno();
     }
 
     private void aplicarItemPokemon(int opcion) {
@@ -136,6 +134,7 @@ public class MainController implements EventHandler<Event> {
         }
         this.juego.usarItem(this.itemSeleccionado, opcion);
         this.itemSeleccionado = null;
+        this.cambiarTurno();
     }
 
     private void cambiarPokemon(int opcion) {
@@ -146,6 +145,7 @@ public class MainController implements EventHandler<Event> {
             return;
         }
         entrenadorActual.cambiarPokemon(opcion);
+        this.cambiarTurno();
     }
 
     private void seleccionarPrimerPokemon(int opcion) {
@@ -194,9 +194,9 @@ public class MainController implements EventHandler<Event> {
         this.primaryStage.close();
     }
 
-
     private void volverHandler() {
-       cambiarEscena(Vistas.CAMPO);
+        this.itemSeleccionado = null;
+        cambiarEscena(Vistas.CAMPO);
     }
 
     private void cambiarTurno() {
@@ -204,12 +204,18 @@ public class MainController implements EventHandler<Event> {
         else this.cambiaElTurno = true;
 
         this.actualizarDatos();
-        this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
         this.juego.efectoClimatico();
+
+        Entrenador actual = this.juego.obtenerEntrenadorActual();
+
+        if (!actual.tienePokemonesConVida()) {
+            terminar();
+            return;
+        }
 
         if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             cambiarEscena(Vistas.SELECCION);
-            this.vistaPokemonesController.llenarLista(this.juego.obtenerEntrenadorActual().obtenerPokemones());
+            this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
             this.cambiaElTurno = false;
         } else cambiarEscena(Vistas.CAMPO);
     }
@@ -217,7 +223,8 @@ public class MainController implements EventHandler<Event> {
     public void actualizarDatos() {
         Entrenador actual = this.juego.obtenerEntrenadorActual();
         Entrenador rival = this.juego.obtenerEntrenadorRival();
-        vistaCampoController.setDatos(actual, rival);
+        this.vistaCampoController.setDatos(actual, rival);
+        this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
     }
 
     private void esperar(int segundos) {
@@ -307,7 +314,7 @@ public class MainController implements EventHandler<Event> {
         try {
             escena = new Scene(loader.load());
         } catch (IOException e) {
-            throw new RuntimeException("Error al cargas la escena!");
+            throw new RuntimeException("Error al cargas la escena de " + nombreFXML + "!");
         }
         setEstilo(escena, nombreFXML);
 

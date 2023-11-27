@@ -11,14 +11,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.RendirseEvento;
 import src.main.Controlador.Eventos.VerMochilaEvento;
 import src.main.Controlador.Eventos.VerPokemonesEvento;
-import src.main.Modelo.Clima.Clima;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Pokemon;
 
@@ -168,7 +166,7 @@ public class VistaCampoController {
         rivalVidaPorcentaje.setStyle(style);
     }
 
-    private String getColor(double percentage) {
+    public static String getColor(double percentage) {
         if (percentage < 0.1) return "#FF0000";  // Red
         if (percentage < 0.25) return "#FF4500"; // Orange-Red
         if (percentage < 0.5) return "#FFFF66";  // Yellow

@@ -9,6 +9,8 @@ import src.main.Modelo.Pokemon;
 
 import java.io.InputStream;
 
+import static src.main.Controlador.VistaCampoController.getColor;
+
 public class PokemonButtonController  {
     @FXML
     private ImageView pokemonImage;
@@ -52,13 +54,5 @@ public class PokemonButtonController  {
             System.err.println("Image not found for: " + nombre);
             return null;
         }
-    }
-
-    private String getColor(double percentage) {
-        if (percentage < 0.1) return "#FF0000";  // Red
-        if (percentage < 0.25) return "#FF4500"; // Orange-Red
-        if (percentage < 0.5) return "#FFFF66";  // Yellow
-        if (percentage < 0.75) return "#ADFF2F"; // Green-Yellow
-        return "#00FF00"; // Green
     }
 }

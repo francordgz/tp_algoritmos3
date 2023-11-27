@@ -3,13 +3,11 @@ package src.main.Controlador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Controlador.Eventos.VolverEvento;
 import src.main.Controlador.Nodos.PokemonButtonController;
@@ -18,6 +16,8 @@ import src.main.Modelo.Pokemon;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import static src.main.Controlador.VistaCampoController.getColor;
 
 public class VistaPokemonesController {
     @FXML
@@ -40,7 +40,7 @@ public class VistaPokemonesController {
     @FXML
     private ListView<Button> pokemonListView;
     @FXML
-    private Text dialogo;
+    private Label dialogo;
 
     @FXML
     public void setSalir() {
@@ -96,14 +96,6 @@ public class VistaPokemonesController {
         InputStream imagen = getClass().getResourceAsStream(path);
         assert imagen != null;
         return new Image(imagen);
-    }
-
-    private String getColor(double percentage) {
-        if (percentage < 0.1) return "#FF0000";  // Red
-        if (percentage < 0.25) return "#FF4500"; // Orange-Red
-        if (percentage < 0.5) return "#FFFF66";  // Yellow
-        if (percentage < 0.75) return "#ADFF2F"; // Green-Yellow
-        return "#00FF00"; // Green
     }
     public void setEscena(Scene escena) {
         this.escena = escena;
