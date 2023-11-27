@@ -212,7 +212,9 @@ public class MainController implements EventHandler<Event> {
         this.actualizarDatos();
         this.juego.efectoClimatico();
 
+
         Entrenador actual = this.juego.obtenerEntrenadorActual();
+
 
         if (!actual.tienePokemonesConVida()) {
             terminar();
@@ -222,7 +224,7 @@ public class MainController implements EventHandler<Event> {
         if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             cambiarEscena(Vistas.SELECCION);
             this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
-            this.cambiaElTurno = false;
+            this.cambiaElTurno = true;
         } else cambiarEscena(Vistas.CAMPO);
     }
 
