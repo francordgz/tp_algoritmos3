@@ -2,6 +2,7 @@ package src.main.Controlador;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -112,6 +113,10 @@ public class VistaCampoController {
 
     public void setDialogo(String mensaje) {
         dialogo.setText(mensaje);
+        String mensajeAnterior = this.dialogo.getText();
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(2));
+        pauseTransition.setOnFinished(event -> { dialogo.setText(mensajeAnterior); });
+        pauseTransition.play();
     }
 
     public void setDatos(Entrenador actual, Entrenador rival) {

@@ -1,11 +1,13 @@
 package src.main.Controlador;
 
+import javafx.animation.PauseTransition;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
@@ -30,6 +32,8 @@ public class MainController implements EventHandler<Event> {
     private Integer itemSeleccionado = null;
 
     private boolean cambiaElTurno = true;
+    
+    private boolean batallaInicializada = false;
 
     @FXML
     VistaCampoController vistaCampoController;
@@ -223,7 +227,17 @@ public class MainController implements EventHandler<Event> {
     public void actualizarDatos() {
         Entrenador actual = this.juego.obtenerEntrenadorActual();
         Entrenador rival = this.juego.obtenerEntrenadorRival();
-        this.vistaCampoController.setDatos(actual, rival);
+        double segundos;
+        
+        if (!this.batallaInicializada) {
+            segundos = 0;
+            this.batallaInicializada = true;
+        } else segundos = 2;
+
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(segundos));
+        pauseTransition.setOnFinished(event -> { this.vistaCampoController.setDatos(actual, rival); });
+        pauseTransition.play();
+
         this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
     }
 
