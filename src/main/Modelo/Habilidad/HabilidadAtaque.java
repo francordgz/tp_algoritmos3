@@ -16,7 +16,6 @@ public class HabilidadAtaque extends Habilidad{
         return 1;
     }
 
-    @Override
     public double atacar(int ataque, int nivel, int defensa, double efectividad){
         float critico = generarProba();
         float numeroRandom = generarNumeroRandom();
@@ -38,5 +37,10 @@ public class HabilidadAtaque extends Habilidad{
         float numeroAleatorio = rand.nextInt(100);
         if(numeroAleatorio <= 90) return  2;
         return 1;
+    }
+
+    @Override
+    public String getTipoHabilidad() {
+        return "ataque";
     }
 }

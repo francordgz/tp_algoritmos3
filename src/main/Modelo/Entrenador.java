@@ -62,8 +62,12 @@ public class Entrenador {
         return this.pokemonActual.obtenerNombre();
     }
 
-    public Integer obtenerCantidadDePokemones() {
-        return this.pokemones.size();
+    public int obtenerCantidadDePokemones() {
+        int i = 0;
+        for (Pokemon pokemon: this.pokemones) {
+            if (!pokemon.estaMuerto()) i++;
+        }
+        return i;
     }
 
     public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
@@ -84,9 +88,14 @@ public class Entrenador {
         return this.pokemonActual.tieneEstado(estado);
     }
 
-    public Boolean pokemonEstaMuerto(Integer opcion) {
+    public Boolean pokemonEstaMuerto(int opcion) {
         Pokemon pokemon = this.pokemones.get(opcion);
         return pokemon.tieneEstado(Estados.MUERTO);
+    }
+
+    public String pokemonObtenerNombre(int opcion) {
+        Pokemon pokemon = this.pokemones.get(opcion);
+        return pokemon.obtenerNombre();
     }
 
     public Boolean validarHabilidad(int opcion) {

@@ -1,7 +1,7 @@
 package src.main.Modelo;
 import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Enums.Tipo;
-import src.main.Modelo.Habilidad.Habilidad;
+import src.main.Modelo.Habilidad.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,13 +115,21 @@ public class Pokemon {
         this.estados.add(estado);
     }
 
-    public double atacar(int habilidad, Pokemon rival){
-        double efectividad = Constant.calcularEfectividad(this.obtenerTipo(), rival.obtenerTipo());
-        return this.habilidades.get(habilidad).atacar(ataque, nivel, rival.defensa, efectividad);
+    public double atacar(int habilidad, Pokemon rival, double efectividad){
+        HabilidadAtaque habilidadAtaque = (HabilidadAtaque) this.habilidades.get(habilidad);
+        return habilidadAtaque.atacar(ataque, nivel, rival.defensa, efectividad);
     }
 
-    public void UsarHabilidad(int Numerohabilidad, Pokemon rival) {
-        this.habilidades.get(Numerohabilidad).modificarEstado(rival);
+    public void usarHabilidadEstado(int habilidad, Pokemon rival) {
+        HabilidadEstado habilidadEstado = (HabilidadEstado) this.habilidades.get(habilidad);
+        habilidadEstado.modificarEstado(rival);
+    }
+
+    public boolean usarHabilidadEstadistica(int habilidad, Pokemon rival) {
+        HabilidadEstadistica habilidadEstado = (HabilidadEstadistica) this.habilidades.get(habilidad);
+        boolean afectaRival = habilidadEstado.afectaRival();
+        habilidadEstado.modificarEstado(afectaRival ? rival : this);
+        return afectaRival;
     }
 
     public void recibirAtaque(double danio){
@@ -160,7 +168,7 @@ public class Pokemon {
         return probabilidad > rand;
     }
 
-    public void actualizarEstadoConfuso() {
+    public Boolean actualizarEstadoConfuso() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
         boolean pierdeVida = probabilidad <= Constant.TERCIO;
@@ -173,6 +181,8 @@ public class Pokemon {
             removerEstado(Estados.CONFUSO);
             this.turnosConfundido = 0;
         }
+
+        return !pierdeVida;
     }
 
     public Boolean tieneEstado(Estados estadoBuscado) {

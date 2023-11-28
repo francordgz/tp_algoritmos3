@@ -67,7 +67,6 @@ public class Juego {
 
     public void cambiarTurno() {
         this.administrador.cambiarTurno();
-        this.actualizarClima();
     }
 
     public void modificarClima(Clima clima) {
@@ -75,7 +74,7 @@ public class Juego {
         this.administrador.modificarDiasDelClimaActual(1);
     }
 
-    public Clima inicializarClima() {
+    public void inicializarClima() {
         Random rand = new Random();
         int probabilidad = rand.nextInt(100);
         if (probabilidad > 66) {
@@ -93,8 +92,6 @@ public class Juego {
             else
                 this.modificarClima(new ClimaHuracan());
         }
-
-        return clima;
     }
 
     public void actualizarClima() {
@@ -234,6 +231,7 @@ public class Juego {
 
     public Boolean itemAplicable(Integer opcion, Integer pokemon) {
         Entrenador entrenadorActual = this.administrador.obtenerEntrenadorActual();
+
         return entrenadorActual.itemAplicable(opcion, pokemon);
     }
 
@@ -248,5 +246,18 @@ public class Juego {
             return true;
         }
         return this.terminado;
+    }
+
+    public void deserializarPartida(String partidaJSON, String pokemonsJSON, String habilidadesJSON, String itemsJSON) {
+        try {
+            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
+                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
+            );
+
+            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
+            this.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException("Error al leer archivos JSON");
+        }
     }
 }

@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="pokemon dormido cambia de turno">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Imagenes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/PokemonButtonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/Massa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Imagenes/MyriamBregman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,10 +37,11 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="UiRealPosta" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -43,7 +52,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="2f7b198f-f470-464a-9b7e-03943e562a3e" />
+        <option name="accountId" value="9267e3b9-3919-472e-a024-d65b40dc1ce3" />
         <option name="url" value="https://github.com/francordgz/tp1_algoritmos3.git" />
       </UrlAndAccount>
     </option>
@@ -55,9 +64,7 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2Y2u9B4XlfX9CRHltFANDIab11q" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,7 +74,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dialogo&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CustomEvent&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -81,8 +88,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="src.main.Controlador" />
       <recent name="src.main.Controlador.Eventos" />
+      <recent name="src.main.Controlador" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\facun\Desktop\tp1_algoritmos3\src\main\resources" />
@@ -104,6 +111,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.Main" />
+      <module name="tp1_algoritmos3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.Controlador.Eventos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.MainApplication" />
       <module name="tp1_algoritmos3" />
@@ -132,38 +152,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegracionTest.deserializarArchivoInvalidoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tp1_algoritmos3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="src.test" />
-      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
-      <option name="METHOD_NAME" value="deserializarArchivoInvalidoTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegracionTest.partidaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tp1_algoritmos3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="src.test" />
-      <option name="MAIN_CLASS_NAME" value="src.test.IntegracionTest" />
-      <option name="METHOD_NAME" value="partidaTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="src.test in tp1_algoritmos3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tp1_algoritmos3" />
       <extension name="coverage">
@@ -178,24 +166,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
-        <item itemvalue="JUnit.IntegracionTest.partidaTest" />
-        <item itemvalue="JUnit.IntegracionTest.deserializarArchivoInvalidoTest" />
-        <item itemvalue="JUnit.IntegracionTest" />
         <item itemvalue="JUnit.src.test in tp1_algoritmos3" />
+        <item itemvalue="JUnit.IntegracionTest" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -223,7 +199,6 @@
       <workItem from="1700330609289" duration="17664000" />
       <workItem from="1700348621685" duration="239000" />
       <workItem from="1701004983264" duration="6069000" />
-      <workItem from="1701126370933" duration="1029000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX Vista">
       <option name="closed" value="true" />
@@ -473,87 +448,7 @@
       <option name="project" value="LOCAL" />
       <updated>1701017527092</updated>
     </task>
-    <task id="LOCAL-00032" summary="Push Imagenes">
-      <option name="closed" value="true" />
-      <created>1701020895304</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1701020895304</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Items Hecho">
-      <option name="closed" value="true" />
-      <created>1701025996955</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1701025996955</updated>
-    </task>
-    <task id="LOCAL-00034" summary="NombresSeMuestranHabilidades">
-      <option name="closed" value="true" />
-      <created>1701031695536</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1701031695536</updated>
-    </task>
-    <task id="LOCAL-00035" summary="EventoSeTiraNoSeXQNOrestalavida">
-      <option name="closed" value="true" />
-      <created>1701035375189</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1701035375189</updated>
-    </task>
-    <task id="LOCAL-00036" summary="FuncionaAtaque">
-      <option name="closed" value="true" />
-      <created>1701035774584</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1701035774584</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Mew esta re OP">
-      <option name="closed" value="true" />
-      <created>1701036198945</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1701036198945</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Emprolijo código">
-      <option name="closed" value="true" />
-      <created>1701098659342</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1701098659342</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Emprolijo código">
-      <option name="closed" value="true" />
-      <created>1701098668728</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1701098668728</updated>
-    </task>
-    <task id="LOCAL-00040" summary="titulo">
-      <option name="closed" value="true" />
-      <created>1701125776739</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1701125776739</updated>
-    </task>
-    <task id="LOCAL-00041" summary="pokemon dormido cambia de turno">
-      <option name="closed" value="true" />
-      <created>1701126632363</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1701126632363</updated>
-    </task>
-    <option name="localTasksCounter" value="42" />
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,6 +466,15 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="JavaFX Vista" />
+    <MESSAGE value="CorrijoVista" />
+    <MESSAGE value="Refactor de clases y carpetas (#24)&#10;&#10;* Refactor a patron MVC&#10;&#10;* Dependencias y plugins agregados&#10;&#10;* Modifico dependencias que se rompieron&#10;&#10;---------&#10;&#10;Co-authored-by: Franco Rodriguez &lt;frodriguez@fi.uba.ar&gt;" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="Modelo del controller anda y Aplicacion se lanza pero no se cargan las imagenes" />
+    <MESSAGE value="Modelo main y vistas + imagenes" />
+    <MESSAGE value="ControllerCreadoYappSeLanza" />
+    <MESSAGE value="SeCarganLasImagenes" />
+    <MESSAGE value="ImagenMasomenos" />
     <MESSAGE value="Cambio imagenes a path relativo para que todos lo podamos correr, no solo vos Ezequiel" />
     <MESSAGE value="Mejoro Escena" />
     <MESSAGE value="Agrego Escenas" />
@@ -587,15 +491,6 @@
     <MESSAGE value="Cambio el git ignore a que ignore todo el .idea" />
     <MESSAGE value="Pokemon Data" />
     <MESSAGE value="Imagenes" />
-    <MESSAGE value="Push Imagenes" />
-    <MESSAGE value="Items Hecho" />
-    <MESSAGE value="NombresSeMuestranHabilidades" />
-    <MESSAGE value="EventoSeTiraNoSeXQNOrestalavida" />
-    <MESSAGE value="FuncionaAtaque" />
-    <MESSAGE value="Mew esta re OP" />
-    <MESSAGE value="Emprolijo código" />
-    <MESSAGE value="titulo" />
-    <MESSAGE value="pokemon dormido cambia de turno" />
-    <option name="LAST_COMMIT_MESSAGE" value="pokemon dormido cambia de turno" />
+    <option name="LAST_COMMIT_MESSAGE" value="Imagenes" />
   </component>
 </project>
