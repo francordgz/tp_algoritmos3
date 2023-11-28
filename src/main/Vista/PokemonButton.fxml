@@ -18,7 +18,7 @@
                <children>
                   <Label fx:id="nombreLabel" prefHeight="17.0" prefWidth="109.0" text="Nombre" />
                   <Label fx:id="nivelLabel" prefHeight="17.0" prefWidth="110.0" text="Nivel" />
-                  <Label fx:id="estadosLabel" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0" text="Estados" />
+                  <Label fx:id="estadosLabel" layoutX="10.0" layoutY="27.0" prefHeight="17.0" prefWidth="130.0"/>
                </children>
             </VBox>
             <VBox layoutX="85.0" layoutY="10.0">

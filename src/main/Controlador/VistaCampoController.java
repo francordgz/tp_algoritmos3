@@ -5,10 +5,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -91,19 +88,18 @@ public class VistaCampoController {
 
     @FXML
     public void initialize() {
-
         botonRendirse.setOnAction(e -> botonRendirse.fireEvent(new RendirseEvento()));
-
         botonPokemones.setOnAction(e -> botonPokemones.fireEvent(new VerPokemonesEvento()));
-
         botonMochila.setOnAction(e -> botonMochila.fireEvent(new VerMochilaEvento()));
 
-        botonHabilidad1.setOnAction(e -> habilidad(0));
-        botonHabilidad2.setOnAction(e -> habilidad(1));
-        botonHabilidad3.setOnAction(e -> habilidad(2));
-        botonHabilidad4.setOnAction(e -> habilidad(3));
-        botonHabilidad5.setOnAction(e -> habilidad(4));
-        botonHabilidad6.setOnAction(e -> habilidad(5));
+        MenuItem[] habilidadButtons = {
+                botonHabilidad1, botonHabilidad2, botonHabilidad3,
+                botonHabilidad4, botonHabilidad5, botonHabilidad6
+        };
+        for (int i = 0; i < habilidadButtons.length; i++) {
+            int opcion = i;
+            habilidadButtons[i].setOnAction(e -> habilidad(opcion));
+        }
     }
 
 
@@ -116,34 +112,46 @@ public class VistaCampoController {
     }
 
     public void setDatos(Entrenador actual, Entrenador rival) {
-        Pokemon pokemonActual = actual.obtenerPokemonActual();
-        String nombre = pokemonActual.obtenerNombre();
-        this.jugadorImagen.setImage(getImagenPokemon(nombre, true));
-        this.jugadorNombre.setText(nombre);
-        this.estadosActual.setText(pokemonActual.obtenerEstados() + "");
-        this.dialogo.setText("Que debe hacer " + nombre + "?");
-
-        this.jugadorNivel.setText("Nv " + pokemonActual.obtenerNivel());
-        setJugadorVida(pokemonActual.obtenerVidaActual(), pokemonActual.obtenerVidaMaxima());
-
-        Pokemon pokemonRival = rival.obtenerPokemonActual();
-        nombre = pokemonRival.obtenerNombre();
-        this.rivalImagen.setImage(getImagenPokemon(nombre, false));
-        this.rivalNombre.setText(nombre);
-        this.rivalNivel.setText("Nv " + pokemonRival.obtenerNivel());
-        this.estadosRival.setText(pokemonRival.obtenerEstados() + "");
-        setRivalVida(pokemonRival.obtenerVidaActual(), pokemonRival.obtenerVidaMaxima());
+        setDatosPokemonActual(actual.obtenerPokemonActual());
+        setDatosPokemonRival(rival.obtenerPokemonActual());
 
         this.cantidadPokemonesActual.setText("◓".repeat(actual.obtenerCantidadDePokemones()));
         this.cantidadPokemonesRival.setText("◓".repeat(rival.obtenerCantidadDePokemones()));
-
-        botonHabilidad1.setText(pokemonActual.habilidades(0).obtenerNombre());
-        botonHabilidad2.setText(pokemonActual.habilidades(1).obtenerNombre());
-        botonHabilidad3.setText(pokemonActual.habilidades(2).obtenerNombre());
-        botonHabilidad4.setText(pokemonActual.habilidades(3).obtenerNombre());
-        botonHabilidad5.setText(pokemonActual.habilidades(4).obtenerNombre());
-        botonHabilidad6.setText(pokemonActual.habilidades(5).obtenerNombre());
     }
+
+    private void setDatosPokemonActual(Pokemon pokemon) {
+        String nombre = pokemon.obtenerNombre();
+        this.jugadorImagen.setImage(getImagenPokemon(nombre, true));
+        this.jugadorNombre.setText(nombre);
+
+        if (pokemon.estaNormal()) this.estadosActual.setText("");
+        else this.estadosActual.setText(pokemon.obtenerEstados() + "");
+
+        this.dialogo.setText("Que debe hacer " + nombre + "?");
+
+        this.jugadorNivel.setText("Nv " + pokemon.obtenerNivel());
+        setJugadorVida(pokemon.obtenerVidaActual(), pokemon.obtenerVidaMaxima());
+
+        MenuItem[] habilidadButtons = {
+                botonHabilidad1, botonHabilidad2, botonHabilidad3,
+                botonHabilidad4, botonHabilidad5, botonHabilidad6
+        };
+        for (int i = 0; i < habilidadButtons.length; i++)
+            habilidadButtons[i].setText(pokemon.habilidades(i).obtenerNombre());
+    }
+
+    private void setDatosPokemonRival(Pokemon pokemon) {
+        String nombre = pokemon.obtenerNombre();
+        this.rivalImagen.setImage(getImagenPokemon(nombre, false));
+        this.rivalNombre.setText(nombre);
+        this.rivalNivel.setText("Nv " + pokemon.obtenerNivel());
+
+        if (pokemon.estaNormal()) this.estadosRival.setText("");
+        else this.estadosRival.setText(pokemon.obtenerEstados() + "");
+
+        setRivalVida(pokemon.obtenerVidaActual(), pokemon.obtenerVidaMaxima());
+    }
+
 
     public void setClima(String clima) {
         this.background.setImage(getImagenClima(clima));
@@ -192,25 +200,22 @@ public class VistaCampoController {
         return new Image(imagen);
     }
 
-    public void titilarRival() {
-        ImageView imageView = this.rivalImagen;
+    public void titilarRival(int ciclos) {
+        ImageView imagen = this.rivalImagen;
 
-    Timeline timeline = new Timeline(
-            new KeyFrame(Duration.ZERO, new KeyValue(imageView.opacityProperty(), 1.0)),
-            new KeyFrame(Duration.seconds(0.2), new KeyValue(imageView.opacityProperty(), 0.0)),
-            new KeyFrame(Duration.seconds(0.5), new KeyValue(imageView.opacityProperty(), 1.0))
-    );
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(imagen.opacityProperty(), 1.0)),
+                new KeyFrame(Duration.seconds(0.2), new KeyValue(imagen.opacityProperty(), 0.0)),
+                new KeyFrame(Duration.seconds(0.5), new KeyValue(imagen.opacityProperty(), 1.0))
+        );
 
-    // Configurar la animación para que se repita indefinidamente
-        timeline.setCycleCount(2);
-
-    // Iniciar la animación
+        timeline.setCycleCount(ciclos);
         timeline.play();
     }
 
     public void mostrarEfectividad(double efectividad) {
         this.setDialogo("El ataque ha sido" + getEfectividad(efectividad) + " efectivo!");
-        if (efectividad > Constant.NULA) titilarRival();
+        if(efectividad != Constant.NULA) titilarRival((int) (efectividad * 2));
     }
     private String getEfectividad(double efectividad) {
         if (efectividad == Constant.NULA) return " CERO";
@@ -219,8 +224,6 @@ public class VistaCampoController {
         if (efectividad == Constant.DOBLE) return " MUY";
         else throw new RuntimeException("Error Efectividades");
     }
-
-
 
 }
 

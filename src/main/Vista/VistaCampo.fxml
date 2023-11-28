@@ -15,16 +15,16 @@
             <ProgressBar fx:id="rivalVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="24.0" />
             <Label fx:id="rivalNombre" layoutX="14.0" layoutY="12.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" text="Nombre Rival" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
             <Label fx:id="rivalNivel" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Rival" />
-         <Label fx:id="estadosRival" layoutX="25.0" layoutY="67.0" prefHeight="17.0" prefWidth="143.0" text="Estados Rival" />
+         <Label fx:id="estadosRival" layoutX="25.0" layoutY="67.0" prefHeight="17.0" prefWidth="143.0"/>
         </AnchorPane>
 
         <!-- Información del jugador -->
         <AnchorPane fx:id="paneActual" layoutX="354.0" layoutY="229.0" prefHeight="83.0" prefWidth="237.0" AnchorPane.topAnchor="229.0">
             <ProgressBar fx:id="jugadorVidaPorcentaje" layoutX="18.0" layoutY="43.0" prefWidth="200.0" progress="100.0" />
             <Label fx:id="jugadorNombre" layoutX="18.0" layoutY="10.0" prefHeight="25.0" prefWidth="127.0" text="Nombre Pokemon" />
-            <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="162.0" layoutY="60.0" prefHeight="25.0" prefWidth="73.0" text="Vida Numero" />
+            <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="145.0" layoutY="60.0" prefHeight="25.0" prefWidth="73.0" text="Vida Numero" />
             <Label fx:id="jugadorNivel" alignment="CENTER_RIGHT" layoutX="145.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Jugador" />
-         <Label fx:id="estadosActual" layoutX="18.0" layoutY="60.0" prefHeight="25.0" prefWidth="127.0" text="Estados Actual" />
+         <Label fx:id="estadosActual" layoutX="18.0" layoutY="60.0" prefHeight="25.0" prefWidth="127.0"/>
         </AnchorPane>
 
         <!-- Imágenes del jugador y rival -->

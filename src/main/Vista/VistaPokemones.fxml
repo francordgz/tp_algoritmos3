@@ -18,7 +18,7 @@
                                 <Label fx:id="actualVida" layoutX="140.0" layoutY="3.0" prefHeight="25.0" prefWidth="50.0" text="Vida Actual" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
                             </AnchorPane>
                             <AnchorPane layoutX="8.0" layoutY="232.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0">
-                                <Label fx:id="actualEstado" layoutX="15.0" layoutY="38.0" prefHeight="26.0" text="Lista de Estados Actuales" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
+                                <Label fx:id="actualEstado" layoutX="15.0" layoutY="38.0" prefHeight="26.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
                                 <Label fx:id="actualTipo" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="75.0" text="Tipo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
                                 <Label fx:id="actualNivel" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" text="Nivel" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
                             </AnchorPane>
@@ -42,7 +42,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="dialogo" layoutX="53.0" layoutY="9.0" prefHeight="57.0" prefWidth="340.0" style="-fx-alignment: CENTER;" wrapText="true" />
+                              <Label fx:id="dialogo" layoutX="53.0" layoutY="9.0" prefHeight="57.0" prefWidth="340.0" style="-fx-alignment: CENTER;" wrapText="true" text="Seleccione un nuevo POKéMON"/>
                            </children>
                         </AnchorPane>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="146.0">

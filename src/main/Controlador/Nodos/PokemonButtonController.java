@@ -34,7 +34,8 @@ public class PokemonButtonController  {
         this.pokemonImage.setImage(getImagen(pokemon.obtenerNombre()));
         this.nombreLabel.setText(pokemon.obtenerNombre());
         this.nivelLabel.setText("Nv " + pokemon.obtenerNivel());
-        this.estadosLabel.setText(pokemon.obtenerEstados() + ""); // TODO: You need to define how you want to display states
+        if (!pokemon.estaNormal())
+            this.estadosLabel.setText(pokemon.obtenerEstados() + "");
 
         int vidaActual = pokemon.obtenerVidaActual();
         int vidaMaxima = pokemon.obtenerVidaMaxima();

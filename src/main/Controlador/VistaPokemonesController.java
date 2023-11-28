@@ -63,23 +63,7 @@ public class VistaPokemonesController {
                     int finalOpcion = opcion;
                     button.setOnAction(e -> button.fireEvent(new EligePokemonEvento(finalOpcion)));
                     pokemonListView.getItems().add(button);
-                } else {
-                    String nombre = pokemonActual.obtenerNombre();
-                    actualImagen.setImage(getImagen(nombre));
-                    actualNombre.setText(nombre);
-
-                    actualEstado.setText(pokemonActual.obtenerEstados() + ""); // TODO: Logica
-                    actualNivel.setText(pokemonActual.obtenerNivel() + "");
-                    actualTipo.setText(pokemonActual.obtenerTipo() + "");
-
-                    int vidaActual = pokemonActual.obtenerVidaActual();
-                    int vidaMaxima = pokemonActual.obtenerVidaMaxima();
-                    actualVida.setText(vidaActual + "/" + vidaMaxima);
-                    double porcentaje = (double) vidaActual/vidaMaxima;
-                    actualVidaPorcentaje.setProgress(porcentaje);
-                    String style = String.format("-fx-accent: %s;", getColor(porcentaje));
-                    actualVidaPorcentaje.setStyle(style);
-                }
+                } else datosActual(pokemonActual);
                 opcion++;
             }
         } catch (IOException e) {
@@ -89,6 +73,26 @@ public class VistaPokemonesController {
 
     public void llenarLista(List<Pokemon> pokemones) {
         this.llenarLista(pokemones, null);
+    }
+
+    public void datosActual (Pokemon pokemonActual) {
+        String nombre = pokemonActual.obtenerNombre();
+        actualImagen.setImage(getImagen(nombre));
+        actualNombre.setText(nombre);
+
+        if (!pokemonActual.estaNormal())
+            actualEstado.setText(pokemonActual.obtenerEstados() + "");
+
+        actualNivel.setText("Nivel " + pokemonActual.obtenerNivel());
+        actualTipo.setText("Tipo: " + pokemonActual.obtenerTipo());
+
+        int vidaActual = pokemonActual.obtenerVidaActual();
+        int vidaMaxima = pokemonActual.obtenerVidaMaxima();
+        actualVida.setText(vidaActual + "/" + vidaMaxima);
+        double porcentaje = (double) vidaActual/vidaMaxima;
+        actualVidaPorcentaje.setProgress(porcentaje);
+        String style = String.format("-fx-accent: %s;", getColor(porcentaje));
+        actualVidaPorcentaje.setStyle(style);
     }
 
     private Image getImagen(String nombre) {

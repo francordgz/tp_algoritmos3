@@ -177,8 +177,7 @@ public class Juego {
     }
 
     public void actualizarEstadoPokemonActual(){
-        Pokemon actual = this.administrador.obtenerEntrenadorActual().obtenerPokemonActual();
-        actual.actualizarEstado();
+        this.obtenerPokemonActual().actualizarEstado();
     }
 
     public Boolean pokemonActualTieneEstado(Estados estado) {

@@ -1,5 +1,5 @@
 @font-face {
-    src: url('fonts/PressStart2P.ttf');
+    src: url('../fonts/PressStart2P.ttf');
 }
 
 .text, #dialogo {

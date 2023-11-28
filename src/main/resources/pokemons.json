@@ -57,7 +57,7 @@
     "velocidad": 15,
     "defensa": 20,
     "ataque": 18,
-    "habilidades": [22,23,24,25,27,26]
+    "habilidades": [52,53,54,55,57,56]
   },
   {
     "nombre": "Mew",
@@ -69,7 +69,7 @@
     "velocidad": 100,
     "defensa": 100,
     "ataque": 100,
-    "habilidades": [52,53,54,55,57,56]
+    "habilidades": [22,23,24,25,27,26]
   },
   {
     "nombre": "Venusaur",

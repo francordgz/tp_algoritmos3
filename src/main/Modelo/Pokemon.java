@@ -115,6 +115,10 @@ public class Pokemon {
         this.estados.add(estado);
     }
 
+    public boolean estaNormal() {
+        return tieneEstado(Estados.NORMAL);
+    }
+
     public double atacar(int habilidad, Pokemon rival, double efectividad){
         HabilidadAtaque habilidadAtaque = (HabilidadAtaque) this.habilidades.get(habilidad);
         return habilidadAtaque.atacar(ataque, nivel, rival.defensa, efectividad);
