@@ -13,7 +13,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Subanle un punto a Eze");
+        primaryStage.setTitle("Batalla Pokemon");
         primaryStage.setResizable(false);
         primaryStage.show();
 
