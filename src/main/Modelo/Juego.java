@@ -199,27 +199,12 @@ public class Juego {
         return this.obtenerPokemonActual().obtenerNombre();
     }
 
-    public String cambiarPokemon(int opcion){
-        return this.obtenerEntrenadorActual().cambiarPokemon(opcion);
-    }
-
-    public Boolean validarPokemon(Integer opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.validarPokemon(opcion, entrenador.obtenerPokemonActual());
+    public void cambiarPokemon(int opcion) {
+        this.obtenerEntrenadorActual().cambiarPokemon(opcion);
     }
 
     public void usarItem(int item, int pokemon) {
-        this.administrador.obtenerEntrenadorActual().usarItem(item, pokemon);
-    }
-
-    public Boolean validarItem(Integer opcion) {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.validarItem(opcion);
-    }
-
-    public Integer obtenerCantidadDeItems() {
-        Entrenador entrenador = this.administrador.obtenerEntrenadorActual();
-        return entrenador.obtenerCantidadDeItems();
+        this.obtenerEntrenadorActual().usarItem(item, pokemon);
     }
 
     public Boolean itemAplicable(Integer opcion, Integer pokemon) {

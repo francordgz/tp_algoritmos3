@@ -205,7 +205,7 @@ public class Pokemon {
         return !tieneEstado(Estados.DORMIDO);
     }
 
-    public boolean estaCurado() {
+    public boolean tieneVidaMaxima() {
         return this.vidaActual == this.vidaMaxima;
     }
 

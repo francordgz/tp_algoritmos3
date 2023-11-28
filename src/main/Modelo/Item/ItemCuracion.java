@@ -20,6 +20,6 @@ public class ItemCuracion extends Item {
 
     @Override
     public Boolean esAplicable(Pokemon pokemon) {
-        return !pokemon.estaMuerto() && !pokemon.estaCurado();
+        return !pokemon.estaMuerto() && !pokemon.tieneVidaMaxima();
     }
 }

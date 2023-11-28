@@ -70,12 +70,6 @@ public class Entrenador {
         return i;
     }
 
-    public Boolean validarPokemon(Integer opcion, Pokemon pokemonActual) {
-        Pokemon pokemon = this.pokemones.get(opcion);
-        String nombrePokemonActual = pokemonActual.obtenerNombre();
-        return nombrePokemonActual.equals(pokemon.obtenerNombre());
-    }
-
     public Boolean tienePokemonesConVida() {
         for (Pokemon pokemon: this.pokemones) {
             if (!pokemon.estaMuerto())
@@ -115,9 +109,5 @@ public class Entrenador {
         Item item = this.items.get(opcion);
         Pokemon pokemon = this.pokemones.get(indicePokemon);
         return item.esAplicable(pokemon);
-    }
-
-    public Integer obtenerCantidadDeItems() {
-        return this.obtenerItems().size();
     }
 }
