@@ -119,20 +119,20 @@ public class Pokemon {
         return tieneEstado(Estados.NORMAL);
     }
 
-    public double atacar(int habilidad, Pokemon rival, double efectividad){
+    public double atacar(int habilidad, Pokemon objetivo, double efectividad){
         HabilidadAtaque habilidadAtaque = (HabilidadAtaque) this.habilidades.get(habilidad);
-        return habilidadAtaque.atacar(ataque, nivel, rival.defensa, efectividad);
+        return habilidadAtaque.atacar(ataque, nivel, objetivo.defensa, efectividad);
     }
 
-    public void usarHabilidadEstado(int habilidad, Pokemon rival) {
+    public void usarHabilidadEstado(int habilidad, Pokemon objetivo) {
         HabilidadEstado habilidadEstado = (HabilidadEstado) this.habilidades.get(habilidad);
-        habilidadEstado.modificarEstado(rival);
+        habilidadEstado.modificarEstado(objetivo);
     }
 
-    public boolean usarHabilidadEstadistica(int habilidad, Pokemon rival) {
+    public boolean usarHabilidadEstadistica(int habilidad, Pokemon objetivo) {
         HabilidadEstadistica habilidadEstado = (HabilidadEstadistica) this.habilidades.get(habilidad);
         boolean afectaRival = habilidadEstado.afectaRival();
-        habilidadEstado.modificarEstado(afectaRival ? rival : this);
+        habilidadEstado.modificarEstado(afectaRival ? objetivo : this);
         return afectaRival;
     }
 
