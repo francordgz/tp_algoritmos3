@@ -2,7 +2,6 @@ package src.main.Modelo;
 
 import src.main.Modelo.Clima.*;
 import src.main.Modelo.Enums.Estados;
-import src.main.Modelo.Habilidad.HabilidadAtaque;
 import src.main.Modelo.Habilidad.HabilidadClima;
 
 import java.util.Random;
@@ -12,13 +11,11 @@ public class Juego {
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private Clima clima;
-    private Boolean terminado;
 
     public Juego() {
         this.administrador = new AdministradorDeTurnos();
         this.administrador.modificarDiasDelClimaActual(1);
         this.clima = new ClimaNormal();
-        this.terminado = false;
     }
 
     public Entrenador obtenerPrimerEntrenador() {
@@ -141,7 +138,7 @@ public class Juego {
                 return atacar(opcion);
             case "clima":
                 usarHabilidadClima(opcion);
-                return (double) Constant.SIMPLE;
+                return (double) Constant.TERCIO;
             case "estado":
                 usarHabilidadEstado(opcion);
                 return (double) Constant.SIMPLE;
@@ -199,6 +196,10 @@ public class Juego {
         return entrenador.pokemonObtenerNombre(opcion);
     }
 
+    public String pokemonObtenerNombreActual() {
+        return this.obtenerPokemonActual().obtenerNombre();
+    }
+
     public String cambiarPokemon(int opcion){
         return this.obtenerEntrenadorActual().cambiarPokemon(opcion);
     }
@@ -229,7 +230,6 @@ public class Juego {
 
     public void rendirse() {
         this.administrador.obtenerEntrenadorRivalActual().marcarComoGanador();
-        this.terminado = true;
     }
 
     public boolean terminado() {
@@ -237,7 +237,7 @@ public class Juego {
             obtenerEntrenadorRival().marcarComoGanador();
             return true;
         }
-        return this.terminado;
+        return false;
     }
 
     public Pokemon obtenerPokemonActual() {

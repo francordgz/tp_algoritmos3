@@ -1,5 +1,6 @@
 package src.main.Controlador;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.util.Duration;
 import src.main.Controlador.Eventos.EligeHabilidadEvento;
 import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
+import src.main.Modelo.Constant;
 import src.main.Modelo.Entrenador;
 import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Juego;
@@ -41,6 +43,8 @@ public class MainController implements EventHandler<Event> {
     VistaPokemonesController vistaPokemonesController;
     private boolean pausarEventos = false;
 
+    private Vistas ultimaVista = Vistas.SELECCION;
+
     public MainController(Juego juego, Stage primaryStage) {
         this.juego = juego;
         this.primaryStage = primaryStage;
@@ -52,6 +56,7 @@ public class MainController implements EventHandler<Event> {
     @Override
     public void handle(Event customEvent) {
         if (pausarEventos) return;
+        this.pausarEventos = true;
         switch (customEvent.getEventType().getName()) {
             case "Elige Habilidad":
                 EligeHabilidadEvento eventoHabilidadPokemon = (EligeHabilidadEvento) customEvent;
@@ -80,15 +85,17 @@ public class MainController implements EventHandler<Event> {
         }
     }
 
-    public void habilidadHandler(int opcion){
+    public void habilidadHandler(int opcion) {
 
         if (!juego.validarHabilidad(opcion)) {
             this.vistaCampoController.setDialogo("Esa habilidad no tiene más usos!");
+            this.pausarEventos = false;
             return;
         }
 
         if (this.juego.estaDormido()) {
             vistaCampoController.setDialogo("El Pokemon esta dormido, no puede atacar");
+            this.pausarEventos = false;
             return;
         }
 
@@ -97,17 +104,20 @@ public class MainController implements EventHandler<Event> {
         String nombre = pokemonActual.obtenerNombre();
         this.vistaCampoController.setDialogo(nombre + " ha usado " + nombreHabilidad + "!");
 
-        if (!this.juego.puedeAtacarParalisis()) {
-            vistaCampoController.setDialogo(nombre + " esta paralizado y no ataca!");
-        } else if (this.juego.seLastimaASiMismo()) {
-            vistaCampoController.setDialogo(nombre + " se lastima a si mismo en la confusion!");
-        } else {
-            Double efectividad = this.juego.usarHabilidad(opcion);
-            if (efectividad == null)  this.vistaCampoController.setDialogo(nombre + " se cambia su estado!");
-            else this.vistaCampoController.mostrarEfectividad(efectividad);
-        }
+        esperar(2, () -> {
+            if (!this.juego.puedeAtacarParalisis()) {
+                vistaCampoController.setDialogo(nombre + " esta paralizado y no ataca!");
+            } else if (this.juego.seLastimaASiMismo()) {
+                vistaCampoController.setDialogo(nombre + " se lastima a si mismo en la confusion!");
+            } else {
+                Double efectividad = this.juego.usarHabilidad(opcion);
+                if (efectividad == null) this.vistaCampoController.setDialogo(nombre + " se cambia su estado!");
+                else if (efectividad == Constant.TERCIO) this.vistaCampoController.setDialogo(nombre + " cambia el clima!");
+                else this.vistaCampoController.mostrarEfectividad(efectividad);
+            }
 
-        this.cambiarTurno();
+            this.cambiarTurno();
+        });
     }
 
     private void verPokemonesHandler() {
@@ -129,6 +139,7 @@ public class MainController implements EventHandler<Event> {
     private void aplicarItemPokemon(int opcion) {
         if (!this.juego.itemAplicable(this.itemSeleccionado, opcion)) {
             vistaPokemonesController.setDialogo("No es posible aplicar el item debido al estado del pokemon");
+            this.pausarEventos = false;
             return;
         }
         this.juego.usarItem(this.itemSeleccionado, opcion);
@@ -141,12 +152,12 @@ public class MainController implements EventHandler<Event> {
             this.vistaPokemonesController.setDialogo(this.juego.pokemonObtenerNombre(opcion) + " esta muerto!");
             return;
         }
+        this.vistaPokemonesController.setDialogo(this.juego.pokemonObtenerNombre(opcion) + " seleccionado!");
         this.juego.cambiarPokemon(opcion);
         this.cambiarTurno();
     }
 
     private void seleccionarPrimerPokemon(int opcion) {
-        this.pausarEventos = true;
         String nombre;
         Entrenador entrenador = this.juego.obtenerPrimerEntrenador();
 
@@ -154,20 +165,20 @@ public class MainController implements EventHandler<Event> {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
-            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(2));
-            pauseTransition.setOnFinished(event -> {
-                Entrenador entrenadorRival = this.juego.obtenerSegundoEntrenador();
-                this.vistaPokemonesController.llenarLista(entrenadorRival.obtenerPokemones());
-                this.pausarEventos = false;
+            esperar(2, () -> {
+                Entrenador entrenadorRival = MainController.this.juego.obtenerSegundoEntrenador();
+                Scene escena = this.getEscena(this.ultimaVista);
+                transicion(escena, escena, () -> vistaPokemonesController.llenarLista(entrenadorRival.obtenerPokemones()), 1);
+                MainController.this.vistaPokemonesController.setDialogo("Elige un POKéMON");
             });
-            pauseTransition.play();
             return;
         }
 
         entrenador = this.juego.obtenerSegundoEntrenador();
         nombre = entrenador.cambiarPokemon(opcion);
         this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
-        inicializarBatalla();
+
+        this.inicializarBatalla();
     }
 
     private void verMochilaHandler() {
@@ -188,40 +199,45 @@ public class MainController implements EventHandler<Event> {
     }
 
     public void terminar() {
-        juego.obtenerEntrenadorRival().marcarComoGanador();
         //crearInforme();
         this.primaryStage.close();
     }
 
+    private void esperar(int segundos, Runnable codigo) {
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(segundos));
+        pauseTransition.setOnFinished(event -> codigo.run());
+        pauseTransition.play();
+    }
+
     private void volverHandler() {
         this.itemSeleccionado = null;
-        cambiarEscena(Vistas.CAMPO);
+        cambiarEscena(Vistas.CAMPO, 0);
     }
 
     private void cambiarTurno() {
-        this.pausarEventos = true;
+        esperar(2, this::cambiarTurnoWaitRun);
+    }
+
+    private void cambiarTurnoWaitRun() {
         if (this.cambiaElTurno) this.juego.cambiarTurno();
         else this.cambiaElTurno = true;
+
         this.juego.efectoClimatico();
         this.juego.actualizarEstadoPokemonActual();
 
         Entrenador actual = this.juego.obtenerEntrenadorActual();
-
-        if (!actual.tienePokemonesConVida()) {
+        if (juego.terminado()) {
             terminar();
             return;
         }
 
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(2));
-        pauseTransition.setOnFinished(event -> {
-            actualizarDatos();
-            this.pausarEventos = false;
-        });
-        pauseTransition.play();
-
         if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
             cambiarEscena(Vistas.SELECCION);
             this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
+
+            String nombre = this.juego.pokemonObtenerNombreActual();
+            this.vistaPokemonesController.setDialogo(nombre + "ha muerto! Seleccione otro Pokemon");
+
             this.cambiaElTurno = false;
         } else cambiarEscena(Vistas.CAMPO);
     }
@@ -266,38 +282,60 @@ public class MainController implements EventHandler<Event> {
 
     private void inicializarBatalla() {
         this.juego.inicializarTurnos();
-        this.cargarEscena("Pokemones");
-        this.cambiarEscena(Vistas.CAMPO);
-        actualizarDatos();
         this.juego.efectoClimatico();
+        this.cargarEscena("Pokemones");
+        this.cambiarEscena(Vistas.CAMPO, 4);
+    }
+
+    private void cambiarEscena(Vistas escena, int segundos) {
+        transicion(getEscena(this.ultimaVista), getEscena(escena), this::actualizarDatos, segundos);
+        this.ultimaVista = escena;
     }
 
     private void cambiarEscena(Vistas escena) {
-        switch (escena) {
-            case CAMPO:
-                this.primaryStage.setScene(this.vistaCampoController.getEscena());
-                this.actualizarDatos();
-                break;
-            case ITEMS:
-                this.primaryStage.setScene(this.vistaItemsController.getEscena());
-                break;
-            case POKEMONES:
-                cargarEscena("Pokemones");
-                this.primaryStage.setScene(this.vistaPokemonesController.getEscena());
-                break;
-            case SELECCION:
-                cargarEscena("PrimeraSeleccion");
-                this.primaryStage.setScene(this.vistaPokemonesController.getEscena());
-        }
+        cambiarEscena(escena, 1);
     }
+
+    private Scene getEscena(Vistas escena) {
+        if (escena == Vistas.CAMPO) return vistaCampoController.getEscena();
+        if (escena == Vistas.ITEMS) return vistaItemsController.getEscena();
+        if (escena == Vistas.POKEMONES) cargarEscena("Pokemones");
+        else cargarEscena("PrimeraSeleccion");
+        return this.vistaPokemonesController.getEscena();
+    }
+
+    private void transicion(Scene fromScene, Scene toScene, Runnable codigo, int segundos) {
+        // Create fade transitions
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(segundos), fromScene.getRoot());
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        if (segundos == 0) segundos = 1;
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(segundos), toScene.getRoot());
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Set the action on scene change
+        fadeOut.setOnFinished(e -> {
+            codigo.run();
+            this.pausarEventos = false;
+            fadeIn.play();
+            primaryStage.setScene(toScene);
+        });
+
+        fadeOut.play();
+    }
+
 
     private void inicializarEscenasYClima() {
         cargarEscena("PrimeraSeleccion");
         cargarEscena("Campo");
         cargarEscena("Items");
-        cambiarEscena(Vistas.SELECCION);
-        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
         vistaCampoController.setClima(this.juego.inicializarClima().getNombre());
+
+        Scene escena = getEscena(this.ultimaVista);
+        transicion(escena, escena,
+                () -> vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones()), 1);
     }
 
     private void cargarEscena(String nombreFXML) {

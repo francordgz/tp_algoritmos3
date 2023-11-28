@@ -213,10 +213,10 @@ public class VistaCampoController {
         if (efectividad > Constant.NULA) titilarRival();
     }
     private String getEfectividad(double efectividad) {
-        if (efectividad == Constant.NULA) return " cero";
-        if (efectividad == Constant.MEDIA) return " poco";
+        if (efectividad == Constant.NULA) return " CERO";
+        if (efectividad == Constant.MEDIA) return " POCO";
         if (efectividad == Constant.SIMPLE) return "";
-        if (efectividad == Constant.DOBLE) return " muy";
+        if (efectividad == Constant.DOBLE) return " MUY";
         else throw new RuntimeException("Error Efectividades");
     }
 
