@@ -9,9 +9,13 @@ public class HabilidadClima extends Habilidad{
         this.clima = clima;
     }
 
-    @Override
     public Clima modificarClima() {
         this.usos -= 1;
         return this.clima;
+    }
+
+    @Override
+    public String getTipoHabilidad() {
+        return "clima";
     }
 }

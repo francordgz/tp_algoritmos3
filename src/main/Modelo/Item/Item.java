@@ -28,9 +28,7 @@ public abstract class Item {
     public void usarItem(Pokemon pokemon) {
     }
 
-    public Boolean esAplicable(Pokemon pokemon) {
-        return true;
-    }
+    public abstract Boolean esAplicable(Pokemon pokemon);
 
     public void decrementarCantidad() {
         this.cantidad -= 1;

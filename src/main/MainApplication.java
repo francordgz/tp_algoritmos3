@@ -13,7 +13,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("POKEMON ES LA BATALLA");
+        primaryStage.setTitle("Pelea Politicos");
         primaryStage.setResizable(false);
         primaryStage.show();
 
@@ -27,7 +27,5 @@ public class MainApplication extends Application {
         primaryStage.addEventHandler(VerPokemonesEvento.VER_POKEMONES_EVENTO, controlador);
         primaryStage.addEventHandler(VerMochilaEvento.VER_MOCHILA_EVENTO, controlador);
         primaryStage.addEventHandler(VolverEvento.VOLVER_EVENT, controlador);
-        primaryStage.addEventHandler(EligeItemEvento.ELIGE_ITEM_EVENT, controlador);
-        primaryStage.addEventHandler(EligeHabilidadEvento.ELIGE_HABILIDAD_EVENT,controlador);
     }
 }

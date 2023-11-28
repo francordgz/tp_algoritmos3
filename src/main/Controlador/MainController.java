@@ -1,39 +1,26 @@
 package src.main.Controlador;
 
-import javafx.animation.PauseTransition;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import src.main.Controlador.Eventos.EligeHabilidadEvento;
-import src.main.Controlador.Eventos.EligeItemEvento;
 import src.main.Controlador.Eventos.EligePokemonEvento;
 import src.main.Modelo.Entrenador;
-import src.main.Modelo.Enums.Estados;
 import src.main.Modelo.Juego;
 import src.main.Modelo.Pokemon;
 import src.main.Modelo.Serializacion.InformeSerializer;
-import src.main.Modelo.Serializacion.PartidaDeserializer;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 public class MainController implements EventHandler<Event> {
     Juego juego;
     Stage primaryStage;
-
-    private Integer itemSeleccionado = null;
-
-    private boolean cambiaElTurno = true;
-    
-    private boolean batallaInicializada = false;
+    private final Object lock = new Object();
 
     @FXML
     VistaCampoController vistaCampoController;
@@ -46,130 +33,166 @@ public class MainController implements EventHandler<Event> {
         this.juego = juego;
         this.primaryStage = primaryStage;
 
-        deserializarPartida();
-        inicializarEscenasYClima();
+        this.juego.deserializarPartida(
+                "partida.json",
+                "pokemons.json",
+                "habilidades.json",
+                "items.json"
+        );
+
+        try {
+            inicializarPrimeraSeleccion();
+            inicializarCampo();
+            inicializarMochila();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.primaryStage.setScene(getEscena("pokemones"));
+
+        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
+        this.juego.inicializarClima();
+        test(juego.obtenerPrimerEntrenador());
+        test(juego.obtenerSegundoEntrenador());
     }
 
+    public void test(Entrenador entrenador) {
+        for (Pokemon pokemon : entrenador.obtenerPokemones()) {
+            pokemon.recibirAtaque((double) pokemon.obtenerVidaMaxima() / 2);
+        }
+    }
     @Override
     public void handle(Event customEvent) {
         switch (customEvent.getEventType().getName()) {
-            case "Elige Habilidad":
-                EligeHabilidadEvento eventoHabilidadPokemon = (EligeHabilidadEvento) customEvent;
-                this.habilidadHandler(eventoHabilidadPokemon.getOpcion());
+            case "Elige Pokemon":
+                EligePokemonEvento evento = (EligePokemonEvento) customEvent;
+                eligePokemonEvento(evento.getOpcion());
                 break;
             case "Ver Pokemones":
-                this.verPokemonesHandler();
-                break;
-            case "Elige Pokemon":
-                EligePokemonEvento eventoEligePokemon = (EligePokemonEvento) customEvent;
-                this.eligePokemonHandler(eventoEligePokemon.getOpcion());
+                verPokemones();
                 break;
             case "Ver Mochila":
-                this.verMochilaHandler();
-                break;
-            case "Elige Item":
-                EligeItemEvento eventoEligeItem = (EligeItemEvento) customEvent;
-                this.eligeItemHandler(eventoEligeItem.getOpcion());
-                break;
-            case "Rendirse":
-                this.rendirseHandler();
+                verMochila();
                 break;
             case "Volver":
-                this.volverHandler();
+                volver();
+                break;
+            case "Rendirse":
+                terminar();
                 break;
         }
     }
 
-    public void habilidadHandler(int opcion){
-        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
-            vistaCampoController.setDialogo("El Pokemon esta dormido, no puede atacar");
-            this.cambiarTurno();
-            return;
-
-        }
-
-        Pokemon pokemonActual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
-        String nombreHabilidad = pokemonActual.obtenerHabilidades().get(opcion).obtenerNombre();
-        String nombre = pokemonActual.obtenerNombre();
-        this.vistaCampoController.setDialogo(nombre + " ha usado " + nombreHabilidad + "!");
-
-        esperar(1);
-
-        boolean ataqueEfectivo = atacar(opcion);
-        if (!ataqueEfectivo)
-            this.vistaCampoController.setDialogo(nombre + " esta paralizado! No ataca!");
-        else this.vistaCampoController.titilar();
-
-        esperar(2);
-
-        this.cambiarTurno();
+    private void volver() {
+        this.primaryStage.setScene(getEscena("campo"));
     }
 
-    private boolean atacar(int opcion) {
-        if (opcion < 2) {
-            double ataque = this.juego.atacar(opcion);
-            return ataque != 0 || !this.juego.pokemonActualTieneEstado(Estados.PARALIZADO);
-        }
-
-        if (opcion < 5) return this.juego.usarHabilidad(opcion);
-
-        return this.juego.usarHabilidadClima(opcion);
-
-    }
-
-    private void verPokemonesHandler() {
+    private void verMochila() {
         Entrenador actual = juego.obtenerEntrenadorActual();
-        cambiarEscena(Vistas.POKEMONES);
+        vistaItemsController.llenarLista(actual.obtenerItems());
+        primaryStage.setScene(getEscena("mochila"));
+    }
+
+    private void verPokemones() {
+        Entrenador actual = juego.obtenerEntrenadorActual();
         vistaPokemonesController.llenarLista(actual.obtenerPokemones(), actual.obtenerPokemonActual());
+        primaryStage.setScene(getEscena("pokemones"));
     }
 
-    public void eligePokemonHandler(int opcion) {
+    private void inicializarCampo() throws IOException {
+        String path = "/src/main/Vista/VistaCampo.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "campo");
+
+        this.vistaCampoController = loader.getController();
+        this.vistaCampoController.setEscena(escena);
+    }
+
+    private void inicializarMochila() throws IOException {
+        String path = "/src/main/Vista/VistaItems.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "mochila");
+
+        this.vistaItemsController = loader.getController();
+        this.vistaItemsController.setEscena(escena);
+    }
+
+    private void inicializarPokemones() throws IOException {
+        String path = "/src/main/Vista/VistaPokemones.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "pokemones");
+
+        this.vistaPokemonesController = loader.getController();
+        this.vistaPokemonesController.setSalir();
+        this.vistaPokemonesController.setEscena(escena);
+    }
+
+    private void inicializarPrimeraSeleccion() throws IOException {
+        String path = "/src/main/Vista/VistaPrimeraSeleccion.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+
+        Scene escena = new Scene(loader.load());
+        setEstilo(escena, "pokemones");
+
+        this.vistaPokemonesController = loader.getController();
+        this.vistaPokemonesController.setEscena(escena);
+    }
+
+    private void setEstilo(Scene escena, String estilo) {
+        String cssPath = "/" + estilo + ".css";
+        escena.getStylesheets().add(Objects.requireNonNull(getClass()
+                .getResource(cssPath)).toExternalForm());
+    }
+
+    private Scene getEscena(String nombre) {
+        return switch (nombre) {
+            case "pokemones" -> this.vistaPokemonesController.getEscena();
+            case "mochila" -> this.vistaItemsController.getEscena();
+            case "campo" -> this.vistaCampoController.getEscena();
+            default -> throw new IllegalStateException("Unexpected value: " + nombre);
+        };
+    }
+
+    public void eligePokemonEvento(int opcion) {
         if (!this.juego.turnosAsignados()) {
-            this.seleccionarPrimerPokemon(opcion);
+            seleccionarPrimerPokemon(opcion);
             return;
         }
 
-        if (itemSeleccionado != null) aplicarItemPokemon(opcion);
-        else cambiarPokemon(opcion);
+        this.juego.obtenerEntrenadorActual().cambiarPokemon(opcion);
+        this.juego.cambiarTurno();
+        actualizarDatos();
+        this.primaryStage.setScene(getEscena("campo"));
     }
 
-    private void aplicarItemPokemon(int opcion) {
-        if (!this.juego.itemAplicable(this.itemSeleccionado, opcion)) {
-            vistaPokemonesController.setDialogo("No es posible aplicar el item debido al estado del pokemon");
-            return;
-        }
-        this.juego.usarItem(this.itemSeleccionado, opcion);
-        this.itemSeleccionado = null;
-        this.cambiarTurno();
-    }
-
-    private void cambiarPokemon(int opcion) {
-        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
-        Pokemon pokemonSeleccionado = entrenadorActual.obtenerPokemones().get(opcion);
-        if(pokemonSeleccionado.estaMuerto()) {
-            this.vistaPokemonesController.setDialogo(pokemonSeleccionado.obtenerNombre() + " esta muerto!");
-            return;
-        }
-        entrenadorActual.cambiarPokemon(opcion);
-        this.cambiarTurno();
+    public void actualizarDatos() {
+        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        vistaCampoController.setDatos(actual, rival);
     }
 
     private void seleccionarPrimerPokemon(int opcion) {
         String nombre;
-        Entrenador entrenador = this.juego.obtenerPrimerEntrenador();
+        Entrenador entrenador = juego.obtenerPrimerEntrenador();
 
         if (!entrenador.tienePokemonActual()) {
             nombre = entrenador.cambiarPokemon(opcion);
             this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
             esperar(2);
-
-            entrenador = this.juego.obtenerSegundoEntrenador();
+            entrenador = juego.obtenerSegundoEntrenador();
             this.vistaPokemonesController.llenarLista(entrenador.obtenerPokemones());
             return;
         }
 
-        entrenador = this.juego.obtenerSegundoEntrenador();
+        entrenador = juego.obtenerSegundoEntrenador();
         nombre = entrenador.cambiarPokemon(opcion);
         this.vistaPokemonesController.setDialogo("Has eleigdo a " + nombre + "!");
 
@@ -177,101 +200,28 @@ public class MainController implements EventHandler<Event> {
         inicializarBatalla();
     }
 
-    private void verMochilaHandler() {
-        Entrenador actual = juego.obtenerEntrenadorActual();
-        vistaItemsController.llenarLista(actual.obtenerItems());
-        cambiarEscena(Vistas.ITEMS);
-    }
+    private void inicializarBatalla() {
+        this.juego.inicializarTurnos();
+        this.primaryStage.setScene(getEscena("campo"));
 
-    private void eligeItemHandler(int opcion) {
-        Entrenador actual = juego.obtenerEntrenadorActual();
-        this.itemSeleccionado = opcion;
-        cambiarEscena(Vistas.POKEMONES);
-        this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
-    }
-
-    public void rendirseHandler() {
-        terminar();
-    }
-
-    public void terminar() {
-        juego.obtenerEntrenadorRival().marcarComoGanador();
-        //crearInforme();
-        this.primaryStage.close();
-    }
-
-    private void volverHandler() {
-        this.itemSeleccionado = null;
-        cambiarEscena(Vistas.CAMPO);
-    }
-
-    private void cambiarTurno() {
-        if (this.cambiaElTurno) this.juego.cambiarTurno();
-        else this.cambiaElTurno = true;
-
-        this.actualizarDatos();
-        this.juego.efectoClimatico();
-
-
-        Entrenador actual = this.juego.obtenerEntrenadorActual();
-
-
-        if (!actual.tienePokemonesConVida()) {
-            terminar();
-            return;
+        try {
+            this.inicializarPokemones();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
-        if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
-            cambiarEscena(Vistas.SELECCION);
-            this.vistaPokemonesController.llenarLista(actual.obtenerPokemones());
-            this.cambiaElTurno = true;
-        } else cambiarEscena(Vistas.CAMPO);
-    }
-
-    public void actualizarDatos() {
-        Entrenador actual = this.juego.obtenerEntrenadorActual();
-        Entrenador rival = this.juego.obtenerEntrenadorRival();
-        double segundos;
-        
-        if (!this.batallaInicializada) {
-            segundos = 0;
-            this.batallaInicializada = true;
-        } else segundos = 2;
-
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(segundos));
-        pauseTransition.setOnFinished(event -> { this.vistaCampoController.setDatos(actual, rival); });
-        pauseTransition.play();
-
-        this.vistaCampoController.setClima(this.juego.obtenerClima().getNombre());
+        Pokemon actual = this.juego.obtenerEntrenadorActual().obtenerPokemonActual();
+        Pokemon rival = this.juego.obtenerEntrenadorRival().obtenerPokemonActual();
+        vistaCampoController.setDatos(actual, rival);
     }
 
     private void esperar(int segundos) {
-        /*
         synchronized (lock) {
             try {
                 lock.wait(segundos * 1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }
-        */
-    }
-
-    public void deserializarPartida() {
-        String partidaJSON = "partida.json";
-        String pokemonsJSON = "pokemons.json";
-        String habilidadesJSON = "habilidades.json";
-        String itemsJSON = "items.json";
-
-        try {
-            PartidaDeserializer partidaDeserializer = new PartidaDeserializer(
-                    partidaJSON, pokemonsJSON, habilidadesJSON, itemsJSON
-            );
-
-            List<Entrenador> entrenadores = partidaDeserializer.deserealizarPartida();
-            this.juego.asignarEntrenadores(entrenadores.get(0), entrenadores.get(1));
-        } catch (IOException | URISyntaxException e) {
-            throw new RuntimeException("Error al leer archivos JSON");
         }
     }
 
@@ -288,77 +238,211 @@ public class MainController implements EventHandler<Event> {
         }
     }
 
-    private void inicializarBatalla() {
-        this.juego.inicializarTurnos();
-        this.cargarEscena("Pokemones");
-        this.cambiarEscena(Vistas.CAMPO);
-        actualizarDatos();
-        this.juego.efectoClimatico();
+    public void terminar() {
+        juego.obtenerEntrenadorRival().marcarComoGanador();
+        //crearInforme();
+        debug();
     }
 
-    private void cambiarEscena(Vistas escena) {
-        switch (escena) {
-            case CAMPO:
-                this.primaryStage.setScene(this.vistaCampoController.getEscena());
-                this.actualizarDatos();
-                break;
-            case ITEMS:
-                this.primaryStage.setScene(this.vistaItemsController.getEscena());
-                break;
-            case POKEMONES:
-                cargarEscena("Pokemones");
-                this.primaryStage.setScene(this.vistaPokemonesController.getEscena());
-                break;
-            case SELECCION:
-                cargarEscena("PrimeraSeleccion");
-                this.primaryStage.setScene(this.vistaPokemonesController.getEscena());
-        }
-    }
-
-    private void inicializarEscenasYClima() {
-        cargarEscena("PrimeraSeleccion");
-        cargarEscena("Campo");
-        cargarEscena("Items");
-        cambiarEscena(Vistas.SELECCION);
-        this.vistaPokemonesController.llenarLista(this.juego.obtenerPrimerEntrenador().obtenerPokemones());
-        vistaCampoController.setClima(this.juego.inicializarClima().getNombre());
-    }
-
-    private void cargarEscena(String nombreFXML) {
-        String path = "/src/main/Vista/Vista" + nombreFXML + ".fxml";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-
-        Scene escena;
-        try {
-            escena = new Scene(loader.load());
-        } catch (IOException e) {
-            throw new RuntimeException("Error al cargas la escena de " + nombreFXML + "!");
-        }
-        setEstilo(escena, nombreFXML);
-
-        switch (nombreFXML) {
-            case "Campo":
-                this.vistaCampoController = loader.getController();
-                this.vistaCampoController.setEscena(escena);
-                break;
-            case "Items":
-                this.vistaItemsController = loader.getController();
-                this.vistaItemsController.setEscena(escena);
-                break;
-            default:
-                this.vistaPokemonesController = loader.getController();
-                this.vistaPokemonesController.setEscena(escena);
-                if (nombreFXML.equals("Pokemones")) vistaPokemonesController.setSalir();
-        }
-    }
-
-    private void setEstilo(Scene escena, String nombreFXML) {
-        String nombreCSS = "pokemones";
-        if (nombreFXML.equals("Items")) nombreCSS = "mochila";
-        if (nombreFXML.equals("Campo")) nombreCSS = "campo";
-
-        String cssPath = "/" + nombreCSS + ".css";
-        escena.getStylesheets().add(Objects.requireNonNull(getClass()
-                .getResource(cssPath)).toExternalForm());
+    private void debug() {
+        System.out.println("DEBUG");
     }
 }
+
+/*
+    public void menuPrincipal() {
+        int opcion;
+        boolean turnoTerminado = false;
+        boolean mostrar = true;
+
+        this.juego.efectoClimatico();
+        Entrenador entrenadorActual = this.juego.obtenerEntrenadorActual();
+        Pokemon pokemonActual = entrenadorActual.obtenerPokemonActual();
+
+        if (this.juego.pokemonActualTieneEstado(Estados.MUERTO)) {
+            VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
+            this.seleccionarPokemon(entrenadorActual, true);
+            turnoTerminado = true;
+        } else if (this.juego.pokemonRivalTieneEstado(Estados.MUERTO)) {
+            VistaJuego.imprimirMismaLinea(pokemonActual.obtenerNombre() + " ha muerto!");
+            this.seleccionarPokemon(this.juego.obtenerEntrenadorRival(), true);
+        }
+
+        this.juego.actualizarEstadoPokemonActual();
+
+        while (!turnoTerminado) {
+            if (mostrar)
+                VistaJuego.mostrarMenu(entrenadorActual.obtenerNombre());
+            else
+                mostrar = true;
+
+            opcion = leerInt();
+            switch (opcion) {
+                case 1:
+                    VistaPokemon.mostrarCampo(entrenadorActual, this.juego.obtenerEntrenadorRival());
+                    break;
+                case 2:
+                    turnoTerminado = this.seleccionarHabilidad();
+                    break;
+                case 3:
+                    turnoTerminado = this.seleccionarItem();
+                    break;
+                case 4:
+                    turnoTerminado = this.seleccionarPokemon(entrenadorActual, false);
+                    break;
+                case 5:
+                    this.juego.rendirse();
+                    return;
+                default:
+                    VistaJuego.imprimir("Seleccione una opción correcta!");
+                    mostrar = false;
+            }
+        }
+
+        this.juego.cambiarTurno();
+        this.juego.actualizarClima();
+    }
+
+    private boolean seleccionarPokemon(Entrenador entrenador, boolean seleccionObligatoria) {
+        boolean opcionValida = false;
+        int opcion = src.main.Modelo.Constant.NULA;
+
+        while (!opcionValida) {
+            opcion = pedirPokemon(entrenador, seleccionObligatoria);
+
+            if (opcion == Constant.SALIR - 1) return false;
+
+            if (this.juego.pokemonEstaMuerto(opcion))
+                VistaJuego.imprimir("Ese Pokemon esta muerto!");
+            else if (this.juego.validarPokemon(opcion))
+                VistaJuego.imprimir("Se debe elegir un Pokemon distinto al actual mientras él siga con vida!");
+            else
+                opcionValida = true;
+        }
+
+        String nombrePokemon = this.juego.cambiarPokemon(entrenador, opcion);
+        VistaJuego.imprimir(entrenador.obtenerNombre() + " ha elegido a " + nombrePokemon);
+        return true;
+    }
+
+    private int pedirPokemon(Entrenador entrenador, boolean seleccionObligatoria){
+        int opcion = Constant.SALIR;
+        VistaPokemon.mostrarPokemones(entrenador, seleccionObligatoria);
+        boolean opcionValida = false;
+
+        while (!opcionValida) {
+            opcion = leerInt();
+
+            if (opcion < Constant.SALIR || opcion > this.juego.obtenerCantidadDePokemones(entrenador))
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR && seleccionObligatoria)
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR)
+                return Constant.SALIR - 1;
+            else
+                opcionValida = true;
+        }
+
+        return opcion - 1;
+    }
+
+    public Boolean seleccionarHabilidad(){
+        double ataque;
+        Boolean ataqueEfectivo = true;
+        int opcion = pedirHabilidad();
+        int habilidadSeleccionada = opcion - 1;
+
+        if (this.juego.pokemonActualTieneEstado(Estados.DORMIDO)) {
+            VistaJuego.imprimir("El Pokemon esta dormido, no puede atacar");
+            return true;
+        }
+
+        switch (opcion) {
+            case Constant.SALIR:
+                return false;
+            case 1, 2:
+                ataque = this.juego.atacar(habilidadSeleccionada);
+
+                if (ataque == 0 && this.juego.pokemonActualTieneEstado(Estados.PARALIZADO)) {
+                    ataqueEfectivo = false;
+                    break;
+                }
+                VistaJuego.mostrarEfectividad(ataque);
+                break;
+
+            case 3, 4, 5:
+                ataqueEfectivo = this.juego.usarHabilidad(habilidadSeleccionada);
+                break;
+
+            case 6:
+                ataqueEfectivo = this.juego.usarHabilidadClima(habilidadSeleccionada);
+                break;
+        }
+        if (!ataqueEfectivo)
+            VistaJuego.imprimir("El pokemon esta paralizado!");
+
+        return true;
+    }
+
+    private int pedirHabilidad() {
+        int opcion = Constant.SALIR;
+        boolean habilidadValida = false;
+
+        VistaHabilidad.mostrarHabilidades(this.juego.obtenerEntrenadorActual().obtenerPokemonActual());
+
+        while (!habilidadValida) {
+            opcion = leerInt();
+
+            if (opcion < Constant.SALIR || opcion > 6)
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR)
+                return opcion;
+            else if (!this.juego.validarHabilidad(opcion - 1))
+                VistaJuego.imprimir("Esta habilidad no tiene más usos");
+            else
+                habilidadValida = true;
+        }
+
+        return opcion;
+    }
+
+    private Boolean seleccionarItem() {
+        int pokemonSeleccionado = pedirPokemon(this.juego.obtenerEntrenadorActual(), false);
+
+        if (pokemonSeleccionado == Constant.NOT_INT)
+            return false;
+
+        int opcion = pedirItem(pokemonSeleccionado);
+
+        if (opcion == Constant.SALIR)
+            return false;
+
+        this.juego.usarItem(opcion - 1, pokemonSeleccionado);
+        VistaItem.notificarUsoDeItem(this.juego.obtenerEntrenadorActual(), opcion - 1);
+        return true;
+    }
+
+    private Integer pedirItem(Integer pokemon) {
+        int opcion = Constant.SALIR;
+        boolean itemValido = false;
+        VistaItem.mostrarItems(this.juego.obtenerEntrenadorActual());
+
+        while (!itemValido) {
+            opcion = leerInt();
+
+            if (opcion < Constant.SALIR || opcion > this.juego.obtenerCantidadDeItems())
+                VistaJuego.imprimir("Seleccione una opción correcta!");
+            else if (opcion == Constant.SALIR)
+                return opcion;
+
+            if (!this.juego.validarItem(opcion - 1))
+                VistaJuego.imprimir("Esta item no tiene más usos");
+            else if (!this.juego.itemAplicable(opcion - 1, pokemon))
+                VistaJuego.imprimir("No es posible aplicar el item debido al estado del Pokemon seleccionado");
+            else
+                itemValido = true;
+        }
+        return opcion;
+    }
+
+*/

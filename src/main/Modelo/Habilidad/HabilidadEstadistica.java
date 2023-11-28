@@ -15,7 +15,6 @@ public class HabilidadEstadistica extends Habilidad{
         this.afectarRival = afectarRival;
     }
 
-    @Override
     public void modificarEstado(Pokemon pokemon) {
         if(atributo == Atributos.VIDA) {
             pokemon.curar(poder);
@@ -29,8 +28,12 @@ public class HabilidadEstadistica extends Habilidad{
         this.usos -=1;
     }
 
-    @Override
-    public Boolean AfectarRival() {
+    public Boolean afectaRival() {
         return afectarRival;
+    }
+
+    @Override
+    public String getTipoHabilidad() {
+        return "estadistica";
     }
 }
