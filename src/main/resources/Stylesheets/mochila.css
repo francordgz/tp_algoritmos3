@@ -5,7 +5,6 @@
 .text, #dialogo {
     -fx-font-size: 8px;
     -fx-font-family: 'Press Start 2P', 'Courier New', monospace;
-}
 
 .button {
     -fx-background-color: #cdcdcd;
@@ -15,4 +14,8 @@
 
 .button:hover, .menu-button:hover, .menu-button:hover .label, .menu-item:hover{
     -fx-background-color: #ffcc00;
+}
+
+#itemListView {
+    -fx-background-color: transparent;
 }
