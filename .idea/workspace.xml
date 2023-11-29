@@ -4,96 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Versión Maven Terminada">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/ControllerViejo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligeHabilidadEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/EligeHabilidadEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligeItemEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/EligeItemEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/EligePokemonEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/EligePokemonEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/RendirseEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/RendirseEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/VerMochilaEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/VerMochilaEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/VerPokemonesEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/VerPokemonesEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Eventos/VolverEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Eventos/VolverEvento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Nodos/ItemButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Nodos/ItemButtonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Nodos/ItemPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Nodos/ItemPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Nodos/PokemonButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Nodos/PokemonButtonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaCampoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/VistaCampoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/VistaItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaPokemonesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/VistaPokemonesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/Vistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Vistas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/AdministradorDeTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/AdministradorDeTurnos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/Clima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/Clima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaHuracan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaHuracan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaLluvia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaLluvia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNiebla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaNiebla.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaNormal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaSoleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaSoleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeArena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaTormentaDeArena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Clima/ClimaTormentaDeRayos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Clima/ClimaTormentaDeRayos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Entrenador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Enums/Atributos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Enums/Atributos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Enums/Estados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Enums/Estados.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Enums/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Enums/Tipo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Enums/TipoModificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Enums/TipoModificacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Habilidad/Habilidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Habilidad/Habilidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Habilidad/HabilidadAtaque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Habilidad/HabilidadAtaque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Habilidad/HabilidadClima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Habilidad/HabilidadClima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Habilidad/HabilidadEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Habilidad/HabilidadEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Habilidad/HabilidadEstado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Habilidad/HabilidadEstado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/ItemCuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCurarPorcentaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/ItemCurarPorcentaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/ItemEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemEstado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/ItemEstado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemRevivir.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Item/ItemRevivir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Juego.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Pokemon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Serializacion/HabilidadDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/HabilidadDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Serializacion/InformeSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/InformeSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Serializacion/ItemDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/ItemDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Serializacion/PartidaDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/PartidaDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Serializacion/PokemonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/PokemonDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/ItemButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/ItemButton.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/ItemPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/ItemPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/PokemonButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/PokemonButton.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaCampo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/VistaCampo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/VistaItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPokemones.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/VistaPokemones.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaPrimeraSeleccion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vista/VistaPrimeraSeleccion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/habilidades.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Serial/habilidades.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/habilidadesTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Serial/habilidadesTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Serial/items.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/itemsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Serial/itemsTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/partida.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Serial/partida.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/partidaTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Serial/partidaTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemons.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Serial/pokemons.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pokemonsTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Serial/pokemonsTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/AdministradorTurnosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/AdministradorTurnosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaHuracanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaHuracanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaLluviaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaLluviaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaNieblaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaNieblaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaSoleadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaSoleadoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaTormentaDeArenaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaTormentaDeArenaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ClimaTest/ClimaTormentaDeRayosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ClimaTest/ClimaTormentaDeRayosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/EntrenadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/EntrenadorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/HabilidadTest/HabilidadAtaqueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/HabilidadTest/HabilidadAtaqueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/HabilidadTest/HabilidadClimaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/HabilidadTest/HabilidadClimaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/HabilidadTest/HabilidadEstadisticaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/HabilidadTest/HabilidadEstadisticaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/HabilidadTest/HabilidadEstadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/HabilidadTest/HabilidadEstadoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/IntegracionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/IntegracionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ItemTest/ItemCuracionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ItemTest/ItemCuracionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ItemTest/ItemCurarPorcentajeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ItemTest/ItemCurarPorcentajeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ItemTest/ItemEstadisticaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ItemTest/ItemEstadisticaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ItemTest/ItemEstadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ItemTest/ItemEstadoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ItemTest/ItemRevivirTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/ItemTest/ItemRevivirTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/JuegoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/JuegoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/PokemonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/PokemonTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Versión Maven Terminada" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +26,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Tp-3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -148,23 +59,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Tp3-Maven&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.Controlador" />
