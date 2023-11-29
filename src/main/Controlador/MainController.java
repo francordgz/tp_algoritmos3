@@ -405,7 +405,7 @@ public class MainController implements EventHandler<Event> {
         StackPane root = new StackPane();
         root.getChildren().add(imageView);
         Scene escenaFinal = new Scene(root, 600, 400);
-        this.primaryStage.setTitle("Subanle un punto a Ezequiel");
+        this.primaryStage.setTitle("MiameeeeeeeeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
         transicion(getEscena(this.escenaActual), escenaFinal, () -> {}, 4);
         esperar(() -> this.primaryStage.close(), 8000);

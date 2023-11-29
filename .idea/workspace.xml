@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Mejoro adaptacion de imagenes">
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Ajusto imagenes en vistaItems">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Vista/VistaItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/bgs/menu_selecciones.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/bgs/menu_selecciones.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -594,7 +594,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="List View" />
     <MESSAGE value="Handle Button Click" />
     <MESSAGE value="push para mi amigo Ezequiel" />
     <MESSAGE value="push para mi amigo Mati" />
@@ -619,6 +618,7 @@
     <MESSAGE value="Bugs arreglados" />
     <MESSAGE value="Termine el TP, no voy a codear más" />
     <MESSAGE value="Mejoro adaptacion de imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejoro adaptacion de imagenes" />
+    <MESSAGE value="Ajusto imagenes en vistaItems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajusto imagenes en vistaItems" />
   </component>
 </project>
