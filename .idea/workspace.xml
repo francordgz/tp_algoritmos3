@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Termine el TP, no voy a codear más">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/ricardofort-dancing.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_2023_8_33_p__m___Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controlador/VistaItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Entrenador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Entrenador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCurarPorcentaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Item/ItemCurarPorcentaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Juego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Juego.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Modelo/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Modelo/Pokemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/bulbasaur.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/bulbasaur.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/charizard.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/charizard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/charmander.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/charmander.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/ekans.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/ekans.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/geodude.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/geodude.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/kadabra.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/kadabra.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/mew.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/mew.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/pikachu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/pikachu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/rattata.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/rattata.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/squirtle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Imagenes/pokemon/miniatura_menu/squirtle.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +79,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USUARIO/Desktop/Algo3/tp/tp1_algoritmos3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
