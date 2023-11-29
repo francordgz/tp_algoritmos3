@@ -1,0 +1,5 @@
+package BatallaPokemon.Modelo.Enums;
+
+public enum Tipo {
+    AGUA, BICHO, DRAGON, RAYO, FANTASMA, FUEGO, HIELO, LUCHA, NORMAL, PLANTA, PSIQUICO, ROCA, TIERRA, VENENO, VOLADOR
+}
