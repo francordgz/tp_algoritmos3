@@ -18,9 +18,9 @@
                                 <Label fx:id="actualVida" layoutX="140.0" layoutY="3.0" prefHeight="25.0" prefWidth="50.0" text="Vida Actual" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
                             </AnchorPane>
                             <AnchorPane layoutX="8.0" layoutY="232.0" prefHeight="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0">
-                                <Label fx:id="actualEstado" layoutX="15.0" layoutY="38.0" prefHeight="26.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
-                                <Label fx:id="actualTipo" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="177.0" text="Tipo" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-                                <Label fx:id="actualNivel" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="177.0" text="Nivel" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="40.0" />
+                                <Label fx:id="actualEstado" layoutX="15.0" layoutY="38.0" prefHeight="26.0" prefWidth="170.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
+                                <Label fx:id="actualTipo" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" text="Tipo" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <Label fx:id="actualNivel" layoutX="126.0" layoutY="10.0" prefHeight="25.0" prefWidth="70.0" text="Nivel" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                             </AnchorPane>
                             <AnchorPane layoutX="33.0" layoutY="14.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="2.5">
                                 <children>
