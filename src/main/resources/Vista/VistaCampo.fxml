@@ -11,20 +11,20 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="306.0" prefWidth="600.0">
         <ImageView fx:id="background" fitHeight="326.0" fitWidth="600.0" pickOnBounds="true" />
         <!-- Información del rival -->
-        <AnchorPane fx:id="paneRival" layoutX="23.0" layoutY="43.0" prefHeight="85.0" prefWidth="250.0">
-            <ProgressBar fx:id="rivalVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="24.0" />
-            <Label fx:id="rivalNombre" layoutX="14.0" layoutY="12.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" text="Nombre Rival" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-            <Label fx:id="rivalNivel" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Rival" />
-         <Label fx:id="estadosRival" layoutX="25.0" layoutY="67.0" prefHeight="17.0" prefWidth="143.0"/>
+        <AnchorPane fx:id="paneRival" layoutX="23.0" layoutY="43.0" prefHeight="85.0" prefWidth="300.0" AnchorPane.leftAnchor="10.0">
+            <ProgressBar fx:id="rivalVidaPorcentaje" layoutX="25.0" layoutY="42.0" prefWidth="200.0" progress="100.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Label fx:id="rivalNombre" layoutX="14.0" layoutY="12.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="190.0" text="Nombre Rival" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="rivalNivel" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" text="Nivel Rival" AnchorPane.rightAnchor="20.0" />
+         <Label fx:id="estadosRival" layoutX="25.0" layoutY="67.0" prefHeight="17.0" prefWidth="143.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
         </AnchorPane>
 
         <!-- Información del jugador -->
-        <AnchorPane fx:id="paneActual" layoutX="354.0" layoutY="229.0" prefHeight="83.0" prefWidth="237.0" AnchorPane.topAnchor="229.0">
-            <ProgressBar fx:id="jugadorVidaPorcentaje" layoutX="18.0" layoutY="43.0" prefWidth="200.0" progress="100.0" />
-            <Label fx:id="jugadorNombre" layoutX="18.0" layoutY="10.0" prefHeight="25.0" prefWidth="127.0" text="Nombre Pokemon" />
-            <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="145.0" layoutY="60.0" prefHeight="25.0" prefWidth="73.0" text="Vida Numero" />
-            <Label fx:id="jugadorNivel" alignment="CENTER_RIGHT" layoutX="145.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="73.0" text="Nivel Jugador" />
-         <Label fx:id="estadosActual" layoutX="18.0" layoutY="60.0" prefHeight="25.0" prefWidth="127.0"/>
+        <AnchorPane fx:id="paneActual" layoutX="354.0" layoutY="229.0" prefHeight="83.0" prefWidth="300.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="229.0">
+            <ProgressBar fx:id="jugadorVidaPorcentaje" layoutX="18.0" layoutY="43.0" progress="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Label fx:id="jugadorNombre" layoutX="18.0" layoutY="10.0" prefHeight="25.0" prefWidth="190.0" text="Nombre Pokemon" />
+            <Label fx:id="jugadorVidaNumero" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="145.0" layoutY="60.0" prefHeight="25.0" prefWidth="85.0" text="Vida Numero" AnchorPane.rightAnchor="10.0" />
+            <Label fx:id="jugadorNivel" alignment="CENTER_RIGHT" layoutX="145.0" layoutY="10.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" text="Nivel Jugador" AnchorPane.rightAnchor="20.0" />
+         <Label fx:id="estadosActual" layoutX="18.0" layoutY="60.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" />
         </AnchorPane>
 
         <!-- Imágenes del jugador y rival -->
@@ -55,12 +55,12 @@
                         <!-- Menú de Atacar -->
                         <MenuButton alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="Lucha">
                             <items>
-                                <MenuItem fx:id= "botonHabilidad1" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidad2" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidad3" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidad4" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidad5" mnemonicParsing="false"  text=" " />
-                                <MenuItem fx:id= "botonHabilidad6" mnemonicParsing="false"  text="Habilidad Clima" />
+                                <MenuItem fx:id="botonHabilidad1" mnemonicParsing="false" text=" " />
+                                <MenuItem fx:id="botonHabilidad2" mnemonicParsing="false" text=" " />
+                                <MenuItem fx:id="botonHabilidad3" mnemonicParsing="false" text=" " />
+                                <MenuItem fx:id="botonHabilidad4" mnemonicParsing="false" text=" " />
+                                <MenuItem fx:id="botonHabilidad5" mnemonicParsing="false" text=" " />
+                                <MenuItem fx:id="botonHabilidad6" mnemonicParsing="false" text="Habilidad Clima" />
                             </items>
                             <padding>
                                 <Insets left="50.0" />
@@ -70,7 +70,7 @@
                 </AnchorPane>
             </SplitPane>
         </AnchorPane>
-      <Label fx:id="cantidadPokemonesRival" layoutX="35.0" layoutY="14.0" prefHeight="17.0" prefWidth="211.0" text="Rival Cantidad" />
-      <Label fx:id="cantidadPokemonesActual" layoutX="367.0" layoutY="200.0" prefHeight="17.0" prefWidth="211.0" text="Actual Cantidad" />
+      <Label fx:id="cantidadPokemonesRival" layoutX="35.0" layoutY="14.0" prefHeight="17.0" prefWidth="300.0" text="Rival Cantidad" AnchorPane.leftAnchor="10.0" />
+      <Label fx:id="cantidadPokemonesActual" layoutX="367.0" layoutY="200.0" prefHeight="17.0" prefWidth="300.0" text="Actual Cantidad" AnchorPane.rightAnchor="10.0" />
     </AnchorPane>
 </StackPane>

@@ -20,6 +20,5 @@ public abstract class Habilidad {
     public boolean quedanUsosDisponibles() {
         return this.usos > 0;
     }
-
     public abstract String getTipoHabilidad();
 }

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Versión Maven Terminada" />
+    <list default="true" id="eb1c507c-2b60-492f-a2d6-38e60ac407a8" name="Changes" comment="Errores de vistas">
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/HabilidadDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Serializacion/HabilidadDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/InformeSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Serializacion/InformeSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/ItemDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Serializacion/ItemDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/PartidaDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Serializacion/PartidaDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Modelo/Serializacion/PokemonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BatallaPokemon/Controlador/Serializacion/PokemonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BatallaPokemon/IntegracionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BatallaPokemon/IntegracionTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +72,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Correcciones",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/facun/Desktop/tp1_algoritmos3/src/main/resources",
     "node.js.detected.package.eslint": "true",
@@ -571,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="List View" />
     <MESSAGE value="Handle Button Click" />
     <MESSAGE value="push para mi amigo Ezequiel" />
     <MESSAGE value="push para mi amigo Mati" />
@@ -596,6 +603,7 @@
     <MESSAGE value="Bugs arreglados" />
     <MESSAGE value="Termine el TP, no voy a codear más" />
     <MESSAGE value="Versión Maven Terminada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versión Maven Terminada" />
+    <MESSAGE value="Errores de vistas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Errores de vistas" />
   </component>
 </project>

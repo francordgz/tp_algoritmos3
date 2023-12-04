@@ -1,4 +1,4 @@
-package BatallaPokemon.Modelo.Serializacion;
+package BatallaPokemon.Controlador.Serializacion;
 
 import BatallaPokemon.Modelo.Entrenador;
 

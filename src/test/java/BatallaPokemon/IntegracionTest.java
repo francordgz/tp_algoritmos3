@@ -9,8 +9,8 @@ import BatallaPokemon.Modelo.Entrenador;
 import BatallaPokemon.Modelo.Enums.Estados;
 import BatallaPokemon.Modelo.Juego;
 import BatallaPokemon.Modelo.Pokemon;
-import BatallaPokemon.Modelo.Serializacion.InformeSerializer;
-import BatallaPokemon.Modelo.Serializacion.PartidaDeserializer;
+import BatallaPokemon.Controlador.Serializacion.InformeSerializer;
+import BatallaPokemon.Controlador.Serializacion.PartidaDeserializer;
 
 import java.io.File;
 import java.io.IOException;
