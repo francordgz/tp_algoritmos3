@@ -1,4 +1,4 @@
-package BatallaPokemon.Modelo.Serializacion;
+package BatallaPokemon.Controlador.Serializacion;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

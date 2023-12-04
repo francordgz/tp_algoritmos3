@@ -150,11 +150,11 @@ public class Juego {
     }
 
     private void usarHabilidadEstado(int habilidad) {
-        obtenerPokemonActual().usarHabilidadEstado(habilidad, this.obtenerPokemonRival());
+        this.obtenerPokemonActual().usarHabilidadEstado(habilidad, this.obtenerPokemonRival());
     }
 
     public boolean usarHabilidadEstadistica(int habilidad) {
-        return obtenerPokemonActual().usarHabilidadEstadistica(habilidad, this.obtenerPokemonRival());
+        return this.obtenerPokemonActual().usarHabilidadEstadistica(habilidad, this.obtenerPokemonRival());
     }
 
     public Boolean estaDormido() {

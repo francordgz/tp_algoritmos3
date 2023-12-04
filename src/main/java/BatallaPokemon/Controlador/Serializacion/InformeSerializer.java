@@ -1,4 +1,4 @@
-package BatallaPokemon.Modelo.Serializacion;
+package BatallaPokemon.Controlador.Serializacion;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
