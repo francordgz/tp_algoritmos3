@@ -223,7 +223,7 @@ public class MainController implements EventHandler<Event> {
         StackPane root = new StackPane();
         root.getChildren().add(imageView);
         Scene escenaFinal = new Scene(root, 600, 400);
-        this.primaryStage.setTitle("Nacho subile un punto a Eze!");
+        this.primaryStage.setTitle("Fin");
 
         this.transicion(obtenerEscena(this.escenaActual), escenaFinal, () -> {}, 4);
         this.esperar(() -> this.primaryStage.close(), 8000);
